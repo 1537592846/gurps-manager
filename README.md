@@ -1,1 +1,0 @@
-"# gurps-manager" 
