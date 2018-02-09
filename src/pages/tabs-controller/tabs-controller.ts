@@ -6,9 +6,6 @@ import { SkillsPage } from '../skills/skills';
 import { TestsPage } from '../tests/tests';
 import { StatusPage } from '../status/status';
 import { ExtrasPage } from '../extras/extras';
-import { EquipmentsPage } from '../equipments/equipments';
-import { InventoryPage } from '../inventory/inventory';
-import { SkillsPage } from '../skills/skills';
 
 @Component({
   selector: 'page-tabs-controller',
