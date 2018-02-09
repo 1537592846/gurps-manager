@@ -1,6 +1,8 @@
 {
   "name": "gurps-manager",
-  "app_id": "",
+  "app_id": "66b7c09f",
   "type": "ionic-angular",
-  "integrations": {}
+  "integrations": {
+    "cordova": {}
+  }
 }
