@@ -2,11 +2,21 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { TestsPage } from '../pages/tests/tests';
+import { StatusPage } from '../pages/status/status';
+import { ExtrasPage } from '../pages/extras/extras';
+import { EquipmentsPage } from '../pages/equipments/equipments';
+import { InventoryPage } from '../pages/inventory/inventory';
+import { SkillsPage } from '../pages/skills/skills';
+import { TabsControllerPage } from '../pages/tabs-controller/tabs-controller';
+import { GurpsManagerPage } from '../pages/gurps-manager/gurps-manager';
+import { CharacterFeaturesPage } from '../pages/character-features/character-features';
+import { CharacterStatusPage } from '../pages/character-status/character-status';
+import { CharacterLanguagesPage } from '../pages/character-languages/character-languages';
+import { CharacterAdvantagesPage } from '../pages/character-advantages/character-advantages';
+import { CharacterDisadvantagesPage } from '../pages/character-disadvantages/character-disadvantages';
+import { CharacterResumePage } from '../pages/character-resume/character-resume';
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -14,10 +24,20 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage
+    TestsPage,
+    StatusPage,
+    ExtrasPage,
+    EquipmentsPage,
+    InventoryPage,
+    SkillsPage,
+    TabsControllerPage,
+    GurpsManagerPage,
+    CharacterFeaturesPage,
+    CharacterStatusPage,
+    CharacterLanguagesPage,
+    CharacterAdvantagesPage,
+    CharacterDisadvantagesPage,
+    CharacterResumePage
   ],
   imports: [
     BrowserModule,
@@ -26,10 +46,20 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage
+    TestsPage,
+    StatusPage,
+    ExtrasPage,
+    EquipmentsPage,
+    InventoryPage,
+    SkillsPage,
+    TabsControllerPage,
+    GurpsManagerPage,
+    CharacterFeaturesPage,
+    CharacterStatusPage,
+    CharacterLanguagesPage,
+    CharacterAdvantagesPage,
+    CharacterDisadvantagesPage,
+    CharacterResumePage
   ],
   providers: [
     StatusBar,
