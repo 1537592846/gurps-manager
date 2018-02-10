@@ -5,73 +5,73 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page7">
-  <form id="characterStatus-form5">
-    <ion-item id="characterStatus-range1">
-      <ion-range min="0" max="100" step="1" color="positive" value="50" name="char_strength">
+<ion-content padding id="characterStatus">
+  <form id="characterStatus-form">
+    <ion-item id="characterStatus-range_strenght">
+      <ion-range min="getMaxStatus()" max="getMaxStrenght()" step="1" color="positive" value="50" name="char_strength">
         <ion-label range-left>
           Strength (ST)
         </ion-label>
       </ion-range>
     </ion-item>
-    <ion-item id="characterStatus-range2">
+    <ion-item id="characterStatus-range_dexterity">
       <ion-range min="0" max="100" step="1" color="positive" value="50" name="char_dexterity">
         <ion-label range-left>
           Dexterity (DX)
         </ion-label>
       </ion-range>
     </ion-item>
-    <ion-item id="characterStatus-range3">
+    <ion-item id="characterStatus-range_char_intelligence">
       <ion-range min="0" max="100" step="1" color="positive" value="50" name="char_intelligence">
         <ion-label range-left>
           Intelligence (IQ)
         </ion-label>
       </ion-range>
     </ion-item>
-    <ion-item id="characterStatus-range4">
+    <ion-item id="characterStatus-range_char_health">
       <ion-range min="0" max="100" step="1" color="positive" value="50" name="char_health">
         <ion-label range-left>
           Health (HT)
         </ion-label>
       </ion-range>
     </ion-item>
-    <div class="spacer" style="height:40px;" id="characterStatus-spacer1"></div>
-    <ion-item id="characterStatus-range5">
+    <div class="spacer" style="height:40px;" id="characterStatus-spacer"></div>
+    <ion-item id="characterStatus-range_char_max_life_points">
       <ion-range min="0" max="100" step="1" color="positive" value="50" name="char_max_life_points">
         <ion-label range-left>
           Life Points
         </ion-label>
       </ion-range>
     </ion-item>
-    <ion-item id="characterStatus-range9">
+    <ion-item id="characterStatus-range_char_will">
       <ion-range min="0" max="100" step="1" color="positive" value="50" name="char_will">
         <ion-label range-left>
           Will
         </ion-label>
       </ion-range>
     </ion-item>
-    <ion-item id="characterStatus-range11">
+    <ion-item id="characterStatus-range_char_perception">
       <ion-range min="0" max="100" step="1" color="positive" value="50" name="char_perception">
         <ion-label range-left>
           Perception
         </ion-label>
       </ion-range>
     </ion-item>
-    <ion-item id="characterStatus-range12">
+    <ion-item id="characterStatus-range_char_max_effot_points">
       <ion-range min="0" max="100" step="1" color="positive" value="50" name="char_max_effot_points">
         <ion-label range-left>
           Effort Points
         </ion-label>
       </ion-range>
     </ion-item>
-    <ion-item id="characterStatus-range13">
+    <ion-item id="characterStatus-range_char_basic_speed">
       <ion-range min="0" max="100" step="1" color="positive" value="50" name="char_basic_speed">
         <ion-label range-left>
           Speed
         </ion-label>
       </ion-range>
     </ion-item>
-    <ion-item id="characterStatus-range14">
+    <ion-item id="characterStatus-range_char_basic_movement">
       <ion-range min="0" max="100" step="1" color="positive" value="50" name="char_basic_movement">
         <ion-label range-left>
           Movement
@@ -79,7 +79,7 @@
       </ion-range>
     </ion-item>
   </form>
-  <button id="characterStatus-button9" ion-button color="stable" block>
+  <button id="characterStatus-button" ion-button color="stable" block on-click="goToCharacterLanguages()">
     Proceed
   </button>
 </ion-content>

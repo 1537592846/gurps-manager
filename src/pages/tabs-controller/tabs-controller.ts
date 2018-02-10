@@ -12,24 +12,33 @@ import { ExtrasPage } from '../extras/extras';
   templateUrl: 'tabs-controller.html'
 })
 export class TabsControllerPage {
-  // this tells the tabs component which Pages
-  // should be each tab's root Page
-  tab1Root: any = TestsPage;
-  tab2Root: any = StatusPage;
-  tab3Root: any = ExtrasPage;
-  tab4Root: any = EquipmentsPage;
-  tab5Root: any = InventoryPage;
-  tab6Root: any = SkillsPage;
+  
+  testsRoot: any = TestsPage;
+  statusRoot: any = StatusPage;
+  extrasRoot: any = ExtrasPage;
+  equipmentsRoot: any = EquipmentsPage;
+  inventoryRoot: any = InventoryPage;
+  skillsRoot: any = SkillsPage;
+  
   constructor(public navCtrl: NavController) {
+    this.goToStatus();
   }
-  goToEquipments(params){
-    if (!params) params = {};
+  goToTests(){
+    this.navCtrl.push(TestsPage);
+  }
+  goToStatus(){
+    this.navCtrl.push(StatusPage);
+  }
+  goToExtras(){
+    this.navCtrl.push(ExtrasPage);
+  }
+  goToEquipments(){
     this.navCtrl.push(EquipmentsPage);
-  }goToInventory(params){
-    if (!params) params = {};
+  }
+  goToInventory(){
     this.navCtrl.push(InventoryPage);
-  }goToSkills(params){
-    if (!params) params = {};
+  }
+  goToSkills(){
     this.navCtrl.push(SkillsPage);
   }
 }
