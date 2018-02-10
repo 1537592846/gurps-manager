@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { GurpsManagerPage } from '../gurps-manager/gurps-manager';
+import { TabsControllerPage } from '../tabs-controller/tabs-controller';
 import { CharacterFeaturesPage } from '../character-features/character-features';
-import { CharacterStatusPage } from '../character-status/character-status';
+import { GurpsManagerPage } from '../gurps-manager/gurps-manager';
 import { Character } from '../../../models/Character';
 
 @Component({
@@ -15,12 +15,12 @@ new_char:Character;
 
   constructor(public navCtrl: NavController) {
   }
-  goToTabsControllers() {
+  goToTabsController() {
+    this.navCtrl.push(TabsControllerPage,this.new_char);
+  }
+  goToCharacterFeatures() {
     this.navCtrl.push(CharacterFeaturesPage,this.new_char);
-  }
-  goToCharacterStatus() {
-    this.navCtrl.push(CharacterStatusPage,this.new_char);
-  }
+  }a
   goToGurpsManager() {
     this.navCtrl.push(GurpsManagerPage);
   }
