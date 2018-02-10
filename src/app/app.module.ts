@@ -20,6 +20,7 @@ import { CharacterResumePage } from '../pages/character-resume/character-resume'
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { CharacterSkillsPage } from '../pages/character-skills/character-skills';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     GurpsManagerPage,
     CharacterFeaturesPage,
     CharacterStatusPage,
+    CharacterSkillsPage,
     CharacterLanguagesPage,
     CharacterAdvantagesPage,
     CharacterDisadvantagesPage,
@@ -56,6 +58,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     GurpsManagerPage,
     CharacterFeaturesPage,
     CharacterStatusPage,
+    CharacterSkillsPage,
     CharacterLanguagesPage,
     CharacterAdvantagesPage,
     CharacterDisadvantagesPage,
