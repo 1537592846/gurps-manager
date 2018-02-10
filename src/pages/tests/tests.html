@@ -1,106 +1,96 @@
 <ion-header>
   <ion-navbar>
     <ion-buttons start>
-      <button ion-button icon-only>
+      <label ion-button start>
         <ion-icon name="cube"></ion-icon>
-      </button>
+      </label>
     </ion-buttons>
     <ion-title>
       Tests
     </ion-title>
     <ion-buttons end>
-      <button ion-button>
-        #char_name
-      </button>
+      <label ion-button>
+        {{char.name}}
+      </label>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 <ion-content padding id="tests">
   <!-- Life related buttons -->
-  <ion-list>
-    <ion-item>
-      <button id="tests-life-minus" ion-button color="danger" on-click="minusLife()">
-        <ion-icon name="remove"></ion-icon>
-      </button>
-      <button id="tests-life-value" ion-button color="light" block>
-        valueLife()
-      </button>
-      <button id="tests-life-plus" ion-button color="secondary" on-click="plusLife()">
-        <ion-icon name="add"></ion-icon>
-      </button>
-    </ion-item>
+  <ion-list text-center>
+    <button id="tests-life-minus" ion-button color="danger" on-click="removeLife()">
+      <ion-icon name="remove"></ion-icon>
+    </button>
+    <button id="tests-life-value" ion-button color="light">
+      <label>
+        {{char.current_life_points}}
+      </label>
+    </button>
+    <button id="tests-life-plus" ion-button icon-right color="secondary" on-click="addLife()">
+      <ion-icon name="add"></ion-icon>
+    </button>
   </ion-list>
   <!-- Effort related buttons -->
-  <ion-list>
-    <ion-item>
-      <button id="tests-effort-minus" ion-button color="danger" on-click="minusEffort()">
-        <ion-icon name="remove"></ion-icon>
-      </button>
-      <button id="tests-effort-value" ion-button color="light" block>
-        valueEffort()
-      </button>
-      <button id="tests-effort-plus" ion-button color="secondary" on-click="plusEffort()">
-        <ion-icon name="add"></ion-icon>
-      </button>
-    </ion-item>
+  <ion-list text-center>
+    <button id="tests-effort-minus" ion-button color="danger" on-click="minusEffort()">
+      <ion-icon name="remove"></ion-icon>
+    </button>
+    <button id="tests-effort-value" ion-button color="light">
+      valueEffort()
+    </button>
+    <button id="tests-effort-plus" ion-button color="secondary" on-click="plusEffort()">
+      <ion-icon name="add"></ion-icon>
+    </button>
   </ion-list>
   <!-- Shield related buttons -->
-  <ion-list>
-    <ion-item>
-      <button id="tests-shield-minus" ion-button color="danger" on-click="minusShield()">
-        <ion-icon name="remove"></ion-icon>
-      </button>
-      <button id="tests-shield-value" ion-button color="light" block>
-        valueShield()
-      </button>
-      <button id="tests-shield-plus" ion-button color="secondary" on-click="plusShield()">
-        <ion-icon name="add"></ion-icon>
-      </button>
-    </ion-item>
+  <ion-list text-center>
+    <button id="tests-shield-minus" ion-button color="danger" on-click="minusShield()">
+      <ion-icon name="remove"></ion-icon>
+    </button>
+    <button id="tests-shield-value" ion-button color="light">
+      valueShield()
+    </button>
+    <button id="tests-shield-plus" ion-button color="secondary" on-click="plusShield()">
+      <ion-icon name="add"></ion-icon>
+    </button>
   </ion-list>
   <!-- Status tests -->
-  <ion-list>
-    <ion-item>
-      <button id="tests-strenght" ion-button color="secondary" on-click="strenghtTest()">
-        ST
-      </button>
-      <button id="tests-dexterity" ion-button color="secondary" on-click="dexterityTest()">
-        DX
-      </button>
-      <button id="tests-intelligence" ion-button color="secondary" on-click="intelligenceTest()">
-        IQ
-      </button>
-      <button id="tests-health" ion-button color="secondary" on-click="healthTest()">
-        HT
-      </button>
-    </ion-item>
+  <ion-list text-center>
+    <button id="tests-strenght" ion-button color="primary" on-click="strenghtTest()">
+      ST
+    </button>
+    <button id="tests-dexterity" ion-button color="primary" on-click="dexterityTest()">
+      DX
+    </button>
+    <button id="tests-intelligence" ion-button color="primary" on-click="intelligenceTest()">
+      IQ
+    </button>
+    <button id="tests-health" ion-button color="primary" on-click="healthTest()">
+      HT
+    </button>
   </ion-list>
   <!-- Offensive moves tests -->
-  <ion-list>
-    <ion-item>
-      <button id="tests-perception" ion-button color="secondary" on-click="perceptionTest()">
-        Perception
-      </button>
-      <button id="tests-will" ion-button color="secondary" on-click="willTest()">
-        Will
-      </button>
-      <button id="tests-attack" ion-button color="secondary" on-click="attackTest()">
-        Attack
-      </button>
-    </ion-item>
+  <ion-list text-center>
+    <button id="tests-perception" ion-button color="primary" on-click="perceptionTest()">
+      Perception
+    </button>
+    <button id="tests-will" ion-button color="primary" on-click="willTest()">
+      Will
+    </button>
+    <button id="tests-attack" ion-button color="primary" on-click="attackTest()">
+      Attack
+    </button>
   </ion-list>
   <!-- Evasive moves tests -->
-  <ion-list>
-    <ion-item>
-      <button id="tests-dodge" ion-button color="secondary" on-click="dodgeTest()">
-        Dodge
-      </button>
-      <button id="tests-parry" ion-button color="secondary" on-click="parryTest()">
-        Parry
-      </button>
-      <button id="tests-block" ion-button color="secondary" on-click="blockTest()">
-        Block
-      </button>
-    </ion-item>
+  <ion-list text-center>
+    <button id="tests-dodge" ion-button color="primary" on-click="dodgeTest()">
+      Dodge
+    </button>
+    <button id="tests-parry" ion-button color="primary" on-click="parryTest()">
+      Parry
+    </button>
+    <button id="tests-block" ion-button color="primary" on-click="blockTest()">
+      Block
+    </button>
   </ion-list>
 </ion-content>

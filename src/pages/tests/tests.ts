@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Character } from '../../../models/Character';
+import { Shield } from '../../../models/Item';
 
 @Component({
   selector: 'page-tests',
@@ -8,51 +9,48 @@ import { Character } from '../../../models/Character';
 })
 export class TestsPage {
 
-  new_char = Character;
+  char = new Character(0);
 
   constructor(public navCtrl: NavController) {
+
+    this.char.name = "Ryuzaki";
+    this.char.current_life_points = 10;
+    this.char.max_life_points = 11;
   }
   // Life functions
-  minusLife() {
-
+  removeLife() {
+    this.char.current_life_points -= 1;
   }
-  valueLife() {
-
-  }
-  plusLife() {
-
+  addLife() {
+    if (this.char.current_life_points < this.char.max_life_points) {
+      this.char.current_life_points += 1;
+    }
   }
   //Effort functions
-  minusEffort() {
-
+  removeEffort() {
+    this.char.current_effort_points -= 1;
   }
-  valueEffort() {
-
-  }
-  plusEffort() {
-
+  addEffort() {
+    if (this.char.current_effort_points < this.char.max_effort_points) {
+      this.char.current_effort_points += 1;
+    }
   }
   //Shield functions
-  minusSheild() {
-
+  removeSheild() {
   }
-  valueSheild() {
-
-  }
-  plusSheild() {
-
+  addSheild() {
   }
   //Status tests
-  strenghtTest(){
-    
+  strenghtTest() {
+
   }
-  dexterityTest(){
-    
+  dexterityTest() {
+
   }
-  intelligenceTest(){
-    
+  intelligenceTest() {
+
   }
-  healthTest(){
-    
+  healthTest() {
+
   }
 }

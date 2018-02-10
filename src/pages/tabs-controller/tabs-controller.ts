@@ -13,15 +13,14 @@ import { ExtrasPage } from '../extras/extras';
 })
 export class TabsControllerPage {
   
-  testsRoot: any = TestsPage;
-  statusRoot: any = StatusPage;
-  extrasRoot: any = ExtrasPage;
-  equipmentsRoot: any = EquipmentsPage;
-  inventoryRoot: any = InventoryPage;
-  skillsRoot: any = SkillsPage;
+  tests: any = TestsPage;
+  status: any = StatusPage;
+  extras: any = ExtrasPage;
+  equipments: any = EquipmentsPage;
+  inventory: any = InventoryPage;
+  skills: any = SkillsPage;
   
   constructor(public navCtrl: NavController) {
-    this.goToStatus();
   }
   goToTests(){
     this.navCtrl.push(TestsPage);
