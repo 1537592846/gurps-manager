@@ -12,8 +12,8 @@ export class TestsPage {
 
   char= new Character(0);
 
-  constructor(public navCtrl: NavController) {
-    
+  constructor(public navCtrl: NavController,char:Character) {
+    this.char=char;
   }
   // Life functions
   removeLife() {

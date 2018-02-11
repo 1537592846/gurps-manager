@@ -6,6 +6,7 @@ import { SkillsPage } from '../skills/skills';
 import { TestsPage } from '../tests/tests';
 import { StatusPage } from '../status/status';
 import { ExtrasPage } from '../extras/extras';
+import { Character } from '../../../models/Character';
 
 @Component({
   selector: 'page-tabs-controller',
@@ -19,25 +20,26 @@ export class TabsControllerPage {
   equipments: any = EquipmentsPage;
   inventory: any = InventoryPage;
   skills: any = SkillsPage;
+  char=new Character(0);
   
   constructor(public navCtrl: NavController) {
   }
   goToTests(){
-    this.navCtrl.push(TestsPage);
+    this.navCtrl.push(TestsPage,this.char);
   }
   goToStatus(){
-    this.navCtrl.push(StatusPage);
+    this.navCtrl.push(StatusPage,this.char);
   }
   goToExtras(){
-    this.navCtrl.push(ExtrasPage);
+    this.navCtrl.push(ExtrasPage,this.char);
   }
   goToEquipments(){
-    this.navCtrl.push(EquipmentsPage);
+    this.navCtrl.push(EquipmentsPage,this.char);
   }
   goToInventory(){
-    this.navCtrl.push(InventoryPage);
+    this.navCtrl.push(InventoryPage,this.char);
   }
   goToSkills(){
-    this.navCtrl.push(SkillsPage);
+    this.navCtrl.push(SkillsPage,this.char);
   }
 }

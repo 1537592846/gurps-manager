@@ -31,6 +31,9 @@ export class Shield {
 
     constructor() {
         this.name="Shield of Shielding";
+        this.description="A shield for shielding";
+        this.max_life_points=25;
+        this.current_life_points=this.max_life_points;
     }
 }
 

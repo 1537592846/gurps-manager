@@ -4,7 +4,7 @@ import { Skill } from './Skill'
 import { Advantage } from './Advantage'
 import { Disadvantage } from './Disadvantage'
 import { Inventory } from './Inventory'
-import {Equipment} from './Equipment'
+import { Equipment } from './Equipment'
 import { List } from 'ionic-angular';
 
 export class Character {
@@ -36,10 +36,14 @@ export class Character {
     max_effort_points: number;
     current_effort_points: number;
     speed: number;
-    movement: number;
+    basic_movement: number;
+
+    //Character Calculated Values
+    max_carry_weight: number;
+    current_carry_weight: number;
 
     //Character Languages
-    languages: Language;
+    languages: Language[];
 
     //Character Skills
     skills: Skill[];
@@ -55,26 +59,51 @@ export class Character {
 
     //Character Equipment
     equipments: Equipment;
-    
+
     constructor(id) {
         if (id != 0) {
-            this.prepareSqlite();
-            this.getCharacter(this.sqlite);
-            this.languages = this.getLanguages(this.sqlite);
-            this.skills = this.getSkills(this.sqlite);
-            this.advantages = this.getAdvantages(this.sqlite);
-            this.disadvantages = this.getDisadvantages(this.sqlite);
-            this.equipments=this.getEquipments(this.sqlite);
+            this.loadCharacter(id);
+        } else {
+            this.newCharacter();
         }
-        this.max_life_points=10;
-        this.current_life_points=this.max_life_points;
-        this.max_effort_points=10;
-        this.current_effort_points=this.max_effort_points;
+    }
+    newCharacter() {
+        this.name = "Ryuzaki";
+        this.age = 26;
+        this.height = 1.75;
+        this.weight = 75;
+        this.min_status = 10
+        this.max_points = 300
+        this.current_points = 50
+        this.resource = 500;
+        this.description = "Absolutely normal, in every sense of the word.";
+        this.strenght = this.min_status + 4;
+        this.dexterity = this.min_status + 2;
+        this.intelligence = this.min_status + 3;
+        this.health = this.min_status + 1;
+        this.max_life_points = this.strenght;
+        this.current_life_points = this.strenght;
+        this.will = this.intelligence;
+        this.perception = this.intelligence;
+        this.max_effort_points = this.health;
+        this.current_effort_points = this.health;
+        this.max_carry_weight = Math.floor(this.strenght * this.strenght / 10);
+        this.current_carry_weight = 10;
+        this.speed = 2.5 + (this.speed * 0.25);
+        this.basic_movement = Math.floor(this.speed);
         this.equipments=new Equipment();
-        return this;
+    }
+    loadCharacter(id: number) {
+        this.prepareSqlite();
+        this.getCharacter(this.sqlite);
+        this.languages = this.getLanguages(this.sqlite);
+        this.skills = this.getSkills(this.sqlite);
+        this.advantages = this.getAdvantages(this.sqlite);
+        this.disadvantages = this.getDisadvantages(this.sqlite);
+        this.equipments = this.getEquipments(this.sqlite);
     }
     prepareSqlite() {
-        
+
     }
     getCharacter(sqlite) {
 
