@@ -26,8 +26,11 @@ export class Shield {
     public name: string;
     public description: string;
     public formula: string;
+    public max_life_points:number;
+    public current_life_points:number;
 
     constructor() {
+        this.name="Shield of Shielding";
     }
 }
 

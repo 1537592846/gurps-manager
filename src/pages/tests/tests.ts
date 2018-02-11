@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Character } from '../../../models/Character';
 import { Shield } from '../../../models/Item';
+import { Equipment } from '../../../models/Equipment';
 
 @Component({
   selector: 'page-tests',
@@ -9,13 +10,10 @@ import { Shield } from '../../../models/Item';
 })
 export class TestsPage {
 
-  char = new Character(0);
+  char= new Character(0);
 
   constructor(public navCtrl: NavController) {
-
-    this.char.name = "Ryuzaki";
-    this.char.current_life_points = 10;
-    this.char.max_life_points = 11;
+    
   }
   // Life functions
   removeLife() {
@@ -36,21 +34,15 @@ export class TestsPage {
     }
   }
   //Shield functions
-  removeSheild() {
+  removeShield() {
+    this.char.equipments.shield.current_life_points -= 1;
+    if (this.char.equipments.shield.current_life_points == 0) {
+      this.char.equipments.destroyShield();
+    }
   }
-  addSheild() {
-  }
-  //Status tests
-  strenghtTest() {
-
-  }
-  dexterityTest() {
-
-  }
-  intelligenceTest() {
-
-  }
-  healthTest() {
-
+  addShield() {
+    if (this.char.equipments.shield.current_life_points < this.char.equipments.shield.max_life_points) {
+      this.char.equipments.shield.current_life_points += 1;
+    }
   }
 }

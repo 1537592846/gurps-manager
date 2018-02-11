@@ -23,7 +23,7 @@
     </button>
     <button id="tests-life-value" ion-button color="light">
       <label>
-        {{char.current_life_points}}
+        Life Points: {{char.current_life_points}}
       </label>
     </button>
     <button id="tests-life-plus" ion-button icon-right color="secondary" on-click="addLife()">
@@ -31,26 +31,26 @@
     </button>
   </ion-list>
   <!-- Effort related buttons -->
-  <ion-list text-center>
-    <button id="tests-effort-minus" ion-button color="danger" on-click="minusEffort()">
-      <ion-icon name="remove"></ion-icon>
-    </button>
-    <button id="tests-effort-value" ion-button color="light">
-      valueEffort()
-    </button>
-    <button id="tests-effort-plus" ion-button color="secondary" on-click="plusEffort()">
-      <ion-icon name="add"></ion-icon>
-    </button>
-  </ion-list>
+    <ion-list text-center>
+      <button id="tests-effort-minus" ion-button color="danger" on-click="removeEffort()">
+        <ion-icon name="remove"></ion-icon>
+      </button>
+      <button id="tests-effort-value" ion-button color="light">
+        Effort Points: {{char.current_effort_points}}
+      </button>
+      <button id="tests-effort-plus" ion-button color="secondary" on-click="addEffort()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-list>
   <!-- Shield related buttons -->
   <ion-list text-center>
-    <button id="tests-shield-minus" ion-button color="danger" on-click="minusShield()">
+    <button id="tests-shield-minus" ion-button color="danger" on-click="removeShield()">
       <ion-icon name="remove"></ion-icon>
     </button>
     <button id="tests-shield-value" ion-button color="light">
-      valueShield()
+      Shield Life: 
     </button>
-    <button id="tests-shield-plus" ion-button color="secondary" on-click="plusShield()">
+    <button id="tests-shield-plus" ion-button color="secondary" on-click="addShield()">
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-list>

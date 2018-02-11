@@ -39,7 +39,7 @@ export class Character {
     movement: number;
 
     //Character Languages
-    languages: Language[];
+    languages: Language;
 
     //Character Skills
     skills: Skill[];
@@ -64,7 +64,14 @@ export class Character {
             this.skills = this.getSkills(this.sqlite);
             this.advantages = this.getAdvantages(this.sqlite);
             this.disadvantages = this.getDisadvantages(this.sqlite);
+            this.equipments=this.getEquipments(this.sqlite);
         }
+        this.max_life_points=10;
+        this.current_life_points=this.max_life_points;
+        this.max_effort_points=10;
+        this.current_effort_points=this.max_effort_points;
+        this.equipments=new Equipment();
+        return this;
     }
     prepareSqlite() {
         
@@ -82,6 +89,9 @@ export class Character {
         return null;
     }
     getDisadvantages(sqlite) {
+        return null;
+    }
+    getEquipments(sqlite) {
         return null;
     }
 }
