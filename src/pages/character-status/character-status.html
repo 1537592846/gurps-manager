@@ -8,10 +8,11 @@
 <ion-content padding id="characterStatus">
   <form id="characterStatus-form">
     <ion-item id="characterStatus-range_strenght">
-      <ion-range min="0" max="100" step="1" color="positive" value="50" name="char_strength">
-        <ion-label range-left>
-          Strength (ST)
-        </ion-label>
+      <ion-range [(ngModel)]="new_char.strenght" [ngModelOptions]="{standalone: true}" min="{{new_char.min_status}}" max="{{max_strenght}}" step="1">
+      <ion-label range-left>
+        Strength (ST)
+      </ion-label>
+      <ion-note range-right>{{new_char.strenght}}</ion-note>
       </ion-range>
     </ion-item>
     <ion-item id="characterStatus-range_dexterity">

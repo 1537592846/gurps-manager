@@ -8,53 +8,53 @@
 <ion-content padding id="character-features">
   <form id="characterFeatures-form" (ngSubmit)="goToCharacterStatus()">
     <ion-list id="characterFeatures-list">
-      <ion-item id="characterFeatures-char_name">
+      <ion-item id="characterFeatures-name">
         <ion-label>
           *Name
         </ion-label>
-        <ion-input [(ngModel)]="new_char.char_name" [ngModelOptions]="{standalone: true}" type="text" placeholder="" aria-required="true"></ion-input>
+        <ion-input [(ngModel)]="new_char.name" [ngModelOptions]="{standalone: true}" type="text" placeholder="" aria-required="true"></ion-input>
       </ion-item>
-      <ion-item id="characterFeatures-char_age">
+      <ion-item id="characterFeatures-age">
         <ion-label>
           Age
         </ion-label>
-        <ion-input [(ngModel)]="new_char.char_age" [ngModelOptions]="{standalone: true}" type="number" placeholder=""></ion-input>
+        <ion-input [(ngModel)]="new_char.age" [ngModelOptions]="{standalone: true}" type="number" placeholder=""></ion-input>
       </ion-item>
-      <ion-item id="characterFeatures-char_height">
+      <ion-item id="characterFeatures-height">
         <ion-label>
           Height
         </ion-label>
-        <ion-input [(ngModel)]="new_char.char_height" [ngModelOptions]="{standalone: true}" type="number" placeholder=""></ion-input>
+        <ion-input [(ngModel)]="new_char.height" [ngModelOptions]="{standalone: true}" type="number" placeholder=""></ion-input>
       </ion-item>
-      <ion-item id="characterFeatures-char_weight">
+      <ion-item id="characterFeatures-weight">
         <ion-label>
           Weight
         </ion-label>
-        <ion-input [(ngModel)]="new_char.char_weight" [ngModelOptions]="{standalone: true}" type="number" placeholder=""></ion-input>
+        <ion-input [(ngModel)]="new_char.weight" [ngModelOptions]="{standalone: true}" type="number" placeholder=""></ion-input>
       </ion-item>
-      <ion-item id="characterFeatures-char_min_status">
+      <ion-item id="characterFeatures-min_status">
         <ion-label>
           *Minimun Status Points
         </ion-label>
-        <ion-input [(ngModel)]="new_char.char_min_stats_points" [ngModelOptions]="{standalone: true}" type="number" placeholder="" aria-required="true"></ion-input>
+        <ion-input [(ngModel)]="new_char.min_status" [ngModelOptions]="{standalone: true}" type="number" placeholder="" aria-required="true"></ion-input>
       </ion-item>
-      <ion-item id="characterFeatures-char_max_points">
+      <ion-item id="characterFeatures-max_points">
         <ion-label>
           *Max Points
         </ion-label>
-        <ion-input [(ngModel)]="new_char.char_points" [ngModelOptions]="{standalone: true}" type="number" placeholder="" aria-required="true"></ion-input>
+        <ion-input [(ngModel)]="new_char.max_points" [ngModelOptions]="{standalone: true}" type="number" placeholder="" aria-required="true"></ion-input>
       </ion-item>
-      <ion-item id="characterFeatures-char_resource">
+      <ion-item id="characterFeatures-resource">
         <ion-label>
           *Inicial Resource
         </ion-label>
-        <ion-input [(ngModel)]="new_char.char_resource" [ngModelOptions]="{standalone: true}" type="number" placeholder="" aria-required="true"></ion-input>
+        <ion-input [(ngModel)]="new_char.resource" [ngModelOptions]="{standalone: true}" type="number" placeholder="" aria-required="true"></ion-input>
       </ion-item>
-      <ion-item id="characterFeatures-char_description">
+      <ion-item id="characterFeatures-description">
         <ion-label>
           Description
         </ion-label>
-        <ion-input [(ngModel)]="new_char.char_description" [ngModelOptions]="{standalone: true}" type="text" placeholder=""></ion-input>
+        <ion-input [(ngModel)]="new_char.description" [ngModelOptions]="{standalone: true}" type="text" placeholder=""></ion-input>
       </ion-item>
     </ion-list>
     <button id="characterFeatures-button" ion-button color="stable" block type="submit">

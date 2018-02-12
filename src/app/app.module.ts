@@ -16,12 +16,9 @@ import { CharacterLanguagesPage } from '../pages/character-languages/character-l
 import { CharacterAdvantagesPage } from '../pages/character-advantages/character-advantages';
 import { CharacterDisadvantagesPage } from '../pages/character-disadvantages/character-disadvantages';
 import { CharacterResumePage } from '../pages/character-resume/character-resume';
-
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CharacterSkillsPage } from '../pages/character-skills/character-skills';
-import { Character } from '../../models/Character';
 
 @NgModule({
   declarations: [
