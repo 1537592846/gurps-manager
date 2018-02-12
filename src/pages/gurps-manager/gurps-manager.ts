@@ -2,19 +2,19 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { CharacterFeaturesPage } from '../character-features/character-features';
 import { TabsControllerPage } from '../tabs-controller/tabs-controller';
+import { Character } from '../../../models/Character';
 
 @Component({
   selector: 'page-gurps-manager',
   templateUrl: 'gurps-manager.html'
 })
 export class GurpsManagerPage {
-  
   constructor(public navCtrl: NavController) {
   }
-  goToCharacterFeatures(){
+  goToCharacterFeatures() {
     this.navCtrl.push(CharacterFeaturesPage);
   }
-  goToTabsController(){
+  goToTabsController() {
     this.navCtrl.push(TabsControllerPage);
   }
 }

@@ -9,19 +9,11 @@ import { Character } from '../../../models/Character'
 })
 export class CharacterFeaturesPage {
 
-  new_char: Character;
+  new_char=new Character(0);
 
   constructor(public navCtrl: NavController) {
   }
   goToCharacterStatus(params) {
-    // this.new_char.char_name=params.char_name;
-    // this.new_char.char_age=params.char_age;
-    // this.new_char.char_height=params.char_height;
-    // this.new_char.char_weight=params.char_weight;
-    // this.new_char.char_min_status=params.char_min_status;
-    // this.new_char.char_max_points=params.char_max_points;
-    // this.new_char.char_resource=params.char_resource;
-    // this.new_char.char_description=params.char_description;
-    this.navCtrl.push(CharacterStatusPage, this.new_char);
+    this.navCtrl.push(CharacterStatusPage, {new_char:this.new_char});
   }
 }

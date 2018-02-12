@@ -1,4 +1,4 @@
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule, ErrorHandler, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
@@ -21,6 +21,7 @@ import { CharacterResumePage } from '../pages/character-resume/character-resume'
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CharacterSkillsPage } from '../pages/character-skills/character-skills';
+import { Character } from '../../models/Character';
 
 @NgModule({
   declarations: [

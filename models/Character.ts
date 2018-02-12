@@ -64,7 +64,7 @@ export class Character {
         if (id != 0) {
             this.loadCharacter(id);
         } else {
-            this.newCharacter();
+            // this.newCharacter();
         }
     }
     newCharacter() {

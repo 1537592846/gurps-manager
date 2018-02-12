@@ -11,15 +11,11 @@ export class CharacterStatusPage {
 
   new_char: Character;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController,new_char:Character) {
+    // this.new_char=new_char;
+    console.log(new_char);
   }
   goToCharacterLanguages() {
-    this.navCtrl.push(CharacterLanguagesPage, this.new_char);
-  }
-  getMaxStatus() {
-    return this.new_char.min_status;
-  }
-  getMaxStrenght() {
-    //return new_char.max_points div this.char_strength-new_char.min_status*10
+    this.navCtrl.push(CharacterLanguagesPage, {new_char:this.new_char});
   }
 }
