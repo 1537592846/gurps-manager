@@ -3,12 +3,16 @@
     <ion-title>
       Character Status
     </ion-title>
+      <ion-note>
+        Current Points: {{new_char.current_points}}<br>
+        Max Points: {{new_char.max_points}}
+      </ion-note>
   </ion-navbar>
 </ion-header>
 <ion-content padding id="characterStatus">
   <form id="characterStatus-form">
     <ion-item id="characterStatus-range_strenght">
-      <ion-range [(ngModel)]="new_char.strenght" [ngModelOptions]="{standalone: true}" min="{{new_char.min_status}}" max="{{max_strenght}}" step="1">
+      <ion-range [(ngModel)]="new_char.strenght" [ngModelOptions]="{standalone: true}" min="{{new_char.min_status}}" max="{{max_strenght}}" step="1" (ionChange)="updateStrenght()">
       <ion-label range-left>
         Strength (ST)
       </ion-label>
@@ -16,24 +20,27 @@
       </ion-range>
     </ion-item>
     <ion-item id="characterStatus-range_dexterity">
-      <ion-range min="0" max="100" step="1" color="positive" value="50" name="char_dexterity">
+      <ion-range [(ngModel)]="new_char.dexterity" [ngModelOptions]="{standalone: true}" min="{{new_char.min_status}}" max="{{max_dexterity}}" step="1" (ionChange)="updateDexterity()">
         <ion-label range-left>
           Dexterity (DX)
         </ion-label>
+        <ion-note range-right>{{new_char.dexterity}}</ion-note>
       </ion-range>
     </ion-item>
     <ion-item id="characterStatus-range_char_intelligence">
-      <ion-range min="0" max="100" step="1" color="positive" value="50" name="char_intelligence">
+      <ion-range [(ngModel)]="new_char.intelligence" [ngModelOptions]="{standalone: true}" min="{{new_char.min_status}}" max="{{max_intelligence}}" step="1" (ionChange)="updateIntelligence()">
         <ion-label range-left>
           Intelligence (IQ)
         </ion-label>
+        <ion-note range-right>{{new_char.intelligence}}</ion-note>
       </ion-range>
     </ion-item>
     <ion-item id="characterStatus-range_char_health">
-      <ion-range min="0" max="100" step="1" color="positive" value="50" name="char_health">
+      <ion-range [(ngModel)]="new_char.health" [ngModelOptions]="{standalone: true}" min="{{new_char.min_status}}" max="{{max_health}}" step="1" (ionChange)="updateHealth()">
         <ion-label range-left>
           Health (HT)
         </ion-label>
+        <ion-note range-right>{{new_char.health}}</ion-note>
       </ion-range>
     </ion-item>
     <div class="spacer" style="height:40px;" id="characterStatus-spacer"></div>
