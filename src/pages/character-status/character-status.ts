@@ -41,28 +41,40 @@ export class CharacterStatusPage {
     this.getCurrentPoints();
     //Calculating max range
     this.max_strenght = (this.new_char.max_points - this.new_char.current_points + (this.new_char.strenght - this.new_char.min_status) * 10) / 10 + this.new_char.min_status
-    console.log("st");
+    //Changing if over max limit
+    if(this.new_char.strenght>this.max_strenght){
+      this.new_char.strenght=this.max_strenght
+    }
   }
   updateDexterity() {
     //Calculating current points
     this.getCurrentPoints();
     //Calculating max range
     this.max_dexterity = (this.new_char.max_points - this.new_char.current_points + (this.new_char.dexterity - this.new_char.min_status) * 10) / 10 + this.new_char.min_status
-    console.log("dx");
+    //Changing if over max limit
+    if(this.new_char.dexterity>this.max_dexterity){
+      this.new_char.dexterity=this.max_dexterity
+    }
   }
   updateIntelligence() {
     //Calculating current points
     this.getCurrentPoints();
     //Calculating max range
     this.max_intelligence = (this.new_char.max_points - this.new_char.current_points + (this.new_char.intelligence - this.new_char.min_status) * 10) / 10 + this.new_char.min_status
-    console.log("iq");
+    //Changing if over max limit
+    if(this.new_char.intelligence>this.max_intelligence){
+      this.new_char.intelligence=this.max_intelligence
+    }
   }
   updateHealth() {
     //Calculating current points
     this.getCurrentPoints();
     //Calculating max range
     this.max_health = (this.new_char.max_points - this.new_char.current_points + (this.new_char.health - this.new_char.min_status) * 10) / 10 + this.new_char.min_status
-    console.log("ht");
+    //Changing if over max limit
+    if(this.new_char.health>this.max_health){
+      this.new_char.health=this.max_health
+    }
   }
   getCurrentPoints() {
     this.new_char.current_points = (this.new_char.strenght - this.new_char.min_status) * 10;
