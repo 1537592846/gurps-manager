@@ -91,7 +91,7 @@ export class Character {
         this.current_carry_weight = 10;
         this.speed = 2.5 + (this.speed * 0.25);
         this.basic_movement = Math.floor(this.speed);
-        this.equipments=new Equipment();
+        this.equipments = new Equipment();
     }
     loadCharacter(id: number) {
         this.prepareSqlite();
@@ -122,5 +122,13 @@ export class Character {
     }
     getEquipments(sqlite) {
         return null;
+    }
+    getMinBasicMovement() {
+        if (Math.round(this.speed) > this.speed) {
+            return Math.round(this.speed) - 1;
+        } return Math.round(this.speed);
+    }
+    getSpeed(){
+        return (this.health+this.dexterity)/4;
     }
 }

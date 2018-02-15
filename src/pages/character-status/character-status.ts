@@ -19,6 +19,7 @@ export class CharacterStatusPage {
   max_perception: number;
   max_fatigue_points: number;
   max_speed: number;
+  speed_aux:number;
   max_basic_movement: number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -37,8 +38,9 @@ export class CharacterStatusPage {
     this.new_char.will = this.new_char.intelligence * 1;
     this.new_char.perception = this.new_char.intelligence * 1;
     this.new_char.max_fatigue_points = this.new_char.health * 1;
-    this.new_char.speed = (this.new_char.dexterity * 1 + this.new_char.health * 1) / 4;
-    this.new_char.basic_movement = Math.round(this.new_char.speed * 1) > this.new_char.speed * 1 ? Math.round(this.new_char.speed * 1) - 1 : Math.round(this.new_char.speed * 1);
+    this.new_char.speed = this.new_char.getSpeed()*1;
+    this.speed_aux=this.new_char.getSpeed()*4;
+    this.new_char.basic_movement = this.new_char.getMinBasicMovement()*1;
     //Setting maximun values
     this.updateStrenght();
     this.updateDexterity();
@@ -57,6 +59,19 @@ export class CharacterStatusPage {
   getMax(statCurrent: number, statMin: number, price: number) {
     return (this.new_char.max_points - this.new_char.current_points + (statCurrent - statMin) * price) / price + statMin;
   }
+  getCurrentPoints() {
+    this.new_char.current_points = (this.new_char.strenght - this.new_char.min_status) * 10;
+    this.new_char.current_points += (this.new_char.dexterity - this.new_char.min_status) * 20;
+    this.new_char.current_points += (this.new_char.intelligence - this.new_char.min_status) * 20;
+    this.new_char.current_points += (this.new_char.health - this.new_char.min_status) * 10;
+
+    this.new_char.current_points += (this.new_char.max_life_points - this.new_char.health) * 10;
+    this.new_char.current_points += (this.new_char.will - this.new_char.intelligence) * 10;
+    this.new_char.current_points += (this.new_char.perception - this.new_char.intelligence) * 10;
+    this.new_char.current_points += (this.new_char.max_fatigue_points - this.new_char.health) * 10;
+    this.new_char.current_points += (this.new_char.speed - (this.new_char.dexterity + this.new_char.health) / 4) * 10;
+    this.new_char.current_points += Math.round(this.new_char.speed) > this.new_char.speed ? (this.new_char.basic_movement - Math.round(this.new_char.speed) - 1) * 10 : (this.new_char.basic_movement - Math.round(this.new_char.speed)) * 10;
+  }
   updateStrenght() {
     //Calculating current points
     this.getCurrentPoints();
@@ -67,8 +82,8 @@ export class CharacterStatusPage {
       this.new_char.strenght = this.max_strenght;
     }
     //Setting values that grow with it
-    if(this.new_char.strenght>this.new_char.max_life_points){
-      this.new_char.max_life_points=this.new_char.strenght;
+    if (this.new_char.strenght > this.new_char.max_life_points) {
+      this.new_char.max_life_points = this.new_char.strenght;
     }
   }
   updateDexterity() {
@@ -81,8 +96,8 @@ export class CharacterStatusPage {
       this.new_char.dexterity = this.max_dexterity;
     }
     //Setting values that grow with it
-    if((this.new_char.dexterity + this.new_char.health) / 4>this.new_char.speed){
-      this.new_char.speed=(this.new_char.dexterity + this.new_char.health) / 4;
+    if (this.new_char.getSpeed() > this.new_char.speed/4) {
+      this.new_char.speed = this.new_char.getSpeed()*4;
     }
   }
   updateIntelligence() {
@@ -95,11 +110,11 @@ export class CharacterStatusPage {
       this.new_char.intelligence = this.max_intelligence;
     }
     //Setting values that grow with it
-    if(this.new_char.intelligence>this.new_char.will){
-      this.new_char.will=this.new_char.intelligence;
+    if (this.new_char.intelligence > this.new_char.will) {
+      this.new_char.will = this.new_char.intelligence;
     }
-    if(this.new_char.intelligence>this.new_char.perception){
-      this.new_char.perception=this.new_char.intelligence;
+    if (this.new_char.intelligence > this.new_char.perception) {
+      this.new_char.perception = this.new_char.intelligence;
     }
   }
   updateHealth() {
@@ -112,11 +127,11 @@ export class CharacterStatusPage {
       this.new_char.health = this.max_health;
     }
     //Setting values that grow with it
-    if((this.new_char.dexterity + this.new_char.health) / 4>this.new_char.speed){
-      this.new_char.speed=(this.new_char.dexterity + this.new_char.health) / 4;
+    if (this.new_char.getSpeed() > this.new_char.speed/4) {
+      this.new_char.speed = this.new_char.getSpeed()*4;
     }
-    if(this.new_char.health>this.new_char.max_fatigue_points){
-      this.new_char.max_fatigue_points=this.new_char.health;
+    if (this.new_char.health > this.new_char.max_fatigue_points) {
+      this.new_char.max_fatigue_points = this.new_char.health;
     }
   }
   updateLifePoints() {
@@ -163,37 +178,22 @@ export class CharacterStatusPage {
     //Calculating current points
     this.getCurrentPoints();
     //Calculating max range
-    this.max_speed = this.getMax(this.new_char.speed, (this.new_char.dexterity + this.new_char.health) / 4, 10);
+    this.max_speed = this.getMax(this.speed_aux/4, this.new_char.getSpeed(), 10);
     //Changing if over max limit
-    if (this.new_char.speed > this.max_speed) {
-      this.new_char.speed = this.max_speed;
+    if (this.speed_aux/4 > this.max_speed) {
+      this.speed_aux = this.max_speed*4;
     }
     //Setting values that grow with it
-    if(Math.round(this.new_char.speed) > this.new_char.speed ? Math.round(this.new_char.speed) - 1 : Math.round(this.new_char.speed)>this.new_char.basic_movement){
-      this.new_char.basic_movement=Math.round(this.new_char.speed) > this.new_char.speed ? Math.round(this.new_char.speed) - 1 : Math.round(this.new_char.speed);
-    }
+    this.new_char.basic_movement=this.new_char.getMinBasicMovement();
   }
   updateBasicMovement() {
     //Calculating current points
     this.getCurrentPoints();
     //Calculating max range
-    this.max_basic_movement = this.getMax(this.new_char.basic_movement, Math.round(this.new_char.speed) > this.new_char.speed ? Math.round(this.new_char.speed) - 1 : Math.round(this.new_char.speed), 10);
+    this.max_basic_movement = this.getMax(this.new_char.basic_movement, this.new_char.getSpeed(), 10);
     //Changing if over max limit
-    if (this.new_char.perception > this.max_basic_movement) {
-      this.new_char.perception = this.max_basic_movement
+    if (this.new_char.basic_movement > this.max_basic_movement) {
+      this.new_char.basic_movement = this.max_basic_movement
     }
-  }
-  getCurrentPoints() {
-    this.new_char.current_points = (this.new_char.strenght - this.new_char.min_status) * 10;
-    this.new_char.current_points += (this.new_char.dexterity - this.new_char.min_status) * 20;
-    this.new_char.current_points += (this.new_char.intelligence - this.new_char.min_status) * 20;
-    this.new_char.current_points += (this.new_char.health - this.new_char.min_status) * 10;
-
-    this.new_char.current_points += (this.new_char.max_life_points - this.new_char.health) * 10;
-    this.new_char.current_points += (this.new_char.will - this.new_char.intelligence) * 10;
-    this.new_char.current_points += (this.new_char.perception - this.new_char.intelligence) * 10;
-    this.new_char.current_points += (this.new_char.max_fatigue_points - this.new_char.health) * 10;
-    this.new_char.current_points += (this.new_char.speed - (this.new_char.dexterity + this.new_char.health) / 4) * 10;
-    this.new_char.current_points += Math.round(this.new_char.speed) > this.new_char.speed ? (this.new_char.basic_movement - Math.round(this.new_char.speed) - 1)*10 : (this.new_char.basic_movement - Math.round(this.new_char.speed)) * 10;
   }
 }

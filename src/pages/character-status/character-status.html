@@ -77,15 +77,15 @@
       </ion-range>
     </ion-item>
     <ion-item id="characterStatus-range_char_basic_speed">
-      <ion-range [(ngModel)]="speed_aux" [ngModelOptions]="{standalone: true}" min="{{(new_char.dexterity+new_char.health)/4}}" max="{{max_speed}}" step="2" (ionChange)="updateSpeed()">
+      <ion-range [(ngModel)]="speed_aux" [ngModelOptions]="{standalone: true}" min="new_char.getSpeed()*4" max="{{max_speed*4}}" step="1" (ionChange)="updateSpeed()">
         <ion-label range-left>
           Speed
         </ion-label>
-        <ion-note range-right>{{new_char.speed}}</ion-note>
+        <ion-note range-right>{{speed_aux/4}}</ion-note>
       </ion-range>
     </ion-item>
     <ion-item id="characterStatus-range_char_basic_movement">
-      <ion-range [(ngModel)]="new_char.basic_movement" [ngModelOptions]="{standalone: true}" min="{{new_char.basic_movement}}" max="{{max_basic_movement}}" step="1" (ionChange)="updateBasicMovement()">
+      <ion-range [(ngModel)]="new_char.basic_movement" [ngModelOptions]="{standalone: true}" min="new_char.getMinBasicMovement()" max="{{max_basic_movement}}" step="1" (ionChange)="updateBasicMovement()">
         <ion-label range-left>
           Basic Movement
         </ion-label>
