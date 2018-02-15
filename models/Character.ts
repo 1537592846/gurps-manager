@@ -33,8 +33,8 @@ export class Character {
     current_life_points: number;
     will: number;
     perception: number;
-    max_effort_points: number;
-    current_effort_points: number;
+    max_fatigue_points: number;
+    current_fatigue_points: number;
     speed: number;
     basic_movement: number;
 
@@ -85,8 +85,8 @@ export class Character {
         this.current_life_points = this.strenght;
         this.will = this.intelligence;
         this.perception = this.intelligence;
-        this.max_effort_points = this.health;
-        this.current_effort_points = this.health;
+        this.max_fatigue_points = this.health;
+        this.current_fatigue_points = this.health;
         this.max_carry_weight = Math.floor(this.strenght * this.strenght / 10);
         this.current_carry_weight = 10;
         this.speed = 2.5 + (this.speed * 0.25);

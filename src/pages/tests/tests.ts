@@ -24,13 +24,13 @@ export class TestsPage {
       this.char.current_life_points += 1;
     }
   }
-  //Effort functions
-  removeEffort() {
-    this.char.current_effort_points -= 1;
+  //Fatigue functions
+  removeFatigue() {
+    this.char.current_fatigue_points -= 1;
   }
-  addEffort() {
-    if (this.char.current_effort_points < this.char.max_effort_points) {
-      this.char.current_effort_points += 1;
+  addFatigue() {
+    if (this.char.current_fatigue_points < this.char.max_fatigue_points) {
+      this.char.current_fatigue_points += 1;
     }
   }
   //Shield functions

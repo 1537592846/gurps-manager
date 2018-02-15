@@ -45,45 +45,51 @@
     </ion-item>
     <div class="spacer" style="height:40px;" id="characterStatus-spacer"></div>
     <ion-item id="characterStatus-range_char_max_life_points">
-      <ion-range min="0" max="100" step="1" color="positive" value="50" name="char_max_life_points">
+      <ion-range [(ngModel)]="new_char.max_life_points" [ngModelOptions]="{standalone: true}" min="{{new_char.strenght}}" max="{{max_life_points}}" step="1" (ionChange)="updateLifePoints()">
         <ion-label range-left>
           Life Points
         </ion-label>
+        <ion-note range-right>{{new_char.max_life_points}}</ion-note>
       </ion-range>
     </ion-item>
     <ion-item id="characterStatus-range_char_will">
-      <ion-range min="0" max="100" step="1" color="positive" value="50" name="char_will">
+      <ion-range [(ngModel)]="new_char.will" [ngModelOptions]="{standalone: true}" min="{{new_char.intelligence}}" max="{{max_will}}" step="1" (ionChange)="updateWill()">
         <ion-label range-left>
           Will
         </ion-label>
+        <ion-note range-right>{{new_char.will}}</ion-note>
       </ion-range>
     </ion-item>
     <ion-item id="characterStatus-range_char_perception">
-      <ion-range min="0" max="100" step="1" color="positive" value="50" name="char_perception">
+      <ion-range [(ngModel)]="new_char.perception" [ngModelOptions]="{standalone: true}" min="{{new_char.intelligence}}" max="{{max_perception}}" step="1" (ionChange)="updatePerception()">
         <ion-label range-left>
           Perception
         </ion-label>
+        <ion-note range-right>{{new_char.perception}}</ion-note>
       </ion-range>
     </ion-item>
-    <ion-item id="characterStatus-range_char_max_effot_points">
-      <ion-range min="0" max="100" step="1" color="positive" value="50" name="char_max_effot_points">
+    <ion-item id="characterStatus-range_char_max_fatigue_points">
+      <ion-range [(ngModel)]="new_char.max_fatigue_points" [ngModelOptions]="{standalone: true}" min="{{new_char.health}}" max="{{max_fatigue_points}}" step="1" (ionChange)="updateFatiguePoints()">
         <ion-label range-left>
-          Effort Points
+          Fatigue Points
         </ion-label>
+        <ion-note range-right>{{new_char.max_fatigue_points}}</ion-note>
       </ion-range>
     </ion-item>
     <ion-item id="characterStatus-range_char_basic_speed">
-      <ion-range min="0" max="100" step="1" color="positive" value="50" name="char_basic_speed">
+      <ion-range [(ngModel)]="speed_aux" [ngModelOptions]="{standalone: true}" min="{{(new_char.dexterity+new_char.health)/4}}" max="{{max_speed}}" step="2" (ionChange)="updateSpeed()">
         <ion-label range-left>
           Speed
         </ion-label>
+        <ion-note range-right>{{new_char.speed}}</ion-note>
       </ion-range>
     </ion-item>
     <ion-item id="characterStatus-range_char_basic_movement">
-      <ion-range min="0" max="100" step="1" color="positive" value="50" name="char_basic_movement">
+      <ion-range [(ngModel)]="new_char.basic_movement" [ngModelOptions]="{standalone: true}" min="{{new_char.basic_movement}}" max="{{max_basic_movement}}" step="1" (ionChange)="updateBasicMovement()">
         <ion-label range-left>
-          Movement
+          Basic Movement
         </ion-label>
+        <ion-note range-right>{{new_char.basic_movement}}</ion-note>
       </ion-range>
     </ion-item>
   </form>

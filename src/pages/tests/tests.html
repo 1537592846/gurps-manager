@@ -30,15 +30,15 @@
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-list>
-  <!-- Effort related buttons -->
+  <!-- Fatigue related buttons -->
     <ion-list text-center>
-      <button id="tests-effort-minus" ion-button color="danger" on-click="removeEffort()">
+      <button id="tests-fatigue-minus" ion-button color="danger" on-click="removeFatigue()">
         <ion-icon name="remove"></ion-icon>
       </button>
-      <button id="tests-effort-value" ion-button color="light">
-        Effort Points: {{char.current_effort_points}}
+      <button id="tests-fatigue-value" ion-button color="light">
+        Fatigue Points: {{char.current_fatigue_points}}
       </button>
-      <button id="tests-effort-plus" ion-button color="secondary" on-click="addEffort()">
+      <button id="tests-fatigue-plus" ion-button color="secondary" on-click="addFatigue()">
         <ion-icon name="add"></ion-icon>
       </button>
     </ion-list>
