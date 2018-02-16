@@ -77,7 +77,7 @@
       </ion-range>
     </ion-item>
     <ion-item id="characterStatus-range_char_basic_speed">
-      <ion-range [(ngModel)]="speed_aux" [ngModelOptions]="{standalone: true}" min="new_char.getSpeed()*4" max="{{max_speed*4}}" step="1" (ionChange)="updateSpeed()">
+      <ion-range [(ngModel)]="speed_aux" [ngModelOptions]="{standalone: true}" min="{{min_speed_aux}}" max="{{max_speed_aux}}" step="1" (ionChange)="updateSpeed()">
         <ion-label range-left>
           Speed
         </ion-label>

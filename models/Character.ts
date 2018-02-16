@@ -128,7 +128,7 @@ export class Character {
             return Math.round(this.speed) - 1;
         } return Math.round(this.speed);
     }
-    getSpeed(){
+    getMinSpeed(){
         return (this.health+this.dexterity)/4;
     }
 }
