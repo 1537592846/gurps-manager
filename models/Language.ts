@@ -8,11 +8,11 @@ export class Language {
 
     constructor() {
     }
-    getLanguages() {
+    public static getLanguages() {
         return [
-            [1, "Latin", [1, "Native"]],
-            [1, "Germanic", [1, "Fluent"]],
-            [1, "Barbaric", [1, "Rudimentary"]]
+            {id:1,name:"Latin",level:{id:1,description:"Native"}},
+            {id:1,name:"Germanic",level:{id:2,description:"Accent"}},
+            {id:1,name:"Celtic",level:{id:3,description:"Fluent"}}
         ]
     }
 }

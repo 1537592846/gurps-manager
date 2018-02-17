@@ -8,20 +8,33 @@
 <ion-content padding id="characterLanguages">
   <form id="characterLanguages-form">
     <ion-list id="characterLanguages-list">
-        <ion-item-sliding>
-          <ion-item color="none" id="characterLanguages-list-item">
-            Add Language
-            <ion-note item-right>Swipe left</ion-note>
-          </ion-item>
-          <ion-item-options side="left">
-            <button ion-button color="secondary">
-              Add
-            </button>
-            <button ion-button color="danger">
-              Remove
-            </button>
-          </ion-item-options>
-        </ion-item-sliding>
+      <ion-item-sliding *ngFor="let language of new_char.languages">
+        <!-- Character languages -->
+        <ion-item color="none">
+          {{language.name}}
+          <br>
+          <ion-note item-down>{{language.level.description}}</ion-note>
+          <ion-note item-right>Swipe left</ion-note>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button color="danger" on-click="removeLanguage(language)">
+            Remove
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+      <!-- Add a new language to the list -->
+      <ion-item-sliding>
+        <ion-item color="none" id="characterLanguages-list-item">
+          Add Language
+          <ion-note item-right>Swipe left</ion-note>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button color="secondary" on-click="addLanguage()">
+            Add
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+      <!-- End list -->
     </ion-list>
     <button id="characterLanguages-button" ion-button color="stable" block on-click="goToCharacterSkills()">
       Proceed

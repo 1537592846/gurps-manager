@@ -16,5 +16,7 @@ export class GurpsManagerPage {
   }
   goToTabsController() {
     this.navCtrl.push(TabsControllerPage);
+    var char=new Character(0);
+    this.navCtrl.push(TabsControllerPage, { char: char });
   }
 }

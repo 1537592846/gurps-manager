@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { EquipmentsPage } from '../equipments/equipments';
 import { InventoryPage } from '../inventory/inventory';
 import { SkillsPage } from '../skills/skills';
@@ -20,9 +20,11 @@ export class TabsControllerPage {
   equipments: any = EquipmentsPage;
   inventory: any = InventoryPage;
   skills: any = SkillsPage;
-  char=new Character(0);
+  char:Character;
   
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    //Getting data
+    this.char = this.navParams.get('char');
   }
   goToTests(){
     this.navCtrl.push(TestsPage,this.char);
