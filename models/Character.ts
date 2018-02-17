@@ -91,7 +91,43 @@ export class Character {
         this.current_carry_weight = 10;
         this.speed = 2.5 + (this.speed * 0.25);
         this.basic_movement = Math.floor(this.speed);
+        this.languages = Language.getLanguages();
+        this.skills = Skill.getSkills();
+        this.advantages = Advantage.getAdvantages();
+        this.disadvantages = Advantage.getAdvantages();
         this.equipments = new Equipment();
+    }
+    public static emptyCharacter() {
+        var char = new Character(0);
+        char.name = "";
+        char.age = 0;
+        char.height = 0;
+        char.weight = 0;
+        char.min_status = 0
+        char.max_points = 0
+        char.current_points = 0
+        char.resource = 0;
+        char.description = "";
+        char.strenght = 0;
+        char.dexterity = 0;
+        char.intelligence = 0;
+        char.health = 0;
+        char.max_life_points = 0;
+        char.current_life_points = 0;
+        char.will = 0;
+        char.perception = 0;
+        char.max_fatigue_points = 0;
+        char.current_fatigue_points = 0;
+        char.max_carry_weight = 0;
+        char.current_carry_weight = 0;
+        char.speed = 0;
+        char.basic_movement = 0;
+        char.languages = [];
+        char.skills = [];
+        char.advantages = [];
+        char.disadvantages = [];
+        char.equipments = new Equipment();
+        return char;
     }
     loadCharacter(id: number) {
         this.prepareSqlite();
@@ -128,7 +164,7 @@ export class Character {
             return Math.round(this.speed) - 1;
         } return Math.round(this.speed);
     }
-    getMinSpeed(){
-        return (this.health+this.dexterity)/4;
+    getMinSpeed() {
+        return (this.health + this.dexterity) / 4;
     }
 }

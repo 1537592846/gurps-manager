@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { Character } from '../../../models/Character';
 import { Shield } from '../../../models/Item';
 import { Equipment } from '../../../models/Equipment';
@@ -10,10 +10,11 @@ import { Equipment } from '../../../models/Equipment';
 })
 export class TestsPage {
 
-  char= new Character(0);
+  char: Character;
 
-  constructor(public navCtrl: NavController,char:Character) {
-    this.char=char;
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    //Getting data
+    this.char = this.navParams.get('char');
   }
   // Life functions
   removeLife() {

@@ -22,26 +22,25 @@ export class TabsControllerPage {
   skills: any = SkillsPage;
   char:Character;
   
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController) {
     //Getting data
-    this.char = this.navParams.get('char');
   }
   goToTests(){
     this.navCtrl.push(TestsPage,this.char);
   }
   goToStatus(){
-    this.navCtrl.push(StatusPage,this.char);
+    this.navCtrl.push(StatusPage,{char:this.char});
   }
   goToExtras(){
-    this.navCtrl.push(ExtrasPage,this.char);
+    this.navCtrl.push(ExtrasPage,{char:this.char});
   }
   goToEquipments(){
-    this.navCtrl.push(EquipmentsPage,this.char);
+    this.navCtrl.push(EquipmentsPage,{char:this.char});
   }
   goToInventory(){
-    this.navCtrl.push(InventoryPage,this.char);
+    this.navCtrl.push(InventoryPage,{char:this.char});
   }
   goToSkills(){
-    this.navCtrl.push(SkillsPage,this.char);
+    this.navCtrl.push(SkillsPage,{char:this.char});
   }
 }

@@ -15,7 +15,6 @@ export class CharacterLanguagesPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     //Getting data
     this.new_char = this.navParams.get('new_char');
-    this.new_char.languages=Language.getLanguages();
   }
   goToCharacterSkills() {
     this.navCtrl.push(CharacterSkillsPage, { new_char: this.new_char });

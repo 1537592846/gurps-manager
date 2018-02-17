@@ -1,8 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { CharacterStatusPage } from '../character-status/character-status';
 import { Character } from '../../../models/Character'
 import { Validators } from '@angular/forms';
+import { Language } from '../../../models/Language';
+import { Advantage } from '../../../models/Advantage';
+import { Skill } from '../../../models/Skill';
+import { Disadvantage } from '../../../models/Disadvantage';
 
 @Component({
   selector: 'page-character-features',
@@ -10,10 +14,12 @@ import { Validators } from '@angular/forms';
 })
 export class CharacterFeaturesPage {
 
-  new_char=new Character(0);
+  new_char:Character;
   form_validation:any;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController,public navParams: NavParams) {
+    //Getting data
+    this.new_char = this.navParams.get('new_char');
     this.form_validation={
       new_char:{
         name:[Validators.pattern('[a-zA-Z ]*')],
