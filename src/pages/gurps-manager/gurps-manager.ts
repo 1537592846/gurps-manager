@@ -13,7 +13,6 @@ export class GurpsManagerPage {
   }
   goToCharacterFeatures() {
     var char=Character.emptyCharacter();
-    console.log(char);
     this.navCtrl.push(CharacterFeaturesPage,{new_char:char});
   }
   goToTabsController() {

@@ -15,6 +15,7 @@ export class TestsPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     //Getting data
     this.char = this.navParams.get('char');
+    console.log(this.char);
   }
   // Life functions
   removeLife() {

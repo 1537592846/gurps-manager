@@ -22,42 +22,43 @@ export class CharacterStatusPage {
   max_fatigue_points: number;
   min_basic_movement: number;
   max_basic_movement: number;
-  speed_aux:number;
-  min_speed_aux:number;
-  max_speed_aux:number;
+  speed_aux: number;
+  min_speed_aux: number;
+  max_speed_aux: number;
   //Point costs
-  stp=10;
-  dxp=20;
-  iqp=20;
-  htp=10;
-  lpp=2;
-  wp=5;
-  pp=5;
-  fpp=3;
-  sp=5;
-  bmp=5;
+  stp = 10;
+  dxp = 20;
+  iqp = 20;
+  htp = 10;
+  lpp = 2;
+  wp = 5;
+  pp = 5;
+  fpp = 3;
+  sp = 5;
+  bmp = 5;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     //Getting data
     this.new_char = this.navParams.get('new_char');
     //Setting values
-    this.new_char.current_points = 0;
-    //Setting minimun values
-    this.new_char.strenght = this.new_char.min_status * 1;
-    this.new_char.dexterity = this.new_char.min_status * 1;
-    this.new_char.intelligence = this.new_char.min_status * 1;
-    this.new_char.health = this.new_char.min_status * 1;
-    this.new_char.max_points = this.new_char.max_points * 1;
-    this.new_char.min_status = this.new_char.min_status * 1;
-    this.new_char.max_life_points = this.new_char.strenght * 1;
-    this.new_char.will = this.new_char.intelligence * 1;
-    this.new_char.perception = this.new_char.intelligence * 1;
-    this.new_char.max_fatigue_points = this.new_char.health * 1;
-    this.new_char.speed = this.new_char.getMinSpeed()*1;
-    this.speed_aux=this.new_char.getMinSpeed()*4;
-    this.min_speed_aux=this.speed_aux;
-    this.new_char.basic_movement = this.new_char.getMinBasicMovement()*1;
-    this.min_basic_movement=this.new_char.basic_movement;
+    if (this.new_char.current_points == 0) {
+      //Setting minimun values
+      this.new_char.strenght = this.new_char.min_status * 1;
+      this.new_char.dexterity = this.new_char.min_status * 1;
+      this.new_char.intelligence = this.new_char.min_status * 1;
+      this.new_char.health = this.new_char.min_status * 1;
+      this.new_char.max_points = this.new_char.max_points * 1;
+      this.new_char.min_status = this.new_char.min_status * 1;
+      this.new_char.max_life_points = this.new_char.strenght * 1;
+      this.new_char.will = this.new_char.intelligence * 1;
+      this.new_char.perception = this.new_char.intelligence * 1;
+      this.new_char.max_fatigue_points = this.new_char.health * 1;
+      this.new_char.speed = this.new_char.getMinSpeed() * 1;
+      this.speed_aux = this.new_char.getMinSpeed() * 4;
+      this.min_speed_aux = this.speed_aux;
+      this.new_char.basic_movement = this.new_char.getMinBasicMovement() * 1;
+      this.min_basic_movement = this.new_char.basic_movement;
+    }
     this.updateAll();
   }
   goToCharacterLanguages() {
@@ -77,8 +78,8 @@ export class CharacterStatusPage {
     this.new_char.current_points += (this.new_char.will - this.new_char.intelligence) * this.wp;
     this.new_char.current_points += (this.new_char.perception - this.new_char.intelligence) * this.pp;
     this.new_char.current_points += (this.new_char.max_fatigue_points - this.new_char.health) * this.fpp;
-    this.new_char.current_points += (this.speed_aux - this.new_char.getMinSpeed()*4) * this.sp;
-    this.new_char.current_points += (this.new_char.basic_movement -this.new_char.getMinBasicMovement())*this.bmp;
+    this.new_char.current_points += (this.speed_aux - this.new_char.getMinSpeed() * 4) * this.sp;
+    this.new_char.current_points += (this.new_char.basic_movement - this.new_char.getMinBasicMovement()) * this.bmp;
   }
   updateStrenght() {
     //Calculating current points
@@ -107,9 +108,9 @@ export class CharacterStatusPage {
       this.updateDexterity();
     }
     //Setting values that grow with it
-    if (this.new_char.getMinSpeed() > this.speed_aux/4) {
+    if (this.new_char.getMinSpeed() > this.speed_aux / 4) {
       this.new_char.speed = this.new_char.getMinSpeed();
-      this.speed_aux=this.new_char.speed*4;
+      this.speed_aux = this.new_char.speed * 4;
       this.updateSpeed();
     }
   }
@@ -144,9 +145,9 @@ export class CharacterStatusPage {
       this.updateHealth();
     }
     //Setting values that grow with it
-    if (this.new_char.getMinSpeed() > this.speed_aux/4) {
+    if (this.new_char.getMinSpeed() > this.speed_aux / 4) {
       this.new_char.speed = this.new_char.getMinSpeed();
-      this.speed_aux=this.new_char.speed*4;
+      this.speed_aux = this.new_char.speed * 4;
       this.updateSpeed();
     }
     if (this.new_char.health > this.new_char.max_fatigue_points) {
@@ -206,17 +207,18 @@ export class CharacterStatusPage {
     //Calculating current points
     this.getCurrentPoints();
     //Calculating max range
-    this.max_speed_aux = this.getMax(this.speed_aux, this.new_char.getMinSpeed()*4, this.sp);
+    this.max_speed_aux = this.getMax(this.speed_aux, this.new_char.getMinSpeed() * 4, this.sp);
+    this.min_speed_aux=this.new_char.getMinSpeed() * 4;
     //Changing if over max limit
-    if (this.speed_aux/4 > this.max_speed_aux) {
-      this.speed_aux = this.max_speed_aux*4;
+    if (this.speed_aux / 4 > this.max_speed_aux) {
+      this.speed_aux = this.max_speed_aux * 4;
       this.updateSpeed();
       this.updateDexterity();
       this.updateHealth();
     }
     //Setting values that grow with it
-    this.new_char.speed=this.speed_aux/4;
-    this.new_char.basic_movement=this.new_char.getMinBasicMovement();
+    this.new_char.speed = this.speed_aux / 4;
+    this.new_char.basic_movement = this.new_char.getMinBasicMovement();
     this.updateBasicMovement();
   }
   updateBasicMovement() {
@@ -224,13 +226,14 @@ export class CharacterStatusPage {
     this.getCurrentPoints();
     //Calculating max range
     this.max_basic_movement = this.getMax(this.new_char.basic_movement, this.new_char.getMinSpeed(), this.bmp);
+    this.min_basic_movement=this.new_char.getMinBasicMovement();
     //Changing if over max limit
     if (this.new_char.basic_movement > this.max_basic_movement) {
       this.new_char.basic_movement = this.max_basic_movement;
       this.updateBasicMovement();
     }
   }
-  updateAll(){
+  updateAll() {
     this.updateStrenght();
     this.updateDexterity();
     this.updateIntelligence();

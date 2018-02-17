@@ -22,11 +22,12 @@ export class TabsControllerPage {
   skills: any = SkillsPage;
   char:Character;
   
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController,public navParams: NavParams) {
     //Getting data
+    this.char = this.navParams.get('char');
   }
   goToTests(){
-    this.navCtrl.push(TestsPage,this.char);
+    this.navCtrl.push(TestsPage,{char:this.char});
   }
   goToStatus(){
     this.navCtrl.push(StatusPage,{char:this.char});
