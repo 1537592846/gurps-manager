@@ -3,10 +3,6 @@ import { NavController, NavParams } from 'ionic-angular';
 import { CharacterStatusPage } from '../character-status/character-status';
 import { Character } from '../../../models/Character'
 import { Validators } from '@angular/forms';
-import { Language } from '../../../models/Language';
-import { Advantage } from '../../../models/Advantage';
-import { Skill } from '../../../models/Skill';
-import { Disadvantage } from '../../../models/Disadvantage';
 
 @Component({
   selector: 'page-character-features',

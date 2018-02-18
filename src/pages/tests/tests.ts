@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Character } from '../../../models/Character';
-import { Shield } from '../../../models/Item';
-import { Equipment } from '../../../models/Equipment';
 
 @Component({
   selector: 'page-tests',

@@ -1,11 +1,10 @@
-import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+import { SQLite } from '@ionic-native/sqlite';
 import { Language } from './Language'
 import { Skill } from './Skill'
 import { Advantage } from './Advantage'
 import { Disadvantage } from './Disadvantage'
 import { Inventory } from './Inventory'
 import { Equipment } from './Equipment'
-import { List } from 'ionic-angular';
 
 export class Character {
 
