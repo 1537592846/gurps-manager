@@ -58,6 +58,8 @@ export class CharacterStatusPage {
       this.min_speed_aux = this.speed_aux;
       this.new_char.basic_movement = this.new_char.getMinBasicMovement() * 1;
       this.min_basic_movement = this.new_char.basic_movement;
+    }else{
+      this.speed_aux=this.new_char.getMinSpeed()*4;
     }
     this.updateAll();
   }

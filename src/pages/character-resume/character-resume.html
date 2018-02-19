@@ -6,13 +6,119 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding id="characterResume">
-  <div id="characterResume-markdown" class="show-list-numbers-and-dots">
-    <p style="color:#000000;">
-      <em>
-        List the resume of the char
-      </em>
-    </p>
-  </div>
+  <ion-list id="characterResume-markdown" class="show-list-numbers-and-dots">
+    <ion-item-sliding>
+      <ion-item style="text-align:center">Character Features</ion-item>
+      <ion-item color="none">
+        Name:
+        <ion-note>{{new_char.name}}</ion-note>
+      </ion-item>
+      <ion-item color="none">
+        Age:
+        <ion-note>{{new_char.age}}</ion-note>
+      </ion-item>
+      <ion-item color="none">
+        Height:
+        <ion-note>{{new_char.height}}</ion-note>
+      </ion-item>
+      <ion-item color="none">
+        Weight:
+        <ion-note>{{new_char.weight}}</ion-note>
+      </ion-item>
+      <ion-item color="none">
+        Minimun Status Points:
+        <ion-note>{{new_char.min_status}}</ion-note>
+      </ion-item>
+      <ion-item color="none">
+        Max Points:
+        <ion-note>{{new_char.max_points}}</ion-note>
+      </ion-item>
+      <ion-item color="none">
+        Resources:
+        <ion-note>{{new_char.resource}}</ion-note>
+      </ion-item>
+      <ion-item color="none">
+        Description:
+        <ion-note>{{new_char.description}}</ion-note>
+      </ion-item>
+      <ion-item style="text-align:center">Character Status</ion-item>
+      <ion-item color="none">
+        Strenght (ST):
+        <ion-note>{{new_char.strenght}}</ion-note>
+      </ion-item>
+      <ion-item color="none">
+        Dexterity (DX):
+        <ion-note>{{new_char.dexterity}}</ion-note>
+      </ion-item>
+      <ion-item color="none">
+        Intelligence (IQ):
+        <ion-note>{{new_char.intelligence}}</ion-note>
+      </ion-item>
+      <ion-item color="none">
+        Health (HT):
+        <ion-note>{{new_char.health}}</ion-note>
+      </ion-item>
+      <ion-item color="none">
+        Life Points:
+        <ion-note>{{new_char.max_life_points}}</ion-note>
+      </ion-item>
+      <ion-item color="none">
+        Will:
+        <ion-note>{{new_char.will}}</ion-note>
+      </ion-item>
+      <ion-item color="none">
+        Perception:
+        <ion-note>{{new_char.perception}}</ion-note>
+      </ion-item>
+      <ion-item color="none">
+        Fatigue Points:
+        <ion-note>{{new_char.max_fatigue_points}}</ion-note>
+      </ion-item>
+      <ion-item color="none">
+        Speed:
+        <ion-note>{{new_char.speed}}</ion-note>
+      </ion-item>
+      <ion-item color="none">
+        Basic Movement:
+        <ion-note>{{new_char.basic_movement}}</ion-note>
+      </ion-item>
+      <ion-item style="text-align:center">Character Languages</ion-item>
+    </ion-item-sliding>
+    <ion-item-sliding *ngFor="let language of new_char.languages">
+      <ion-item color="none">
+        {{language.name}}
+        <br>
+        <ion-note>{{language.level.description}}</ion-note>
+      </ion-item>
+    </ion-item-sliding>
+    <ion-item style="text-align:center">Character Skills</ion-item>
+    <ion-item-sliding *ngFor="let skill of new_char.skills">
+      <ion-item color="none">
+        {{skill.name}}
+        <ion-note>{{skill.difficulty.description}}+{{skill.level}}</ion-note>
+        <br>
+        <ion-note>{{skill.description}}</ion-note>
+        <br>
+        <ion-note>{{skill.difficulty.level.description}}</ion-note>
+      </ion-item>
+    </ion-item-sliding>
+    <ion-item style="text-align:center">Character Advantages</ion-item>
+    <ion-item-sliding *ngFor="let advantage of new_char.advantages">
+      <ion-item color="none">
+        {{advantage.name}}
+        <br>
+        <ion-note>{{advantage.description}}</ion-note>
+      </ion-item>
+    </ion-item-sliding>
+    <ion-item style="text-align:center">Character Disadvantages</ion-item>
+    <ion-item-sliding *ngFor="let disadvantage of new_char.disadvantages">
+      <ion-item color="none">
+        {{disadvantage.name}}
+        <br>
+        <ion-note>{{disadvantage.description}}</ion-note>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
   <form id="characterResume-form">
     <button id="characterResume-button" ion-button color="secondary" block on-click="goToTabsController()">
       Create Character
