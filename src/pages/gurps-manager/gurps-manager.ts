@@ -12,10 +12,9 @@ export class GurpsManagerPage {
   constructor(public navCtrl: NavController) {
   }
   goToCharacterFeatures() {
-    var char=Character.emptyCharacter();
-    this.navCtrl.push(CharacterFeaturesPage,{new_char:char});
+    this.navCtrl.push(CharacterFeaturesPage,{new_char:Character.emptyCharacter()});
   }
   goToTabsController() {
-    this.navCtrl.push(TabsControllerPage);
+    this.navCtrl.setRoot(TabsControllerPage,{id:0});
   }
 }

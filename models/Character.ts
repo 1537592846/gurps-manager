@@ -128,6 +128,9 @@ export class Character {
         char.equipments = new Equipment();
         return char;
     }
+    public static newCharacter(){
+        return new Character(0);
+    }
     loadCharacter(id: number) {
         this.prepareSqlite();
         this.getCharacter(this.sqlite);

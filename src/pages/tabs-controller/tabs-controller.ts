@@ -24,7 +24,9 @@ export class TabsControllerPage {
   
   constructor(public navCtrl: NavController,public navParams: NavParams) {
     //Getting data
-    this.char = this.navParams.get('char');
+    var id = this.navParams.get('id');
+    //Searching the character on the database
+    this.char=new Character(id);
   }
   goToTests(){
     this.navCtrl.push(TestsPage,{char:this.char});
