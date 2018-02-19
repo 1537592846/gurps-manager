@@ -208,7 +208,7 @@ export class CharacterStatusPage {
     this.getCurrentPoints();
     //Calculating max range
     this.max_speed_aux = this.getMax(this.speed_aux, this.new_char.getMinSpeed() * 4, this.sp);
-    this.min_speed_aux=this.new_char.getMinSpeed() * 4;
+    this.min_speed_aux = this.new_char.getMinSpeed() * 4;
     //Changing if over max limit
     if (this.speed_aux / 4 > this.max_speed_aux) {
       this.speed_aux = this.max_speed_aux * 4;
@@ -226,7 +226,7 @@ export class CharacterStatusPage {
     this.getCurrentPoints();
     //Calculating max range
     this.max_basic_movement = this.getMax(this.new_char.basic_movement, this.new_char.getMinSpeed(), this.bmp);
-    this.min_basic_movement=this.new_char.getMinBasicMovement();
+    this.min_basic_movement = this.new_char.getMinBasicMovement();
     //Changing if over max limit
     if (this.new_char.basic_movement > this.max_basic_movement) {
       this.new_char.basic_movement = this.max_basic_movement;

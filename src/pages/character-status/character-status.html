@@ -12,7 +12,7 @@
 <ion-content padding id="characterStatus">
   <form id="characterStatus-form">
     <ion-item id="characterStatus-range_strenght">
-      <ion-range [(ngModel)]="new_char.strenght" [ngModelOptions]="{standalone: true}" min="{{new_char.min_status}}" max="{{max_strenght}}"
+      <ion-range [(ngModel)]="new_char.strenght" [ngModelOptions]="{standalone: true}" min="0" max="{{max_strenght}}"
         step="1" (ionChange)="updateStrenght()">
         <ion-label range-left>
           Strength (ST)
@@ -21,7 +21,7 @@
       </ion-range>
     </ion-item>
     <ion-item id="characterStatus-range_dexterity">
-      <ion-range [(ngModel)]="new_char.dexterity" [ngModelOptions]="{standalone: true}" min="{{new_char.min_status}}" max="{{max_dexterity}}"
+      <ion-range [(ngModel)]="new_char.dexterity" [ngModelOptions]="{standalone: true}" min="0" max="{{max_dexterity}}"
         step="1" (ionChange)="updateDexterity()">
         <ion-label range-left>
           Dexterity (DX)
@@ -30,7 +30,7 @@
       </ion-range>
     </ion-item>
     <ion-item id="characterStatus-range_char_intelligence">
-      <ion-range [(ngModel)]="new_char.intelligence" [ngModelOptions]="{standalone: true}" min="{{new_char.min_status}}" max="{{max_intelligence}}"
+      <ion-range [(ngModel)]="new_char.intelligence" [ngModelOptions]="{standalone: true}" min="0" max="{{max_intelligence}}"
         step="1" (ionChange)="updateIntelligence()">
         <ion-label range-left>
           Intelligence (IQ)
@@ -39,7 +39,7 @@
       </ion-range>
     </ion-item>
     <ion-item id="characterStatus-range_char_health">
-      <ion-range [(ngModel)]="new_char.health" [ngModelOptions]="{standalone: true}" min="{{new_char.min_status}}" max="{{max_health}}"
+      <ion-range [(ngModel)]="new_char.health" [ngModelOptions]="{standalone: true}" min="0" max="{{max_health}}"
         step="1" (ionChange)="updateHealth()">
         <ion-label range-left>
           Health (HT)
