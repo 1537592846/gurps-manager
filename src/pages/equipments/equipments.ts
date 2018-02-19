@@ -7,12 +7,28 @@ import { Character } from '../../../models/Character';
   templateUrl: 'equipments.html'
 })
 export class EquipmentsPage {
-  // this tells the tabs component which Pages
-  // should be each tab's root Page
-  char:Character;
+
+  char: Character;
+  equipments: any[];
+
   constructor(public navParams: NavParams) {
     //Getting data
     this.char = navParams.get('charParam');
+    this.getEquipments();
   }
-  
+  getEquipments() {
+    this.equipments = [];
+    if (this.char.equipments.both_hands != null) {
+      this.equipments.push([{ label: "Both Hands", name: "Greatsword" }]);
+    } else {
+      if (this.char.equipments.left_hand != null) {
+        this.equipments.push([{ label: "Left Hand", name: "Longsword" }]);
+      }
+      if (this.char.equipments.shield != null) {
+        this.equipments.push({ label: "Shield", name: "Shield of shielding" });
+      } else {
+        this.equipments.push([{ label: "Right Hand", name: "Silver Dagger" }]);
+      }
+    }
+  }
 }

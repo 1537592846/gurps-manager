@@ -10,9 +10,8 @@ export class InventoryPage {
   // this tells the tabs component which Pages
   // should be each tab's root Page
   char:Character;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navParams: NavParams) {
     //Getting data
-    this.char = this.navParams.get('char');
-  }
-  
+    this.char = navParams.get('charParam');
+  }  
 }

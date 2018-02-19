@@ -10,74 +10,87 @@
     </ion-title>
     <ion-buttons end>
       <button ion-button>
-        #char_name
+        {{char.name}}
       </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page4">
-  <h3 id="extras-heading1" style="color:#000000;">
+<ion-content padding id="extras">
+  <h3 id="extras-tag-1" style="color:#000000;">
     Movement
   </h3>
-  <ion-list id="extras-list12">
-    <ion-item color="none" id="extras-list-item25">
-      Carry Weight
-      <ion-note item-right></ion-note>
+  <ion-list id="extras-list-1">
+    <ion-item color="none" id="extras-item-carry-weight">
+      Basic Carry Weight
+      <ion-note item-right>{{char.max_carry_weight}}</ion-note>
     </ion-item>
-    <ion-item color="none" id="extras-list-item26">
-      Carry Category
-      <ion-note item-right></ion-note>
+    <ion-item color="none" id="extras-item-carry-weight">
+      Current Carry Weight
+      <ion-note item-right>{{char.current_carry_weight}}</ion-note>
     </ion-item>
-    <ion-item color="none" id="extras-list-item27">
+    <ion-item color="none" id="extras-item-carry-category">
+      Current Carry Category
+      <ion-note item-right>{{current_carry_category}}</ion-note>
+    </ion-item>
+    <ion-item color="none" id="extras-item-speed">
       Speed
+      <ion-note item-right>{{char.speed}}</ion-note>
     </ion-item>
-    <ion-item color="none" id="extras-list-item28">
-      Tile Movement
+    <ion-item color="none" id="extras-item-basic-movement">
+      Basic Movement
+      <ion-note item-right>{{char.basic_movement}} steps</ion-note>
+    </ion-item>
+    <ion-item color="none" id="extras-item-current-movement">
+      Current Movement
+      <ion-note item-right>{{current_movement}} steps</ion-note>
     </ion-item>
   </ion-list>
-  <h3 id="extras-heading2" style="color:#000000;">
+  <h3 id="extras-tag-2" style="color:#000000;">
     Attack
   </h3>
-  <ion-list id="extras-list13">
-    <ion-item color="none" id="extras-list-item33">
+  <ion-list id="extras-list-2">
+    <ion-item color="none" id="extras-item-point-hit">
       Point Hit
       <ion-note item-right></ion-note>
     </ion-item>
-    <ion-item color="none" id="extras-list-item34">
+    <ion-item color="none" id="extras-item-balance-hit">
       Balance Hit
       <ion-note item-right></ion-note>
     </ion-item>
   </ion-list>
-  <h3 id="extras-heading3" style="color:#000000;">
+  <h3 id="extras-tag-3" style="color:#000000;">
     Defense
   </h3>
-  <ion-list id="extras-list14">
-    <ion-item color="none" id="extras-list-item35">
+  <ion-list id="extras-list-3">
+    <ion-item color="none" id="extras-item-dodge">
       Dodge
+      <ion-note item-right>{{dodge}}</ion-note>
     </ion-item>
-    <ion-item color="none" id="extras-list-item36">
+    <ion-item color="none" id="extras-item-parry">
       Parry
     </ion-item>
-    <ion-item color="none" id="extras-list-item37">
+    <ion-item color="none" id="extras-item-block">
       Block
     </ion-item>
   </ion-list>
-  <h3 id="extras-heading4" style="color:#000000;">
+  <h3 id="extras-tag-4" style="color:#000000;">
     Advantages
   </h3>
-  <ion-list id="extras-list15">
-    <ion-item color="none" id="extras-list-item38">
-      <ion-icon name="ionic" item-left></ion-icon>
-      #advantages
+  <ion-item-sliding *ngFor="let advantage of char.advantages">
+    <ion-item color="none">
+      {{advantage.name}}
+      <br>
+      <ion-note>{{advantage.description}}</ion-note>
     </ion-item>
-  </ion-list>
-  <h3 id="extras-heading5" style="color:#000000;">
+  </ion-item-sliding>
+  <h3 id="extras-tag-5" style="color:#000000;">
     Disadvantages
   </h3>
-  <ion-list id="extras-list16">
-    <ion-item color="none" id="extras-list-item41">
-      <ion-icon name="ionic" item-left></ion-icon>
-      #disadvantages
+  <ion-item-sliding *ngFor="let disadvantage of char.disadvantages">
+    <ion-item color="none">
+      {{disadvantage.name}}
+      <br>
+      <ion-note>{{disadvantage.description}}</ion-note>
     </ion-item>
-  </ion-list>
+  </ion-item-sliding>
 </ion-content>

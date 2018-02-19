@@ -19,6 +19,5 @@ export class TabsPage {
   equipmentsRoot = EquipmentsPage;
 
   constructor() {
-
   }
 }

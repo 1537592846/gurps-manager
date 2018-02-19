@@ -10,24 +10,22 @@
     </ion-title>
     <ion-buttons end>
       <button ion-button>
-        #char_name
+        {{char.name}}
       </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page13">
-  <h3 id="equipments-heading6" style="color:#000000;">
+<ion-content padding id="equipments">
+  <h3 id="equipments-tag-1" style="color:#000000;">
     Movement
   </h3>
-  <ion-list id="equipments-list18">
-    <ion-item color="none" id="equipments-list-item19">
-      Left Hand
-      <ion-note item-right></ion-note>
-    </ion-item>
-    <ion-item color="none" id="equipments-list-item20">
-      Right Hand
-      <ion-note item-right></ion-note>
-    </ion-item>
+  <ion-list id="equipments-list-1">
+    <ion-item-sliding *ngFor="let equipment of equipments">
+      <ion-item color="none">
+        {{equipment.label}}
+        <ion-note item-right>{{equipment.name}}</ion-note>
+      </ion-item>
+    </ion-item-sliding>
     <ion-item color="none" id="equipments-list-item40">
       Head
       <ion-note item-right></ion-note>
