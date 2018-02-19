@@ -10,39 +10,39 @@
     </ion-title>
     <ion-buttons end>
       <button ion-button>
-        #char_name
+        {{char.name}}
       </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page3">
-  <ion-list id="status-list10">
-    <ion-item color="none" id="status-list-item14">
+<ion-content padding id="status-page">
+  <ion-list id="primary-status-list">
+    <ion-item color="none" id="status-strenght">
       Strenght (ST)
-      <ion-note item-right></ion-note>
+      <ion-note item-right>{{char.strenght}}</ion-note>
     </ion-item>
-    <ion-item color="none" id="status-list-item15">
+    <ion-item color="none" id="status-dexterity">
       Dexterity (DX)
-      <ion-note item-right></ion-note>
+      <ion-note item-right>{{char.dexterity}}</ion-note>
     </ion-item>
-    <ion-item color="none" id="status-list-item16">
+    <ion-item color="none" id="status-intelligence">
       Intelligence (IQ)
-      <ion-note item-right></ion-note>
+      <ion-note item-right>{{char.dexterity}}</ion-note>
     </ion-item>
-    <ion-item color="none" id="status-list-item17">
+    <ion-item color="none" id="status-health">
       Health (HT)
-      <ion-note item-right></ion-note>
+      <ion-note item-right>{{char.health}}</ion-note>
     </ion-item>
   </ion-list>
-  <div class="spacer" style="height:40px;" id="status-spacer2"></div>
-  <ion-list id="status-list11">
-    <ion-item color="none" id="status-list-item21">
+  <div class="spacer" style="height:40px;" id="status-spacer"></div>
+  <ion-list id="secondary-status-list">
+    <ion-item color="none" id="status-max-life-points">
       Max Life Points
-      <ion-note item-right></ion-note>
+      <ion-note item-right>{{char.max_life_points}}</ion-note>
     </ion-item>
-    <ion-item color="none" id="status-list-item23">
+    <ion-item color="none" id="status-will">
       Will
-      <ion-note item-right></ion-note>
+      <ion-note item-right>{{char.will}}</ion-note>
     </ion-item>
     <ion-item color="none" id="status-list-item22">
       Perception

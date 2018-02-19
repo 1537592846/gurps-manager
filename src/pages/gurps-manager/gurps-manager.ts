@@ -15,6 +15,7 @@ export class GurpsManagerPage {
     this.navCtrl.push(CharacterFeaturesPage,{new_char:Character.emptyCharacter()});
   }
   goToTabsController() {
-    this.navCtrl.setRoot(TabsControllerPage,{id:0});
+    var char=new Character(0);
+    this.navCtrl.setRoot(TabsControllerPage,{char:char});
   }
 }

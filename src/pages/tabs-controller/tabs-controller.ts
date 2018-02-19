@@ -13,37 +13,18 @@ import { Character } from '../../../models/Character';
   templateUrl: 'tabs-controller.html'
 })
 export class TabsControllerPage {
-  
+
   tests: any = TestsPage;
   status: any = StatusPage;
   extras: any = ExtrasPage;
   equipments: any = EquipmentsPage;
   inventory: any = InventoryPage;
   skills: any = SkillsPage;
-  char:Character;
-  
-  constructor(public navCtrl: NavController,public navParams: NavParams) {
+  charParam: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
     //Getting data
-    var id = this.navParams.get('id');
-    //Searching the character on the database
-    this.char=new Character(id);
-  }
-  goToTests(){
-    this.navCtrl.push(TestsPage,{char:this.char});
-  }
-  goToStatus(){
-    this.navCtrl.push(StatusPage,{char:this.char});
-  }
-  goToExtras(){
-    this.navCtrl.push(ExtrasPage,{char:this.char});
-  }
-  goToEquipments(){
-    this.navCtrl.push(EquipmentsPage,{char:this.char});
-  }
-  goToInventory(){
-    this.navCtrl.push(InventoryPage,{char:this.char});
-  }
-  goToSkills(){
-    this.navCtrl.push(SkillsPage,{char:this.char});
+    var char=this.navParams.get('char')
+    this.charParam = {charParam:char};
   }
 }

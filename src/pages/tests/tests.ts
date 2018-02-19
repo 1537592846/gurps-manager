@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Character } from '../../../models/Character';
+import { TabsControllerPage } from '../tabs-controller/tabs-controller';
 
 @Component({
   selector: 'page-tests',
@@ -8,12 +9,10 @@ import { Character } from '../../../models/Character';
 })
 export class TestsPage {
 
-  char: Character;
+  char:Character;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    //Getting data
-    this.char = new Character(0)
-    console.log(this.navParams.get("char"))
+  constructor(navParams: NavParams) {
+    this.char = navParams.get('charParam');
   }
   // Life functions
   removeLife() {
