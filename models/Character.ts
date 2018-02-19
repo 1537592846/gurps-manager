@@ -87,9 +87,9 @@ export class Character {
         this.max_fatigue_points = this.health;
         this.current_fatigue_points = this.health;
         this.max_carry_weight = Math.floor(this.strenght * this.strenght / 10);
-        this.current_carry_weight = 10;
-        this.speed = 2.5 + (this.speed * 0.25);
-        this.basic_movement = Math.floor(this.speed);
+        this.current_carry_weight = 20;
+        this.speed = this.getMinSpeed();
+        this.basic_movement = this.getMinBasicMovement();
         this.languages = Language.getLanguages();
         this.skills = Skill.getSkills();
         this.advantages = Advantage.getAdvantages();
@@ -128,7 +128,7 @@ export class Character {
         char.equipments = new Equipment();
         return char;
     }
-    public static newCharacter(){
+    public static newCharacter() {
         return new Character(0);
     }
     loadCharacter(id: number) {
@@ -147,16 +147,16 @@ export class Character {
 
     }
     getLanguages(sqlite) {
-        return null;
+        return Language.getLanguages();
     }
     getSkills(sqlite) {
-        return null;
+        return Skill.getSkills();
     }
     getAdvantages(sqlite) {
-        return null;
+        return Advantage.getAdvantages();
     }
     getDisadvantages(sqlite) {
-        return null;
+        return Advantage.getAdvantages();
     }
     getEquipments(sqlite) {
         return null;
@@ -168,5 +168,36 @@ export class Character {
     }
     getMinSpeed() {
         return (this.health + this.dexterity) / 4;
+    }
+    public static getCarryCategory(char: Character) {
+        if (char.current_carry_weight < char.max_carry_weight) {
+            return "None";
+        } else {
+            if (char.current_carry_weight < char.max_carry_weight * 2) {
+                return "Light";
+            } else {
+                if (char.current_carry_weight < char.max_carry_weight * 3) {
+                    return "Moderate";
+                } else {
+                    if (char.current_carry_weight < char.max_carry_weight * 6) {
+                        return "Heavy";
+                    } else {
+                        return "Very Heavy";
+                    }
+                }
+            }
+        }
+    }
+    public static getMovement(char: Character) {
+        switch (this.getCarryCategory(char)) {
+            case "None": return char.basic_movement;
+            case "Light": return char.basic_movement * 0.8;
+            case "Moderate": return char.basic_movement * 0.6;
+            case "Heavy": return char.basic_movement * 0.4;
+            case "Very Heavy": return char.basic_movement * 0.2;
+        }
+    }
+    public static getDodge(char: Character) {
+       return this.getMovement(char)+3;
     }
 }
