@@ -16,9 +16,10 @@ import { CharacterLanguagesPage } from '../pages/character-languages/character-l
 import { CharacterAdvantagesPage } from '../pages/character-advantages/character-advantages';
 import { CharacterDisadvantagesPage } from '../pages/character-disadvantages/character-disadvantages';
 import { CharacterResumePage } from '../pages/character-resume/character-resume';
+import { CharacterSkillsPage } from '../pages/character-skills/character-skills';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { CharacterSkillsPage } from '../pages/character-skills/character-skills';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,11 @@ import { CharacterSkillsPage } from '../pages/character-skills/character-skills'
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot({
+      name:"gurps-manager_data",
+      driverOrder:["indexeddb","sqlite","websql"]
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
