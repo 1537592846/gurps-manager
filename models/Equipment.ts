@@ -1,32 +1,62 @@
-import {ShortRangeWeapon,LongRangeWeapon,Shield,Armor} from './Item'
+import { ShortRangeWeapon, LongRangeWeapon, Shield, Armor } from './Item'
 
-export class Equipment{
+export class Equipment {
 
-    public left_hand:ShortRangeWeapon;
-    public right_hand:ShortRangeWeapon;
-    public both_hands:LongRangeWeapon;
-    public shield:Shield;
-    public head:Armor;
-    public torax:Armor;
-    public legs:Armor;
-    public feet:Armor;
-    public arms:Armor;
-    public hands:Armor;
+    public left_hand: ShortRangeWeapon;
+    public right_hand: ShortRangeWeapon;
+    public both_hands: LongRangeWeapon;
+    public shield: Shield;
+    public head: Armor;
+    public torax: Armor;
+    public legs: Armor;
+    public feet: Armor;
+    public arms: Armor;
+    public hands: Armor;
 
     constructor() {
-        this.left_hand=null;
-        this.right_hand=null;
-        this.both_hands=null;
-        this.shield=new Shield();
-        this.head=null;
-        this.torax=null;
-        this.legs=null;
-        this.feet=null;
-        this.arms=null;
-        this.hands=null;
     }
 
-    destroyShield(){
-        this.shield=null;
+    destroyShield() {
+        this.shield = null;
+    }
+    public static getEquipments(type: string) {
+        switch (type) {
+            case "both": return {
+                both_hands: LongRangeWeapon.getWeapon(),
+                left_hand: null,
+                right_hand: null,
+                shield: null,
+                head: Armor.getArmor(),
+                torax: Armor.getArmor(),
+                legs: Armor.getArmor(),
+                feet: Armor.getArmor(),
+                arms: Armor.getArmor(),
+                hands: Armor.getArmor()
+            } as Equipment
+            case "shield": return {
+                both_hands: null,
+                left_hand: ShortRangeWeapon.getWeapon(),
+                right_hand: null,
+                shield: Shield.getShield(),
+                head: Armor.getArmor(),
+                torax: Armor.getArmor(),
+                legs: Armor.getArmor(),
+                feet: Armor.getArmor(),
+                arms: Armor.getArmor(),
+                hands: Armor.getArmor()
+            } as Equipment
+            default: return {
+                both_hands: null,
+                left_hand: ShortRangeWeapon.getWeapon(),
+                right_hand: ShortRangeWeapon.getWeapon(),
+                shield: null,
+                head: Armor.getArmor(),
+                torax: Armor.getArmor(),
+                legs: Armor.getArmor(),
+                feet: Armor.getArmor(),
+                arms: Armor.getArmor(),
+                hands: Armor.getArmor()
+            } as Equipment
+        }
     }
 }

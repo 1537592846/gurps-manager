@@ -94,7 +94,7 @@ export class Character {
         this.skills = Skill.getSkills();
         this.advantages = Advantage.getAdvantages();
         this.disadvantages = Advantage.getAdvantages();
-        this.equipments = new Equipment();
+        this.equipments = Equipment.getEquipments("both");
     }
     public static emptyCharacter() {
         var char = new Character(0);

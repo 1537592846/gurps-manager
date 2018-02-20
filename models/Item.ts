@@ -7,6 +7,9 @@ export class ShortRangeWeapon {
 
     constructor() {
     }
+    public static getWeapon() {
+        return { id: 1, name: "Broadsword", description: "A long one-handed sword", formula: "Parry:11" } as ShortRangeWeapon;
+    }
 }
 
 export class LongRangeWeapon {
@@ -18,6 +21,9 @@ export class LongRangeWeapon {
 
     constructor() {
     }
+    public static getWeapon() {
+        return { id: 1, name: "Pole lance", description: "A long weapon, with a long reach", formula: "Parry:8" } as LongRangeWeapon;
+    }
 }
 
 export class Shield {
@@ -26,14 +32,13 @@ export class Shield {
     public name: string;
     public description: string;
     public formula: string;
-    public max_life_points:number;
-    public current_life_points:number;
+    public max_life_points: number;
+    public current_life_points: number;
 
     constructor() {
-        this.name="Shield of Shielding";
-        this.description="A shield for shielding";
-        this.max_life_points=25;
-        this.current_life_points=this.max_life_points;
+    }
+    public static getShield() {
+        return { id: 1, name: "Shield of Shielding", description: "A shield for shielding", max_life_points: 25, current_life_points: 25 } as Shield;
     }
 }
 
@@ -45,6 +50,9 @@ export class Armor {
     public formula: string;
 
     constructor() {
+    }
+    public static getArmor() {
+        return { id: 1, name: "Basic armor", description: "A basic set piece", formula: "RD:2" } as Armor;
     }
 }
 

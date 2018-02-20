@@ -13,6 +13,6 @@ export class Language {
             {id:1,name:"Latin",level:{id:1,description:"Native"}},
             {id:1,name:"Germanic",level:{id:2,description:"Accent"}},
             {id:1,name:"Celtic",level:{id:3,description:"Fluent"}}
-        ]
+        ] as Language[]
     }
 }

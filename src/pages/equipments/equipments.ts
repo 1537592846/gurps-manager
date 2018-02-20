@@ -19,15 +19,19 @@ export class EquipmentsPage {
   getEquipments() {
     this.equipments = [];
     if (this.char.equipments.both_hands != null) {
-      this.equipments.push([{ label: "Both Hands", name: "Greatsword" }]);
+      console.log("both hands")
+      this.equipments.push({ label: "Both Hands", name: this.char.equipments.both_hands.name });
     } else {
       if (this.char.equipments.left_hand != null) {
-        this.equipments.push([{ label: "Left Hand", name: "Longsword" }]);
+        console.log("left hands")
+        this.equipments.push({ label: "Left Hand", name: this.char.equipments.left_hand.name });
       }
       if (this.char.equipments.shield != null) {
+        console.log("shield")
         this.equipments.push({ label: "Shield", name: "Shield of shielding" });
       } else {
-        this.equipments.push([{ label: "Right Hand", name: "Silver Dagger" }]);
+        console.log("right hands")
+        this.equipments.push({ label: "Right Hand", name: this.char.equipments.right_hand.name });
       }
     }
   }
