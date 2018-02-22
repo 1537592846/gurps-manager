@@ -43,12 +43,12 @@
       </button>
     </ion-list>
   <!-- Shield related buttons -->
-  <ion-list text-center>
+  <ion-list text-center *ngIf="char.equipments.shield!=null">
     <button id="tests-shield-minus" ion-button color="danger" on-click="removeShield()">
       <ion-icon name="remove"></ion-icon>
     </button>
     <button id="tests-shield-value" ion-button color="light">
-      Shield Life: 
+      Shield Life: {{char.equipments.shield.current_life_points}}
     </button>
     <button id="tests-shield-plus" ion-button color="secondary" on-click="addShield()">
       <ion-icon name="add"></ion-icon>

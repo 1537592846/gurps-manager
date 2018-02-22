@@ -9,24 +9,26 @@ import { Character } from '../../../models/Character';
 export class ExtrasPage {
 
   current_carry_category: string;
-  current_movement:number;
-  dodge:number;
+  current_movement: number;
+  dodge: number;
   char: Character;
-  
+
   constructor(public navParams: NavParams) {
     //Getting data
-    this.char = navParams.get('charParam');
-    this.current_carry_category=this.getCharCarryCategory();
-    this.current_movement=this.getCharMovement();
-    this.dodge=this.getCharDodge();
+    this.char = navParams.data;
+  }
+  ionViewWillEnter() {
+    this.current_carry_category = this.getCharCarryCategory();
+    this.current_movement = this.getCharMovement();
+    this.dodge = this.getCharDodge();
   }
   getCharCarryCategory() {
-    return Character.getCarryCategory(this.char);
+    return this.char.getCarryCategory();
   }
   getCharMovement() {
-    return Character.getMovement(this.char);
+    return this.char.getMovement();
   }
-  getCharDodge(){
-    return Character.getDodge(this.char);
+  getCharDodge() {
+    return this.char.getDodge();
   }
 }

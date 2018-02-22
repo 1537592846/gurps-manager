@@ -12,6 +12,6 @@ export class InventoryPage {
   char:Character;
   constructor(public navParams: NavParams) {
     //Getting data
-    this.char = navParams.get('charParam');
+    this.char = navParams.data;
   }  
 }

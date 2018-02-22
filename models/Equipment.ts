@@ -15,10 +15,6 @@ export class Equipment {
 
     constructor() {
     }
-
-    destroyShield() {
-        this.shield = null;
-    }
     public static getEquipments(type: string) {
         switch (type) {
             case "both": return {

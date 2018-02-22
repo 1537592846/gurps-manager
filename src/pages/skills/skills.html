@@ -10,24 +10,22 @@
     </ion-title>
     <ion-buttons end>
       <button ion-button>
-        #char_name
+        {{char.name}}
       </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page15">
-  <h3 id="skills-heading12" style="color:#000000;">
-    Movement
-  </h3>
-  <ion-list id="skills-list23">
-    <ion-item-sliding>
-      <ion-item color="none" id="skills-list-item55">
-        #skill_list
+<ion-content padding id="skills">
+  <ion-list id="skill-list">
+    <ion-item-sliding *ngFor="let skill of char.skills">
+      <ion-item color="none">
+        {{skill.name}}
+        <ion-note>{{skill.difficulty.description}}+{{skill.level}}</ion-note>
+        <br>
+        <ion-note>{{skill.description}}</ion-note>
+        <br>
+        <ion-note item-right>{{getSkillLevel(skill)}}</ion-note>
       </ion-item>
-      <ion-item-options side="left">
-        <button ion-button color="balanced"></button>
-        <button ion-button color="assertive"></button>
-      </ion-item-options>
     </ion-item-sliding>
   </ion-list>
 </ion-content>

@@ -13,7 +13,6 @@ export class GurpsManagerPage {
   constructor(public navCtrl: NavController,private storage: Storage) {
     storage.set("name","Ryuzaki");
     storage.get("id").then((val)=>{
-      console.log("Found this: ",val);
     })
   }
   goToCharacterFeatures() {

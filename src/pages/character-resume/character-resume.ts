@@ -16,10 +16,8 @@ export class CharacterResumePage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     //Getting data
     this.new_char = this.navParams.get('new_char');
-    console.log(this.new_char)
   }
   goToTabsController() {
-    console.log(this.new_char)
     this.navCtrl.setRoot(TabsControllerPage, { char: this.new_char });
   }
   goToCharacterFeatures() {

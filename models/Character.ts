@@ -94,7 +94,7 @@ export class Character {
         this.skills = Skill.getSkills();
         this.advantages = Advantage.getAdvantages();
         this.disadvantages = Advantage.getAdvantages();
-        this.equipments = Equipment.getEquipments("both");
+        this.equipments = Equipment.getEquipments("shield");
     }
     public static emptyCharacter() {
         var char = new Character(0);
@@ -169,17 +169,17 @@ export class Character {
     getMinSpeed() {
         return (this.health + this.dexterity) / 4;
     }
-    public static getCarryCategory(char: Character) {
-        if (char.current_carry_weight < char.max_carry_weight) {
+    public getCarryCategory() {
+        if (this.current_carry_weight < this.max_carry_weight) {
             return "None";
         } else {
-            if (char.current_carry_weight < char.max_carry_weight * 2) {
+            if (this.current_carry_weight < this.max_carry_weight * 2) {
                 return "Light";
             } else {
-                if (char.current_carry_weight < char.max_carry_weight * 3) {
+                if (this.current_carry_weight < this.max_carry_weight * 3) {
                     return "Moderate";
                 } else {
-                    if (char.current_carry_weight < char.max_carry_weight * 6) {
+                    if (this.current_carry_weight < this.max_carry_weight * 6) {
                         return "Heavy";
                     } else {
                         return "Very Heavy";
@@ -188,16 +188,19 @@ export class Character {
             }
         }
     }
-    public static getMovement(char: Character) {
-        switch (this.getCarryCategory(char)) {
-            case "None": return char.basic_movement;
-            case "Light": return char.basic_movement * 0.8;
-            case "Moderate": return char.basic_movement * 0.6;
-            case "Heavy": return char.basic_movement * 0.4;
-            case "Very Heavy": return char.basic_movement * 0.2;
+    public getMovement() {
+        switch (this.getCarryCategory()) {
+            case "None": return this.basic_movement;
+            case "Light": return this.basic_movement * 0.8;
+            case "Moderate": return this.basic_movement * 0.6;
+            case "Heavy": return this.basic_movement * 0.4;
+            case "Very Heavy": return this.basic_movement * 0.2;
         }
     }
-    public static getDodge(char: Character) {
-       return this.getMovement(char)+3;
+    public getDodge() {
+       return this.getMovement()+3;
+    }
+    public destroyShield() {
+        this.equipments.shield = null;
     }
 }

@@ -9,12 +9,16 @@ import { TabsControllerPage } from '../tabs-controller/tabs-controller';
 })
 export class TestsPage {
 
-  char:Character;
-
-  constructor(navParams: NavParams) {
-    this.char = navParams.get('charParam');
+  char: Character;
+  constructor(navParams:NavParams) {
+    //Getting data
+    this.char = navParams.data;
   }
-  // Life functions
+  ionViewWillEnter(){
+    //Getting data
+    this.char;
+  }
+    // Life functions
   removeLife() {
     this.char.current_life_points -= 1;
   }
@@ -36,7 +40,7 @@ export class TestsPage {
   removeShield() {
     this.char.equipments.shield.current_life_points -= 1;
     if (this.char.equipments.shield.current_life_points == 0) {
-      this.char.equipments.destroyShield();
+      this.char.destroyShield();
     }
   }
   addShield() {

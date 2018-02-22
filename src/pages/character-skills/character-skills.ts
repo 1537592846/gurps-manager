@@ -27,7 +27,7 @@ export class CharacterSkillsPage {
     }
   }
   addSkill(){
-    var skill={id:4,name:"WAT AGAIN",difficulty:{description:"HT",level:{id:4,description:"Hard"}},level:"2",description:"*insert wat woman picture here*",formula:""};
-    this.new_char.skills.push(skill);
+    var skill={id:4,name:"WAT AGAIN",difficulty:{description:"HT",level:{id:4,description:"Hard"}},level:2,description:"*insert wat woman picture here*",formula:""};
+    this.new_char.skills.push(skill as Skill);
   }
 }
