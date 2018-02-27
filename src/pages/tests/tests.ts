@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavParams } from 'ionic-angular';
 import { Character } from '../../../models/Character';
-import { TabsControllerPage } from '../tabs-controller/tabs-controller';
 
 @Component({
   selector: 'page-tests',

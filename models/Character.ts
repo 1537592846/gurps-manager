@@ -54,7 +54,7 @@ export class Character {
     disadvantages: Disadvantage[];
 
     //Character Inventory
-    inventory: Inventory[];
+    inventory: Inventory;
 
     //Character Equipment
     equipments: Equipment;
@@ -95,6 +95,7 @@ export class Character {
         this.advantages = Advantage.getAdvantages();
         this.disadvantages = Advantage.getAdvantages();
         this.equipments = Equipment.getEquipments("shield");
+        this.inventory=Inventory.getInventory();
     }
     public static emptyCharacter() {
         var char = new Character(0);
@@ -170,16 +171,16 @@ export class Character {
         return (this.health + this.dexterity) / 4;
     }
     public getCarryCategory() {
-        if (this.current_carry_weight < this.max_carry_weight) {
+        if (this.current_carry_weight <= this.max_carry_weight) {
             return "None";
         } else {
-            if (this.current_carry_weight < this.max_carry_weight * 2) {
+            if (this.current_carry_weight <= this.max_carry_weight * 2) {
                 return "Light";
             } else {
-                if (this.current_carry_weight < this.max_carry_weight * 3) {
+                if (this.current_carry_weight <= this.max_carry_weight * 3) {
                     return "Moderate";
                 } else {
-                    if (this.current_carry_weight < this.max_carry_weight * 6) {
+                    if (this.current_carry_weight <= this.max_carry_weight * 6) {
                         return "Heavy";
                     } else {
                         return "Very Heavy";

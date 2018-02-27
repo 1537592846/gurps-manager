@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavParams } from 'ionic-angular';
 import { Character } from '../../../models/Character';
 
 @Component({
@@ -7,11 +7,60 @@ import { Character } from '../../../models/Character';
   templateUrl: 'inventory.html'
 })
 export class InventoryPage {
-  // this tells the tabs component which Pages
-  // should be each tab's root Page
-  char:Character;
+
+  char: Character;
+  weapons: any[];
+  shields:any[];
+  armors:any[];
+  consumables:any[];
+  others:any[];
+
   constructor(public navParams: NavParams) {
     //Getting data
     this.char = navParams.data;
-  }  
+    this.getInventory();
+  }
+  ionViewWillEnter() {
+    this.getInventory();
+  }
+  getInventory() {
+    this.getWeapons();
+    this.getShields();
+    this.getArmors();
+    this.getConsumables();
+    this.getOthers();
+  }
+  getWeapons() {
+    this.weapons = [];
+    this.char.inventory.one_hand_weapons.forEach(element => {
+      this.weapons.push(element);
+    });
+    this.char.inventory.two_hand_weapons.forEach(element => {
+      this.weapons.push(element);
+    });
+  }
+  getShields() {
+    this.shields = [];
+    this.char.inventory.shields.forEach(element => {
+      this.shields.push(element);
+    });
+  }
+  getArmors() {
+    this.armors = [];
+    this.char.inventory.armors.forEach(element => {
+      this.armors.push(element);
+    });
+  }
+  getConsumables() {
+    this.consumables = [];
+    this.char.inventory.consumables.forEach(element => {
+      this.consumables.push(element);
+    });
+  }
+  getOthers() {
+    this.others = [];
+    this.char.inventory.others.forEach(element => {
+      this.others.push(element);
+    });
+  }
 }

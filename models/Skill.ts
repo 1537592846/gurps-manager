@@ -1,5 +1,4 @@
 import { Level } from "./Level";
-import { Character } from "./Character";
 
 export class Skill {
 

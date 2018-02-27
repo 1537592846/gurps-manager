@@ -1,10 +1,10 @@
-import { ShortRangeWeapon, LongRangeWeapon, Shield, Armor } from './Item'
+import { OneHandWeapon, TwoHandWeapon, Shield, Armor } from './Item'
 
 export class Equipment {
 
-    public left_hand: ShortRangeWeapon;
-    public right_hand: ShortRangeWeapon;
-    public both_hands: LongRangeWeapon;
+    public left_hand: OneHandWeapon;
+    public right_hand: OneHandWeapon;
+    public both_hands: TwoHandWeapon;
     public shield: Shield;
     public head: Armor;
     public torax: Armor;
@@ -18,7 +18,7 @@ export class Equipment {
     public static getEquipments(type: string) {
         switch (type) {
             case "both": return {
-                both_hands: LongRangeWeapon.getWeapon(),
+                both_hands: TwoHandWeapon.getWeapon(),
                 left_hand: null,
                 right_hand: null,
                 shield: null,
@@ -31,7 +31,7 @@ export class Equipment {
             } as Equipment
             case "shield": return {
                 both_hands: null,
-                left_hand: ShortRangeWeapon.getWeapon(),
+                left_hand: OneHandWeapon.getWeapon(),
                 right_hand: null,
                 shield: Shield.getShield(),
                 head: Armor.getArmor(),
@@ -43,8 +43,8 @@ export class Equipment {
             } as Equipment
             default: return {
                 both_hands: null,
-                left_hand: ShortRangeWeapon.getWeapon(),
-                right_hand: ShortRangeWeapon.getWeapon(),
+                left_hand: OneHandWeapon.getWeapon(),
+                right_hand: OneHandWeapon.getWeapon(),
                 shield: null,
                 head: Armor.getArmor(),
                 torax: Armor.getArmor(),
