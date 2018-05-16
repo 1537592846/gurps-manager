@@ -19,7 +19,10 @@ import { CharacterResumePage } from '../pages/character-resume/character-resume'
 import { CharacterSkillsPage } from '../pages/character-skills/character-skills';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { SQLite} from '@ionic-native/sqlite';
+
+import { SQLite } from '@ionic-native/sqlite'
+import { DatabaseProvider } from '../providers/database/database';
+//Lista de Providers (DAOs) criados
 
 @NgModule({
   declarations: [
@@ -67,7 +70,9 @@ import { SQLite} from '@ionic-native/sqlite';
     StatusBar,
     SplashScreen,
     SQLite,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    SQLite,
+    DatabaseProvider
   ]
 })
 export class AppModule {}

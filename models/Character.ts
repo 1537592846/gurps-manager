@@ -5,12 +5,13 @@ import { Advantage } from './Advantage'
 import { Disadvantage } from './Disadvantage'
 import { Inventory } from './Inventory'
 import { Equipment } from './Equipment'
+import { Database } from './Storage'
 
 export class Character {
 
     //Database
     id: number;
-    sqlite: SQLite;
+    sqlite= new Database();
 
     //Character Features
     name: string;
@@ -133,7 +134,6 @@ export class Character {
         return new Character(0);
     }
     loadCharacter(id: number) {
-        this.prepareSqlite();
         this.getCharacter(this.sqlite);
         this.languages = this.getLanguages(this.sqlite);
         this.skills = this.getSkills(this.sqlite);
@@ -141,11 +141,7 @@ export class Character {
         this.disadvantages = this.getDisadvantages(this.sqlite);
         this.equipments = this.getEquipments(this.sqlite);
     }
-    prepareSqlite() {
-
-    }
     getCharacter(sqlite) {
-
     }
     getLanguages(sqlite) {
         return Language.getLanguages();
