@@ -1,17 +1,14 @@
-import { SQLite } from '@ionic-native/sqlite';
 import { Language } from './Language'
 import { Skill } from './Skill'
 import { Advantage } from './Advantage'
 import { Disadvantage } from './Disadvantage'
 import { Inventory } from './Inventory'
 import { Equipment } from './Equipment'
-import { Database } from './Storage'
 
 export class Character {
 
     //Database
     id: number;
-    sqlite= new Database();
 
     //Character Features
     name: string;
@@ -93,8 +90,6 @@ export class Character {
         this.basic_movement = this.getMinBasicMovement();
         this.languages = Language.getLanguages();
         this.skills = Skill.getSkills();
-        this.advantages = Advantage.getAdvantages();
-        this.disadvantages = Advantage.getAdvantages();
         this.equipments = Equipment.getEquipments("shield");
         this.inventory=Inventory.getInventory();
     }
@@ -134,28 +129,29 @@ export class Character {
         return new Character(0);
     }
     loadCharacter(id: number) {
-        this.getCharacter(this.sqlite);
-        this.languages = this.getLanguages(this.sqlite);
-        this.skills = this.getSkills(this.sqlite);
-        this.advantages = this.getAdvantages(this.sqlite);
-        this.disadvantages = this.getDisadvantages(this.sqlite);
-        this.equipments = this.getEquipments(this.sqlite);
+        this.getCharacter();
+        this.languages = this.getLanguages();
+        this.skills = this.getSkills();
+        this.advantages = this.getAdvantages();
+        this.disadvantages = this.getDisadvantages();
+        this.equipments = this.getEquipments();
     }
-    getCharacter(sqlite) {
+    getCharacter() {
+        return null;
     }
-    getLanguages(sqlite) {
+    getLanguages() {
         return Language.getLanguages();
     }
-    getSkills(sqlite) {
+    getSkills() {
         return Skill.getSkills();
     }
-    getAdvantages(sqlite) {
-        return Advantage.getAdvantages();
+    getAdvantages() {
+        return [];
     }
-    getDisadvantages(sqlite) {
-        return Advantage.getAdvantages();
+    getDisadvantages() {
+        return [];
     }
-    getEquipments(sqlite) {
+    getEquipments() {
         return null;
     }
     getMinBasicMovement() {

@@ -9,14 +9,24 @@
   <button id="gurpsManager-create_character" ion-button color="secondary" block on-click="goToCharacterFeatures()">
     Create Character
   </button>
+  <button id="gurpsManager-load_character" ion-button color="primary" block on-click="goToTabsController()">
+    Resume Character
+  </button>
   <form id="gurpsManager-form">
-    <button id="gurpsManager-load_character" ion-button color="primary" block on-click="goToTabsController()">
-      Resume Character
-    </button>
     <ion-list id="gurpsManager-_list_character">
-      <ion-item color="none" id="gurpsManager-list-item">
-        #char-list
-      </ion-item>
+      <ion-item-sliding *ngFor="let advantage of advantages">
+        <ion-item color="none">
+          {{advantage.name}}
+          <br>
+          <ion-note>{{advantage.description}}</ion-note>
+          <ion-note item-right>Swipe left</ion-note>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button color="danger" on-click="removeAdvantage(advantage)">
+            Remove
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
     </ion-list>
   </form>
 </ion-content>

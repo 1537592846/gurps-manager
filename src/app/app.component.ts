@@ -25,7 +25,7 @@ export class MyApp {
         })
         .catch((e) => {
           // ou se houver erro na criação do banco
-          console.log("Erro ao tentar criar o banco de dados!\n")
+          console.log("Error when creating database")
           console.log(e);
           this.openHomePage(splashScreen);
         });

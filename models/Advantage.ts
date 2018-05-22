@@ -15,7 +15,7 @@ export class Advantage {
 
 @Injectable()
 export class AdvantageProvider {
-
+  
   constructor(private dbProvider: DatabaseProvider) { }
 
   public insert(advantage: Advantage) {
@@ -81,12 +81,15 @@ export class AdvantageProvider {
   }
 
   public getAll() {
+    console.log("Starting query")
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
+        console.log("Starting query2")
         let sql = 'select * from Advantages';
-
-        return db.executeSql(sql,null)
+        var data:any[]=[]
+        return db.executeSql(sql,data)
           .then((data: any) => {
+            console.log("Starting query3")
             if (data.rows.length > 0) {
               let advantages: any[] = [];
               for (var i = 0; i < data.rows.length; i++) {
@@ -95,11 +98,12 @@ export class AdvantageProvider {
               }
               return advantages;
             } else {
+              console.log("Starting query4")
               return [];
             }
           })
-          .catch((e) => console.error(e));
+          .catch((e) => console.error("Error:"+e));
       })
-      .catch((e) => console.error(e));
+      .catch((e) =>console.error("Error2:"+e));
   }
 }

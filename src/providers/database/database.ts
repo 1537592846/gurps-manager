@@ -40,11 +40,10 @@ export class DatabaseProvider {
   private createTables(db: SQLiteObject) {
     // Criando as tabelas
     db.sqlBatch([
-      ['CREATE TABLE IF NOT EXISTS categories (id integer primary key AUTOINCREMENT NOT NULL, name TEXT)'],
-      ['CREATE TABLE IF NOT EXISTS products (id integer primary key AUTOINCREMENT NOT NULL, name TEXT, price REAL, duedate DATE, active integer, category_id integer, FOREIGN KEY(category_id) REFERENCES categories(id))']
+      ['CREATE TABLE IF NOT EXISTS Advantage (id integer primary key AUTOINCREMENT NOT NULL, name TEXT, description TEXT, formula TEXT)'],
     ])
-      .then(() => console.log('Tabelas criadas'))
-      .catch(e => console.error('Erro ao criar as tabelas', e));
+      .then(() => console.log('Default Tables created'))
+      .catch(e => console.error('Erro when creating default tables', e));
   }
 
   /**
@@ -52,22 +51,22 @@ export class DatabaseProvider {
    * @param db
    */
   private insertDefaultItems(db: SQLiteObject) {
-    db.executeSql('select COUNT(id) as qtd from categories', {})
-    .then((data: any) => {
-      //Se não existe nenhum registro
-      if (data.rows.item(0).qtd == 0) {
+    db.executeSql('select COUNT(id) as qtd from Advantage', {})
+      .then((data: any) => {
+        //Se não existe nenhum registro
+        if (data.rows.item(0).qtd == 0) {
 
-        // Criando as tabelas
-        db.sqlBatch([
-          ['insert into categories (name) values (?)', ['Hambúrgueres']],
-          ['insert into categories (name) values (?)', ['Bebidas']],
-          ['insert into categories (name) values (?)', ['Sobremesas']]
-        ])
-          .then(() => console.log('Dados padrões incluídos'))
-          .catch(e => console.error('Erro ao incluir dados padrões', e));
+          // Criando as tabelas
+          db.sqlBatch([
+            ['insert into Advantage (name,description,formula) values (?,?,?)', ['Beaty','Better social interactions with people','{"skill_cost":5}']],
+            ['insert into Advantage (name,description,formula) values (?,?,?)', ['Well Fit','A body in shape','{"skill_cost":5;"health":1;"knockout_test":2}']],
+            ['insert into Advantage (name,description,formula) values (?,?,?)', ['Wellest Fit','A body in better shape','{"skill_cost":15;"health":2;"knockout_test":4}']]
+          ])
+            .then(() => console.log('Default data inserted'))
+            .catch(e => console.error('Error when inserting default data in Advantage', e));
 
-      }
-    })
-    .catch(e => console.error('Erro ao consultar a qtd de categorias', e));
+        }
+      })
+      .catch(e => console.error('Error when trying to read data from Advantage', e));
   }
 }
