@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Character } from '../../../models/Character';
-import { CharacterResumePage } from '../character-resume/character-resume';
 import { Disadvantage } from '../../../models/Disadvantage';
+import { CharacterAdvantagesPage } from '../character-advantages/character-advantages';
 
 @Component({
   selector: 'page-character-disadvantages',
@@ -16,8 +16,8 @@ export class CharacterDisadvantagesPage {
     //Getting data
     this.new_char = this.navParams.get('new_char');
   }
-  goToCharacterResume() {
-    this.navCtrl.push(CharacterResumePage,{new_char:this.new_char});
+  goToCharacterAdvantages() {
+    this.navCtrl.push(CharacterAdvantagesPage,{new_char:this.new_char});
   }
   removeDisadvantage(disadvantage:Disadvantage){
     for(var i = 0; i < this.new_char.disadvantages.length; i++) { 

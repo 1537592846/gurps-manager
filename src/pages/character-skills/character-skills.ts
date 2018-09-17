@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { CharacterAdvantagesPage } from '../character-advantages/character-advantages';
 import { Character } from '../../../models/Character';
 import { Skill } from '../../../models/Skill';
+import { CharacterLanguagesPage } from '../character-languages/character-languages';
 
 @Component({
   selector: 'page-character-skills',
@@ -16,8 +17,8 @@ export class CharacterSkillsPage {
     //Getting data
     this.new_char = this.navParams.get('new_char');
   }
-  goToCharacterAdvantages(){
-    this.navCtrl.push(CharacterAdvantagesPage,{new_char:this.new_char});
+  goToCharacterLanguages(){
+    this.navCtrl.push(CharacterLanguagesPage,{new_char:this.new_char});
   }
   removeSkill(skill:Skill){
     for(var i = 0; i < this.new_char.skills.length; i++) { 

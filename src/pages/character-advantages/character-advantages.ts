@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { CharacterDisadvantagesPage } from '../character-disadvantages/character-disadvantages';
 import { Character } from '../../../models/Character';
 import { Advantage } from '../../../models/Advantage';
+import { CharacterStatusPage } from '../character-status/character-status';
 
 @Component({
   selector: 'page-character-advantages',
@@ -16,8 +17,8 @@ export class CharacterAdvantagesPage {
     //Getting data
     this.new_char = this.navParams.get('new_char');
   }
-  goToCharacterDisadvantages(){
-    this.navCtrl.push(CharacterDisadvantagesPage,{new_char:this.new_char});
+  goToCharacterStatus(){
+    this.navCtrl.push(CharacterStatusPage,{new_char:this.new_char});
   }
   removeAdvantage(advantage:Advantage){
     for(var i = 0; i < this.new_char.advantages.length; i++) { 

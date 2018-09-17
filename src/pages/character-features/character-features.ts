@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { CharacterStatusPage } from '../character-status/character-status';
 import { Character } from '../../../models/Character'
 import { Validators } from '@angular/forms';
+import { CharacterDisadvantagesPage } from '../character-disadvantages/character-disadvantages';
 
 @Component({
   selector: 'page-character-features',
@@ -25,7 +25,7 @@ export class CharacterFeaturesPage {
       }
     }
   }
-  goToCharacterStatus(params) {
-    this.navCtrl.push(CharacterStatusPage, {new_char:this.new_char});
+  goToCharacterDisadvantages(params) {
+    this.navCtrl.push(CharacterDisadvantagesPage, {new_char:this.new_char});
   }
 }

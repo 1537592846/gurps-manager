@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { CharacterSkillsPage } from '../character-skills/character-skills'
 import { Character } from '../../../models/Character';
 import { Language } from '../../../models/Language';
+import { CharacterResumePage } from '../character-resume/character-resume';
 
 @Component({
   selector: 'page-character-languages',
@@ -16,8 +17,8 @@ export class CharacterLanguagesPage {
     //Getting data
     this.new_char = this.navParams.get('new_char');
   }
-  goToCharacterSkills() {
-    this.navCtrl.push(CharacterSkillsPage, { new_char: this.new_char });
+  goToCharacterResume() {
+    this.navCtrl.push(CharacterResumePage, { new_char: this.new_char });
   }
   removeLanguage(language:Language){
     for(var i = 0; i < this.new_char.languages.length; i++) { 

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { CharacterLanguagesPage } from '../character-languages/character-languages';
 import { Character } from '../../../models/Character';
+import { CharacterSkillsPage } from '../character-skills/character-skills';
 
 @Component({
   selector: 'page-character-status',
@@ -63,9 +64,9 @@ export class CharacterStatusPage {
     }
     this.updateAll();
   }
-  goToCharacterLanguages() {
+  goToCharacterSkills() {
     this.updateAll();
-    this.navCtrl.push(CharacterLanguagesPage, { new_char: this.new_char });
+    this.navCtrl.push(CharacterSkillsPage, { new_char: this.new_char });
   }
   getMax(statCurrent: number, statMin: number, price: number) {
     return (this.new_char.max_points - this.new_char.current_points + (statCurrent - statMin) * price) / price + statMin;

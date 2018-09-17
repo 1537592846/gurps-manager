@@ -1,0 +1,193 @@
+<div padding>
+    <ion-segment [(ngModel)]="advantages">
+            <ion-segment-button value="mental">
+                <img src="..\..\..\images\mental.png"> Mental
+            </ion-segment-button>
+            <ion-segment-button value="physical">
+                <img src="..\..\..\images\physical.png"> Physical
+            </ion-segment-button>
+            <ion-segment-button value="social">
+                <img src="..\..\..\images\social.png"> Social
+            </ion-segment-button>
+            <ion-segment-button value="exotic">
+                <img src="..\..\..\images\exotic.png"> Exotic
+            </ion-segment-button>
+            <ion-segment-button value="supernatural">
+                <img src="..\..\..\images\supernatural.png"> Supernatural
+            </ion-segment-button>
+            <ion-segment-button value="mundane">
+                <img src="..\..\..\images\mundane.png"> Mundane
+            </ion-segment-button>
+    </ion-segment>
+</div>
+
+<div [ngSwitch]="advantages">
+    <ion-list *ngSwitchCase="'mental'">
+        <ion-item-sliding *ngFor="let mental of mentals">
+            <ion-thumbnail item-start>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col col-4 style="text-align: center">
+                            <img src="..\..\..\images\mental.png">
+                        </ion-col>
+                        <ion-col col-4 style="text-align: center">
+                            <img src="..\..\..\images\physical{{mental.isPhysical?'':'-grey'}}.png">
+                        </ion-col>
+                        <ion-col col-4 style="text-align: center">
+                            <img src="..\..\..\images\social{{mental.isSocial?'':'-grey'}}.png">
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col col-6 style="text-align: center">
+                            <img src="..\..\..\images\exotic{{mental.isExotic?'':'-grey'}}.png">
+                        </ion-col>
+                        <ion-col col-6 style="text-align: center">
+                            <img src="..\..\..\images\supernatural{{mental.isSupernatural?'':'-grey'}}.png">
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-thumbnail>
+            <h2>{{mental.name}}</h2>
+        </ion-item-sliding>
+    </ion-list>
+    <ion-list *ngSwitchCase="'physical'">
+        <ion-item-sliding *ngFor="let physical of physicals">
+            <ion-thumbnail item-start>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col col-4 style="text-align: center">
+                            <img src="..\..\..\images\mental{{physical.isMental?'':'-grey'}}.png">
+                        </ion-col>
+                        <ion-col col-4 style="text-align: center">
+                            <img src="..\..\..\images\physical.png">
+                        </ion-col>
+                        <ion-col col-4 style="text-align: center">
+                            <img src="..\..\..\images\social{{physical.isSocial?'':'-grey'}}.png">
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col col-6 style="text-align: center">
+                            <img src="..\..\..\images\exotic{{physical.isExotic?'':'-grey'}}.png">
+                        </ion-col>
+                        <ion-col col-6 style="text-align: center">
+                            <img src="..\..\..\images\supernatural{{physical.isSupernatural?'':'-grey'}}.png">
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-thumbnail>
+            <h2>{{physical.name}}</h2>
+        </ion-item-sliding>
+    </ion-list>
+    <ion-list *ngSwitchCase="'social'">
+        <ion-item-sliding *ngFor="let social of socials">
+            <ion-thumbnail item-start>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col col-4 style="text-align: center">
+                            <img src="..\..\..\images\mental{{social.isMental?'':'-grey'}}.png">
+                        </ion-col>
+                        <ion-col col-4 style="text-align: center">
+                            <img src="..\..\..\images\physical{{social.isPhysical?'':'-grey'}}.png">
+                        </ion-col>
+                        <ion-col col-4 style="text-align: center">
+                            <img src="..\..\..\images\social.png">
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col col-6 style="text-align: center">
+                            <img src="..\..\..\images\exotic{{social.isExotic?'':'-grey'}}.png">
+                        </ion-col>
+                        <ion-col col-6 style="text-align: center">
+                            <img src="..\..\..\images\supernatural{{social.isSupernatural?'':'-grey'}}.png">
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-thumbnail>
+            <h2>{{social.name}}</h2>
+        </ion-item-sliding>
+    </ion-list>
+    <ion-list *ngSwitchCase="'exotic'">
+        <ion-item-sliding *ngFor="let exotic of exotics">
+            <ion-thumbnail item-start>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col col-4 style="text-align: center">
+                            <img src="..\..\..\images\mental{{exotic.isMental?'':'-grey'}}.png">
+                        </ion-col>
+                        <ion-col col-4 style="text-align: center">
+                            <img src="..\..\..\images\physical{{exotic.isPhysical?'':'-grey'}}.png">
+                        </ion-col>
+                        <ion-col col-4 style="text-align: center">
+                            <img src="..\..\..\images\social{{exotic.isSocial?'':'-grey'}}.png">
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col col-6 style="text-align: center">
+                            <img src="..\..\..\images\exotic.png">
+                        </ion-col>
+                        <ion-col col-6 style="text-align: center">
+                            <img src="..\..\..\images\supernatural{{exotic.isSupernatural?'':'-grey'}}.png">
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-thumbnail>
+            <h2>{{exotic.name}}</h2>
+        </ion-item-sliding>
+    </ion-list>
+    <ion-list *ngSwitchCase="'supernatural'">
+        <ion-item-sliding *ngFor="let supernatural of supernaturals">
+            <ion-thumbnail item-start>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col col-4 style="text-align: center">
+                            <img src="..\..\..\images\mental{{supernatural.isMental?'':'-grey'}}.png">
+                        </ion-col>
+                        <ion-col col-4 style="text-align: center">
+                            <img src="..\..\..\images\physical{{supernatural.isPhysical?'':'-grey'}}.png">
+                        </ion-col>
+                        <ion-col col-4 style="text-align: center">
+                            <img src="..\..\..\images\social{{supernatural.isSocial?'':'-grey'}}.png">
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col col-6 style="text-align: center">
+                            <img src="..\..\..\images\exotic{{supernatural.isExotic?'':'-grey'}}.png">
+                        </ion-col>
+                        <ion-col col-6 style="text-align: center">
+                            <img src="..\..\..\images\supernatural.png">
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-thumbnail>
+            <h2>{{supernatural.name}}</h2>
+        </ion-item-sliding>
+    </ion-list>
+    <ion-list *ngSwitchCase="'mundane'">
+        <ion-item-sliding *ngFor="let mundane of mundanes">
+            <ion-thumbnail item-start>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col col-4 style="text-align: center">
+                            <img src="..\..\..\images\mental-grey.png">
+                        </ion-col>
+                        <ion-col col-4 style="text-align: center">
+                            <img src="..\..\..\images\physical-grey.png">
+                        </ion-col>
+                        <ion-col col-4 style="text-align: center">
+                            <img src="..\..\..\images\social-grey.png">
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col col-6 style="text-align: center">
+                            <img src="..\..\..\images\exotic-grey.png">
+                        </ion-col>
+                        <ion-col col-6 style="text-align: center">
+                            <img src="..\..\..\images\supernatural-grey.png">
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-thumbnail>
+            <h2>{{supernatural.name}}</h2>
+        </ion-item-sliding>
+    </ion-list>
+</div>
