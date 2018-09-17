@@ -3,8 +3,7 @@ import { NavController } from 'ionic-angular';
 import { CharacterFeaturesPage } from '../character-features/character-features';
 import { TabsControllerPage } from '../tabs-controller/tabs-controller';
 import { Character } from '../../../models/Character';
-import { Advantage, AdvantageProvider } from '../../../models/Advantage';
-import { DatabaseProvider } from '../../providers/database/database';
+import { Advantage } from '../../../models/Advantage';
 
 @Component({
   selector: 'page-gurps-manager',
@@ -14,11 +13,7 @@ import { DatabaseProvider } from '../../providers/database/database';
 
 export class GurpsManagerPage {
   advantages: Advantage[] = []
-  constructor(public navCtrl: NavController, public dbProvider: DatabaseProvider) {
-    new AdvantageProvider(dbProvider).getAll()
-      .then((result: any) => {
-        console.log("Result:" + result)
-      });
+  constructor(public navCtrl: NavController) {
   }
 
   goToCharacterFeatures() {

@@ -19,9 +19,8 @@ import { CharacterResumePage } from '../pages/character-resume/character-resume'
 import { CharacterSkillsPage } from '../pages/character-skills/character-skills';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
-import { SQLite } from '@ionic-native/sqlite'
-import { DatabaseProvider } from '../providers/database/database';
+import { HttpModule } from '@angular/http';
+import { ModalDisadvantages } from '../pages/modal-disadvantages/modal-disadvantages';
 //Lista de Providers (DAOs) criados
 
 @NgModule({
@@ -41,10 +40,12 @@ import { DatabaseProvider } from '../providers/database/database';
     CharacterLanguagesPage,
     CharacterAdvantagesPage,
     CharacterDisadvantagesPage,
-    CharacterResumePage
+    CharacterResumePage,
+    ModalDisadvantages
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -64,15 +65,13 @@ import { DatabaseProvider } from '../providers/database/database';
     CharacterLanguagesPage,
     CharacterAdvantagesPage,
     CharacterDisadvantagesPage,
-    CharacterResumePage
+    CharacterResumePage,
+    ModalDisadvantages
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    SQLite,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    SQLite,
-    DatabaseProvider
   ]
 })
 export class AppModule {}

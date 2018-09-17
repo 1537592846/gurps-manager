@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { NavParams } from 'ionic-angular';
 import { Character } from '../../../models/Character';
-import { AdvantageProvider } from '../../../models/Advantage';
-import { DatabaseProvider } from '../../providers/database/database';
 
 @Component({
   selector: 'page-extras',
@@ -15,14 +13,9 @@ export class ExtrasPage {
   dodge: number;
   char: Character;
 
-  constructor(public navParams: NavParams,public dbProvider:DatabaseProvider) {
+  constructor(public navParams: NavParams) {
     //Getting data
     this.char = navParams.data;
-    new AdvantageProvider(dbProvider).getAll()
-      .then((result: any) => {
-        console.log("Result:" + result)
-        this.char.advantages=result;
-      });
   }
   ionViewWillEnter() {
     this.current_carry_category = this.getCharCarryCategory();

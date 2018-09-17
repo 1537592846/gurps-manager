@@ -1,54 +1,76 @@
+<style>
+    .headerImage {
+        height: 6ex;
+        width: 6ex;
+    }
+.gridImage{
+    height: 3ex;
+    width: 3ex;
+}
+.gridGrayImage{
+    height: 3ex;
+    width: 3ex;
+   opacity: 0.25;
+}
+</style>
+
+<html style="background:white">
 <div padding>
-    <ion-segment [(ngModel)]="advantages">
-            <ion-segment-button value="mental" onclick="updateMental()">
-                <img src="..\..\..\images\mental.png"> Mental
-            </ion-segment-button>
-            <ion-segment-button value="physical" onclick="updatePhysical()">
-                <img src="..\..\..\images\physical.png"> Physical
-            </ion-segment-button>
-            <ion-segment-button value="social" onclick="updateSocial()">
-                <img src="..\..\..\images\social.png"> Social
-            </ion-segment-button>
-            <ion-segment-button value="exotic" onclick="updateExotic()">
-                <img src="..\..\..\images\exotic.png"> Exotic
-            </ion-segment-button>
-            <ion-segment-button value="supernatural" onclick="updateSupernatural()">
-                <img src="..\..\..\images\supernatural.png"> Supernatural
-            </ion-segment-button>
-            <ion-segment-button value="mundane" onclick="updateMundane()">
-                <img src="..\..\..\images\mundane.png"> Mundane
-            </ion-segment-button>
+    <ion-segment [(ngModel)]="disadvantages">
+        <ion-segment-button value="mental" on-click="updateMental()">
+            <img class="headerImage" src="../../assets/imgs/mental.png">
+        </ion-segment-button>
+        <ion-segment-button value="physical" on-click="updatePhysical()">
+            <img class="headerImage" src="../../assets/imgs/physical.png">
+        </ion-segment-button>
+        <ion-segment-button value="social" on-click="updateSocial()">
+            <img class="headerImage" src="../../assets/imgs/social.png">
+        </ion-segment-button>
+        <ion-segment-button value="exotic" on-click="updateExotic()">
+            <img class="headerImage" src="../../assets/imgs/exotic.png">
+        </ion-segment-button>
+        <ion-segment-button value="supernatural" on-click="updateSupernatural()">
+            <img class="headerImage" src="../../assets/imgs/supernatural.png">
+        </ion-segment-button>
+        <ion-segment-button value="mundane" on-click="updateMundane()">
+            <img class="headerImage" src="../../assets/imgs/mundane.png">
+        </ion-segment-button>
     </ion-segment>
 </div>
 
-<div [ngSwitch]="advantages">
+<div [ngSwitch]="disadvantages">
     <ion-list *ngSwitchCase="'mental'">
-        <ion-item-sliding *ngFor="let mental of mentals">
+        <ion-item *ngFor="let mental of mentals">
             <ion-thumbnail item-start>
                 <ion-grid>
                     <ion-row>
                         <ion-col col-4 style="text-align: center">
-                            <img src="..\..\..\images\mental.png">
+                            <img class="gridGrayImage" src="../../assets/imgs/mental.png">
                         </ion-col>
                         <ion-col col-4 style="text-align: center">
-                            <img src="..\..\..\images\physical{{mental.isPhysical()?'':'-grey'}}.png">
+                            <img class="gridImage" src="../../assets/imgs/physical.png">
                         </ion-col>
                         <ion-col col-4 style="text-align: center">
-                            <img src="..\..\..\images\social{{mental.isSocial?'':'-grey'}}.png">
+                            <img class="gridGrayImage" src="../../assets/imgs/social.png">
                         </ion-col>
                     </ion-row>
                     <ion-row>
-                        <ion-col col-6 style="text-align: center">
-                            <img src="..\..\..\images\exotic{{mental.isExotic?'':'-grey'}}.png">
+                        <ion-col col-4 style="text-align: center">
+                            <img class="gridGrayImage"  src="../../assets/imgs/exotic.png">
                         </ion-col>
-                        <ion-col col-6 style="text-align: center">
-                            <img src="..\..\..\images\supernatural{{mental.isSupernatural?'':'-grey'}}.png">
+                        <ion-col col-4 style="text-align: center">
+                            <img class="gridGrayImage"  src="../../assets/imgs/supernatural.png">
+                        </ion-col>
+                        <ion-col col-4 style="text-align: center">
+                            <img class="gridImage" src="../../assets/imgs/mundane.png">
                         </ion-col>
                     </ion-row>
                 </ion-grid>
             </ion-thumbnail>
             <h2>{{mental.name}}</h2>
-        </ion-item-sliding>
+            <p>{{mental.description}}</p>
+            <button ion-button clear item-end on-click="returnData(mental)">Add</button>
+        </ion-item>
     </ion-list>
     <ion-list *ngSwitchCase="'physical'">
         <ion-item-sliding *ngFor="let physical of physicals">
@@ -191,3 +213,5 @@
         </ion-item-sliding>
     </ion-list>
 </div>
+
+</html>

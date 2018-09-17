@@ -2,7 +2,11 @@
   <ion-navbar>
     <ion-title>
       Character Disadvantages
-    </ion-title>
+    </ion-title>    
+    <ion-note>
+      Current Points: {{new_char.current_points}}
+      <br> Max Points: {{new_char.max_points}}
+    </ion-note>
   </ion-navbar>
 </ion-header>
 <ion-content padding id="characterDisadvantages">
@@ -29,7 +33,7 @@
               <ion-note item-right>Swipe left</ion-note>
             </ion-item>
             <ion-item-options side="right">
-              <button ion-button color="secondary" on-click="addDisadvantage()">
+              <button ion-button color="secondary" on-click="openModal()">
                 Add
               </button>
             </ion-item-options>

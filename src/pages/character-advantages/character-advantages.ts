@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { CharacterDisadvantagesPage } from '../character-disadvantages/character-disadvantages';
 import { Character } from '../../../models/Character';
 import { Advantage } from '../../../models/Advantage';
 import { CharacterStatusPage } from '../character-status/character-status';
@@ -28,7 +27,15 @@ export class CharacterAdvantagesPage {
     }
   }
   addAdvantage(){
-    var advantage={ id: 3, name: "BEST fit", description: "No more fit than this", formula: "Health test:+5;Knockout test:+8" }
+    var advantage=new Advantage();
+    advantage.id=3
+    advantage.name="Well Fit"
+    advantage.description="A well fitted body"
+    advantage.cost=5
+    advantage.level=1
+    advantage.levelCap=1
+    advantage.types=["mundane","physical"]
+    advantage.formula="{health_test:1,knockout_test:2}"
     this.new_char.advantages.push(advantage);
   }
 }

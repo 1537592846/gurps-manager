@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { Character } from '../../../models/Character';
 import { Disadvantage } from '../../../models/Disadvantage';
 import { CharacterAdvantagesPage } from '../character-advantages/character-advantages';
+import { ModalDisadvantages } from '../modal-disadvantages/modal-disadvantages';
 
 @Component({
   selector: 'page-character-disadvantages',
@@ -11,10 +12,14 @@ import { CharacterAdvantagesPage } from '../character-advantages/character-advan
 export class CharacterDisadvantagesPage {
 
   new_char: Character;
+  profileModal:any;
 
-  constructor(public navCtrl: NavController,public navParams: NavParams) {
+  constructor(public navCtrl: NavController,public navParams: NavParams,public modalCtrl: ModalController) {
     //Getting data
     this.new_char = this.navParams.get('new_char');
+
+    //Setting Modal Page
+    this.profileModal=this.modalCtrl.create(ModalDisadvantages)
   }
   goToCharacterAdvantages() {
     this.navCtrl.push(CharacterAdvantagesPage,{new_char:this.new_char});
@@ -23,11 +28,16 @@ export class CharacterDisadvantagesPage {
     for(var i = 0; i < this.new_char.disadvantages.length; i++) { 
       if(this.new_char.disadvantages[i] == disadvantage){
         this.new_char.disadvantages.splice(i, 1);
+        this.new_char.current_points-=disadvantage.cost
       } 
     }
   }
-  addDisadvantage(){
-    var disadvantage={ id: 3, name: "BEST fit", description: "No more fit than this", formula: "Health test:+5;Knockout test:+8" }
-    this.new_char.disadvantages.push(disadvantage);
+  openModal(){
+    this.profileModal.present();
+    this.profileModal.onDidDismiss(disadvantage=>{
+      this.new_char.disadvantages.push(disadvantage)
+      this.new_char.current_points+=disadvantage.cost
+      console.log(disadvantage)
+    })
   }
 }
