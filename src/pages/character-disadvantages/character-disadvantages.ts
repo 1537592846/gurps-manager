@@ -12,32 +12,33 @@ import { ModalDisadvantages } from '../modal-disadvantages/modal-disadvantages';
 export class CharacterDisadvantagesPage {
 
   new_char: Character;
-  profileModal:any;
+  profileModal: any;
 
-  constructor(public navCtrl: NavController,public navParams: NavParams,public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
     //Getting data
     this.new_char = this.navParams.get('new_char');
 
     //Setting Modal Page
-    this.profileModal=this.modalCtrl.create(ModalDisadvantages)
+    this.profileModal = this.modalCtrl.create(ModalDisadvantages)
   }
   goToCharacterAdvantages() {
-    this.navCtrl.push(CharacterAdvantagesPage,{new_char:this.new_char});
+    this.navCtrl.push(CharacterAdvantagesPage, { new_char: this.new_char });
   }
-  removeDisadvantage(disadvantage:Disadvantage){
-    for(var i = 0; i < this.new_char.disadvantages.length; i++) { 
-      if(this.new_char.disadvantages[i] == disadvantage){
+  removeDisadvantage(disadvantage: Disadvantage) {
+    for (var i = 0; i < this.new_char.disadvantages.length; i++) {
+      if (this.new_char.disadvantages[i] == disadvantage) {
         this.new_char.disadvantages.splice(i, 1);
-        this.new_char.current_points-=disadvantage.cost
-      } 
+        this.new_char.current_points -= disadvantage.cost
+      }
     }
   }
-  openModal(){
+  openModal() {
     this.profileModal.present();
-    this.profileModal.onDidDismiss(disadvantage=>{
-      this.new_char.disadvantages.push(disadvantage)
-      this.new_char.current_points+=disadvantage.cost
-      console.log(disadvantage)
+    this.profileModal.onDidDismiss(disadvantage => {
+      if (disadvantage != null) {
+        this.new_char.disadvantages.push(disadvantage)
+        this.new_char.current_points += disadvantage.cost
+      }
     })
   }
 }

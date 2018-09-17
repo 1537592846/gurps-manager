@@ -20,7 +20,6 @@ export class ModalDisadvantages {
   updateMental(){
     if (this.mentals.length == 0) {
       var disadvantage=new Disadvantage()
-      console.log(disadvantage)
       this.mentals.push(disadvantage)
       disadvantage.types=["social","mental","exotic"]
       this.mentals.push(disadvantage)
