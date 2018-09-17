@@ -3,15 +3,17 @@
         height: 6ex;
         width: 6ex;
     }
-.gridImage{
-    height: 3ex;
-    width: 3ex;
-}
-.gridGrayImage{
-    height: 3ex;
-    width: 3ex;
-   opacity: 0.25;
-}
+
+    .gridImage {
+        height: 3ex;
+        width: 3ex;
+    }
+
+    .gridGrayImage {
+        height: 3ex;
+        width: 3ex;
+        opacity: 0.25;
+    }
 </style>
 
 <html style="background:white">
@@ -45,25 +47,44 @@
                 <ion-grid>
                     <ion-row>
                         <ion-col col-4 style="text-align: center">
-                            <img class="gridGrayImage" src="../../assets/imgs/mental.png">
+                            <img class="gridImage" src="../../assets/imgs/mental.png">
                         </ion-col>
                         <ion-col col-4 style="text-align: center">
-                            <img class="gridImage" src="../../assets/imgs/physical.png">
+                            <div *ngIf="mental.isPhysical();else greyPhysical">
+                                <img class="gridImage" src="../../assets/imgs/physical.png">
+                            </div>
+                            <ng-template #greyPhysical>
+                                <img class="gridGreyImage" src="../../assets/imgs/physical.png">
+                            </ng-template>
                         </ion-col>
                         <ion-col col-4 style="text-align: center">
-                            <img class="gridGrayImage" src="../../assets/imgs/social.png">
+                            <div *ngIf="mental.isSocial();else greySocial">
+                                <img class="gridImage" src="../../assets/imgs/social.png">
+                            </div>
+                            <ng-template #greySocial>
+                                <img class="gridGreyImage" src="../../assets/imgs/social.png">
+                            </ng-template>
                         </ion-col>
                     </ion-row>
                     <ion-row>
-                        <ion-col col-4 style="text-align: center">
-                            <img class="gridGrayImage"  src="../../assets/imgs/exotic.png">
-                        </ion-col>
-                        <ion-col col-4 style="text-align: center">
-                            <img class="gridGrayImage"  src="../../assets/imgs/supernatural.png">
-                        </ion-col>
-                        <ion-col col-4 style="text-align: center">
+                        <div *ngIf="mental.isExotic();else greyExotic">
+                            <img class="gridImage" src="../../assets/imgs/exotic.png">
+                        </div>
+                        <ng-template #greyExotic>
+                            <img class="gridGreyImage" src="../../assets/imgs/exotic.png">
+                        </ng-template>
+                        <div *ngIf="mental.isSupernatural();else greySupernatural">
+                            <img class="gridImage" src="../../assets/imgs/supernatural.png">
+                        </div>
+                        <ng-template #greySupernatural>
+                            <img class="gridGreyImage" src="../../assets/imgs/supernatural.png">
+                        </ng-template>
+                        <div *ngIf="mental.isMundane();else greyMundane">
                             <img class="gridImage" src="../../assets/imgs/mundane.png">
-                        </ion-col>
+                        </div>
+                        <ng-template #greyMundane>
+                            <img class="gridGreyImage" src="../../assets/imgs/mundane.png">
+                        </ng-template>
                     </ion-row>
                 </ion-grid>
             </ion-thumbnail>
