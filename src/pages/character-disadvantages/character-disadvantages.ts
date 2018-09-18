@@ -41,4 +41,12 @@ export class CharacterDisadvantagesPage {
       }
     })
   }
+  addDisadvantageLevel(disadvantage:Disadvantage){
+    var index=this.new_char.disadvantages.indexOf(disadvantage);
+    this.new_char.disadvantages[index].level++;
+  }
+  removeDisadvantageLevel(disadvantage:Disadvantage){
+    var index=this.new_char.disadvantages.indexOf(disadvantage);
+    this.new_char.disadvantages[index].level--;
+  }
 }

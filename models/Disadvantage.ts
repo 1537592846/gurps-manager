@@ -10,14 +10,6 @@ export class Disadvantage {
   public formula: string;
 
   constructor() {
-    this.id = 3,
-      this.name = "Bad Fit"
-    this.description = "A bad fitted body"
-    this.cost = 5
-    this.level = 1
-    this.levelCap = 1
-    this.types = ["mundane", "physical"]
-    this.formula = "{health_test:-1,knockout_test:-1}"
   }
 
   isMental():boolean {

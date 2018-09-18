@@ -2,7 +2,7 @@
   <ion-navbar>
     <ion-title>
       Character Disadvantages
-    </ion-title>    
+    </ion-title>
     <ion-note>
       Current Points: {{new_char.current_points}}
       <br> Max Points: {{new_char.max_points}}
@@ -12,33 +12,50 @@
 <ion-content padding id="characterDisadvantages">
   <form id="characterDisadvantages-form">
     <ion-list id="characterDisadvantages-list">
-        <ion-item-sliding *ngFor="let disadvantage of new_char.disadvantages">
-            <!-- Character disadvantages -->
-            <ion-item color="none">
-              {{disadvantage.name}}
-              <br>
-              <ion-note>{{disadvantage.description}}</ion-note>
-              <ion-note item-right>Swipe left</ion-note>
-            </ion-item>
-            <ion-item-options side="right">
-              <button ion-button color="danger" on-click="removeDisadvantage(disadvantage)">
-                Remove
-              </button>
-            </ion-item-options>
-          </ion-item-sliding>
-          <!-- Add a new disadvantage to the list -->
-          <ion-item-sliding>
-            <ion-item color="none" id="characterDisadvantage-list-item">
-              Add Disadvantage
-              <ion-note item-right>Swipe left</ion-note>
-            </ion-item>
-            <ion-item-options side="right">
-              <button ion-button color="secondary" on-click="openModal()">
-                Add
-              </button>
-            </ion-item-options>
-          </ion-item-sliding>
-      </ion-list>
+      <ion-item-sliding *ngFor="let disadvantage of new_char.disadvantages">
+        <!-- Character disadvantages -->
+        <ion-item color="none">
+          {{disadvantage.name}}
+          <br>
+          <ion-note>{{disadvantage.description}}</ion-note>
+          <ion-note item-right>Swipe left</ion-note>
+        </ion-item>
+        <ion-item-options side="right">
+          <button *ngIf="disadvantage.level>1" ion-button color="danger" on-click="removeDisadvantageLevel(disadvantage)">
+            <ion-icon name="remove"></ion-icon>
+          </button>
+          <button *ngIf="disadvantage.level==1" disabled ion-button color="danger" on-click="removeDisadvantageLevel(disadvantage)">
+              <ion-icon name="remove"></ion-icon>
+          </button>
+          <button ion-button disabled color="light">
+            <label style="width:10ex">
+              {{disadvantage.level}}
+            </label>
+          </button>
+          <button *ngIf="disadvantage.level<disadvantage.levelCap" ion-button color="secondary" on-click="addDisadvantageLevel(disadvantage)">
+              <ion-icon name="add"></ion-icon>
+            </button>
+            <button *ngIf="disadvantage.level==disadvantage.levelCap" disabled ion-button color="secondary" on-click="addDisadvantageLevel(disadvantage)">
+                <ion-icon name="add"></ion-icon>
+            </button>
+          <button ion-button color="danger" on-click="removeDisadvantage(disadvantage)">
+            Remove
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+      <!-- Add a new disadvantage to the list -->
+      <ion-item-sliding>
+        <ion-item color="none" id="characterDisadvantage-list-item">
+          Add Disadvantage
+          <ion-note item-right>Swipe left</ion-note>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button color="secondary" on-click="openModal()">
+            Add
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
     <button id="characterDisadvantages-button" ion-button color="stable" block on-click="goToCharacterAdvantages()">
       Proceed
     </button>
