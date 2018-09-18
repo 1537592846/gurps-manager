@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { CharacterAdvantagesPage } from '../character-advantages/character-advantages';
 import { Character } from '../../../models/Character';
 import { Skill } from '../../../models/Skill';
 import { CharacterLanguagesPage } from '../character-languages/character-languages';

@@ -49,42 +49,38 @@
                         <ion-col col-4 style="text-align: center">
                             <img class="gridImage" src="../../assets/imgs/mental.png">
                         </ion-col>
-                        <ion-col col-4 style="text-align: center">
-                            <div *ngIf="mental.isPhysical();else greyPhysical">
-                                <img class="gridImage" src="../../assets/imgs/physical.png">
-                            </div>
-                            <ng-template #greyPhysical>
-                                <img class="gridGreyImage" src="../../assets/imgs/physical.png">
-                            </ng-template>
+                        <ion-col *ngIf="mental.isPhysical()" col-4 style="text-align: center">
+                            <img class="gridImage" src="../../assets/imgs/physical.png">
                         </ion-col>
-                        <ion-col col-4 style="text-align: center">
-                            <div *ngIf="mental.isSocial();else greySocial">
-                                <img class="gridImage" src="../../assets/imgs/social.png">
-                            </div>
-                            <ng-template #greySocial>
-                                <img class="gridGreyImage" src="../../assets/imgs/social.png">
-                            </ng-template>
+                        <ion-col *ngIf="!mental.isPhysical()" col-4 style="text-align: center">
+                            <img class="gridGrayImage" src="../../assets/imgs/physical.png">
+                        </ion-col>
+                        <ion-col *ngIf="mental.isSocial()" col-4 style="text-align: center">
+                            <img class="gridImage" src="../../assets/imgs/social.png">
+                        </ion-col>
+                        <ion-col *ngIf="!mental.isSocial()" col-4 style="text-align: center">
+                            <img class="gridGrayImage" src="../../assets/imgs/social.png">
                         </ion-col>
                     </ion-row>
                     <ion-row>
-                        <div *ngIf="mental.isExotic();else greyExotic">
+                        <ion-col *ngIf="mental.isExotic()" col-4 style="text-align: center">
                             <img class="gridImage" src="../../assets/imgs/exotic.png">
-                        </div>
-                        <ng-template #greyExotic>
-                            <img class="gridGreyImage" src="../../assets/imgs/exotic.png">
-                        </ng-template>
-                        <div *ngIf="mental.isSupernatural();else greySupernatural">
+                        </ion-col>
+                        <ion-col *ngIf="!mental.isExotic()" col-4 style="text-align: center">
+                            <img class="gridGrayImage" src="../../assets/imgs/exotic.png">
+                        </ion-col>
+                        <ion-col *ngIf="mental.isSupernatural()" col-4 style="text-align: center">
                             <img class="gridImage" src="../../assets/imgs/supernatural.png">
-                        </div>
-                        <ng-template #greySupernatural>
-                            <img class="gridGreyImage" src="../../assets/imgs/supernatural.png">
-                        </ng-template>
-                        <div *ngIf="mental.isMundane();else greyMundane">
+                        </ion-col>
+                        <ion-col *ngIf="!mental.isSupernatural()" col-4 style="text-align: center">
+                            <img class="gridGrayImage" src="../../assets/imgs/supernatural.png">
+                        </ion-col>
+                        <ion-col *ngIf="mental.isMundane()" col-4 style="text-align: center">
                             <img class="gridImage" src="../../assets/imgs/mundane.png">
-                        </div>
-                        <ng-template #greyMundane>
-                            <img class="gridGreyImage" src="../../assets/imgs/mundane.png">
-                        </ng-template>
+                        </ion-col>
+                        <ion-col *ngIf="!mental.isMundane()" col-4 style="text-align: center">
+                            <img class="gridGrayImage" src="../../assets/imgs/mundane.png">
+                        </ion-col>
                     </ion-row>
                 </ion-grid>
             </ion-thumbnail>
