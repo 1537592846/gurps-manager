@@ -21,6 +21,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from '@angular/http';
 import { ModalDisadvantages } from '../pages/modal-disadvantages/modal-disadvantages';
+import { DataProvider } from '../providers/data/data';
 //Lista de Providers (DAOs) criados
 
 @NgModule({
@@ -72,6 +73,7 @@ import { ModalDisadvantages } from '../pages/modal-disadvantages/modal-disadvant
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    DataProvider,
   ]
 })
 export class AppModule {}

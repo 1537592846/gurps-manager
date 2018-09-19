@@ -1,6 +1,7 @@
 import { Disadvantage } from '../../../models/Disadvantage';
 import { ViewController, NavParams } from 'ionic-angular';
 import { Component } from '@angular/core';
+import { DataProvider } from '../../providers/data/data';
 
 @Component({
   selector: 'modal-disadvantages.html',
@@ -15,34 +16,14 @@ export class ModalDisadvantages {
   mundanes: Disadvantage[] = []
   disadvantages: Disadvantage[] = []
 
-  constructor(public viewCtrl: ViewController, params: NavParams) {
+  constructor(public viewCtrl: ViewController, params: NavParams, public dataProvider:DataProvider) {
     this.disadvantages=(params.get('disadvantages'))
   }
 
   updateMental() {
     if (this.mentals.length == 0) {
-      var disadvantage = new Disadvantage()
-
-      disadvantage.id = 1
-      disadvantage.name = "Moron"
-      disadvantage.description = "Stupidity"
-      disadvantage.cost = 10
-      disadvantage.level = 1
-      disadvantage.levelCap = 1
-      disadvantage.types = ["mental"]
-      disadvantage.formula = "{intelligence_test:-1}"
-      this.mentals.push(disadvantage)
-      disadvantage = new Disadvantage()
-
-      disadvantage.id = 2
-      disadvantage.name = "Schizophrenia"
-      disadvantage.description = "Disease"
-      disadvantage.cost = 5
-      disadvantage.level = 1
-      disadvantage.levelCap = 3
-      disadvantage.types = ["mental", "supernatural"]
-      disadvantage.formula = "{}"
-      this.mentals.push(disadvantage)
+      var disadvantages=this.dataProvider.getDisadvantages()
+      console.log(disadvantages)
     }
   }
 
