@@ -17,8 +17,6 @@ export class ModalDisadvantages {
 
   constructor(public viewCtrl: ViewController, params: NavParams) {
     this.disadvantages=(params.get('disadvantages'))
-    console.clear()
-    console.log(this)
   }
 
   updateMental() {

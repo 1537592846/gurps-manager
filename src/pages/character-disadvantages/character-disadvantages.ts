@@ -25,7 +25,7 @@ export class CharacterDisadvantagesPage {
     for (var i = 0; i < this.new_char.disadvantages.length; i++) {
       if (this.new_char.disadvantages[i] == disadvantage) {
         this.new_char.disadvantages.splice(i, 1);
-        this.new_char.current_points -= disadvantage.cost
+        this.new_char.current_points += disadvantage.cost*disadvantage.level
       }
     }
   }
@@ -35,16 +35,18 @@ export class CharacterDisadvantagesPage {
     this.profileModal.onDidDismiss(disadvantage => {
       if (disadvantage != null) {
         this.new_char.disadvantages.push(disadvantage)
-        this.new_char.current_points += disadvantage.cost
+        this.new_char.current_points -= disadvantage.cost
       }
     })
   }
   addDisadvantageLevel(disadvantage:Disadvantage){
     var index=this.new_char.disadvantages.indexOf(disadvantage);
     this.new_char.disadvantages[index].level++;
+    this.new_char.current_points -= disadvantage.cost
   }
   removeDisadvantageLevel(disadvantage:Disadvantage){
     var index=this.new_char.disadvantages.indexOf(disadvantage);
     this.new_char.disadvantages[index].level--;
+    this.new_char.current_points += disadvantage.cost
   }
 }
