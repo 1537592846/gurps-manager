@@ -17,9 +17,6 @@ export class CharacterDisadvantagesPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
     //Getting data
     this.new_char = this.navParams.get('new_char');
-
-    //Setting Modal Page
-    this.profileModal = this.modalCtrl.create(ModalDisadvantages)
   }
   goToCharacterAdvantages() {
     this.navCtrl.push(CharacterAdvantagesPage, { new_char: this.new_char });
@@ -33,6 +30,7 @@ export class CharacterDisadvantagesPage {
     }
   }
   openModal() {
+    this.profileModal = this.modalCtrl.create(ModalDisadvantages,{disadvantages:this.new_char.disadvantages})
     this.profileModal.present();
     this.profileModal.onDidDismiss(disadvantage => {
       if (disadvantage != null) {
