@@ -1,5 +1,5 @@
 import { Disadvantage } from '../../../models/Disadvantage';
-import { ViewController } from 'ionic-angular';
+import { ViewController, NavParams } from 'ionic-angular';
 import { Component } from '@angular/core';
 
 @Component({
@@ -13,8 +13,12 @@ export class ModalDisadvantages {
   exotics: Disadvantage[] = []
   supernaturals: Disadvantage[] = []
   mundanes: Disadvantage[] = []
+  disadvantages: Disadvantage[] = []
 
-  constructor(public viewCtrl: ViewController) {
+  constructor(public viewCtrl: ViewController, params: NavParams) {
+    this.disadvantages=(params.get('disadvantages'))
+    console.clear()
+    console.log(this)
   }
 
   updateMental() {
@@ -30,7 +34,7 @@ export class ModalDisadvantages {
       disadvantage.types = ["mental"]
       disadvantage.formula = "{intelligence_test:-1}"
       this.mentals.push(disadvantage)
-      disadvantage=new Disadvantage()
+      disadvantage = new Disadvantage()
 
       disadvantage.id = 2
       disadvantage.name = "Schizophrenia"
@@ -57,7 +61,7 @@ export class ModalDisadvantages {
       disadvantage.types = ["mundane", "physical"]
       disadvantage.formula = "{health_test:-1,knockout_test:-1}"
       this.physicals.push(disadvantage)
-      disadvantage=new Disadvantage()
+      disadvantage = new Disadvantage()
 
       disadvantage.id = 4
       disadvantage.name = "Handless"
@@ -81,10 +85,10 @@ export class ModalDisadvantages {
       disadvantage.cost = 5
       disadvantage.level = 1
       disadvantage.levelCap = 1
-      disadvantage.types = ["social","mental","physical"]
+      disadvantage.types = ["social", "mental", "physical"]
       disadvantage.formula = "{}"
       this.socials.push(disadvantage)
-      disadvantage=new Disadvantage()
+      disadvantage = new Disadvantage()
 
       disadvantage.id = 6
       disadvantage.name = "Hiki-NEET"
@@ -108,18 +112,18 @@ export class ModalDisadvantages {
       disadvantage.cost = 5
       disadvantage.level = 1
       disadvantage.levelCap = 1
-      disadvantage.types = ["social","mental","exotic"]
+      disadvantage.types = ["social", "mental", "exotic"]
       disadvantage.formula = "{}"
       this.exotics.push(disadvantage)
 
-      disadvantage=new Disadvantage()
+      disadvantage = new Disadvantage()
       disadvantage.id = 8
       disadvantage.name = "Painless"
       disadvantage.description = "No pain response"
       disadvantage.cost = 5
       disadvantage.level = 1
       disadvantage.levelCap = 1
-      disadvantage.types = ["exotic","physical"]
+      disadvantage.types = ["exotic", "physical"]
       disadvantage.formula = "{}"
       this.exotics.push(disadvantage)
     }
@@ -135,10 +139,10 @@ export class ModalDisadvantages {
       disadvantage.cost = 5
       disadvantage.level = 1
       disadvantage.levelCap = Infinity
-      disadvantage.types = ["supernatural","exotic","physical"]
+      disadvantage.types = ["supernatural", "exotic", "physical"]
       disadvantage.formula = "{}"
       this.supernaturals.push(disadvantage)
-      disadvantage=new Disadvantage()
+      disadvantage = new Disadvantage()
 
       disadvantage.id = 10
       disadvantage.name = "Extra head"
@@ -146,7 +150,7 @@ export class ModalDisadvantages {
       disadvantage.cost = 5
       disadvantage.level = 1
       disadvantage.levelCap = 3
-      disadvantage.types = ["supernatural","exotic","physical"]
+      disadvantage.types = ["supernatural", "exotic", "physical"]
       disadvantage.formula = "{}"
       this.supernaturals.push(disadvantage)
     }
@@ -162,7 +166,7 @@ export class ModalDisadvantages {
       disadvantage.cost = 5
       disadvantage.level = 1
       disadvantage.levelCap = 10
-      disadvantage.types = ["physical","mundane"]
+      disadvantage.types = ["physical", "mundane"]
       disadvantage.formula = "{}"
       this.mundanes.push(disadvantage)
     }
