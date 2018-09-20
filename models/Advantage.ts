@@ -12,27 +12,46 @@ export class Advantage {
   constructor() {
   }
 
-  isMental():boolean {
-    return this.types.find(x => x == "mental") != undefined
+  isMental(): boolean {
+    return this.types.find(x => x == "Mental") != undefined
   }
 
   isPhysical(): boolean {
-    return this.types.find(x => x == "physical") != undefined
+    return this.types.find(x => x == "Physical") != undefined
   }
 
   isSocial(): boolean {
-    return this.types.find(x => x == "social") != undefined
+    return this.types.find(x => x == "Social") != undefined
   }
 
   isExotic(): boolean {
-    return this.types.find(x => x == "exotic") != undefined
+    return this.types.find(x => x == "Exotic") != undefined
   }
 
   isSupernatural(): boolean {
-    return this.types.find(x => x == "supernatural") != undefined
+    return this.types.find(x => x == "Supernatural") != undefined
   }
 
   isMundane(): boolean {
-    return this.types.find(x => x == "mundane") != undefined
+    return this.types.find(x => x == "Mundane") != undefined
   }
+}
+
+export interface AdvantageInterface {
+  DBId: DBId;
+  Id: number;
+  Name: string;
+  Description: string;
+  Types?: (string)[] | null;
+  Cost: number;
+  Level: number;
+  LevelCap: number;
+  Formula: string;
+}
+export interface DBId {
+  Timestamp: number;
+  Machine: number;
+  Pid: number;
+  Increment: number;
+  CreationTime: string;
 }

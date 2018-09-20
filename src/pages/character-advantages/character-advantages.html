@@ -3,6 +3,10 @@
     <ion-title>
       Character Advantages
     </ion-title>
+    <ion-note>
+      Current Points: {{new_char.current_points}}
+      <br> Max Points: {{new_char.max_points}}
+    </ion-note>
   </ion-navbar>
 </ion-header>
 <ion-content padding id="characterAdvantages">
@@ -17,6 +21,23 @@
           <ion-note item-right>Swipe left</ion-note>
         </ion-item>
         <ion-item-options side="right">
+          <button *ngIf="advantage.level>1" ion-button color="danger" on-click="removeAdvantageLevel(advantage)">
+            <ion-icon name="remove"></ion-icon>
+          </button>
+          <button *ngIf="advantage.level==1" disabled ion-button color="danger" on-click="removeAdvantageLevel(advantage)">
+              <ion-icon name="remove"></ion-icon>
+          </button>
+          <button ion-button disabled color="light">
+            <label style="width:10ex">
+              {{advantage.level}}
+            </label>
+          </button>
+          <button *ngIf="advantage.level<advantage.levelCap" ion-button color="secondary" on-click="addAdvantageLevel(advantage)">
+              <ion-icon name="add"></ion-icon>
+            </button>
+            <button *ngIf="advantage.level==advantage.levelCap" disabled ion-button color="secondary" on-click="addAdvantageLevel(advantage)">
+                <ion-icon name="add"></ion-icon>
+            </button>
           <button ion-button color="danger" on-click="removeAdvantage(advantage)">
             Remove
           </button>
@@ -29,14 +50,13 @@
           <ion-note item-right>Swipe left</ion-note>
         </ion-item>
         <ion-item-options side="right">
-          <button ion-button color="secondary" on-click="addAdvantage()">
+          <button ion-button color="secondary" on-click="openModal()">
             Add
           </button>
         </ion-item-options>
       </ion-item-sliding>
-      <!-- End list -->
     </ion-list>
-    <button id="characterAdvantages-button" ion-button color="stable" block on-click="goToCharacterStatus()">
+    <button id="characterAdvantages-button" ion-button color="stable" block on-click="goToCharacterAdvantages()">
       Proceed
     </button>
   </form>

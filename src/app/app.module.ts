@@ -22,6 +22,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from '@angular/http';
 import { ModalDisadvantages } from '../pages/modal-disadvantages/modal-disadvantages';
 import { DataProvider } from '../providers/data/data';
+import { HttpClientModule } from '@angular/common/http';
+import { ModalAdvantages } from '../pages/modal-advantages/modal-advantages';
 //Lista de Providers (DAOs) criados
 
 @NgModule({
@@ -42,11 +44,13 @@ import { DataProvider } from '../providers/data/data';
     CharacterAdvantagesPage,
     CharacterDisadvantagesPage,
     CharacterResumePage,
-    ModalDisadvantages
+    ModalDisadvantages,
+    ModalAdvantages
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -67,7 +71,8 @@ import { DataProvider } from '../providers/data/data';
     CharacterAdvantagesPage,
     CharacterDisadvantagesPage,
     CharacterResumePage,
-    ModalDisadvantages
+    ModalDisadvantages,
+    ModalAdvantages
   ],
   providers: [
     StatusBar,

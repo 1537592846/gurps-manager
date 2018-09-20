@@ -4,6 +4,7 @@ import { Character } from '../../../models/Character';
 import { Disadvantage } from '../../../models/Disadvantage';
 import { CharacterAdvantagesPage } from '../character-advantages/character-advantages';
 import { ModalDisadvantages } from '../modal-disadvantages/modal-disadvantages';
+import { DataProvider } from '../../providers/data/data';
 
 @Component({
   selector: 'page-character-disadvantages',
@@ -34,6 +35,7 @@ export class CharacterDisadvantagesPage {
     this.profileModal.present();
     this.profileModal.onDidDismiss(disadvantage => {
       if (disadvantage != null) {
+        disadvantage.level=1
         this.new_char.disadvantages.push(disadvantage)
         this.new_char.current_points -= disadvantage.cost
       }

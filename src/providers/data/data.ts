@@ -1,12 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Disadvantage } from '../../../models/Disadvantage';
+import { Advantage } from '../../../models/Advantage';
 
-/*
-  Generated class for the DataProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class DataProvider {
   public apiAddress: string = "http://localhost:42862/api/"
@@ -14,12 +10,21 @@ export class DataProvider {
   public retryRequest: number = 3;
 
   constructor(public http: HttpClient) {
-    console.log('Hello DataProvider Provider');
   }
 
   public getDisadvantages() {
     return new Promise(resolve => {
-      this.http.get(this.apiAddress + 'Disadvantages/get').subscribe(data => {
+      this.http.get<Disadvantage[]>(this.apiAddress + 'Disadvantages/get').subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  public getAdvantages() {
+    return new Promise(resolve => {
+      this.http.get<Advantage[]>(this.apiAddress + 'Advantages/get').subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);

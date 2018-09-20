@@ -1,7 +1,8 @@
-import { Disadvantage } from '../../../models/Disadvantage';
+import { Disadvantage, DisadvantageInterface } from '../../../models/Disadvantage';
 import { ViewController, NavParams } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { Jsonp } from '@angular/http';
+import { DataProvider } from '../../providers/data/data';
 
 @Component({
   selector: 'modal-disadvantages.html',
@@ -17,7 +18,9 @@ export class ModalDisadvantages {
   disadvantages: Disadvantage[] = []
   char_disadvantages: Disadvantage[] = []
 
-  constructor(public viewCtrl: ViewController, public params: NavParams) {
+  constructor(public viewCtrl: ViewController, public params: NavParams, public dataProvider: DataProvider) {
+    
+    this.updateDisadvantages()
   }
 
   updateMental() {
@@ -33,7 +36,7 @@ export class ModalDisadvantages {
     }
   }
 
-  updatePhysical() {
+  updatePhysical() {    
     this.updateDisadvantages()
     this.updateCharDisadvantages()
 
@@ -44,8 +47,8 @@ export class ModalDisadvantages {
         }
       }
     }
-  }  
-  
+  }
+
   updateSocial() {
     this.updateDisadvantages()
     this.updateCharDisadvantages()
@@ -58,8 +61,8 @@ export class ModalDisadvantages {
       }
     }
   }
-  
-  
+
+
   updateExotic() {
     this.updateDisadvantages()
     this.updateCharDisadvantages()
@@ -72,8 +75,8 @@ export class ModalDisadvantages {
       }
     }
   }
-  
-  
+
+
   updateSupernatural() {
     this.updateDisadvantages()
     this.updateCharDisadvantages()
@@ -86,8 +89,8 @@ export class ModalDisadvantages {
       }
     }
   }
-  
-  
+
+
   updateMundane() {
     this.updateDisadvantages()
     this.updateCharDisadvantages()
@@ -100,134 +103,31 @@ export class ModalDisadvantages {
       }
     }
   }
-  
+
   updateCharDisadvantages() {
     this.char_disadvantages = this.params.get("disadvantages")
   }
 
   updateDisadvantages() {
-    this.disadvantages = []
-    var disadvantage = new Disadvantage()
-
-    disadvantage.id = 1
-    disadvantage.name = "Mental"
-    disadvantage.description = "A bad fitted body"
-    disadvantage.cost = 5
-    disadvantage.level = 1
-    disadvantage.levelCap = 1
-    disadvantage.types = ["mental"]
-    disadvantage.formula = "{health_test:-1,knockout_test:-1}"
-    this.disadvantages.push(disadvantage)
-    disadvantage = new Disadvantage()
-
-    disadvantage.id = 2
-    disadvantage.name = "Mental2"
-    disadvantage.description = "Lost a hand"
-    disadvantage.cost = 5
-    disadvantage.level = 1
-    disadvantage.levelCap = 2
-    disadvantage.types = ["mental"]
-    disadvantage.formula = "{short_range_weapon:no,long_range_weapon:no}"
-    this.disadvantages.push(disadvantage)
-    disadvantage = new Disadvantage()
-
-    disadvantage.id = 3
-    disadvantage.name = "Bad Fit"
-    disadvantage.description = "A bad fitted body"
-    disadvantage.cost = 5
-    disadvantage.level = 1
-    disadvantage.levelCap = 1
-    disadvantage.types = ["mundane", "physical"]
-    disadvantage.formula = "{health_test:-1,knockout_test:-1}"
-    this.disadvantages.push(disadvantage)
-    disadvantage = new Disadvantage()
-
-    disadvantage.id = 4
-    disadvantage.name = "Handless"
-    disadvantage.description = "Lost a hand"
-    disadvantage.cost = 5
-    disadvantage.level = 1
-    disadvantage.levelCap = 2
-    disadvantage.types = ["physical"]
-    disadvantage.formula = "{short_range_weapon:no,long_range_weapon:no}"
-    this.disadvantages.push(disadvantage)
-    disadvantage = new Disadvantage()
-
-    disadvantage.id = 11
-    disadvantage.name = "Fingerless"
-    disadvantage.description = "Lost a finger"
-    disadvantage.cost = 5
-    disadvantage.level = 1
-    disadvantage.levelCap = 10
-    disadvantage.types = ["physical", "mundane"]
-    disadvantage.formula = "{}"
-    this.disadvantages.push(disadvantage)
-    disadvantage = new Disadvantage()
-
-    disadvantage.id = 9
-    disadvantage.name = "Extra arm"
-    disadvantage.description = "Well, you know, an extra arm"
-    disadvantage.cost = 5
-    disadvantage.level = 1
-    disadvantage.levelCap = Infinity
-    disadvantage.types = ["supernatural", "exotic", "physical"]
-    disadvantage.formula = "{}"
-    this.disadvantages.push(disadvantage)
-    disadvantage = new Disadvantage()
-
-    disadvantage.id = 10
-    disadvantage.name = "Extra head"
-    disadvantage.description = "Well, you know, an extra head"
-    disadvantage.cost = 5
-    disadvantage.level = 1
-    disadvantage.levelCap = 3
-    disadvantage.types = ["supernatural", "exotic", "physical"]
-    disadvantage.formula = "{}"
-    this.disadvantages.push(disadvantage)
-    disadvantage = new Disadvantage()
-
-    disadvantage.id = 7
-    disadvantage.name = "Savant"
-    disadvantage.description = "Closed-off mentally"
-    disadvantage.cost = 5
-    disadvantage.level = 1
-    disadvantage.levelCap = 1
-    disadvantage.types = ["social", "mental", "exotic"]
-    disadvantage.formula = "{}"
-    this.disadvantages.push(disadvantage)
-    disadvantage = new Disadvantage()
-
-    disadvantage.id = 8
-    disadvantage.name = "Painless"
-    disadvantage.description = "No pain response"
-    disadvantage.cost = 5
-    disadvantage.level = 1
-    disadvantage.levelCap = 1
-    disadvantage.types = ["exotic", "physical"]
-    disadvantage.formula = "{}"
-    this.disadvantages.push(disadvantage)
-    disadvantage = new Disadvantage()
-
-    disadvantage.id = 5
-    disadvantage.name = "Misfit"
-    disadvantage.description = "Problem child"
-    disadvantage.cost = 5
-    disadvantage.level = 1
-    disadvantage.levelCap = 1
-    disadvantage.types = ["social", "mental", "physical"]
-    disadvantage.formula = "{}"
-    this.disadvantages.push(disadvantage)
-    disadvantage = new Disadvantage()
-
-    disadvantage.id = 6
-    disadvantage.name = "Hiki-NEET"
-    disadvantage.description = "A loner who doesn't leave his house and fears the outside too much"
-    disadvantage.cost = 5
-    disadvantage.level = 1
-    disadvantage.levelCap = 2
-    disadvantage.types = ["social"]
-    disadvantage.formula = "{}"
-    this.disadvantages.push(disadvantage)
+    if (this.disadvantages == null || this.disadvantages.length == 0) {
+      this.dataProvider.getDisadvantages().then(res => {
+        let data = res as Disadvantage[]
+        for (let i = 0; i < data.length; i++) {
+          var disadvantageInterface: DisadvantageInterface = JSON.parse(JSON.stringify(data[i]))
+          var disadvantage = new Disadvantage
+          disadvantage.id = disadvantageInterface.Id
+          disadvantage.name = disadvantageInterface.Name
+          disadvantage.description = disadvantageInterface.Description
+          disadvantage.cost = disadvantageInterface.Cost
+          disadvantage.types = disadvantageInterface.Types
+          disadvantage.level = disadvantageInterface.Level
+          disadvantage.levelCap = disadvantageInterface.LevelCap
+          disadvantage.formula = disadvantageInterface.Formula
+          this.disadvantages.push(disadvantage)
+        }
+      })
+        .catch(error => { console.log(error) });
+    }
   }
 
   notInCharList(disadvantage: Disadvantage): boolean {

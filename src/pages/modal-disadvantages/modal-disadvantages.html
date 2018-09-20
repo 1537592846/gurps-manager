@@ -209,16 +209,16 @@
                             <ion-col *ngIf="!exotic.isPhysical()" col-4 style="text-align: center">
                                 <img class="gridGrayImage" src="../../assets/imgs/physical.png">
                             </ion-col>
-                            <ion-col col-4 style="text-align: center">
+                            <ion-col *ngIf="exotic.isSocial()" col-4 style="text-align: center">
                                 <img class="gridImage" src="../../assets/imgs/social.png">
+                            </ion-col>
+                            <ion-col *ngIf="!exotic.isSocial()" col-4 style="text-align: center">
+                                <img class="gridGrayImage" src="../../assets/imgs/social.png">
                             </ion-col>
                         </ion-row>
                         <ion-row>
-                            <ion-col *ngIf="exotic.isExotic()" col-4 style="text-align: center">
+                            <ion-col col-4 style="text-align: center">
                                 <img class="gridImage" src="../../assets/imgs/exotic.png">
-                            </ion-col>
-                            <ion-col *ngIf="!exotic.isExotic()" col-4 style="text-align: center">
-                                <img class="gridGrayImage" src="../../assets/imgs/exotic.png">
                             </ion-col>
                             <ion-col *ngIf="exotic.isSupernatural()" col-4 style="text-align: center">
                                 <img class="gridImage" src="../../assets/imgs/supernatural.png">
