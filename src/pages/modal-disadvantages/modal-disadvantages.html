@@ -18,7 +18,7 @@
 
 <html style="background:white">
 <div padding>
-    <ion-segment [(ngModel)]="disadvantages">
+    <ion-segment [(ngModel)]="disadvantagesModel">
         <ion-segment-button value="mental" on-click="updateMental()">
             <img class="headerImage" src="../../assets/imgs/mental.png">
         </ion-segment-button>
@@ -40,10 +40,10 @@
     </ion-segment>
 </div>
 
-<div [ngSwitch]="disadvantages">
+<div [ngSwitch]="disadvantagesModel">
     <ion-list *ngSwitchCase="'mental'">
         <ion-item-sliding *ngFor="let mental of mentals">
-            <ion-item>
+            <ion-item *ngIf="notInCharList(mental)">
                 <ion-thumbnail item-start>
                     <ion-grid>
                         <ion-row>
@@ -93,7 +93,7 @@
     </ion-list>
     <ion-list *ngSwitchCase="'physical'">
         <ion-item-sliding *ngFor="let physical of physicals">
-            <ion-item>
+            <ion-item *ngIf="notInCharList(physical)">
                 <ion-thumbnail item-start>
                     <ion-grid>
                         <ion-row>
@@ -143,7 +143,7 @@
     </ion-list>
     <ion-list *ngSwitchCase="'social'">
         <ion-item-sliding *ngFor="let social of socials">
-            <ion-item>
+            <ion-item *ngIf="notInCharList(social)">
                 <ion-thumbnail item-start>
                     <ion-grid>
                         <ion-row>
@@ -193,7 +193,7 @@
     </ion-list>
     <ion-list *ngSwitchCase="'exotic'">
         <ion-item-sliding *ngFor="let exotic of exotics">
-            <ion-item>
+            <ion-item *ngIf="notInCharList(exotic)">
                 <ion-thumbnail item-start>
                     <ion-grid>
                         <ion-row>
@@ -243,7 +243,7 @@
     </ion-list>
     <ion-list *ngSwitchCase="'supernatural'">
         <ion-item-sliding *ngFor="let supernatural of supernaturals">
-            <ion-item>
+            <ion-item *ngIf="notInCharList(supernatural)">
                 <ion-thumbnail item-start>
                     <ion-grid>
                         <ion-row>
@@ -293,7 +293,7 @@
     </ion-list>
     <ion-list *ngSwitchCase="'mundane'">
         <ion-item-sliding *ngFor="let mundane of mundanes">
-            <ion-item>
+            <ion-item *ngIf="notInCharList(mundane)">
                 <ion-thumbnail item-start>
                     <ion-grid>
                         <ion-row>
