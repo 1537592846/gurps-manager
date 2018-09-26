@@ -1,25 +1,46 @@
-import { Level } from "./Level";
-
-export class Skill {
+export class Skill {   
 
     public id: number;
     public name: string;
-    public difficulty: Difficulty;
-    public level: number;
     public description: string;
-    public formula: string;
+    public attribute: string;
+    public difficulty: string;
+    public level: number;
+    public cost: number;
 
     constructor() {
     }
-    public static getSkills() {
-        return [
-            {id:1,name:"ABC",difficulty:{description:"DX",level:{id:1,description:"Easy"}},level:0,description:"a, b and c",formula:"Strenght test:+3,Stun test:+2"},
-            {id:2,name:"DEF",difficulty:{description:"IQ",level:{id:2,description:"Moderate"}},level:4,description:"d, e and f",formula:"Perception test:+3"},
-            {id:3,name:"WAT",difficulty:{description:"HT",level:{id:4,description:"Hard"}},level:5,description:"*insert wat woman picture here*",formula:""}
-        ]as Skill[]
+
+    isStrenght(): boolean {
+        return this.attribute == "Strenght"
+    }
+
+    isDexterity(): boolean {
+        return this.attribute == "Dexterity"
+    }
+
+    isIntelligence(): boolean {
+        return this.attribute == "Intelligence"
+    }
+
+    isHealth(): boolean {
+        return this.attribute == "Health"
     }
 }
-export class Difficulty{
-    public level:Level;
-    public description;
+export interface SkillInterface {
+    DBId: DBId;
+    Id: number;
+    Name: string;
+    Description: string;
+    Attribute: string;
+    Difficulty: string;
+    Level: number;
+    Cost: number;
+}
+export interface DBId {
+    Timestamp: number;
+    Machine: number;
+    Pid: number;
+    Increment: number;
+    CreationTime: string;
 }

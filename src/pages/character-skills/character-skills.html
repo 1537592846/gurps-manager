@@ -3,43 +3,62 @@
     <ion-title>
       Character Skills
     </ion-title>
+    <ion-note>
+      Current Points: {{new_char.current_points}}
+      <br> Max Points: {{new_char.max_points}}
+    </ion-note>
   </ion-navbar>
 </ion-header>
 <ion-content padding id="characterSkills">
   <form id="characterSkills-form">
     <ion-list id="characterSkills-list">
-      <!--  -->
       <ion-item-sliding *ngFor="let skill of new_char.skills">
         <!-- Character skills -->
         <ion-item color="none">
-          {{skill.name}}  <ion-note>{{skill.difficulty.description}}+{{skill.level}}</ion-note>
+          {{skill.name}}
+          <br>
+          <ion-note>{{skill.difficulty}}+{{skill.level}}</ion-note>
           <br>
           <ion-note>{{skill.description}}</ion-note>
-          <br>
-          <ion-note>{{skill.difficulty.level.description}}</ion-note>
           <ion-note item-right>Swipe left</ion-note>
         </ion-item>
         <ion-item-options side="right">
+          <button *ngIf="skill.level>1" ion-button color="danger" on-click="removeSkillLevel(skill)">
+            <ion-icon name="remove"></ion-icon>
+          </button>
+          <button *ngIf="skill.level==1" disabled ion-button color="danger" on-click="removeSkillLevel(skill)">
+            <ion-icon name="remove"></ion-icon>
+          </button>
+          <button ion-button disabled color="light">
+            <label style="width:10ex">
+              {{skill.level}}
+            </label>
+          </button>
+          <button *ngIf="skill.level<skill.levelCap" ion-button color="secondary" on-click="addSkillLevel(skill)">
+            <ion-icon name="add"></ion-icon>
+          </button>
+          <button *ngIf="skill.level==skill.levelCap" disabled ion-button color="secondary" on-click="addSkillLevel(skill)">
+            <ion-icon name="add"></ion-icon>
+          </button>
           <button ion-button color="danger" on-click="removeSkill(skill)">
             Remove
           </button>
         </ion-item-options>
       </ion-item-sliding>
-      <!-- Add a new language to the list -->
+      <!-- Add a new skill to the list -->
       <ion-item-sliding>
-        <ion-item color="none" id="characterSkills-list-item">
+        <ion-item color="none" id="characterSkill-list-item">
           Add Skill
           <ion-note item-right>Swipe left</ion-note>
         </ion-item>
         <ion-item-options side="right">
-          <button ion-button color="secondary" on-click="addSkill()">
+          <button ion-button color="secondary" on-click="openModal()">
             Add
           </button>
         </ion-item-options>
       </ion-item-sliding>
     </ion-list>
-    <!-- End list -->
-    <button id="characterSkills-button" ion-button color="stable" block on-click="goToCharacterLanguages()">
+    <button id="characterSkills-button" ion-button color="stable" block on-click="goToNextPage()">
       Proceed
     </button>
   </form>

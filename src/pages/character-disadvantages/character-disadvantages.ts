@@ -19,7 +19,7 @@ export class CharacterDisadvantagesPage {
     //Getting data
     this.new_char = this.navParams.get('new_char');
   }
-  goToCharacterAdvantages() {
+  goToNextPage() {
     this.navCtrl.push(CharacterAdvantagesPage, { new_char: this.new_char });
   }
   removeDisadvantage(disadvantage: Disadvantage) {

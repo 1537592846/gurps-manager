@@ -1,7 +1,6 @@
 import { Advantage, AdvantageInterface } from '../../../models/Advantage';
 import { ViewController, NavParams } from 'ionic-angular';
 import { Component } from '@angular/core';
-import { Jsonp } from '@angular/http';
 import { DataProvider } from '../../providers/data/data';
 
 @Component({

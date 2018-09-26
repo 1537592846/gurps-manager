@@ -18,36 +18,36 @@ export class CharacterAdvantagesPage {
     //Getting data
     this.new_char = this.navParams.get('new_char');
   }
-  goToCharacterAdvantages() {
+  goToNextPage() {
     this.navCtrl.push(CharacterStatusPage, { new_char: this.new_char });
   }
   removeAdvantage(advantage: Advantage) {
     for (var i = 0; i < this.new_char.advantages.length; i++) {
       if (this.new_char.advantages[i] == advantage) {
         this.new_char.advantages.splice(i, 1);
-        this.new_char.current_points += advantage.cost*advantage.level
+        this.new_char.current_points -= advantage.cost * advantage.level
       }
     }
   }
   openModal() {
-    this.profileModal = this.modalCtrl.create(ModalAdvantages,{advantages:this.new_char.advantages})
+    this.profileModal = this.modalCtrl.create(ModalAdvantages, { advantages: this.new_char.advantages })
     this.profileModal.present();
     this.profileModal.onDidDismiss(advantage => {
       if (advantage != null) {
-        advantage.level=1
+        advantage.level = 1
         this.new_char.advantages.push(advantage)
         this.new_char.current_points -= advantage.cost
       }
     })
   }
-  addAdvantageLevel(advantage:Advantage){
-    var index=this.new_char.advantages.indexOf(advantage);
+  addAdvantageLevel(advantage: Advantage) {
+    var index = this.new_char.advantages.indexOf(advantage);
     this.new_char.advantages[index].level++;
-    this.new_char.current_points -= advantage.cost
-  }
-  removeAdvantageLevel(advantage:Advantage){
-    var index=this.new_char.advantages.indexOf(advantage);
-    this.new_char.advantages[index].level--;
     this.new_char.current_points += advantage.cost
+  }
+  removeAdvantageLevel(advantage: Advantage) {
+    var index = this.new_char.advantages.indexOf(advantage);
+    this.new_char.advantages[index].level--;
+    this.new_char.current_points -= advantage.cost
   }
 }

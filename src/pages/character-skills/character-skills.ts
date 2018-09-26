@@ -1,33 +1,53 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { Character } from '../../../models/Character';
 import { Skill } from '../../../models/Skill';
 import { CharacterLanguagesPage } from '../character-languages/character-languages';
+import { ModalSkills } from '../modal-skills/modal-skills';
 
 @Component({
   selector: 'page-character-skills',
   templateUrl: 'character-skills.html'
 })
 export class CharacterSkillsPage {
-  
-  new_char:Character;
 
-  constructor(public navCtrl: NavController,public navParams: NavParams) {
+  new_char: Character;
+  profileModal: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
     //Getting data
     this.new_char = this.navParams.get('new_char');
   }
-  goToCharacterLanguages(){
-    this.navCtrl.push(CharacterLanguagesPage,{new_char:this.new_char});
+  goToNextPage() {
+    this.navCtrl.push(CharacterLanguagesPage, { new_char: this.new_char });
   }
-  removeSkill(skill:Skill){
-    for(var i = 0; i < this.new_char.skills.length; i++) { 
-      if(this.new_char.skills[i] == skill){
+  removeSkill(skill: Skill) {
+    for (var i = 0; i < this.new_char.skills.length; i++) {
+      if (this.new_char.skills[i] == skill) {
         this.new_char.skills.splice(i, 1);
-      } 
+        this.new_char.current_points -= skill.cost * skill.level
+      }
     }
   }
-  addSkill(){
-    var skill={id:4,name:"WAT AGAIN",difficulty:{description:"HT",level:{id:4,description:"Hard"}},level:2,description:"*insert wat woman picture here*",formula:""};
-    this.new_char.skills.push(skill as Skill);
+  openModal() {
+    this.profileModal = this.modalCtrl.create(ModalSkills, { skills: this.new_char.skills })
+    this.profileModal.present();
+    this.profileModal.onDidDismiss(skill => {
+      if (skill != null) {
+        skill.level = 1
+        this.new_char.skills.push(skill)
+        this.new_char.current_points -= skill.cost
+      }
+    })
+  }
+  addSkillLevel(skill: Skill) {
+    var index = this.new_char.skills.indexOf(skill);
+    this.new_char.skills[index].level++;
+    this.new_char.current_points += skill.cost
+  }
+  removeSkillLevel(skill: Skill) {
+    var index = this.new_char.skills.indexOf(skill);
+    this.new_char.skills[index].level--;
+    this.new_char.current_points -= skill.cost
   }
 }
