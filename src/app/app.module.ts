@@ -24,6 +24,8 @@ import { ModalDisadvantages } from '../pages/modal-disadvantages/modal-disadvant
 import { DataProvider } from '../providers/data/data';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalAdvantages } from '../pages/modal-advantages/modal-advantages';
+import { ModalSkills } from '../pages/modal-skills/modal-skills';
+import { ModalLanguages } from '../pages/modal-languages/modal-languages';
 //Lista de Providers (DAOs) criados
 
 @NgModule({
@@ -45,7 +47,8 @@ import { ModalAdvantages } from '../pages/modal-advantages/modal-advantages';
     CharacterDisadvantagesPage,
     CharacterResumePage,
     ModalDisadvantages,
-    ModalAdvantages
+    ModalAdvantages,
+    ModalSkills
   ],
   imports: [
     BrowserModule,
@@ -72,7 +75,8 @@ import { ModalAdvantages } from '../pages/modal-advantages/modal-advantages';
     CharacterDisadvantagesPage,
     CharacterResumePage,
     ModalDisadvantages,
-    ModalAdvantages
+    ModalAdvantages,
+    ModalSkills
   ],
   providers: [
     StatusBar,

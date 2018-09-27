@@ -24,6 +24,16 @@ export class DataProvider {
     });
   }
 
+  public getCharacter(id:number){
+    return new Promise(resolve => {
+      this.http.get<Disadvantage[]>(this.apiAddress + 'Character/get/'+id).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
   public getAdvantages() {
     return new Promise(resolve => {
       this.http.get<Advantage[]>(this.apiAddress + 'Advantages/get').subscribe(data => {

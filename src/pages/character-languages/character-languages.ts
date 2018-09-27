@@ -4,6 +4,7 @@ import { Character } from '../../../models/Character';
 import { Language } from '../../../models/Language';
 import { CharacterResumePage } from '../character-resume/character-resume';
 import { Cost } from '../../../models/Cost';
+import { ModalLanguages } from '../modal-languages/modal-languages';
 
 @Component({
   selector: 'page-character-languages',
@@ -32,24 +33,29 @@ export class CharacterLanguagesPage {
     }
   }
   openModal() {
-    this.profileModal = this.modalCtrl.create(ModalAdvantages, { advantages: this.new_char.advantages })
+    this.profileModal = this.modalCtrl.create(ModalLanguages, { languages: this.new_char.languages })
     this.profileModal.present();
-    this.profileModal.onDidDismiss(advantage => {
-      if (advantage != null) {
-        advantage.level = 1
-        this.new_char.advantages.push(advantage)
-        this.new_char.current_points -= advantage.cost
+    this.profileModal.onDidDismiss(language => {
+      if (language != null) {
+        language.level = 1
+        this.new_char.languages.push(language)
+        this.new_char.current_points -= language.cost
       }
     })
   }
-  addAdvantageLevel(advantage: Advantage) {
-    var index = this.new_char.advantages.indexOf(advantage);
-    this.new_char.advantages[index].level++;
-    this.new_char.current_points -= advantage.cost
+  addLanguageLevel(language: Language) {
+    var index = this.new_char.languages.indexOf(language);
+    this.new_char.languages[index].level++;
+    if (index != 0) {
+      this.new_char.current_points += language.level * Cost.LanguageLevel
+    }
   }
-  removeAdvantageLevel(advantage: Advantage) {
-    var index = this.new_char.advantages.indexOf(advantage);
-    this.new_char.advantages[index].level--;
-    this.new_char.current_points += advantage.cost
+  removeLanguageLevel(language: Language) {
+    var index = this.new_char.languages.indexOf(language);
+    this.new_char.languages[index].level--;
+    if (index != 0) {
+      this.new_char.current_points -= language.level * Cost.LanguageLevel
+
+    }
   }
 }

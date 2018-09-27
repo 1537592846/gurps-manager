@@ -16,7 +16,7 @@ export class SkillsPage {
     this.char = navParams.data;
   }
   getSkillLevel(skill: Skill) {
-    switch (skill.difficulty.description) {
+    switch (skill.attribute) {
       case "ST": return this.char.strenght + skill.level;
       case "DX": return this.char.dexterity + skill.level;
       case "IQ": return this.char.intelligence + skill.level;

@@ -12,19 +12,20 @@ export class Skill {
     }
 
     isStrenght(): boolean {
-        return this.attribute == "Strenght"
+        console.log(this.attribute)
+        return this.attribute == "ST"
     }
 
     isDexterity(): boolean {
-        return this.attribute == "Dexterity"
+        return this.attribute == "DX"
     }
 
     isIntelligence(): boolean {
-        return this.attribute == "Intelligence"
+        return this.attribute == "IQ"
     }
 
     isHealth(): boolean {
-        return this.attribute == "Health"
+        return this.attribute == "HT"
     }
 }
 export interface SkillInterface {

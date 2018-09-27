@@ -26,52 +26,51 @@ export class CharacterStatusPage {
   speed_aux: number;
   min_speed_aux: number;
   max_speed_aux: number;
+  current_points:number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     //Getting data
     this.new_char = this.navParams.get('new_char');
     //Setting values
-    if (this.new_char.current_points == 0) {
-      //Setting minimun values
-      this.new_char.strenght = this.new_char.min_status * 1;
-      this.new_char.dexterity = this.new_char.min_status * 1;
-      this.new_char.intelligence = this.new_char.min_status * 1;
-      this.new_char.health = this.new_char.min_status * 1;
-      this.new_char.max_points = this.new_char.max_points * 1;
-      this.new_char.min_status = this.new_char.min_status * 1;
-      this.new_char.max_life_points = this.new_char.strenght * 1;
-      this.new_char.will = this.new_char.intelligence * 1;
-      this.new_char.perception = this.new_char.intelligence * 1;
-      this.new_char.max_fatigue_points = this.new_char.health * 1;
-      this.new_char.speed = this.new_char.getMinSpeed() * 1;
-      this.speed_aux = this.new_char.getMinSpeed() * 4;
-      this.min_speed_aux = this.speed_aux;
-      this.new_char.basic_movement = this.new_char.getMinBasicMovement() * 1;
-      this.min_basic_movement = this.new_char.basic_movement;
-    }else{
-      this.speed_aux=this.new_char.getMinSpeed()*4;
-    }
+    this.new_char.strenght = this.new_char.min_status * 1;
+    this.new_char.dexterity = this.new_char.min_status * 1;
+    this.new_char.intelligence = this.new_char.min_status * 1;
+    this.new_char.health = this.new_char.min_status * 1;
+    this.new_char.max_points = this.new_char.max_points * 1;
+    this.new_char.min_status = this.new_char.min_status * 1;
+    this.new_char.max_life_points = this.new_char.strenght * 1;
+    this.new_char.will = this.new_char.intelligence * 1;
+    this.new_char.perception = this.new_char.intelligence * 1;
+    this.new_char.max_fatigue_points = this.new_char.health * 1;
+    this.new_char.speed = this.new_char.getMinSpeed() * 1;
+    this.speed_aux = this.new_char.getMinSpeed() * 4;
+    this.min_speed_aux = this.speed_aux;
+    this.new_char.basic_movement = this.new_char.getMinBasicMovement() * 1;
+    this.min_basic_movement = this.new_char.basic_movement;
+    this.current_points=this.new_char.current_points
     this.updateAll();
   }
   goToNextPage() {
     this.updateAll();
+    this.new_char.current_points=this.current_points
     this.navCtrl.push(CharacterSkillsPage, { new_char: this.new_char });
   }
   getMax(statCurrent: number, statMin: number, price: number) {
-    return (this.new_char.max_points - this.new_char.current_points + (statCurrent - statMin) * price) / price + statMin;
+    return Math.round((this.new_char.max_points - this.current_points + (statCurrent - statMin) * price) / price + statMin);
   }
   getCurrentPoints() {
-    this.new_char.current_points = (this.new_char.strenght - this.new_char.min_status) * Cost.Strenght;
-    this.new_char.current_points += (this.new_char.dexterity - this.new_char.min_status) * Cost.Dexterity;
-    this.new_char.current_points += (this.new_char.intelligence - this.new_char.min_status) * Cost.Intelligence;
-    this.new_char.current_points += (this.new_char.health - this.new_char.min_status) * Cost.Health;
+    this.current_points=this.new_char.current_points
+    this.current_points += (this.new_char.strenght - this.new_char.min_status) * Cost.Strenght;
+    this.current_points += (this.new_char.dexterity - this.new_char.min_status) * Cost.Dexterity;
+    this.current_points += (this.new_char.intelligence - this.new_char.min_status) * Cost.Intelligence;
+    this.current_points += (this.new_char.health - this.new_char.min_status) * Cost.Health;
 
-    this.new_char.current_points += (this.new_char.max_life_points - this.new_char.strenght) * Cost.LifePoints;
-    this.new_char.current_points += (this.new_char.will - this.new_char.intelligence) * Cost.Will;
-    this.new_char.current_points += (this.new_char.perception - this.new_char.intelligence) * Cost.Perception;
-    this.new_char.current_points += (this.new_char.max_fatigue_points - this.new_char.health) * Cost.FatiguePoints;
-    this.new_char.current_points += (this.speed_aux - this.new_char.getMinSpeed() * 4) * Cost.Speed;
-    this.new_char.current_points += (this.new_char.basic_movement - this.new_char.getMinBasicMovement()) * Cost.BasicMovement;
+    this.current_points += (this.new_char.max_life_points - this.new_char.strenght) * Cost.LifePoints;
+    this.current_points += (this.new_char.will - this.new_char.intelligence) * Cost.Will;
+    this.current_points += (this.new_char.perception - this.new_char.intelligence) * Cost.Perception;
+    this.current_points += (this.new_char.max_fatigue_points - this.new_char.health) * Cost.FatiguePoints;
+    this.current_points += (this.speed_aux - this.new_char.getMinSpeed() * 4) * Cost.Speed;
+    this.current_points += (this.new_char.basic_movement - this.new_char.getMinBasicMovement()) * Cost.BasicMovement;
   }
   updateStrenght() {
     //Calculating current points

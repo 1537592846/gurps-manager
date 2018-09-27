@@ -4,7 +4,7 @@
       Character Status
     </ion-title>
     <ion-note>
-      Current Points: {{new_char.current_points}}
+      Current Points: {{current_points}}
       <br> Max Points: {{new_char.max_points}}
     </ion-note>
   </ion-navbar>
@@ -103,7 +103,7 @@
       </ion-range>
     </ion-item>
   </form>
-  <button id="characterStatus-button" ion-button color="stable" block on-click="goToCharacterSkills()">
+  <button id="characterStatus-button" ion-button color="stable" block on-click="goToNextPage()">
     Proceed
   </button>
 </ion-content>

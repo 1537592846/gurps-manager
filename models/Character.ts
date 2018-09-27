@@ -88,8 +88,8 @@ export class Character {
         this.current_carry_weight = 20;
         this.speed = this.getMinSpeed();
         this.basic_movement = this.getMinBasicMovement();
-        this.languages = Language.getLanguages();
-        this.skills = Skill.getSkills();
+        this.languages=[];
+        this.skills = [];
         this.equipments = Equipment.getEquipments("shield");
         this.inventory=Inventory.getInventory();
     }
@@ -140,19 +140,19 @@ export class Character {
         return null;
     }
     getLanguages() {
-        return Language.getLanguages();
+        return []
     }
     getSkills() {
-        return Skill.getSkills();
+        return []
     }
     getAdvantages() {
-        return [];
+        return []
     }
     getDisadvantages() {
-        return [];
+        return []
     }
     getEquipments() {
-        return null;
+        return new Equipment()
     }
     getMinBasicMovement() {
         if (Math.round(this.speed) > this.speed) {

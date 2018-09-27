@@ -16,14 +16,14 @@
     </ion-segment>
 </div>
 
-<div [ngSwitch]="advantagesModel">
+<div [ngSwitch]="skillsModel">
     <ion-list *ngSwitchCase="'strenght'">
         <ion-item-sliding *ngFor="let strenght of strenghts">
             <ion-item *ngIf="notInCharList(strenght)">
                 <ion-thumbnail item-start>
-                    <h1>ST/{{strenght.difficulty}}</h1>
+                    <h1>{{strenght.name}}</h1>
                 </ion-thumbnail>
-                <h2>{{strenght.name}}</h2>
+                <h2>ST/{{strenght.difficulty}}</h2>
                 <p>{{strenght.description}}</p>
                 <button ion-button clear item-end on-click="returnData(strenght)">Add</button>
             </ion-item>
