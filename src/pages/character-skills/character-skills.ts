@@ -25,7 +25,7 @@ export class CharacterSkillsPage {
     for (var i = 0; i < this.new_char.skills.length; i++) {
       if (this.new_char.skills[i] == skill) {
         this.new_char.skills.splice(i, 1);
-        this.new_char.current_points -= skill.cost * skill.level
+        this.new_char.current_points -= this.getSkillCost(skill)
       }
     }
   }
@@ -36,18 +36,40 @@ export class CharacterSkillsPage {
       if (skill != null) {
         skill.level = 1
         this.new_char.skills.push(skill)
-        this.new_char.current_points -= skill.cost
+        this.new_char.current_points += this.getSkillCost(skill)
       }
     })
   }
   addSkillLevel(skill: Skill) {
     var index = this.new_char.skills.indexOf(skill);
+    this.new_char.current_points -=this.getSkillCost(this.new_char.skills[index])
     this.new_char.skills[index].level++;
-    this.new_char.current_points += skill.cost
+    this.new_char.current_points +=this.getSkillCost(this.new_char.skills[index])
   }
   removeSkillLevel(skill: Skill) {
     var index = this.new_char.skills.indexOf(skill);
+    this.new_char.current_points -= this.getSkillCost(this.new_char.skills[index])
     this.new_char.skills[index].level--;
-    this.new_char.current_points -= skill.cost
+    this.new_char.current_points += this.getSkillCost(this.new_char.skills[index])
+  }
+  getSkillCost(skill: Skill): number {
+    var cost = 8
+    switch (skill.difficulty) {
+      case "Easy": cost = 1
+      case "Moderate": cost = 2
+      case "Hard": cost = 4
+    }
+    for (var i=1; i < skill.level; i++) {
+      if(cost==1){
+        cost=2
+        continue
+      }
+      if(cost==2){
+        cost=4
+        continue
+      }
+      cost+=4
+    }
+    return cost
   }
 }

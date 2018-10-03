@@ -48,7 +48,8 @@ import { ModalLanguages } from '../pages/modal-languages/modal-languages';
     CharacterResumePage,
     ModalDisadvantages,
     ModalAdvantages,
-    ModalSkills
+    ModalSkills,
+    ModalLanguages
   ],
   imports: [
     BrowserModule,
@@ -76,7 +77,8 @@ import { ModalLanguages } from '../pages/modal-languages/modal-languages';
     CharacterResumePage,
     ModalDisadvantages,
     ModalAdvantages,
-    ModalSkills
+    ModalSkills,
+    ModalLanguages
   ],
   providers: [
     StatusBar,

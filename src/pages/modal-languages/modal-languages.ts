@@ -13,6 +13,7 @@ export class ModalLanguages {
 
   constructor(public viewCtrl: ViewController, public params: NavParams, public dataProvider: DataProvider) {
     this.updateLanguages()
+    this.updateCharLanguages()
   }
 
   updateCharLanguages() {

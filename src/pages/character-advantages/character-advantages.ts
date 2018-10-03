@@ -36,9 +36,7 @@ export class CharacterAdvantagesPage {
       if (advantage != null) {
         advantage.level = 1
         this.new_char.advantages.push(advantage)
-        console.log(advantage)
         this.new_char.current_points += advantage.cost
-        console.log(this.new_char)
       }
     })
   }

@@ -23,7 +23,7 @@
                 <ion-thumbnail item-start>
                     <h1>{{strenght.name}}</h1>
                 </ion-thumbnail>
-                <h2>ST/{{strenght.difficulty}}</h2>
+                <h2>{{strenght.difficulty}}</h2>
                 <p>{{strenght.description}}</p>
                 <button ion-button clear item-end on-click="returnData(strenght)">Add</button>
             </ion-item>
@@ -33,7 +33,7 @@
         <ion-item-sliding *ngFor="let dexterity of dexterities">
             <ion-item *ngIf="notInCharList(dexterity)">
                 <ion-thumbnail item-start>
-                    <h1>DX/{{dexterity.difficulty}}</h1>
+                    <h1>{{dexterity.difficulty}}</h1>
                 </ion-thumbnail>
                 <h2>{{dexterity.name}}</h2>
                 <p>{{dexterity.description}}</p>
@@ -45,7 +45,7 @@
         <ion-item-sliding *ngFor="let intelligence of intelligences">
             <ion-item *ngIf="notInCharList(intelligence)">
                 <ion-thumbnail item-start>
-                    <h1>IQ/{{intelligence.difficulty}}</h1>
+                    <h1>{{intelligence.difficulty}}</h1>
                 </ion-thumbnail>
                 <h2>{{intelligence.name}}</h2>
                 <p>{{intelligence.description}}</p>
@@ -57,7 +57,7 @@
         <ion-item-sliding *ngFor="let health of healths">
             <ion-item *ngIf="notInCharList(health)">
                 <ion-thumbnail item-start>
-                    <h1>HT/{{health.difficulty}}</h1>
+                    <h1>{{health.difficulty}}</h1>
                 </ion-thumbnail>
                 <h2>{{health.name}}</h2>
                 <p>{{health.description}}</p>

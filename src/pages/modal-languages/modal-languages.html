@@ -1,52 +1,13 @@
 <html style="background:white">
-
-    <ion-list *ngSwitchCase="'strenght'">
-        <ion-item-sliding *ngFor="let strenght of strenghts">
-            <ion-item *ngIf="notInCharList(strenght)">
-                <ion-thumbnail item-start>
-                    <h1>ST/{{strenght.difficulty}}</h1>
+    <ion-list>
+        <ion-item-sliding *ngFor="let language of languages">
+            <ion-item *ngIf="notInCharList(language)">
+                <ion-thumbnail style="width:20%" item-start>
+                    <h1>{{language.name}}</h1>
                 </ion-thumbnail>
-                <h2>{{strenght.name}}</h2>
-                <p>{{strenght.description}}</p>
-                <button ion-button clear item-end on-click="returnData(strenght)">Add</button>
+                <p>{{language.description}}</p>
+                <button ion-button clear item-end on-click="returnData(language)">Add</button>
             </ion-item>
         </ion-item-sliding>
     </ion-list>
-    <ion-list *ngSwitchCase="'dexterity'">
-        <ion-item-sliding *ngFor="let dexterity of dexterities">
-            <ion-item *ngIf="notInCharList(dexterity)">
-                <ion-thumbnail item-start>
-                    <h1>DX/{{dexterity.difficulty}}</h1>
-                </ion-thumbnail>
-                <h2>{{dexterity.name}}</h2>
-                <p>{{dexterity.description}}</p>
-                <button ion-button clear item-end on-click="returnData(dexterity)">Add</button>
-            </ion-item>
-        </ion-item-sliding>
-    </ion-list>
-    <ion-list *ngSwitchCase="'intelligence'">
-        <ion-item-sliding *ngFor="let intelligence of intelligences">
-            <ion-item *ngIf="notInCharList(intelligence)">
-                <ion-thumbnail item-start>
-                    <h1>IQ/{{intelligence.difficulty}}</h1>
-                </ion-thumbnail>
-                <h2>{{intelligence.name}}</h2>
-                <p>{{intelligence.description}}</p>
-                <button ion-button clear item-end on-click="returnData(intelligence)">Add</button>
-            </ion-item>
-        </ion-item-sliding>
-    </ion-list>
-    <ion-list *ngSwitchCase="'health'">
-        <ion-item-sliding *ngFor="let health of healths">
-            <ion-item *ngIf="notInCharList(health)">
-                <ion-thumbnail item-start>
-                    <h1>HT/{{health.difficulty}}</h1>
-                </ion-thumbnail>
-                <h2>{{health.name}}</h2>
-                <p>{{health.description}}</p>
-                <button ion-button clear item-end on-click="returnData(health)">Add</button>
-            </ion-item>
-        </ion-item-sliding>
-    </ion-list>
-
 </html>

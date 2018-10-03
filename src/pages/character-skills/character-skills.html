@@ -17,7 +17,7 @@
         <ion-item color="none">
           {{skill.name}}
           <br>
-          <ion-note>{{skill.difficulty}}+{{skill.level}}</ion-note>
+          <ion-note>{{skill.attribute}}+{{skill.level-1}}</ion-note>
           <br>
           <ion-note>{{skill.description}}</ion-note>
           <ion-note item-right>Swipe left</ion-note>
@@ -31,13 +31,13 @@
           </button>
           <button ion-button disabled color="light">
             <label style="width:10ex">
-              {{skill.level}}
+              {{skill.level-1}}
             </label>
           </button>
-          <button *ngIf="skill.level<skill.levelCap" ion-button color="secondary" on-click="addSkillLevel(skill)">
+          <button *ngIf="new_char.current_points+4<=new_char.max_points" ion-button color="secondary" on-click="addSkillLevel(skill)">
             <ion-icon name="add"></ion-icon>
           </button>
-          <button *ngIf="skill.level==skill.levelCap" disabled ion-button color="secondary" on-click="addSkillLevel(skill)">
+          <button *ngIf="new_char.current_points+4>new_char.max_points" disabled ion-button color="secondary" on-click="addSkillLevel(skill)">
             <ion-icon name="add"></ion-icon>
           </button>
           <button ion-button color="danger" on-click="removeSkill(skill)">

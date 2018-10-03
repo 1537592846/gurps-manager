@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Character } from '../../../models/Character';
 import { CharacterSkillsPage } from '../character-skills/character-skills';
-import { Cost } from '../../../models/Cost';
+import { Constants } from '../../../models/Constants';
 
 @Component({
   selector: 'page-character-status',
@@ -60,23 +60,23 @@ export class CharacterStatusPage {
   }
   getCurrentPoints() {
     this.current_points=this.new_char.current_points
-    this.current_points += (this.new_char.strenght - this.new_char.min_status) * Cost.Strenght;
-    this.current_points += (this.new_char.dexterity - this.new_char.min_status) * Cost.Dexterity;
-    this.current_points += (this.new_char.intelligence - this.new_char.min_status) * Cost.Intelligence;
-    this.current_points += (this.new_char.health - this.new_char.min_status) * Cost.Health;
+    this.current_points += (this.new_char.strenght - this.new_char.min_status) * Constants.Strenght;
+    this.current_points += (this.new_char.dexterity - this.new_char.min_status) * Constants.Dexterity;
+    this.current_points += (this.new_char.intelligence - this.new_char.min_status) * Constants.Intelligence;
+    this.current_points += (this.new_char.health - this.new_char.min_status) * Constants.Health;
 
-    this.current_points += (this.new_char.max_life_points - this.new_char.strenght) * Cost.LifePoints;
-    this.current_points += (this.new_char.will - this.new_char.intelligence) * Cost.Will;
-    this.current_points += (this.new_char.perception - this.new_char.intelligence) * Cost.Perception;
-    this.current_points += (this.new_char.max_fatigue_points - this.new_char.health) * Cost.FatiguePoints;
-    this.current_points += (this.speed_aux - this.new_char.getMinSpeed() * 4) * Cost.Speed;
-    this.current_points += (this.new_char.basic_movement - this.new_char.getMinBasicMovement()) * Cost.BasicMovement;
+    this.current_points += (this.new_char.max_life_points - this.new_char.strenght) * Constants.LifePoints;
+    this.current_points += (this.new_char.will - this.new_char.intelligence) * Constants.Will;
+    this.current_points += (this.new_char.perception - this.new_char.intelligence) * Constants.Perception;
+    this.current_points += (this.new_char.max_fatigue_points - this.new_char.health) * Constants.FatiguePoints;
+    this.current_points += (this.speed_aux - this.new_char.getMinSpeed() * 4) * Constants.Speed;
+    this.current_points += (this.new_char.basic_movement - this.new_char.getMinBasicMovement()) * Constants.BasicMovement;
   }
   updateStrenght() {
     //Calculating current points
     this.getCurrentPoints();
     //Calculating max range
-    this.max_strenght = this.getMax(this.new_char.strenght, this.new_char.min_status, Cost.Strenght);
+    this.max_strenght = this.getMax(this.new_char.strenght, this.new_char.min_status, Constants.Strenght);
     //Changing if over max limit
     if (this.new_char.strenght > this.max_strenght) {
       this.new_char.strenght = this.max_strenght;
@@ -92,7 +92,7 @@ export class CharacterStatusPage {
     //Calculating current points
     this.getCurrentPoints();
     //Calculating max range
-    this.max_dexterity = this.getMax(this.new_char.dexterity, this.new_char.min_status, Cost.Dexterity);
+    this.max_dexterity = this.getMax(this.new_char.dexterity, this.new_char.min_status, Constants.Dexterity);
     //Changing if over max limit
     if (this.new_char.dexterity > this.max_dexterity) {
       this.new_char.dexterity = this.max_dexterity;
@@ -109,7 +109,7 @@ export class CharacterStatusPage {
     //Calculating current points
     this.getCurrentPoints();
     //Calculating max range
-    this.max_intelligence = this.getMax(this.new_char.intelligence, this.new_char.min_status, Cost.Intelligence);
+    this.max_intelligence = this.getMax(this.new_char.intelligence, this.new_char.min_status, Constants.Intelligence);
     //Changing if over max limit
     if (this.new_char.intelligence > this.max_intelligence) {
       this.new_char.intelligence = this.max_intelligence;
@@ -129,7 +129,7 @@ export class CharacterStatusPage {
     //Calculating current points
     this.getCurrentPoints();
     //Calculating max range
-    this.max_health = this.getMax(this.new_char.health, this.new_char.min_status, Cost.Health);
+    this.max_health = this.getMax(this.new_char.health, this.new_char.min_status, Constants.Health);
     //Changing if over max limit
     if (this.new_char.health > this.max_health) {
       this.new_char.health = this.max_health;
@@ -150,7 +150,7 @@ export class CharacterStatusPage {
     //Calculating current points
     this.getCurrentPoints();
     //Calculating max range
-    this.max_life_points = this.getMax(this.new_char.max_life_points, this.new_char.strenght, Cost.LifePoints);
+    this.max_life_points = this.getMax(this.new_char.max_life_points, this.new_char.strenght, Constants.LifePoints);
     //Changing if over max limit
     if (this.new_char.max_life_points > this.max_life_points) {
       this.new_char.max_life_points = this.max_life_points;
@@ -162,7 +162,7 @@ export class CharacterStatusPage {
     //Calculating current points
     this.getCurrentPoints();
     //Calculating max range
-    this.max_will = this.getMax(this.new_char.will, this.new_char.intelligence, Cost.Will);
+    this.max_will = this.getMax(this.new_char.will, this.new_char.intelligence, Constants.Will);
     //Changing if over max limit
     if (this.new_char.will > this.max_will) {
       this.new_char.will = this.max_will;
@@ -174,7 +174,7 @@ export class CharacterStatusPage {
     //Calculating current points
     this.getCurrentPoints();
     //Calculating max range
-    this.max_perception = this.getMax(this.new_char.perception, this.new_char.intelligence, Cost.Perception);
+    this.max_perception = this.getMax(this.new_char.perception, this.new_char.intelligence, Constants.Perception);
     //Changing if over max limit
     if (this.new_char.perception > this.max_perception) {
       this.new_char.perception = this.max_perception;
@@ -186,7 +186,7 @@ export class CharacterStatusPage {
     //Calculating current points
     this.getCurrentPoints();
     //Calculating max range
-    this.max_fatigue_points = this.getMax(this.new_char.max_fatigue_points, this.new_char.health, Cost.FatiguePoints);
+    this.max_fatigue_points = this.getMax(this.new_char.max_fatigue_points, this.new_char.health, Constants.FatiguePoints);
     //Changing if over max limit
     if (this.new_char.max_fatigue_points > this.max_fatigue_points) {
       this.new_char.max_fatigue_points = this.max_fatigue_points;
@@ -198,7 +198,7 @@ export class CharacterStatusPage {
     //Calculating current points
     this.getCurrentPoints();
     //Calculating max range
-    this.max_speed_aux = this.getMax(this.speed_aux, this.new_char.getMinSpeed() * 4, Cost.Speed);
+    this.max_speed_aux = this.getMax(this.speed_aux, this.new_char.getMinSpeed() * 4, Constants.Speed);
     this.min_speed_aux = this.new_char.getMinSpeed() * 4;
     //Changing if over max limit
     if (this.speed_aux / 4 > this.max_speed_aux) {
@@ -216,7 +216,7 @@ export class CharacterStatusPage {
     //Calculating current points
     this.getCurrentPoints();
     //Calculating max range
-    this.max_basic_movement = this.getMax(this.new_char.basic_movement, this.new_char.getMinSpeed(), Cost.BasicMovement);
+    this.max_basic_movement = this.getMax(this.new_char.basic_movement, this.new_char.getMinSpeed(), Constants.BasicMovement);
     this.min_basic_movement = this.new_char.getMinBasicMovement();
     //Changing if over max limit
     if (this.new_char.basic_movement > this.max_basic_movement) {

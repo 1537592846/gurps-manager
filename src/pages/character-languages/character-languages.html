@@ -3,20 +3,41 @@
     <ion-title>
       Character Languages
     </ion-title>
+    <ion-note>
+      Current Points: {{new_char.current_points}}
+      <br> Max Points: {{new_char.max_points}}
+    </ion-note>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="characterLanguages">
-  <form id="characterLanguages-form">
-    <ion-list id="characterLanguages-list">
+<ion-content padding id="characterlanguages">
+  <form id="characterlanguages-form">
+    <ion-list id="characterlanguages-list">
       <ion-item-sliding *ngFor="let language of new_char.languages">
         <!-- Character languages -->
         <ion-item color="none">
           {{language.name}}
           <br>
-          <ion-note>{{language.level.description}}</ion-note>
+          <ion-note>{{language.description}}</ion-note>
           <ion-note item-right>Swipe left</ion-note>
         </ion-item>
         <ion-item-options side="right">
+          <button *ngIf="language.level>1" ion-button color="danger" on-click="removeLanguageLevel(language)">
+            <ion-icon name="remove"></ion-icon>
+          </button>
+          <button *ngIf="language.level==1" disabled ion-button color="danger" on-click="removeLanguageLevel(language)">
+            <ion-icon name="remove"></ion-icon>
+          </button>
+          <button ion-button disabled color="light">
+            <label style="width:10ex">
+              {{getLanguageDescription(language)}}
+            </label>
+          </button>
+          <button *ngIf="new_char.languages[0]!=language&&new_char.current_points+3<=new_char.max_points&&language.level<3" ion-button color="secondary" on-click="addLanguageLevel(language)">
+            <ion-icon name="add"></ion-icon>
+          </button>
+          <button *ngIf="new_char.languages[0]==language||new_char.current_points+3>new_char.max_points||language.level==3" disabled ion-button color="secondary" on-click="addLanguageLevel(language)">
+            <ion-icon name="add"></ion-icon>
+          </button>
           <button ion-button color="danger" on-click="removeLanguage(language)">
             Remove
           </button>
@@ -24,19 +45,18 @@
       </ion-item-sliding>
       <!-- Add a new language to the list -->
       <ion-item-sliding>
-        <ion-item color="none" id="characterLanguages-list-item">
-          Add Language
+        <ion-item color="none" id="characterLanguage-list-item">
+          Add language
           <ion-note item-right>Swipe left</ion-note>
         </ion-item>
         <ion-item-options side="right">
-          <button ion-button color="secondary" on-click="addLanguage()">
+          <button ion-button color="secondary" on-click="openModal()">
             Add
           </button>
         </ion-item-options>
       </ion-item-sliding>
-      <!-- End list -->
     </ion-list>
-    <button id="characterLanguages-button" ion-button color="stable" block on-click="goToCharacterResume()">
+    <button id="characterLanguages-button" ion-button color="stable" block on-click="goToNextPage()">
       Proceed
     </button>
   </form>

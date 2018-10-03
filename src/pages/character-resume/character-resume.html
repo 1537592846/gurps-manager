@@ -88,18 +88,16 @@
       <ion-item color="none">
         {{language.name}}
         <br>
-        <ion-note>{{language.level.description}}</ion-note>
+        <ion-note>{{getLanguageDescription(language)}}</ion-note>
       </ion-item>
     </ion-item-sliding>
     <ion-item style="text-align:center">Character Skills</ion-item>
     <ion-item-sliding *ngFor="let skill of new_char.skills">
       <ion-item color="none">
         {{skill.name}}
-        <ion-note>{{skill.difficulty.description}}+{{skill.level}}</ion-note>
+        <ion-note>{{skill.attribute}}+{{skill.level-1}}</ion-note>
         <br>
         <ion-note>{{skill.description}}</ion-note>
-        <br>
-        <ion-note>{{skill.difficulty.level.description}}</ion-note>
       </ion-item>
     </ion-item-sliding>
     <ion-item style="text-align:center">Character Advantages</ion-item>

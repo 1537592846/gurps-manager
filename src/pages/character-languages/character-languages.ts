@@ -3,7 +3,7 @@ import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { Character } from '../../../models/Character';
 import { Language } from '../../../models/Language';
 import { CharacterResumePage } from '../character-resume/character-resume';
-import { Cost } from '../../../models/Cost';
+import { Constants } from '../../../models/Constants';
 import { ModalLanguages } from '../modal-languages/modal-languages';
 
 @Component({
@@ -19,15 +19,15 @@ export class CharacterLanguagesPage {
     //Getting data
     this.new_char = this.navParams.get('new_char');
   }
-  goToCharacterResume() {
+  goToNextPage() {
     this.navCtrl.push(CharacterResumePage, { new_char: this.new_char });
   }
   removeLanguage(language: Language) {
     for (var i = 0; i < this.new_char.languages.length; i++) {
       if (this.new_char.languages[i] == language) {
         this.new_char.languages.splice(i, 1);
-        if (this.new_char.languages.length == 0) {
-          this.new_char.current_points -= language.level * Cost.LanguageLevel
+        if (i != 0) {
+          this.new_char.current_points -= language.level * Constants.Language
         }
       }
     }
@@ -39,23 +39,27 @@ export class CharacterLanguagesPage {
       if (language != null) {
         language.level = 1
         this.new_char.languages.push(language)
-        this.new_char.current_points -= language.cost
+        if (this.new_char.languages[0] != language) {
+          this.new_char.current_points += Constants.Language
+        }
       }
     })
   }
   addLanguageLevel(language: Language) {
     var index = this.new_char.languages.indexOf(language);
     this.new_char.languages[index].level++;
-    if (index != 0) {
-      this.new_char.current_points += language.level * Cost.LanguageLevel
-    }
+    this.new_char.current_points += Constants.Language
   }
   removeLanguageLevel(language: Language) {
     var index = this.new_char.languages.indexOf(language);
     this.new_char.languages[index].level--;
-    if (index != 0) {
-      this.new_char.current_points -= language.level * Cost.LanguageLevel
-
+    this.new_char.current_points -= Constants.Language
+  }
+  getLanguageDescription(language: Language): string {
+    if (this.new_char.languages[0] == language) {
+      return Constants.LanguageLevel[4]
+    } else {
+      return Constants.LanguageLevel[language.level]
     }
   }
 }

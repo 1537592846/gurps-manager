@@ -12,7 +12,6 @@ export class Skill {
     }
 
     isStrenght(): boolean {
-        console.log(this.attribute)
         return this.attribute == "ST"
     }
 
