@@ -1,3 +1,5 @@
+import { DBId } from "../src/providers/data/data";
+
 class Item {
     public quantity: number;
     public weight: number;

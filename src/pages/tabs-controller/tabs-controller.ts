@@ -20,10 +20,11 @@ export class TabsControllerPage {
   equipments: any = EquipmentsPage;
   inventory: any = InventoryPage;
   skills: any = SkillsPage;
-  charParam: any = Character;
+  char: any = Character;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     //Getting data
-    this.charParam = this.navParams.get('char')
+    this.char = this.navParams.get('char')
+    console.log(this.char)
   }
 }

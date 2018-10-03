@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 import { CharacterFeaturesPage } from '../character-features/character-features';
 import { TabsControllerPage } from '../tabs-controller/tabs-controller';
 import { Character } from '../../../models/Character';
-import { Advantage } from '../../../models/Advantage';
+import { DataProvider } from '../../providers/data/data';
 
 @Component({
   selector: 'page-gurps-manager',
@@ -12,16 +12,15 @@ import { Advantage } from '../../../models/Advantage';
 
 
 export class GurpsManagerPage {
-  advantages: Advantage[] = []
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController,public dataProvider:DataProvider) {
+    console.clear()
   }
 
   goToCharacterFeatures() {
-    this.navCtrl.push(CharacterFeaturesPage, { new_char: Character.emptyCharacter() });
+    this.navCtrl.push(CharacterFeaturesPage, { new_char: new Character(0,this.dataProvider)});
   }
 
   goToTabsController() {
-    var char = new Character(0);
-    this.navCtrl.setRoot(TabsControllerPage, { char: char });
+    this.navCtrl.setRoot(TabsControllerPage, { char: new Character(0,this.dataProvider) });
   }
 }

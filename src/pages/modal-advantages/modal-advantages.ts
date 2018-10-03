@@ -17,8 +17,7 @@ export class ModalAdvantages {
   advantages: Advantage[] = []
   char_advantages: Advantage[] = []
 
-  constructor(public viewCtrl: ViewController, public params: NavParams, public dataProvider: DataProvider) {
-    
+  constructor(public viewCtrl: ViewController, public params: NavParams, public dataProvider: DataProvider) {    
     this.updateAdvantages()
   }
 

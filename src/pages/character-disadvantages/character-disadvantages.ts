@@ -17,6 +17,7 @@ export class CharacterDisadvantagesPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
     //Getting data
     this.new_char = this.navParams.get('new_char');
+    console.log(this.new_char)
   }
   goToNextPage() {
     this.navCtrl.push(CharacterAdvantagesPage, { new_char: this.new_char });

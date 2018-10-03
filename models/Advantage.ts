@@ -1,3 +1,5 @@
+import { DBId } from "../src/providers/data/data";
+
 export class Advantage {
 
   public id: number;
@@ -47,11 +49,4 @@ export interface AdvantageInterface {
   Level: number;
   LevelCap: number;
   Formula: string;
-}
-export interface DBId {
-  Timestamp: number;
-  Machine: number;
-  Pid: number;
-  Increment: number;
-  CreationTime: string;
 }

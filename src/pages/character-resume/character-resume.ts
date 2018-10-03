@@ -20,6 +20,7 @@ export class CharacterResumePage {
     this.new_char = this.navParams.get('new_char');
   }
   goToTabsController() {
+    this.new_char.saveCharacter()
     this.navCtrl.setRoot(TabsControllerPage, { char: this.new_char });
   }
   goToCharacterFeatures() {

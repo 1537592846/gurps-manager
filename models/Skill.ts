@@ -1,3 +1,5 @@
+import { DBId } from "../src/providers/data/data";
+
 export class Skill {   
 
     public id: number;
@@ -36,11 +38,4 @@ export interface SkillInterface {
     Difficulty: string;
     Level: number;
     Cost: number;
-}
-export interface DBId {
-    Timestamp: number;
-    Machine: number;
-    Pid: number;
-    Increment: number;
-    CreationTime: string;
 }

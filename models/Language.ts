@@ -1,3 +1,5 @@
+import { DBId } from "../src/providers/data/data";
+
 export class Language {
 
     public id: number
@@ -16,11 +18,4 @@ export interface LanguageInterface {
     Description: string;
     Level: number;
     LevelCap: number;
-}
-export interface DBId {
-    Timestamp: number;
-    Machine: number;
-    Pid: number;
-    Increment: number;
-    CreationTime: string;
 }
