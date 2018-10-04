@@ -1,12 +1,14 @@
 import { DBId } from "../src/providers/data/data";
 
 class Item {
-    public quantity: number;
-    public weight: number;
-    public id: number;
-    public name: string;
-    public description: string;
-    public formula: string;
+    public id: number
+    public name: string
+    public nt:number
+    public description: string
+    public cost:number
+    public weight: number
+    public quantity: number
+    public formula: string
 
     public getItem(type: string) {
         switch (type) {

@@ -21,10 +21,10 @@
           <ion-note item-right>Swipe left</ion-note>
         </ion-item>
         <ion-item-options side="right">
-          <button *ngIf="language.level>1" ion-button color="danger" on-click="removeLanguageLevel(language)">
+          <button *ngIf="new_char.languages[0]!=language&&language.level>1" ion-button color="danger" on-click="removeLanguageLevel(language)">
             <ion-icon name="remove"></ion-icon>
           </button>
-          <button *ngIf="language.level==1" disabled ion-button color="danger" on-click="removeLanguageLevel(language)">
+          <button *ngIf="new_char.languages[0]==language||language.level==1" disabled ion-button color="danger" on-click="removeLanguageLevel(language)">
             <ion-icon name="remove"></ion-icon>
           </button>
           <button ion-button disabled color="light">

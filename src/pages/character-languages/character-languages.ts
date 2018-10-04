@@ -37,11 +37,13 @@ export class CharacterLanguagesPage {
     this.profileModal.present();
     this.profileModal.onDidDismiss(language => {
       if (language != null) {
-        language.level = 1
-        this.new_char.languages.push(language)
-        if (this.new_char.languages[0] != language) {
+        if (this.new_char.languages.length == 0) {
+          language.level = 4
+        } else {
+          language.level = 1
           this.new_char.current_points += Constants.Language
         }
+        this.new_char.languages.push(language)
       }
     })
   }

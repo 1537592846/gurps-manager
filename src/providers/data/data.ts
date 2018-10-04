@@ -49,7 +49,7 @@ export class DataProvider {
     var char=JSON.stringify(character)
     console.log(char)
     return new Promise(resolve => {
-      this.http.post(this.apiAddress+"Character/save", char)
+      this.http.post(this.apiAddress+"Characters/save", char)
       .subscribe(res => {
         resolve(res)
         return true
