@@ -23,4 +23,8 @@ export class GurpsManagerPage {
   goToTabsController() {
     this.navCtrl.setRoot(TabsControllerPage, { char: new Character(0,this.dataProvider) });
   }
+  request(){
+    var char=new Character(0,this.dataProvider)
+    char.saveCharacter()
+  }
 }

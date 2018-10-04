@@ -12,6 +12,9 @@
   <button id="gurpsManager-load_character" ion-button color="primary" block on-click="goToTabsController()">
     Resume Character
   </button>
+  <button id="gurpsManager-create_character" ion-button color="danger" block on-click="request()">
+    Request
+  </button>
   <form id="gurpsManager-form">
     <ion-list id="gurpsManager-_list_character">
       <ion-item-sliding *ngFor="let advantage of advantages">

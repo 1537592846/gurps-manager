@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Disadvantage } from '../../../models/Disadvantage';
 import { Advantage } from '../../../models/Advantage';
@@ -46,14 +46,19 @@ export class DataProvider {
   }
 
   public saveCharacter(character:Character){
+    //application/x-www-form-urlencoded
     var char=JSON.stringify(character)
+    console.clear()
     console.log(char)
     return new Promise(resolve => {
-      this.http.post(this.apiAddress+"Characters/save", char)
+      let httpOptions = {
+        headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+      };
+      this.http.post(this.apiAddress+"Characters/save",char,httpOptions)
       .subscribe(res => {
         resolve(res)
-        return true
-      }, 
+        return res
+      },
       (error) => {
         resolve(error)
         console.log(error)
