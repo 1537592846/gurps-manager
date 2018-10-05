@@ -71,6 +71,7 @@ export class Character {
     loadCharacter(id: number) {
         this.dataProvider.getCharacter(id).then(res => {
             let data = res as Character
+            console.log(data)
             var characterInterface: CharacterInterface = JSON.parse(JSON.stringify(data))
             this.id = characterInterface.Id
             this.name = characterInterface.Name
@@ -227,4 +228,17 @@ export interface CharacterInterface {
     Disadvantages: Disadvantage[]
     Inventory: Inventory
     Equipments: Equipment
+}
+
+export class CharacterApi{
+    id: number
+    name: string
+    description:string
+}
+
+export class CharacterApiInterface{
+    DBId: DBId
+    Id: number
+    Name:string
+    Description:string
 }

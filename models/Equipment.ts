@@ -15,6 +15,16 @@ export class Equipment {
     public hands: Armor;
 
     constructor() {
+        this.left_hand = new OneHandWeapon()
+        this.right_hand = new OneHandWeapon()
+        this.both_hands = new TwoHandWeapon()
+        this.shield = new Shield()
+        this.head = new Armor()
+        this.torax = new Armor()
+        this.legs = new Armor()
+        this.feet = new Armor()
+        this.arms = new Armor()
+        this.hands = new Armor()
     }
     public static getEquipments(type: string) {
         switch (type) {

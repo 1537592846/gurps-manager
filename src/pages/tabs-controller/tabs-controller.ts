@@ -25,6 +25,5 @@ export class TabsControllerPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     //Getting data
     this.char = this.navParams.get('char')
-    console.log(this.char)
   }
 }

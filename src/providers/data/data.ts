@@ -4,7 +4,7 @@ import { Disadvantage } from '../../../models/Disadvantage';
 import { Advantage } from '../../../models/Advantage';
 import { Skill } from '../../../models/Skill';
 import { Language } from '../../../models/Language';
-import { Character } from '../../../models/Character';
+import { Character, CharacterApi } from '../../../models/Character';
 
 @Injectable()
 export class DataProvider {
@@ -27,7 +27,17 @@ export class DataProvider {
 
   public getCharacter(id:number){
     return new Promise(resolve => {
-      this.http.get<Disadvantage[]>(this.apiAddress + 'Characters/get/'+id).subscribe(data => {
+      this.http.get<Character>(this.apiAddress + 'Characters/get/'+id).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  public getCharacters(){
+    return new Promise(resolve => {
+      this.http.get<CharacterApi[]>(this.apiAddress + 'Characters/list').subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
@@ -46,10 +56,7 @@ export class DataProvider {
   }
 
   public saveCharacter(character:Character){
-    //application/x-www-form-urlencoded
     var char=JSON.stringify(character)
-    console.clear()
-    console.log(char)
     return new Promise(resolve => {
       let httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
