@@ -12,6 +12,6 @@ export class StatusPage {
   char: Character;
   constructor(public navParams: NavParams) {
     //Getting data
-    this.char = navParams.data;
+    this.char = navParams.get('new_char');
   }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController } from 'ionic-angular';
+import { NavController, ModalController, CardHeader } from 'ionic-angular';
 import { CharacterFeaturesPage } from '../character-features/character-features';
 import { TabsControllerPage } from '../tabs-controller/tabs-controller';
 import { Character } from '../../../models/Character';
@@ -28,7 +28,8 @@ export class GurpsManagerPage {
     this.profileModal.onDidDismiss(characterApi => {
       if (characterApi != null) {
         let character=new Character(characterApi.id,this.dataProvider)
-        this.navCtrl.push(TabsControllerPage, { char: character});
+        //TODO
+        // this.navCtrl.push(TabsControllerPage, { char: character});
       }
     })
   }

@@ -15,7 +15,7 @@ export class ExtrasPage {
 
   constructor(public navParams: NavParams) {
     //Getting data
-    this.char = navParams.data;
+    this.char = navParams.get('new_char');
   }
   ionViewWillEnter() {
     this.current_carry_category = this.getCharCarryCategory();

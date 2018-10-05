@@ -13,7 +13,7 @@ export class EquipmentsPage {
 
   constructor(public navParams: NavParams) {
     //Getting data
-    this.char = navParams.data;
+    this.char = navParams.get('new_char');
   }
   ionViewWillEnter() {
     this.getEquipments();
