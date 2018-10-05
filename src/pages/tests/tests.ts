@@ -9,15 +9,15 @@ import { Character } from '../../../models/Character';
 export class TestsPage {
 
   char: Character;
-  constructor(navParams:NavParams) {
+  constructor(navParams: NavParams) {
     //Getting data
-    this.char = navParams.data;
+    this.char = navParams.data
   }
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     //Getting data
     this.char;
   }
-    // Life functions
+  // Life functions
   removeLife() {
     this.char.current_life_points -= 1;
   }

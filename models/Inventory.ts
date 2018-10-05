@@ -1,5 +1,4 @@
 import { OneHandWeapon, TwoHandWeapon, Shield, Armor, Consumable, Other } from "./Item";
-import { DBId } from "../src/providers/data/data";
 
 export class Inventory {
 

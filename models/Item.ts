@@ -1,5 +1,3 @@
-import { DBId } from "../src/providers/data/data";
-
 class Item {
     public id: number
     public name: string

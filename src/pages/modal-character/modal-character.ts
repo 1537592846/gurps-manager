@@ -1,4 +1,4 @@
-import { Character, CharacterInterface, CharacterApiInterface, CharacterApi } from '../../../models/Character';
+import { CharacterApiInterface, CharacterApi } from '../../../models/Character';
 import { ViewController, NavParams } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { DataProvider } from '../../providers/data/data';

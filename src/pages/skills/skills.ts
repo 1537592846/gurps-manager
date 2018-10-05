@@ -13,7 +13,7 @@ export class SkillsPage {
   char: Character;
   constructor(public navParams: NavParams) {
     //Getting data
-    this.char = navParams.get('new_char');
+    this.char = navParams.data
   }
   getSkillLevel(skill: Skill) {
     switch (skill.attribute) {

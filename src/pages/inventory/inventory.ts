@@ -17,7 +17,7 @@ export class InventoryPage {
 
   constructor(public navParams: NavParams) {
     //Getting data
-    this.char = navParams.get('new_char');
+    this.char = navParams.data
     this.getInventory();
   }
   ionViewWillEnter() {

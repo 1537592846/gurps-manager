@@ -21,7 +21,7 @@ export class CharacterFeaturesPage {
         name:[Validators.pattern('[a-zA-Z ]*')],
         char_min_stats_points:[Validators.pattern('[0-9]*')],
         max_points:[Validators.pattern('[0-9]*')],
-        resource:[Validators.pattern('[0-9]*')]
+        resources:[Validators.pattern('[0-9]*')]
       }
     }
   }
