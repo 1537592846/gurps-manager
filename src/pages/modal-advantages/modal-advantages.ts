@@ -1,4 +1,4 @@
-import { Advantage, AdvantageInterface } from '../../../models/Advantage';
+import { Advantage } from '../../../models/Advantage';
 import { ViewController, NavParams } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { DataProvider } from '../../providers/data/data';
@@ -17,7 +17,7 @@ export class ModalAdvantages {
   advantages: Advantage[] = []
   char_advantages: Advantage[] = []
 
-  constructor(public viewCtrl: ViewController, public params: NavParams, public dataProvider: DataProvider) {    
+  constructor(public viewCtrl: ViewController, public params: NavParams, public dataProvider: DataProvider) {
     this.updateAdvantages()
   }
 
@@ -27,6 +27,7 @@ export class ModalAdvantages {
 
     if (this.mentals.length == 0) {
       for (let i = 0; i < this.advantages.length; i++) {
+        console.log(this.advantages)
         if (this.advantages[i].isMental()) {
           this.mentals.push(this.advantages[i])
         }
@@ -109,18 +110,17 @@ export class ModalAdvantages {
   updateAdvantages() {
     if (this.advantages == null || this.advantages.length == 0) {
       this.dataProvider.getAdvantages().then(res => {
-        let data = res as Advantage[]
+        let data = res as any[]
         for (let i = 0; i < data.length; i++) {
-          var advantageInterface: AdvantageInterface = JSON.parse(JSON.stringify(data[i]))
           var advantage = new Advantage
-          advantage.id = advantageInterface.Id
-          advantage.name = advantageInterface.Name
-          advantage.description = advantageInterface.Description
-          advantage.cost = advantageInterface.Cost
-          advantage.types = advantageInterface.Types
-          advantage.level = advantageInterface.Level
-          advantage.levelCap = advantageInterface.LevelCap
-          advantage.formula = advantageInterface.Formula
+          advantage.id = data[i].Id
+          advantage.name = data[i].Name
+          advantage.description = data[i].Description
+          advantage.cost = data[i].Cost
+          advantage.types = data[i].Types
+          advantage.level = data[i].Level
+          advantage.levelCap = data[i].LevelCap
+          advantage.formula = data[i].Formula
           this.advantages.push(advantage)
         }
       })

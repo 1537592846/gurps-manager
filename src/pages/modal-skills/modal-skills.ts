@@ -1,4 +1,4 @@
-import { Skill, SkillInterface } from '../../../models/Skill';
+import { Skill } from '../../../models/Skill';
 import { ViewController, NavParams } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { DataProvider } from '../../providers/data/data';
@@ -81,15 +81,14 @@ export class ModalSkills {
       this.dataProvider.getSkills().then(res => {
         let data = res as Skill[]
         for (let i = 0; i < data.length; i++) {
-          var skillInterface: SkillInterface = JSON.parse(JSON.stringify(data[i]))
           var skill = new Skill
-          skill.id = skillInterface.Id
-          skill.name = skillInterface.Name
-          skill.description = skillInterface.Description
-          skill.attribute = skillInterface.Attribute
-          skill.difficulty=skillInterface.Difficulty
-          skill.cost = skillInterface.Cost
-          skill.level = skillInterface.Level
+          skill.id = data[i].id
+          skill.name = data[i].name
+          skill.description = data[i].description
+          skill.attribute = data[i].attribute
+          skill.difficulty=data[i].difficulty
+          skill.cost = data[i].cost
+          skill.level = data[i].level
           this.skills.push(skill)
         }
       })

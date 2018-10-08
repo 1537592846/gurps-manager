@@ -1,5 +1,3 @@
-import { DBId } from "../src/providers/data/data";
-
 export class Disadvantage {
 
   public id: number;
@@ -37,16 +35,4 @@ export class Disadvantage {
   isMundane(): boolean {
     return this.types.find(x => x == "Mundane") != undefined
   }
-}
-
-export interface DisadvantageInterface {
-  DBId: DBId;
-  Id: number;
-  Name: string;
-  Description: string;
-  Types?: (string)[] | null;
-  Cost: number;
-  Level: number;
-  LevelCap: number;
-  Formula: string;
 }

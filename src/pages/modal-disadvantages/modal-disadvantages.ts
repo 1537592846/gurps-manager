@@ -1,4 +1,4 @@
-import { Disadvantage, DisadvantageInterface } from '../../../models/Disadvantage';
+import { Disadvantage } from '../../../models/Disadvantage';
 import { ViewController, NavParams } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { DataProvider } from '../../providers/data/data';
@@ -18,7 +18,6 @@ export class ModalDisadvantages {
   char_disadvantages: Disadvantage[] = []
 
   constructor(public viewCtrl: ViewController, public params: NavParams, public dataProvider: DataProvider) {
-    
     this.updateDisadvantages()
   }
 
@@ -110,18 +109,17 @@ export class ModalDisadvantages {
   updateDisadvantages() {
     if (this.disadvantages == null || this.disadvantages.length == 0) {
       this.dataProvider.getDisadvantages().then(res => {
-        let data = res as Disadvantage[]
+        let data = res as any[]
         for (let i = 0; i < data.length; i++) {
-          var disadvantageInterface: DisadvantageInterface = JSON.parse(JSON.stringify(data[i]))
           var disadvantage = new Disadvantage
-          disadvantage.id = disadvantageInterface.Id
-          disadvantage.name = disadvantageInterface.Name
-          disadvantage.description = disadvantageInterface.Description
-          disadvantage.cost = disadvantageInterface.Cost
-          disadvantage.types = disadvantageInterface.Types
-          disadvantage.level = disadvantageInterface.Level
-          disadvantage.levelCap = disadvantageInterface.LevelCap
-          disadvantage.formula = disadvantageInterface.Formula
+          disadvantage.id = data[i].Id
+          disadvantage.name = data[i].Name
+          disadvantage.description = data[i].Description
+          disadvantage.cost = data[i].Cost
+          disadvantage.types = data[i].Types
+          disadvantage.level = data[i].Level
+          disadvantage.levelCap = data[i].LevelCap
+          disadvantage.formula = data[i].Formula
           this.disadvantages.push(disadvantage)
         }
       })

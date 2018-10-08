@@ -1,5 +1,3 @@
-import { DBId } from "../src/providers/data/data";
-
 export class Skill {   
 
     public id: number;
@@ -28,14 +26,4 @@ export class Skill {
     isHealth(): boolean {
         return this.attribute == "HT"
     }
-}
-export interface SkillInterface {
-    DBId: DBId;
-    Id: number;
-    Name: string;
-    Description: string;
-    Attribute: string;
-    Difficulty: string;
-    Level: number;
-    Cost: number;
 }

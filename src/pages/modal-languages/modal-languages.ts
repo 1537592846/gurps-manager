@@ -1,4 +1,4 @@
-import { Language, LanguageInterface } from '../../../models/Language';
+import { Language } from '../../../models/Language';
 import { ViewController, NavParams } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { DataProvider } from '../../providers/data/data';
@@ -25,13 +25,12 @@ export class ModalLanguages {
       this.dataProvider.getLanguages().then(res => {
         let data = res as Language[]
         for (let i = 0; i < data.length; i++) {
-          var languageInterface: LanguageInterface = JSON.parse(JSON.stringify(data[i]))
           var language = new Language
-          language.id = languageInterface.Id
-          language.name = languageInterface.Name
-          language.description = languageInterface.Description
-          language.level = languageInterface.Level
-          language.levelCap = languageInterface.LevelCap
+          language.id = data[i].id
+          language.name = data[i].name
+          language.description = data[i].description
+          language.level = data[i].level
+          language.levelCap = data[i].levelCap
           this.languages.push(language)
         }
       })

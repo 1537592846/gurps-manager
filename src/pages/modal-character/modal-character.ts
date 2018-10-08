@@ -1,4 +1,4 @@
-import { CharacterApiInterface, CharacterApi } from '../../../models/Character';
+import { CharacterApi } from '../../../models/Character';
 import { ViewController, NavParams } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { DataProvider } from '../../providers/data/data';
@@ -19,11 +19,10 @@ export class ModalCharacters {
       this.dataProvider.getCharacters().then(res => {
         let data = res as CharacterApi[]
         for (let i = 0; i < data.length; i++) {
-          var characterInterface: CharacterApiInterface = JSON.parse(JSON.stringify(data[i]))
           var character = new CharacterApi()
-          character.id = characterInterface.Id
-          character.name = characterInterface.Name
-          character.description = characterInterface.Description
+          character.id = data[i].id
+          character.name = data[i].name
+          character.description = data[i].description
           this.characters.push(character)
         }
       })

@@ -1,5 +1,3 @@
-import { DBId } from "../src/providers/data/data";
-
 export class Language {
 
     public id: number
@@ -10,12 +8,4 @@ export class Language {
 
     constructor() {
     }
-}
-export interface LanguageInterface {
-    DBId: DBId;
-    Id: number;
-    Name: string;
-    Description: string;
-    Level: number;
-    LevelCap: number;
 }

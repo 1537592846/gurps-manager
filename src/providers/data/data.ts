@@ -5,6 +5,7 @@ import { Advantage } from '../../../models/Advantage';
 import { Skill } from '../../../models/Skill';
 import { Language } from '../../../models/Language';
 import { Character, CharacterApi } from '../../../models/Character';
+import { OneHandWeapon, TwoHandWeapon, Shield, Armor } from '../../../models/Item';
 
 @Injectable()
 export class DataProvider {
@@ -66,9 +67,9 @@ export class DataProvider {
         resolve(res)
         return res
       },
-      (error) => {
-        resolve(error)
-        console.log(error)
+      (err) => {
+        resolve(err)
+        console.log(err)
         return false
       }
     );
@@ -104,12 +105,94 @@ export class DataProvider {
       });
     });
   }
-}
 
-export interface DBId {
-  Timestamp: number;
-  Machine: number;
-  Pid: number;
-  Increment: number;
-  CreationTime: string;
+  public getOneHandWeapons(){
+    return new Promise(resolve => {
+      this.http.get<OneHandWeapon[]>(this.apiAddress + 'OneHandWeapons/get').subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  public getTwoHandWeapons(){
+    return new Promise(resolve => {
+      this.http.get<TwoHandWeapon[]>(this.apiAddress + 'TwoHandWeapons/get').subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  public getShields(){
+    return new Promise(resolve => {
+      this.http.get<Shield[]>(this.apiAddress + 'Shields/get').subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  public getHeads(){
+    return new Promise(resolve => {
+      this.http.get<Armor[]>(this.apiAddress + 'Heads/get').subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  public getTorax(){
+    return new Promise(resolve => {
+      this.http.get<Armor[]>(this.apiAddress + 'Torax/get').subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  public getLegs(){
+    return new Promise(resolve => {
+      this.http.get<Armor[]>(this.apiAddress + 'Legs/get').subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  public getFoot(){
+    return new Promise(resolve => {
+      this.http.get<Armor[]>(this.apiAddress + 'Foot/get').subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  public getArms(){
+    return new Promise(resolve => {
+      this.http.get<Armor[]>(this.apiAddress + 'Arms/get').subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  public getHands(){
+    return new Promise(resolve => {
+      this.http.get<Armor[]>(this.apiAddress + 'Hands/get').subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
 }

@@ -1,0 +1,165 @@
+<html style="background:white">
+<div padding>
+    <ion-segment [(ngModel)]="weaponsModel" *ngIf="{{equipmentType=='weapon'}}">
+        <ion-segment-button value="oneHand" on-click="updateOneHandWeapons()">
+            <h1>One Hand</h1>
+        </ion-segment-button>
+        <ion-segment-button value="twoHands" on-click="updateTwoHandWeapons()">
+            <h1>Two Hands</h1>
+        </ion-segment-button>
+        <ion-segment-button value="shield" on-click="updateShields()">
+            <h1>Shields</h1>
+        </ion-segment-button>
+    </ion-segment>
+</div>
+
+<div [ngSwitch]="weaponsModel" *ngIf="{{equipmentType=='weapon'}}">
+    <ion-list *ngSwitchCase="'oneHand'">
+        <ion-item-sliding *ngFor="let oneHand of oneHands">
+            <ion-item *ngIf="notInCharList(oneHand)">
+                <ion-thumbnail item-start>
+                    <h1>{{oneHand.name}}</h1>
+                </ion-thumbnail>
+                <p>{{oneHand.description}}</p>
+                <button ion-button clear item-end on-click="returnData(oneHand)">Equip</button>
+            </ion-item>
+        </ion-item-sliding>
+    </ion-list>
+    <ion-list *ngSwitchCase="'twoHand'">
+        <ion-item-sliding *ngFor="let twoHand of twoHands">
+            <ion-item *ngIf="notInCharList(twoHand)">
+                <ion-thumbnail item-start>
+                    <h1>{{twoHand.name}}</h1>
+                </ion-thumbnail>
+                <p>{{twoHand.description}}</p>
+                <button ion-button clear item-end on-click="returnData(twoHand)">Equip</button>
+            </ion-item>
+        </ion-item-sliding>
+    </ion-list>
+    <ion-list *ngSwitchCase="'shield'">
+        <ion-item-sliding *ngFor="let shield of shields">
+            <ion-item *ngIf="notInCharList(shield)">
+                <ion-thumbnail item-start>
+                    <h1>{{shield.name}}</h1>
+                </ion-thumbnail>
+                <p>{{shield.description}}</p>
+                <button ion-button clear item-end on-click="returnData(shield)">Equip</button>
+            </ion-item>
+        </ion-item-sliding>
+    </ion-list>
+</div>
+<div [ngSwitch]="weaponsModel" *ngIf="{{equipmentType=='weapon'}}">
+    <ion-list *ngSwitchCase="'oneHand'">
+        <ion-item-sliding *ngFor="let oneHand of oneHands">
+            <ion-item *ngIf="notInCharList(oneHand)">
+                <ion-thumbnail item-start>
+                    <h1>{{oneHand.name}}</h1>
+                </ion-thumbnail>
+                <p>{{oneHand.description}}</p>
+                <button ion-button clear item-end on-click="returnData(oneHand)">Equip</button>
+            </ion-item>
+        </ion-item-sliding>
+    </ion-list>
+    <ion-list *ngSwitchCase="'twoHands'">
+        <ion-item-sliding *ngFor="let physical of physicals">
+            <ion-item *ngIf="notInCharList(physical)">
+                <ion-thumbnail item-start>
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col *ngIf="physical.isMental()" col-4 style="text-align: center">
+                                <img class="gridImage" src="../../assets/imgs/mental.png">
+                            </ion-col>
+                            <ion-col *ngIf="!physical.isMental()" col-4 style="text-align: center">
+                                <img class="gridGrayImage" src="../../assets/imgs/mental.png">
+                            </ion-col>
+                            <ion-col col-4 style="text-align: center">
+                                <img class="gridImage" src="../../assets/imgs/physical.png">
+                            </ion-col>
+                            <ion-col *ngIf="physical.isSocial()" col-4 style="text-align: center">
+                                <img class="gridImage" src="../../assets/imgs/social.png">
+                            </ion-col>
+                            <ion-col *ngIf="!physical.isSocial()" col-4 style="text-align: center">
+                                <img class="gridGrayImage" src="../../assets/imgs/social.png">
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col *ngIf="physical.isExotic()" col-4 style="text-align: center">
+                                <img class="gridImage" src="../../assets/imgs/exotic.png">
+                            </ion-col>
+                            <ion-col *ngIf="!physical.isExotic()" col-4 style="text-align: center">
+                                <img class="gridGrayImage" src="../../assets/imgs/exotic.png">
+                            </ion-col>
+                            <ion-col *ngIf="physical.isSupernatural()" col-4 style="text-align: center">
+                                <img class="gridImage" src="../../assets/imgs/supernatural.png">
+                            </ion-col>
+                            <ion-col *ngIf="!physical.isSupernatural()" col-4 style="text-align: center">
+                                <img class="gridGrayImage" src="../../assets/imgs/supernatural.png">
+                            </ion-col>
+                            <ion-col *ngIf="physical.isMundane()" col-4 style="text-align: center">
+                                <img class="gridImage" src="../../assets/imgs/mundane.png">
+                            </ion-col>
+                            <ion-col *ngIf="!physical.isMundane()" col-4 style="text-align: center">
+                                <img class="gridGrayImage" src="../../assets/imgs/mundane.png">
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-thumbnail>
+                <h2>{{physical.name}}</h2>
+                <p>{{physical.description}}</p>
+                <button ion-button clear item-end on-click="returnData(physical)">Add</button>
+            </ion-item>
+        </ion-item-sliding>
+    </ion-list>
+    <ion-list *ngSwitchCase="'shield'">
+        <ion-item-sliding *ngFor="let social of socials">
+            <ion-item *ngIf="notInCharList(social)">
+                <ion-thumbnail item-start>
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col *ngIf="social.isMental()" col-4 style="text-align: center">
+                                <img class="gridImage" src="../../assets/imgs/mental.png">
+                            </ion-col>
+                            <ion-col *ngIf="!social.isMental()" col-4 style="text-align: center">
+                                <img class="gridGrayImage" src="../../assets/imgs/mental.png">
+                            </ion-col>
+                            <ion-col *ngIf="social.isPhysical()" col-4 style="text-align: center">
+                                <img class="gridImage" src="../../assets/imgs/physical.png">
+                            </ion-col>
+                            <ion-col *ngIf="!social.isPhysical()" col-4 style="text-align: center">
+                                <img class="gridGrayImage" src="../../assets/imgs/physical.png">
+                            </ion-col>
+                            <ion-col col-4 style="text-align: center">
+                                <img class="gridImage" src="../../assets/imgs/social.png">
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col *ngIf="social.isExotic()" col-4 style="text-align: center">
+                                <img class="gridImage" src="../../assets/imgs/exotic.png">
+                            </ion-col>
+                            <ion-col *ngIf="!social.isExotic()" col-4 style="text-align: center">
+                                <img class="gridGrayImage" src="../../assets/imgs/exotic.png">
+                            </ion-col>
+                            <ion-col *ngIf="social.isSupernatural()" col-4 style="text-align: center">
+                                <img class="gridImage" src="../../assets/imgs/supernatural.png">
+                            </ion-col>
+                            <ion-col *ngIf="!social.isSupernatural()" col-4 style="text-align: center">
+                                <img class="gridGrayImage" src="../../assets/imgs/supernatural.png">
+                            </ion-col>
+                            <ion-col *ngIf="social.isMundane()" col-4 style="text-align: center">
+                                <img class="gridImage" src="../../assets/imgs/mundane.png">
+                            </ion-col>
+                            <ion-col *ngIf="!social.isMundane()" col-4 style="text-align: center">
+                                <img class="gridGrayImage" src="../../assets/imgs/mundane.png">
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-thumbnail>
+                <h2>{{social.name}}</h2>
+                <p>{{social.description}}</p>
+                <button ion-button clear item-end on-click="returnData(social)">Add</button>
+            </ion-item>
+        </ion-item-sliding>
+    </ion-list>
+</div>
+
+</html>

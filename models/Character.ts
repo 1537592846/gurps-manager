@@ -1,4 +1,3 @@
-import { DBId } from "../src/providers/data/data";
 import { Language } from './Language'
 import { Skill } from './Skill'
 import { Advantage } from './Advantage'
@@ -134,36 +133,8 @@ export class Character {
     }
 }
 
-export interface CharacterInterface {
-    DBId: DBId;
-    Id: number
-    Name: string
-    Age: number
-    Height: number
-    Weight: number
-    MinimunStatusPoints: number
-    MaxPoints: number
-    CurrentPoints: number
-    Resources: number
-    Description: string
-    Status:any
-    Languages: any
-    Skills: any
-    Advantages: any
-    Disadvantages: any
-    Inventory: any
-    Equipments: any
-}
-
 export class CharacterApi{
     id: number
     name: string
     description:string
-}
-
-export class CharacterApiInterface{
-    DBId: DBId
-    Id: number
-    Name:string
-    Description:string
 }

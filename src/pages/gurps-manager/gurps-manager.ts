@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 import { CharacterFeaturesPage } from '../character-features/character-features';
 import { TabsControllerPage } from '../tabs-controller/tabs-controller';
-import { Character, CharacterInterface } from '../../../models/Character';
+import { Character } from '../../../models/Character';
 import { DataProvider } from '../../providers/data/data';
 import { ModalCharacters } from '../modal-character/modal-character';
 import { Language } from '../../../models/Language';
@@ -36,7 +36,7 @@ export class GurpsManagerPage {
     this.profileModal.onDidDismiss(characterApi => {
       if (characterApi != null) {
         this.dataProvider.getCharacter(characterApi.id).then(res => {
-          let data = res as CharacterInterface
+          let data = res as any
           let character = new Character(data.Id)
           character.id = data.Id
           character.name = data.Name
