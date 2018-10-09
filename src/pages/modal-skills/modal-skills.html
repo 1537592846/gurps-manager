@@ -1,3 +1,19 @@
+<style>
+    h1 {
+        text-align: center;
+        word-wrap: normal;
+    }
+
+    h2 {
+        text-align: center;
+        word-wrap: normal;
+    }
+
+    ion-thumbnail {
+        width: 20%
+    }
+</style>
+
 <html style="background:white">
 <div padding>
     <ion-segment [(ngModel)]="skillsModel">
@@ -22,9 +38,9 @@
             <ion-item *ngIf="notInCharList(strenght)">
                 <ion-thumbnail item-start>
                     <h1>{{strenght.name}}</h1>
+                    <h2>{{strenght.difficulty}}</h2>
                 </ion-thumbnail>
-                <h2>{{strenght.difficulty}}</h2>
-                <p>{{strenght.description}}</p>
+                <p item-content>{{strenght.description}}</p>
                 <button ion-button clear item-end on-click="returnData(strenght)">Add</button>
             </ion-item>
         </ion-item-sliding>
@@ -33,10 +49,10 @@
         <ion-item-sliding *ngFor="let dexterity of dexterities">
             <ion-item *ngIf="notInCharList(dexterity)">
                 <ion-thumbnail item-start>
-                    <h1>{{dexterity.difficulty}}</h1>
+                    <h1>{{dexterity.name}}</h1>
+                    <h2>{{dexterity.difficulty}}</h2>
                 </ion-thumbnail>
-                <h2>{{dexterity.name}}</h2>
-                <p>{{dexterity.description}}</p>
+                <p item-content>{{dexterity.description}}</p>
                 <button ion-button clear item-end on-click="returnData(dexterity)">Add</button>
             </ion-item>
         </ion-item-sliding>
@@ -45,10 +61,10 @@
         <ion-item-sliding *ngFor="let intelligence of intelligences">
             <ion-item *ngIf="notInCharList(intelligence)">
                 <ion-thumbnail item-start>
-                    <h1>{{intelligence.difficulty}}</h1>
+                    <h1>{{intelligence.name}}</h1>
+                    <h2>{{intelligence.difficulty}}</h2>
                 </ion-thumbnail>
-                <h2>{{intelligence.name}}</h2>
-                <p>{{intelligence.description}}</p>
+                <p item-content>{{intelligence.description}}</p>
                 <button ion-button clear item-end on-click="returnData(intelligence)">Add</button>
             </ion-item>
         </ion-item-sliding>
@@ -57,10 +73,10 @@
         <ion-item-sliding *ngFor="let health of healths">
             <ion-item *ngIf="notInCharList(health)">
                 <ion-thumbnail item-start>
-                    <h1>{{health.difficulty}}</h1>
+                    <h1>{{health.name}}</h1>
+                    <h2>{{health.difficulty}}</h2>
                 </ion-thumbnail>
-                <h2>{{health.name}}</h2>
-                <p>{{health.description}}</p>
+                <p item-content>{{health.description}}</p>
                 <button ion-button clear item-end on-click="returnData(health)">Add</button>
             </ion-item>
         </ion-item-sliding>

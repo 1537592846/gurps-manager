@@ -79,16 +79,17 @@ export class ModalSkills {
   updateSkills() {
     if (this.skills == null || this.skills.length == 0) {
       this.dataProvider.getSkills().then(res => {
-        let data = res as Skill[]
+        let data = res as any[]
         for (let i = 0; i < data.length; i++) {
           var skill = new Skill
-          skill.id = data[i].id
-          skill.name = data[i].name
-          skill.description = data[i].description
-          skill.attribute = data[i].attribute
-          skill.difficulty=data[i].difficulty
-          skill.cost = data[i].cost
-          skill.level = data[i].level
+          skill.id = data[i].Id
+          skill.name = data[i].Name
+          skill.description = data[i].Description
+          skill.attribute = data[i].Attribute
+          skill.difficulty=data[i].Difficulty
+          skill.cost = data[i].Cost
+          skill.level = data[i].Level
+          console.log(data[i])
           this.skills.push(skill)
         }
       })

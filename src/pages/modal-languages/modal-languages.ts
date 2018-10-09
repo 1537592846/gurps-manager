@@ -23,14 +23,14 @@ export class ModalLanguages {
   updateLanguages() {
     if (this.languages == null || this.languages.length == 0) {
       this.dataProvider.getLanguages().then(res => {
-        let data = res as Language[]
+        let data = res as any[]
         for (let i = 0; i < data.length; i++) {
           var language = new Language
-          language.id = data[i].id
-          language.name = data[i].name
-          language.description = data[i].description
-          language.level = data[i].level
-          language.levelCap = data[i].levelCap
+          language.id = data[i].Id
+          language.name = data[i].Name
+          language.description = data[i].Description
+          language.level = data[i].Level
+          language.levelCap = data[i].LevelCap
           this.languages.push(language)
         }
       })

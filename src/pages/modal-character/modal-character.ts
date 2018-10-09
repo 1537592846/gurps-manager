@@ -17,12 +17,12 @@ export class ModalCharacters {
   updateCharacters() {
     if (this.characters == null || this.characters.length == 0) {
       this.dataProvider.getCharacters().then(res => {
-        let data = res as CharacterApi[]
+        let data = res as any[]
         for (let i = 0; i < data.length; i++) {
           var character = new CharacterApi()
-          character.id = data[i].id
-          character.name = data[i].name
-          character.description = data[i].description
+          character.id = data[i].Id
+          character.name = data[i].Name
+          character.description = data[i].Description
           this.characters.push(character)
         }
       })
