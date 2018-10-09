@@ -23,7 +23,7 @@ export class CharacterDisadvantagesPage {
   }
   removeDisadvantage(disadvantage: Disadvantage) {
     for (var i = 0; i < this.new_char.disadvantages.length; i++) {
-      if (this.new_char.disadvantages[i] == disadvantage) {
+      if (this.new_char.disadvantages[i].name == disadvantage.name) {
         this.new_char.disadvantages.splice(i, 1);
         this.new_char.current_points += disadvantage.cost*disadvantage.level
       }

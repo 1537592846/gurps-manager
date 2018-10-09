@@ -17,35 +17,149 @@
 </ion-header>
 <ion-content padding id="equipments">
   <ion-list id="equipments-list-1">
-    <ion-item-sliding *ngFor="let equipment of equipments">
-      <ion-item color="none">
-        {{equipment.label}}
-        <ion-note item-right>{{equipment.name}}</ion-note>
+    <ion-item-sliding>
+      <ion-item item-left color="none" id="equipments-item-left_hand">
+        Left Hand
+        <p>{{getEquipmentName("left_hand")}}</p>
+        <ion-note item-right>Swipe left</ion-note>
       </ion-item>
+      <ion-item-options side="right">
+        <button *ngIf='getEquipmentName("left_hand")=="Empty"' ion-button color="secondary" on-click="equipEquipment('left_hand')">
+          Equip
+        </button>
+        <button *ngIf='getEquipmentName("left_hand")!="Empty"' ion-button color="primary" on-click="changeEquipment('left_hand')">
+          Change
+        </button>
+        <button *ngIf='getEquipmentName("left_hand")!="Empty"' ion-button color="danger" on-click="removeEquipment('left_hand')">
+          Remove
+        </button>
+      </ion-item-options>
     </ion-item-sliding>
-    <ion-item color="none" id="equipments-item-head">
-      Head
-      <ion-note item-right>{{char.equipments.head.name}}</ion-note>
-    </ion-item>
-    <ion-item color="none" id="equipments-item-torax">
-      Torax
-      <ion-note item-right>{{char.equipments.torax.name}}</ion-note>
-    </ion-item>
-    <ion-item color="none" id="equipments-item-legs">
-      Legs
-      <ion-note item-right>{{char.equipments.legs.name}}</ion-note>
-    </ion-item>
-    <ion-item color="none" id="equipments-item-feet">
-      Feet
-      <ion-note item-right>{{char.equipments.feet.name}}</ion-note>
-    </ion-item>
-    <ion-item color="none" id="equipments-item-arms">
-      Arms
-      <ion-note item-right>{{char.equipments.arms.name}}</ion-note>
-    </ion-item>
-    <ion-item color="none" id="equipments-item-hands">
-      Hands
-      <ion-note item-right>{{char.equipments.hands.name}}</ion-note>
-    </ion-item>
+    <ion-item-sliding>
+      <ion-item item-left color="none" id="equipments-item-right_hand">
+        Right Hand
+        <p>{{getEquipmentName("right_hand")}}</p>
+        <ion-note item-right>Swipe left</ion-note>
+      </ion-item>
+      <ion-item-options side="right">
+        <button *ngIf='getEquipmentName("right_hand")=="Empty"' ion-button color="secondary" on-click="equipEquipment('right_hand')">
+          Equip
+        </button>
+        <button *ngIf='getEquipmentName("right_hand")!="Empty"' ion-button color="primary" on-click="changeEquipment('right_hand')">
+          Change
+        </button>
+        <button *ngIf='getEquipmentName("right_hand")!="Empty"' ion-button color="danger" on-click="removeEquipment('right_hand')">
+          Remove
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+    <ion-item-sliding>
+      <ion-item item-left color="none" id="equipments-item-head">
+        Head
+        <p>{{getEquipmentName("head")}}</p>
+        <ion-note item-right>Swipe left</ion-note>
+      </ion-item>
+      <ion-item-options side="right">
+        <button *ngIf='getEquipmentName("head")=="Empty"' ion-button color="secondary" on-click="equipEquipment('head')">
+          Equip
+        </button>
+        <button *ngIf='getEquipmentName("head")!="Empty"' ion-button color="primary" on-click="changeEquipment('head')">
+          Change
+        </button>
+        <button *ngIf='getEquipmentName("head")!="Empty"' ion-button color="danger" on-click="removeEquipment('head')">
+          Remove
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+    <ion-item-sliding>
+      <ion-item item-left color="none" id="equipments-item-torax">
+        Torax
+        <p>{{getEquipmentName("torax")}}</p>
+        <ion-note item-right>Swipe left</ion-note>
+      </ion-item>
+      <ion-item-options side="right">
+        <button *ngIf='getEquipmentName("torax")=="Empty"' ion-button color="secondary" on-click="equipEquipment('torax')">
+          Equip
+        </button>
+        <button *ngIf='getEquipmentName("torax")!="Empty"' ion-button color="primary" on-click="changeEquipment('torax')">
+          Change
+        </button>
+        <button *ngIf='getEquipmentName("torax")!="Empty"' ion-button color="danger" on-click="removeEquipment('torax')">
+          Remove
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+    <ion-item-sliding>
+      <ion-item item-left color="none" id="equipments-item-legs">
+        Legs
+        <p>{{getEquipmentName("legs")}}</p>
+        <ion-note item-right>Swipe left</ion-note>
+      </ion-item>
+      <ion-item-options side="right">
+        <button *ngIf='getEquipmentName("legs")=="Empty"' ion-button color="secondary" on-click="equipEquipment('legs')">
+          Equip
+        </button>
+        <button *ngIf='getEquipmentName("legs")!="Empty"' ion-button color="primary" on-click="changeEquipment('legs')">
+          Change
+        </button>
+        <button *ngIf='getEquipmentName("legs")!="Empty"' ion-button color="danger" on-click="removeEquipment('legs')">
+          Remove
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+    <ion-item-sliding>
+      <ion-item item-left color="none" id="equipments-item-feet">
+        Foot
+        <p>{{getEquipmentName("feet")}}</p>
+        <ion-note item-right>Swipe left</ion-note>
+      </ion-item>
+      <ion-item-options side="right">
+        <button *ngIf='getEquipmentName("feet")=="Empty"' ion-button color="secondary" on-click="equipEquipment('feet')">
+          Equip
+        </button>
+        <button *ngIf='getEquipmentName("feet")!="Empty"' ion-button color="primary" on-click="changeEquipment('feet')">
+          Change
+        </button>
+        <button *ngIf='getEquipmentName("feet")!="Empty"' ion-button color="danger" on-click="removeEquipment('feet')">
+          Remove
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+    <ion-item-sliding>
+      <ion-item item-left color="none" id="equipments-item-arms">
+        Arms
+        <p>{{getEquipmentName("arms")}}</p>
+        <ion-note item-right>Swipe left</ion-note>
+      </ion-item>
+      <ion-item-options side="right">
+        <button *ngIf='getEquipmentName("arms")=="Empty"' ion-button color="secondary" on-click="equipEquipment('arms')">
+          Equip
+        </button>
+        <button *ngIf='getEquipmentName("arms")!="Empty"' ion-button color="primary" on-click="changeEquipment('arms')">
+          Change
+        </button>
+        <button *ngIf='getEquipmentName("arms")!="Empty"' ion-button color="danger" on-click="removeEquipment('arms')">
+          Remove
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+    <ion-item-sliding>
+      <ion-item item-left color="none" id="equipments-item-hands">
+        Hands
+        <p>{{getEquipmentName("hands")}}</p>
+        <ion-note item-right>Swipe left</ion-note>
+      </ion-item>
+      <ion-item-options side="right">
+        <button *ngIf='getEquipmentName("hands")=="Empty"' ion-button color="secondary" on-click="equipEquipment('hands')">
+          Equip
+        </button>
+        <button *ngIf='getEquipmentName("hands")!="Empty"' ion-button color="primary" on-click="changeEquipment('hands')">
+          Change
+        </button>
+        <button *ngIf='getEquipmentName("hands")!="Empty"' ion-button color="danger" on-click="removeEquipment('hands')">
+          Remove
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
 </ion-content>

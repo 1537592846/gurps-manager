@@ -23,7 +23,7 @@ export class CharacterSkillsPage {
   }
   removeSkill(skill: Skill) {
     for (var i = 0; i < this.new_char.skills.length; i++) {
-      if (this.new_char.skills[i] == skill) {
+      if (this.new_char.skills[i].name == skill.name) {
         this.new_char.skills.splice(i, 1);
         this.new_char.current_points -= this.getSkillCost(skill)
       }

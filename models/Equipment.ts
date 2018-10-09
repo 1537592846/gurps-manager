@@ -25,44 +25,4 @@ export class Equipment {
         this.arms = new Armor()
         this.hands = new Armor()
     }
-    public static getEquipments(type: string) {
-        switch (type) {
-            case "both": return {
-                both_hands: TwoHandWeapon.getWeapon(),
-                left_hand: null,
-                right_hand: null,
-                shield: null,
-                head: Armor.getArmor(),
-                torax: Armor.getArmor(),
-                legs: Armor.getArmor(),
-                feet: Armor.getArmor(),
-                arms: Armor.getArmor(),
-                hands: Armor.getArmor()
-            } as Equipment
-            case "shield": return {
-                both_hands: null,
-                left_hand: OneHandWeapon.getWeapon(),
-                right_hand: null,
-                shield: Shield.getShield(),
-                head: Armor.getArmor(),
-                torax: Armor.getArmor(),
-                legs: Armor.getArmor(),
-                feet: Armor.getArmor(),
-                arms: Armor.getArmor(),
-                hands: Armor.getArmor()
-            } as Equipment
-            default: return {
-                both_hands: null,
-                left_hand: OneHandWeapon.getWeapon(),
-                right_hand: OneHandWeapon.getWeapon(),
-                shield: null,
-                head: Armor.getArmor(),
-                torax: Armor.getArmor(),
-                legs: Armor.getArmor(),
-                feet: Armor.getArmor(),
-                arms: Armor.getArmor(),
-                hands: Armor.getArmor()
-            } as Equipment
-        }
-    }
 }

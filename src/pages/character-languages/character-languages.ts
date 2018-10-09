@@ -24,7 +24,7 @@ export class CharacterLanguagesPage {
   }
   removeLanguage(language: Language) {
     for (var i = 0; i < this.new_char.languages.length; i++) {
-      if (this.new_char.languages[i] == language) {
+      if (this.new_char.languages[i].name == language.name) {
         this.new_char.languages.splice(i, 1);
         if (i != 0) {
           this.new_char.current_points -= language.level * Constants.Language

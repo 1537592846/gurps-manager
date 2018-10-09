@@ -23,7 +23,7 @@ export class CharacterAdvantagesPage {
   }
   removeAdvantage(advantage: Advantage) {
     for (var i = 0; i < this.new_char.advantages.length; i++) {
-      if (this.new_char.advantages[i] == advantage) {
+      if (this.new_char.advantages[i].name == advantage.name) {
         this.new_char.advantages.splice(i, 1);
         this.new_char.current_points -= advantage.cost * advantage.level
       }

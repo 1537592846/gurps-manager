@@ -43,7 +43,7 @@
       </button>
     </ion-list>
   <!-- Shield related buttons -->
-  <ion-list text-center *ngIf="char.equipments.shield!=null">
+  <ion-list text-center *ngIf="char.equipments.shield.name!=undefined">
     <button id="tests-shield-minus" ion-button color="danger" on-click="removeShield()">
       <ion-icon name="remove"></ion-icon>
     </button>

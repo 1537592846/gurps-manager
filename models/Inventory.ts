@@ -18,17 +18,6 @@ export class Inventory {
         this.others = {} as Other[];
     }
 
-    public static getInventory() {
-        var inventory = new Inventory();
-        inventory.one_hand_weapons = [OneHandWeapon.getWeapon()];
-        inventory.two_hand_weapons = [TwoHandWeapon.getWeapon()];
-        inventory.shields = [Shield.getShield()];
-        inventory.armors = [Armor.getArmor()];
-        inventory.consumables = [Consumable.getConsumable()];
-        inventory.others = [Other.getOther()];
-        return inventory;
-    }
-
     public getValue(){
         var value=0;
         this.one_hand_weapons.forEach(element => {

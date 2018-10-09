@@ -27,6 +27,7 @@ import { ModalAdvantages } from '../pages/modal-advantages/modal-advantages';
 import { ModalSkills } from '../pages/modal-skills/modal-skills';
 import { ModalLanguages } from '../pages/modal-languages/modal-languages';
 import { ModalCharacters } from '../pages/modal-character/modal-character';
+import { ModalEquipments } from '../pages/modal-equipments/modal-equipments';
 //Lista de Providers (DAOs) criados
 
 @NgModule({
@@ -41,17 +42,18 @@ import { ModalCharacters } from '../pages/modal-character/modal-character';
     TabsControllerPage,
     GurpsManagerPage,
     CharacterFeaturesPage,
+    CharacterDisadvantagesPage,
+    CharacterAdvantagesPage,
     CharacterStatusPage,
     CharacterSkillsPage,
     CharacterLanguagesPage,
-    CharacterAdvantagesPage,
-    CharacterDisadvantagesPage,
     CharacterResumePage,
-    ModalDisadvantages,
     ModalAdvantages,
-    ModalSkills,
+    ModalCharacters,
+    ModalDisadvantages,
+    ModalEquipments,
     ModalLanguages,
-    ModalCharacters
+    ModalSkills
   ],
   imports: [
     BrowserModule,
@@ -71,17 +73,18 @@ import { ModalCharacters } from '../pages/modal-character/modal-character';
     TabsControllerPage,
     GurpsManagerPage,
     CharacterFeaturesPage,
+    CharacterDisadvantagesPage,
+    CharacterAdvantagesPage,
     CharacterStatusPage,
     CharacterSkillsPage,
     CharacterLanguagesPage,
-    CharacterAdvantagesPage,
-    CharacterDisadvantagesPage,
     CharacterResumePage,
     ModalDisadvantages,
     ModalAdvantages,
-    ModalSkills,
+    ModalCharacters,
+    ModalEquipments,
     ModalLanguages,
-    ModalCharacters
+    ModalSkills
   ],
   providers: [
     StatusBar,

@@ -5,10 +5,10 @@ import { ViewController, NavParams } from "ionic-angular";
 import { DataProvider } from "../../providers/data/data";
 
 @Component({
-  selector: 'modal-advantages.html',
-  templateUrl: 'modal-advantages.html'
+  selector: 'modal-equipments.html',
+  templateUrl: 'modal-equipments.html'
 })
-export class ModalAdvantages {
+export class ModalEquipments {
   one_hand_weapons: OneHandWeapon[] = []
   two_hand_weapons: TwoHandWeapon[] = []
   shields: Shield[] = []
@@ -26,13 +26,10 @@ export class ModalAdvantages {
     this.updateEquipments()
   }
 
-  updateCharEquipments() {
-    this.char_equipment = this.params.get("equipment")
-  }
-
   updateEquipments() {
     switch (this.equipmentType) {
-      case "weapon": {
+      case"left_hand":
+      case"right_hand":{
         if (this.one_hand_weapons == null || this.one_hand_weapons.length == 0) {
           this.dataProvider.getOneHandWeapons().then(res => {
             let data = res as OneHandWeapon[]
@@ -130,7 +127,7 @@ export class ModalAdvantages {
             .catch(error => { console.log(error) });
         }
       }
-      case "leg": {
+      case "legs": {
         if (this.legs == null || this.legs.length == 0) {
           this.dataProvider.getLegs().then(res => {
             let data = res as Armor[]
@@ -170,7 +167,7 @@ export class ModalAdvantages {
             .catch(error => { console.log(error) });
         }
       }
-      case "arm": {
+      case "arms": {
         if (this.arms == null || this.arms.length == 0) {
           this.dataProvider.getArms().then(res => {
             let data = res as Armor[]
@@ -190,7 +187,7 @@ export class ModalAdvantages {
             .catch(error => { console.log(error) });
         }
       }
-      case "hand": {
+      case "hands": {
         if (this.hands == null || this.hands.length == 0) {
           this.dataProvider.getHands().then(res => {
             let data = res as Armor[]
@@ -211,20 +208,6 @@ export class ModalAdvantages {
         }
       }
     }
-  }
-
-  notInCharList(equipment: any): boolean {
-    if(this.char_equipment.left_hand.name==equipment.name)return false
-    if(this.char_equipment.right_hand.name==equipment.name)return false
-    if(this.char_equipment.both_hands.name==equipment.name)return false
-    if(this.char_equipment.shield.name==equipment.name)return false
-    if(this.char_equipment.head.name==equipment.name)return false
-    if(this.char_equipment.torax.name==equipment.name)return false
-    if(this.char_equipment.arms.name==equipment.name)return false
-    if(this.char_equipment.hands.name==equipment.name)return false
-    if(this.char_equipment.legs.name==equipment.name)return false
-    if(this.char_equipment.feet.name==equipment.name)return false
-    return true
   }
 
   returnData(equipment: any) {
