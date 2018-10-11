@@ -13,6 +13,7 @@ export class Character {
     //Character Features
     name: string;
     age: number;
+    nt:number;
     height: number;
     weight: number;
     min_status: number;

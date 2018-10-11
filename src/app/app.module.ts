@@ -51,7 +51,7 @@ import { ModalEquipments } from '../pages/modal-equipments/modal-equipments';
     ModalAdvantages,
     ModalCharacters,
     ModalDisadvantages,
-    ModalEquipments,
+    // ModalEquipments,
     ModalLanguages,
     ModalSkills
   ],
@@ -82,7 +82,7 @@ import { ModalEquipments } from '../pages/modal-equipments/modal-equipments';
     ModalDisadvantages,
     ModalAdvantages,
     ModalCharacters,
-    ModalEquipments,
+    // ModalEquipments,
     ModalLanguages,
     ModalSkills
   ],

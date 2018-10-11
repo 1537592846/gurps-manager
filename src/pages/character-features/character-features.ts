@@ -23,7 +23,8 @@ export class CharacterFeaturesPage {
         weight:['',Validators.compose([Validators.pattern('([0-9]*)|([0-9]*.[0-9]+)')])],
         min_status: ['',Validators.compose([Validators.min(1),Validators.pattern('[0-9]*'), Validators.required])],
         max_points: ['',Validators.compose([Validators.min(1),Validators.pattern('[0-9]*'), Validators.required])],
-        resources: ['',Validators.compose([Validators.min(1),Validators.pattern('[0-9]*'), Validators.required])],
+        resources: ['',Validators.compose([Validators.min(0),Validators.pattern('[0-9]{1]}'), Validators.required])],
+        nt: ['',Validators.compose([Validators.min(1),Validators.pattern('[0-9]*'), Validators.required])],
         description:['', Validators.compose([Validators.minLength(3),Validators.pattern('[a-zA-Z ]*'), Validators.required])]
     })
   }
@@ -36,6 +37,7 @@ export class CharacterFeaturesPage {
       this.new_char.min_status=this.form.getRawValue().min_status
       this.new_char.max_points=this.form.getRawValue().max_points
       this.new_char.resources=this.form.getRawValue().resources
+      this.new_char.nt=this.form.getRawValue().nt
       this.new_char.description=this.form.getRawValue().description
       this.navCtrl.push(CharacterDisadvantagesPage, { new_char: this.new_char });
     } else {
