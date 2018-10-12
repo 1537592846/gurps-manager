@@ -23,12 +23,13 @@ export class CharacterFeaturesPage {
         weight:['',Validators.compose([Validators.pattern('([0-9]*)|([0-9]*.[0-9]+)')])],
         min_status: ['',Validators.compose([Validators.min(1),Validators.pattern('[0-9]*'), Validators.required])],
         max_points: ['',Validators.compose([Validators.min(1),Validators.pattern('[0-9]*'), Validators.required])],
-        resources: ['',Validators.compose([Validators.min(0),Validators.pattern('[0-9]{1]}'), Validators.required])],
-        nt: ['',Validators.compose([Validators.min(1),Validators.pattern('[0-9]*'), Validators.required])],
-        description:['', Validators.compose([Validators.minLength(3),Validators.pattern('[a-zA-Z ]*'), Validators.required])]
+        resources: ['',Validators.compose([Validators.min(0),Validators.pattern('[0-9]*'), Validators.required])],
+        nt: ['',Validators.compose([Validators.min(1),Validators.pattern('[0-9]{1}'), Validators.required])],
+        description:['', Validators.compose([Validators.minLength(3),Validators.pattern('[a-zA-Z .,]*'), Validators.required])]
     })
   }
   goToCharacterDisadvantages() {
+    console.log(this.form)
     if (this.form.valid) {
       this.new_char.name=this.form.getRawValue().name
       this.new_char.age=this.form.getRawValue().age

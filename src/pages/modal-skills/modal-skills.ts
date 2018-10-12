@@ -16,7 +16,6 @@ export class ModalSkills {
   char_skills: Skill[] = []
 
   constructor(public viewCtrl: ViewController, public params: NavParams, public dataProvider: DataProvider) {
-
     this.updateSkills()
   }
 
@@ -89,12 +88,12 @@ export class ModalSkills {
           skill.difficulty=data[i].Difficulty
           skill.cost = data[i].Cost
           skill.level = data[i].Level
-          console.log(data[i])
           this.skills.push(skill)
         }
       })
       .catch(error => { console.log(error) });
     }
+    console.log(this.skills)
   }
 
   notInCharList(skill: Skill): boolean {
