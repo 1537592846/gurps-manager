@@ -22,7 +22,6 @@ export class ModalSkills {
   updateStrenght() {
     this.updateSkills()
     this.updateCharSkills()
-
     if (this.strenghts.length == 0) {
       for (let i = 0; i < this.skills.length; i++) {
         if (this.skills[i].isStrenght()) {
@@ -93,7 +92,6 @@ export class ModalSkills {
       })
       .catch(error => { console.log(error) });
     }
-    console.log(this.skills)
   }
 
   notInCharList(skill: Skill): boolean {

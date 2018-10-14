@@ -29,7 +29,6 @@ export class CharacterFeaturesPage {
     })
   }
   goToCharacterDisadvantages() {
-    console.log(this.form)
     if (this.form.valid) {
       this.new_char.name=this.form.getRawValue().name
       this.new_char.age=this.form.getRawValue().age

@@ -38,7 +38,8 @@
             <ion-item *ngIf="notInCharList(strenght)">
                 <ion-thumbnail item-start>
                     <h1>{{strenght.name}}</h1>
-                    <h2>{{strenght.difficulty}}</h2>
+                    <h2 *ngIf='strenght.difficulty!="VeryHard"'>{{strenght.difficulty}}</h2>
+                    <h2 *ngIf='strenght.difficulty=="VeryHard"'>Very Hard</h2>
                 </ion-thumbnail>
                 <p item-content>{{strenght.description}}</p>
                 <button ion-button clear item-end on-click="returnData(strenght)">Add</button>
@@ -50,7 +51,8 @@
             <ion-item *ngIf="notInCharList(dexterity)">
                 <ion-thumbnail item-start>
                     <h1>{{dexterity.name}}</h1>
-                    <h2>{{dexterity.difficulty}}</h2>
+                    <h2 *ngIf='dexterity.difficulty!="VeryHard"'>{{dexterity.difficulty}}</h2>
+                    <h2 *ngIf='dexterity.difficulty=="VeryHard"'>Very Hard</h2>
                 </ion-thumbnail>
                 <p item-content>{{dexterity.description}}</p>
                 <button ion-button clear item-end on-click="returnData(dexterity)">Add</button>
@@ -62,7 +64,8 @@
             <ion-item *ngIf="notInCharList(intelligence)">
                 <ion-thumbnail item-start>
                     <h1>{{intelligence.name}}</h1>
-                    <h2>{{intelligence.difficulty}}</h2>
+                    <h2 *ngIf='intelligence.difficulty!="VeryHard"'>{{intelligence.difficulty}}</h2>
+                    <h2 *ngIf='intelligence.difficulty=="VeryHard"'>Very Hard</h2>
                 </ion-thumbnail>
                 <p item-content>{{intelligence.description}}</p>
                 <button ion-button clear item-end on-click="returnData(intelligence)">Add</button>
@@ -74,7 +77,8 @@
             <ion-item *ngIf="notInCharList(health)">
                 <ion-thumbnail item-start>
                     <h1>{{health.name}}</h1>
-                    <h2>{{health.difficulty}}</h2>
+                    <h2 *ngIf='health.difficulty!="VeryHard"'>{{health.difficulty}}</h2>
+                    <h2 *ngIf='health.difficulty=="VeryHard"'>Very Hard</h2>
                 </ion-thumbnail>
                 <p item-content>{{health.description}}</p>
                 <button ion-button clear item-end on-click="returnData(health)">Add</button>

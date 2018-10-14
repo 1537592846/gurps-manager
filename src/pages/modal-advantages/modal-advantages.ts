@@ -27,7 +27,6 @@ export class ModalAdvantages {
 
     if (this.mentals.length == 0) {
       for (let i = 0; i < this.advantages.length; i++) {
-        console.log(this.advantages)
         if (this.advantages[i].isMental()) {
           this.mentals.push(this.advantages[i])
         }

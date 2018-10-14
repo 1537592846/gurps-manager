@@ -12,7 +12,6 @@ export class TestsPage {
   constructor(navParams: NavParams) {
     //Getting data
     this.char = navParams.data
-    console.log(this.char.equipments.shield.name)
   }
   ionViewWillEnter() {
     //Getting data
