@@ -119,11 +119,11 @@ export class Character {
     }
     public getMovement() {
         switch (this.getCarryCategory()) {
-            case "None": return this.basic_movement;
-            case "Light": return this.basic_movement * 0.8;
-            case "Moderate": return this.basic_movement * 0.6;
-            case "Heavy": return this.basic_movement * 0.4;
-            case "Very Heavy": return this.basic_movement * 0.2;
+            case "None": return Math.round(this.basic_movement)
+            case "Light": return Math.round(this.basic_movement * 0.8)
+            case "Moderate": return Math.round(this.basic_movement * 0.6)
+            case "Heavy": return Math.round(this.basic_movement * 0.4)
+            case "Very Heavy": return Math.round(this.basic_movement * 0.2)
         }
     }
     public getDodge() {

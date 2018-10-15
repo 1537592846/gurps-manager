@@ -8,9 +8,6 @@ import { Character } from '../../../models/Character';
 })
 export class ExtrasPage {
 
-  current_carry_category: string;
-  current_movement: number;
-  dodge: number;
   char: Character;
 
   constructor(public navParams: NavParams) {
@@ -18,9 +15,6 @@ export class ExtrasPage {
     this.char = navParams.data
   }
   ionViewWillEnter() {
-    this.current_carry_category = this.getCharCarryCategory();
-    this.current_movement = this.getCharMovement();
-    this.dodge = this.getCharDodge();
   }
   getCharCarryCategory() {
     return this.char.getCarryCategory();

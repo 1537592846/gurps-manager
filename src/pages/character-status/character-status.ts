@@ -31,6 +31,7 @@ export class CharacterStatusPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     //Getting data
     this.new_char = this.navParams.get('new_char');
+    console.log(this.new_char)
     //Setting values
     this.new_char.strenght = this.new_char.min_status * 1;
     this.new_char.dexterity = this.new_char.min_status * 1;
@@ -53,6 +54,9 @@ export class CharacterStatusPage {
   goToNextPage() {
     this.updateAll();
     this.new_char.current_points=this.current_points
+    this.new_char.max_carry_weight=this.new_char.strenght*this.new_char.strenght/10
+    this.new_char.current_fatigue_points=this.new_char.max_fatigue_points
+    this.new_char.current_life_points=this.new_char.max_life_points
     this.navCtrl.push(CharacterSkillsPage, { new_char: this.new_char });
   }
   getMax(statCurrent: number, statMin: number, price: number) {
