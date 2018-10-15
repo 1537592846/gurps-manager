@@ -2,7 +2,7 @@
   <ion-navbar>
     <ion-buttons start>
       <button ion-button icon-only>
-        <ion-icon name="body"></ion-icon>
+        <ion-icon name="briefcase"></ion-icon>
       </button>
     </ion-buttons>
     <ion-title>
@@ -112,4 +112,25 @@
       <ion-note>{{char.getCarryCategory()}}</ion-note>
     </ion-item>
   </ion-item-group>
+  <form id="characterResume-form">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4>
+          <button id="buy-item-button" full ion-button color="secondary" on-click="openBuyItemModal()">
+            Buy Item
+          </button>
+        </ion-col>
+        <ion-col col-4>
+          <button id="add-item-button" full ion-button color="secondary" on-click="openAddItemModal()">
+            Add Item
+          </button>
+        </ion-col>
+        <ion-col col-4>
+          <button id="add-new-item-button" full ion-button color="secondary" on-click="openAddNewItemModal()">
+            Add New Item
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 </ion-content>

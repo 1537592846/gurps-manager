@@ -18,49 +18,49 @@ export class Inventory {
         this.others = {} as Other[];
     }
 
-    public getValue(){
-        var value=0;
-        this.one_hand_weapons.forEach(element => {
-            value+=element.weight*element.quantity;
-        });
-        this.two_hand_weapons.forEach(element => {
-            value+=element.weight*element.quantity;
-        });
-        this.shields.forEach(element => {
-            value+=element.weight*element.quantity;
-        });
-        this.armors.forEach(element => {
-            value+=element.weight*element.quantity;
-        });
-        this.consumables.forEach(element => {
-            value+=element.weight*element.quantity;
-        });
-        this.others.forEach(element => {
-            value+=element.weight*element.quantity;
-        });
+    public getValue() {
+        var value = 0;
+        for (let i = 0; i < this.one_hand_weapons.length; i++) {
+            value += this.one_hand_weapons[i].cost * this.one_hand_weapons[i].quantity
+        }
+        for (let i = 0; i < this.two_hand_weapons.length; i++) {
+            value += this.two_hand_weapons[i].cost * this.two_hand_weapons[i].quantity
+        }
+        for (let i = 0; i < this.shields.length; i++) {
+            value += this.shields[i].cost * this.shields[i].quantity
+        }
+        for (let i = 0; i < this.armors.length; i++) {
+            value += this.armors[i].cost * this.armors[i].quantity
+        }
+        for (let i = 0; i < this.consumables.length; i++) {
+            value += this.consumables[i].cost * this.consumables[i].quantity
+        }
+        for (let i = 0; i < this.others.length; i++) {
+            value += this.others[i].cost * this.others[i].quantity
+        }
         return value;
     }
 
-    public getWeight():number{
-        var weight=0;
-        this.one_hand_weapons.forEach(element => {
-            weight+=element.weight*element.quantity;
-        });
-        this.two_hand_weapons.forEach(element => {
-            weight+=element.weight*element.quantity;
-        });
-        this.shields.forEach(element => {
-            weight+=element.weight*element.quantity;
-        });
-        this.armors.forEach(element => {
-            weight+=element.weight*element.quantity;
-        });
-        this.consumables.forEach(element => {
-            weight+=element.weight*element.quantity;
-        });
-        this.others.forEach(element => {
-            weight+=element.weight*element.quantity;
-        });
+    public getWeight(): number {
+        var weight = 0;
+        for (let i = 0; i < this.one_hand_weapons.length; i++) {
+            weight += this.one_hand_weapons[i].weight * this.one_hand_weapons[i].quantity
+        }
+        for (let i = 0; i < this.two_hand_weapons.length; i++) {
+            weight += this.two_hand_weapons[i].weight * this.two_hand_weapons[i].quantity
+        }
+        for (let i = 0; i < this.shields.length; i++) {
+            weight += this.shields[i].weight * this.shields[i].quantity
+        }
+        for (let i = 0; i < this.armors.length; i++) {
+            weight += this.armors[i].weight * this.armors[i].quantity
+        }
+        for (let i = 0; i < this.consumables.length; i++) {
+            weight += this.consumables[i].weight * this.consumables[i].quantity
+        }
+        for (let i = 0; i < this.others.length; i++) {
+            weight += this.others[i].weight * this.others[i].quantity
+        }
         return weight;
     }
 }

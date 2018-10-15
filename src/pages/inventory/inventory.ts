@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavParams } from 'ionic-angular';
+import { NavParams, ModalController } from 'ionic-angular';
 import { Character } from '../../../models/Character';
 
 @Component({
@@ -14,14 +14,28 @@ export class InventoryPage {
   armors:any[];
   consumables:any[];
   others:any[];
+  profileModal:any
 
-  constructor(public navParams: NavParams) {
+  constructor(public navParams: NavParams, public modalCtrl: ModalController) {
     //Getting data
     this.char = navParams.data
     this.getInventory();
   }
   ionViewWillEnter() {
     this.getInventory();
+  }
+  openBuyItemModal(){
+    this.profileModal = this.modalCtrl.create(ModalBuyItem, {})
+    this.profileModal.present();
+    this.profileModal.onDidDismiss(language => {
+      
+    })
+  }
+  openAddItemModal(){
+    
+  }
+  openAddNewItemModal(){
+    
   }
   getInventory() {
     this.getWeapons();
@@ -32,35 +46,35 @@ export class InventoryPage {
   }
   getWeapons() {
     this.weapons = [];
-    this.char.inventory.one_hand_weapons.forEach(element => {
-      this.weapons.push(element);
-    });
-    this.char.inventory.two_hand_weapons.forEach(element => {
-      this.weapons.push(element);
-    });
+    for(let i=0;i<this.char.inventory.one_hand_weapons.length;i++){
+      this.weapons.push(this.char.inventory.one_hand_weapons[i])
+    }
+    for(let i=0;i<this.char.inventory.two_hand_weapons.length;i++){
+      this.weapons.push(this.char.inventory.two_hand_weapons[i])
+    }
   }
   getShields() {
     this.shields = [];
-    this.char.inventory.shields.forEach(element => {
-      this.shields.push(element);
-    });
+    for(let i=0;i<this.char.inventory.shields.length;i++){
+      this.shields.push(this.char.inventory.shields[i])
+    }
   }
   getArmors() {
     this.armors = [];
-    this.char.inventory.armors.forEach(element => {
-      this.armors.push(element);
-    });
+    for(let i=0;i<this.char.inventory.armors.length;i++){
+      this.armors.push(this.char.inventory.armors[i])
+    }
   }
   getConsumables() {
     this.consumables = [];
-    this.char.inventory.consumables.forEach(element => {
-      this.consumables.push(element);
-    });
+    for(let i=0;i<this.char.inventory.consumables.length;i++){
+      this.consumables.push(this.char.inventory.consumables[i])
+    }
   }
   getOthers() {
     this.others = [];
-    this.char.inventory.others.forEach(element => {
-      this.others.push(element);
-    });
+    for(let i=0;i<this.char.inventory.others.length;i++){
+      this.others.push(this.char.inventory.others[i])
+    }
   }
 }

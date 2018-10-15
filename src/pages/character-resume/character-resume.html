@@ -118,14 +118,24 @@
     </ion-item-sliding>
   </ion-list>
   <form id="characterResume-form">
-    <button id="characterResume-button" ion-button color="secondary" block on-click="goToTabsController()">
-      Create Character
-    </button>
-    <button id="characterResume-button" ion-button color="alert" block on-click="goToCharacterFeatures()">
-      Edit Character
-    </button>
-    <button id="characterResume-button" ion-button color="danger" block on-click="goToGurpsManager()">
-      Cancel
-    </button>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4>
+          <button id="characterResume-button" full ion-button color="secondary" block on-click="goToTabsController()">
+            Create Character
+          </button>
+        </ion-col>
+        <ion-col col-4>
+          <button id="characterResume-button" full ion-button color="alert" block on-click="goToCharacterFeatures()">
+            Edit Character
+          </button>
+        </ion-col>
+        <ion-col col-4>
+          <button id="characterResume-button" full ion-button color="danger" block on-click="goToGurpsManager()">
+            Cancel
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </form>
 </ion-content>
