@@ -53,12 +53,14 @@ export class CharacterSkillsPage {
     this.new_char.current_points += this.getSkillCost(this.new_char.skills[index])
   }
   getSkillCost(skill: Skill): number {
-    var cost = 8
+    var cost = 0
     switch (skill.difficulty) {
-      case "Easy": cost = 1
-      case "Moderate": cost = 2
-      case "Hard": cost = 4
+      case "Easy": cost = 1;break
+      case "Moderate": cost = 2;break
+      case "Hard": cost = 4;break
+      case "VeryHard":cost=8;break
     }
+    console.log(skill)
     for (var i=1; i < skill.level; i++) {
       if(cost==1){
         cost=2
