@@ -4,22 +4,201 @@
         word-wrap: normal;
     }
 
+    h2 {
+        text-align: center;
+        word-wrap: normal;
+    }
+
+    .modalTitle{
+        font-weight:bold
+    }
     ion-thumbnail {
-        width: 20%;
+        text-align: center;
+        width: 20%
+    }
+
+    ion-col {
+        text-align: center;
+    }
+
+    .headerImage {
+        height: 6ex;
+        width: 6ex;
     }
 </style>
 
 <html style="background:white">
-<ion-list>
-    <ion-item-sliding *ngFor="let language of languages">
-        <ion-item *ngIf="notInCharList(language)">
-            <ion-thumbnail item-start>
-                <h1>{{language.name}}</h1>
-            </ion-thumbnail>
-            <p item-content>{{language.description}}</p>
-            <button ion-button clear item-end on-click="returnData(language)">Add</button>
-        </ion-item>
-    </ion-item-sliding>
-</ion-list>
 
-</html>
+<div padding>
+    <ion-segment [(ngModel)]="mainModel">
+        <ion-segment-button value="weapons">
+            <h2>Weapons</h2>
+        </ion-segment-button>
+        <ion-segment-button value="armors">
+            <h2>Armors</h2>
+        </ion-segment-button>
+        <ion-segment-button value="consumables">
+            <h2>Consumables</h2>
+        </ion-segment-button>
+    </ion-segment>
+</div>
+
+<div [ngSwitch]="mainModel">
+    <ion-list *ngSwitchCase="'weapons'">
+        <div padding>
+            <ion-segment [(ngModel)]="weaponModel">
+                <ion-segment-button value="one-hand" on-click="updateOneHands()">
+                    <img class="headerImage" src="../../assets/item-icon/one-hand.png">
+                </ion-segment-button>
+                <ion-segment-button value="two-hand" on-click="updateTwoHands()">
+                    <img class="headerImage" src="../../assets/item-icon/two-hand.png">
+                </ion-segment-button>
+                <ion-segment-button value="shield" on-click="updateShields()">
+                    <img class="headerImage" src="../../assets/item-icon/shield.png">
+                </ion-segment-button>
+            </ion-segment>
+        </div>
+        <div [ngSwitch]="weaponModel">
+            <ion-list *ngSwitchCase="'one-hand'">
+                <ion-item-sliding *ngFor="let oneHand of oneHands">
+                    <ion-item>
+                        <ion-thumbnail item-start>
+                            <h1>{{oneHand.name}}</h1>
+                            <h3>{{Balance(oneHand)}}</h3>
+                            <h3>{{Piercing(oneHand)}}</h3>
+                        </ion-thumbnail>
+                        <ion-grid item-content>
+                            <ion-row>
+                                <ion-col col-1>
+                                    <h2 class="modalTitle">NT</h2>
+                                    <h3>{{oneHand.nt}}</h3>
+                                </ion-col>
+                                <ion-col col-7>
+                                    <h2 class="modalTitle">Description</h2>
+                                    <h3>{{oneHand.description}}</h3>
+                                </ion-col>
+                                <ion-col col-2>
+                                    <h2 class="modalTitle">Cost</h2>
+                                    <h3>{{oneHand.cost}}</h3>
+                                </ion-col>
+                                <ion-col col-2>
+                                    <h2 class="modalTitle">Weight</h2>
+                                    <h3>{{oneHand.weight}}</h3>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                        <button ion-button clear item-end on-click="returnData(oneHand)">Add</button>
+                    </ion-item>
+                </ion-item-sliding>
+            </ion-list>
+            <ion-list *ngSwitchCase="'two-hand'">
+                <ion-item-sliding *ngFor="let twoHand of twoHands">
+                    <ion-item>
+                        <ion-thumbnail item-start>
+                            <h1>{{twoHand.name}}</h1>
+                            <h3>{{Balance(twoHand)}}</h3>
+                            <h3>{{Piercing(twoHand)}}</h3>
+                        </ion-thumbnail>
+                        <ion-grid item-content>
+                            <ion-row>
+                                <ion-col col-1>
+                                    <h2 class="modalTitle">NT</h2>
+                                    <h3>{{twoHand.nt}}</h3>
+                                </ion-col>
+                                <ion-col col-7>
+                                    <h2 class="modalTitle">Description</h2>
+                                    <h3>{{twoHand.description}}</h3>
+                                </ion-col>
+                                <ion-col col-2>
+                                    <h2 class="modalTitle">Cost</h2>
+                                    <h3>{{twoHand.cost}}</h3>
+                                </ion-col>
+                                <ion-col col-2>
+                                    <h2 class="modalTitle">Weight</h2>
+                                    <h3>{{twoHand.weight}}</h3>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                        <button ion-button clear item-end on-click="returnData(twoHand)">Add</button>
+                    </ion-item>
+                </ion-item-sliding>
+            </ion-list>
+            <ion-list *ngSwitchCase="'shield'">
+                <ion-item-sliding *ngFor="let shield of shields">
+                    <ion-item>
+                        <ion-thumbnail item-start>
+                            <h1>{{shield.name}}</h1>
+                            <h3>Total Life:{{shield.max_life_points}}</h3>
+                            <h3>{{Resistance(shield)}}</h3>
+                        </ion-thumbnail>
+                        <ion-grid item-content>
+                            <ion-row>
+                                <ion-col col-1>
+                                    <h2 class="modalTitle">NT</h2>
+                                    <h3>{{shield.nt}}</h3>
+                                </ion-col>
+                                <ion-col col-7>
+                                    <h2 class="modalTitle">Description</h2>
+                                    <h3>{{shield.description}}</h3>
+                                </ion-col>
+                                <ion-col col-2>
+                                    <h2 class="modalTitle">Cost</h2>
+                                    <h3>{{shield.cost}}</h3>
+                                </ion-col>
+                                <ion-col col-2>
+                                    <h2 class="modalTitle">Weight</h2>
+                                    <h3>{{shield.weight}}</h3>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                        <button ion-button clear item-end on-click="returnData(shield)">Add</button>
+                    </ion-item>
+                </ion-item-sliding>
+            </ion-list>
+        </div>
+    </ion-list>
+    <ion-list *ngSwitchCase="'armors'">
+        <div padding>
+            <ion-segment [(ngModel)]="armorModel">
+                <ion-segment-button value="head" on-click="updateOneHands()">
+                    <img class="headerImage" src="../../assets/item-icon/head.png">
+                </ion-segment-button>
+                <ion-segment-button value="torax" on-click="updateOneHands()">
+                    <img class="headerImage" src="../../assets/item-icon/torax.png">
+                </ion-segment-button>
+                <ion-segment-button value="arms" on-click="updateOneHands()">
+                    <img class="headerImage" src="../../assets/item-icon/arms.png">
+                </ion-segment-button>
+                <ion-segment-button value="hands" on-click="updateOneHands()">
+                    <img class="headerImage" src="../../assets/item-icon/hands.png">
+                </ion-segment-button>
+                <ion-segment-button value="legs" on-click="updateOneHands()">
+                    <img class="headerImage" src="../../assets/item-icon/legs.png">
+                </ion-segment-button>
+                <ion-segment-button value="feet" on-click="updateOneHands()">
+                    <img class="headerImage" src="../../assets/item-icon/feet.png">
+                </ion-segment-button>
+            </ion-segment>
+        </div>
+        <div [ngSwitch]="armorModel">
+            <ion-list *ngSwitchCase="'one-hand'">
+                <ion-item-sliding *ngFor="let oneHand of oneHands">
+                    <ion-item>
+                        <ion-thumbnail item-start>
+                            <h1>{{oneHand.name}}</h1>
+                            <h2>{{BalanceAndPiercing(oneHand)}}</h2>
+                        </ion-thumbnail>
+                        <div style="width:50%">
+                            <p item-content>
+                                {{oneHand.description}}
+                            </p>
+                        </div>
+                        <div style="width:10%">
+                        </div>
+                        <button ion-button clear item-end on-click="returnData(oneHand)">Add</button>
+                    </ion-item>
+                </ion-item-sliding>
+            </ion-list>
+        </div>
+    </ion-list>
+</div>

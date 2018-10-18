@@ -60,7 +60,6 @@ export class CharacterSkillsPage {
       case "Hard": cost = 4;break
       case "VeryHard":cost=8;break
     }
-    console.log(skill)
     for (var i=1; i < skill.level; i++) {
       if(cost==1){
         cost=2

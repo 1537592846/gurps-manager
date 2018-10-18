@@ -112,7 +112,7 @@ export class EquipmentsPage {
           case 'left_hand': {
             if (equipment.type == "one_hand") {
               this.char.equipments.left_hand = equipment
-              for (var i = 0; i < this.char.inventory.one_hand_weapons.length; i++) {
+              for (let i = 0; i < this.char.inventory.one_hand_weapons.length; i++) {
                 if (this.char.inventory.one_hand_weapons[i].name == equipment.name) {
                   this.char.inventory.one_hand_weapons.splice(i, 1);
                 }
@@ -121,7 +121,7 @@ export class EquipmentsPage {
             }
             if (equipment.type == "two_hand") {
               this.char.equipments.both_hands = equipment
-              for (var i = 0; i < this.char.inventory.two_hand_weapons.length; i++) {
+              for (let i = 0; i < this.char.inventory.two_hand_weapons.length; i++) {
                 if (this.char.inventory.two_hand_weapons[i].name == equipment.name) {
                   this.char.inventory.two_hand_weapons.splice(i, 1);
                 }
@@ -130,7 +130,7 @@ export class EquipmentsPage {
             }
             if (equipment.type == "shield") {
               this.char.equipments.shield = equipment
-              for (var i = 0; i < this.char.inventory.shields.length; i++) {
+              for (let i = 0; i < this.char.inventory.shields.length; i++) {
                 if (this.char.inventory.shields[i].name == equipment.name) {
                   this.char.inventory.shields.splice(i, 1);
                 }
@@ -140,7 +140,7 @@ export class EquipmentsPage {
           case 'right_hand': {
             if (equipment.type == "one_hand") {
               this.char.equipments.right_hand = equipment
-              for (var i = 0; i < this.char.inventory.one_hand_weapons.length; i++) {
+              for (let i = 0; i < this.char.inventory.one_hand_weapons.length; i++) {
                 if (this.char.inventory.one_hand_weapons[i].name == equipment.name) {
                   this.char.inventory.one_hand_weapons.splice(i, 1);
                 }
@@ -149,7 +149,7 @@ export class EquipmentsPage {
             }
             if (equipment.type == "two_hand") {
               this.char.equipments.both_hands = equipment
-              for (var i = 0; i < this.char.inventory.two_hand_weapons.length; i++) {
+              for (let i = 0; i < this.char.inventory.two_hand_weapons.length; i++) {
                 if (this.char.inventory.two_hand_weapons[i].name == equipment.name) {
                   this.char.inventory.two_hand_weapons.splice(i, 1);
                 }
@@ -158,7 +158,7 @@ export class EquipmentsPage {
             }
             if (equipment.type == "shield") {
               this.char.equipments.shield = equipment
-              for (var i = 0; i < this.char.inventory.shields.length; i++) {
+              for (let i = 0; i < this.char.inventory.shields.length; i++) {
                 if (this.char.inventory.shields[i].name == equipment.name) {
                   this.char.inventory.shields.splice(i, 1);
                 }

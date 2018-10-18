@@ -108,7 +108,7 @@ export class DataProvider {
 
   public getOneHandWeapons(){
     return new Promise(resolve => {
-      this.http.get<OneHandWeapon[]>(this.apiAddress + 'OneHandWeapons/get').subscribe(data => {
+      this.http.get<OneHandWeapon[]>(this.apiAddress + 'Equipments/getType/one-hand').subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
@@ -118,7 +118,7 @@ export class DataProvider {
 
   public getTwoHandWeapons(){
     return new Promise(resolve => {
-      this.http.get<TwoHandWeapon[]>(this.apiAddress + 'TwoHandWeapons/get').subscribe(data => {
+      this.http.get<TwoHandWeapon[]>(this.apiAddress + 'Equipments/getType/two-hand').subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
@@ -128,7 +128,7 @@ export class DataProvider {
 
   public getShields(){
     return new Promise(resolve => {
-      this.http.get<Shield[]>(this.apiAddress + 'Shields/get').subscribe(data => {
+      this.http.get<Shield[]>(this.apiAddress + 'Equipments/getType/shield').subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
@@ -138,7 +138,7 @@ export class DataProvider {
 
   public getHeads(){
     return new Promise(resolve => {
-      this.http.get<Armor[]>(this.apiAddress + 'Heads/get').subscribe(data => {
+      this.http.get<Armor[]>(this.apiAddress + 'Equipments/getType/head').subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
@@ -148,7 +148,7 @@ export class DataProvider {
 
   public getTorax(){
     return new Promise(resolve => {
-      this.http.get<Armor[]>(this.apiAddress + 'Torax/get').subscribe(data => {
+      this.http.get<Armor[]>(this.apiAddress + 'Equipments/getType/torax').subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
@@ -158,7 +158,7 @@ export class DataProvider {
 
   public getLegs(){
     return new Promise(resolve => {
-      this.http.get<Armor[]>(this.apiAddress + 'Legs/get').subscribe(data => {
+      this.http.get<Armor[]>(this.apiAddress + 'Equipments/getType/legs').subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
@@ -168,7 +168,7 @@ export class DataProvider {
 
   public getFoot(){
     return new Promise(resolve => {
-      this.http.get<Armor[]>(this.apiAddress + 'Foot/get').subscribe(data => {
+      this.http.get<Armor[]>(this.apiAddress + 'Equipments/getType/feet').subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
@@ -178,7 +178,7 @@ export class DataProvider {
 
   public getArms(){
     return new Promise(resolve => {
-      this.http.get<Armor[]>(this.apiAddress + 'Arms/get').subscribe(data => {
+      this.http.get<Armor[]>(this.apiAddress + 'Equipments/getType/arms').subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
@@ -188,7 +188,7 @@ export class DataProvider {
 
   public getHands(){
     return new Promise(resolve => {
-      this.http.get<Armor[]>(this.apiAddress + 'Hands/get').subscribe(data => {
+      this.http.get<Armor[]>(this.apiAddress + 'Equipments/getType/hands').subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);

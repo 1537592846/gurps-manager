@@ -28,7 +28,7 @@ import { ModalSkills } from '../pages/modal-skills/modal-skills';
 import { ModalLanguages } from '../pages/modal-languages/modal-languages';
 import { ModalCharacters } from '../pages/modal-character/modal-character';
 import { ModalEquipments } from '../pages/modal-equipments/modal-equipments';
-import { ModalBuyItem } from '../pages/modal-buy-item/modal-buy-item';
+import { ModalBuyItems } from '../pages/modal-buy-item/modal-buy-item';
 //Lista de Providers (DAOs) criados
 
 @NgModule({
@@ -50,7 +50,7 @@ import { ModalBuyItem } from '../pages/modal-buy-item/modal-buy-item';
     CharacterLanguagesPage,
     CharacterResumePage,
     ModalAdvantages,
-    ModalBuyItem,
+    ModalBuyItems,
     ModalCharacters,
     ModalDisadvantages,
     // ModalEquipments,
@@ -83,7 +83,7 @@ import { ModalBuyItem } from '../pages/modal-buy-item/modal-buy-item';
     CharacterResumePage,
     ModalDisadvantages,
     ModalAdvantages,
-    ModalBuyItem,
+    ModalBuyItems,
     ModalCharacters,
     // ModalEquipments,
     ModalLanguages,

@@ -31,7 +31,6 @@ export class CharacterStatusPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     //Getting data
     this.new_char = this.navParams.get('new_char');
-    console.log(this.new_char)
     //Setting values
     this.new_char.strenght = this.new_char.min_status * 1;
     this.new_char.dexterity = this.new_char.min_status * 1;

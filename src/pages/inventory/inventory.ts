@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavParams, ModalController } from 'ionic-angular';
 import { Character } from '../../../models/Character';
+import { ModalBuyItems } from '../modal-buy-item/modal-buy-item';
 
 @Component({
   selector: 'page-inventory',
@@ -25,9 +26,9 @@ export class InventoryPage {
     this.getInventory();
   }
   openBuyItemModal(){
-    this.profileModal = this.modalCtrl.create(ModalBuyItem, {})
+    this.profileModal = this.modalCtrl.create(ModalBuyItems, {strenght:this.char.strenght})
     this.profileModal.present();
-    this.profileModal.onDidDismiss(language => {
+    this.profileModal.onDidDismiss(item => {
       
     })
   }

@@ -7,11 +7,10 @@ class Item {
     public weight: number
     public quantity: number
     public formula: string
+    public type:string
 }
 
 export class OneHandWeapon extends Item {
-    public type:string
-
     constructor(){
         super()
         this.type="one_hand"
@@ -19,8 +18,6 @@ export class OneHandWeapon extends Item {
 }
 
 export class TwoHandWeapon extends Item {
-    public type:string
-
     constructor(){
         super()
         this.type="two_hand"
@@ -30,7 +27,6 @@ export class TwoHandWeapon extends Item {
 export class Shield extends Item {
     public max_life_points: number;
     public current_life_points: number;
-    public type:string
 
     constructor(){
         super()
@@ -41,8 +37,6 @@ export class Shield extends Item {
 }
 
 export class Armor extends Item {
-    public type:string
-
     constructor(){
         super()
         this.type="armor"
