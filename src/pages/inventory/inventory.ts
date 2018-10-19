@@ -25,11 +25,36 @@ export class InventoryPage {
   ionViewWillEnter() {
     this.getInventory();
   }
+  ionViewWillExit() {
+    for(let i=0;i<this.weapons.length;i++){
+      switch(this.weapons[i].type){
+        case "one-hand":this.char.inventory.one_hand_weapons.push(this.weapons[i]);break
+        case "two-hand":this.char.inventory.two_hand_weapons.push(this.weapons[i]);break
+        case "shield":this.char.inventory.shields.push(this.weapons[i]);break
+      }
+    }
+    this.char.inventory.shields=this.shields
+    this.char.inventory.armors=this.armors
+    this.char.inventory.consumables=this.consumables
+    this.char.inventory.others=this.others
+  }
   openBuyItemModal(){
     this.profileModal = this.modalCtrl.create(ModalBuyItems, {strenght:this.char.strenght})
     this.profileModal.present();
     this.profileModal.onDidDismiss(item => {
-      
+      item.bought=true
+      switch(item.type){
+        case "one-hand":
+        case "two-hand":this.weapons.push(item);break
+        case "shield":this.char.inventory.shields.push(item);break
+        case "head":
+        case "torax":
+        case "arms":
+        case "hands":
+        case "legs":
+        case "feet":this.char.inventory.armors.push(item);break
+        case "consumable":this.char.inventory.consumables.push(item);break
+      }
     })
   }
   openAddItemModal(){

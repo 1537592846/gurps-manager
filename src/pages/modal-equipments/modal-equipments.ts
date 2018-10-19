@@ -149,7 +149,7 @@ export class ModalEquipments {
       }
       case "feet": {
         if (this.foot == null || this.foot.length == 0) {
-          this.dataProvider.getFoot().then(res => {
+          this.dataProvider.getFeets().then(res => {
             let data = res as Armor[]
             for (let i = 0; i < data.length; i++) {
               var feet = new Armor

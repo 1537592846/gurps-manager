@@ -5,7 +5,8 @@ import { Advantage } from '../../../models/Advantage';
 import { Skill } from '../../../models/Skill';
 import { Language } from '../../../models/Language';
 import { Character, CharacterApi } from '../../../models/Character';
-import { OneHandWeapon, TwoHandWeapon, Shield, Armor } from '../../../models/Item';
+import { OneHandWeapon, TwoHandWeapon, Shield, Armor, Consumable, Other } from '../../../models/Item';
+import { Item } from 'ionic-angular';
 
 @Injectable()
 export class DataProvider {
@@ -166,7 +167,7 @@ export class DataProvider {
     });
   }
 
-  public getFoot(){
+  public getFeets(){
     return new Promise(resolve => {
       this.http.get<Armor[]>(this.apiAddress + 'Equipments/getType/feet').subscribe(data => {
         resolve(data);
@@ -189,6 +190,26 @@ export class DataProvider {
   public getHands(){
     return new Promise(resolve => {
       this.http.get<Armor[]>(this.apiAddress + 'Equipments/getType/hands').subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  public getConsumables(){
+    return new Promise(resolve => {
+      this.http.get<Consumable[]>(this.apiAddress + 'Items/getType/consumable').subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  public getOthers(){
+    return new Promise(resolve => {
+      this.http.get<Other[]>(this.apiAddress + 'Items/getType/other').subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);

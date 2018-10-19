@@ -8,6 +8,7 @@ class Item {
     public quantity: number
     public formula: string
     public type:string
+    public bought:boolean
 }
 
 export class OneHandWeapon extends Item {
@@ -27,6 +28,7 @@ export class TwoHandWeapon extends Item {
 export class Shield extends Item {
     public max_life_points: number;
     public current_life_points: number;
+    public resistence:number;
 
     constructor(){
         super()
@@ -37,6 +39,7 @@ export class Shield extends Item {
 }
 
 export class Armor extends Item {
+    public resistence:number;
     constructor(){
         super()
         this.type="armor"

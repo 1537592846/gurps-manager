@@ -2,9 +2,9 @@ import { ViewController, NavParams } from 'ionic-angular'
 import { Component } from '@angular/core'
 import { DataProvider } from '../../providers/data/data'
 import { Character } from '../../../models/Character';
-import { OneHandWeapon, TwoHandWeapon, Shield, Armor } from '../../../models/Item';
+import { OneHandWeapon, TwoHandWeapon, Shield, Armor, Other } from '../../../models/Item';
 import { Constants } from '../../../models/Constants';
-import { isNumber } from 'ionic-angular/umd/util/util';
+import { Consumable } from '../../../models/Item';
 
 @Component({
   selector: 'modal-buy-item.html',
@@ -21,6 +21,8 @@ export class ModalBuyItems {
   hands: Armor[] = []
   legs: Armor[] = []
   feets: Armor[] = []
+  consumables:Consumable[]=[]
+  others:Other[]=[]
   strenght: number
 
   constructor(public viewCtrl: ViewController, public params: NavParams, public dataProvider: DataProvider) {
@@ -129,9 +131,9 @@ export class ModalBuyItems {
     return bap
   }
 
-  Resistance(shield:Shield){
-    let shieldFormula = JSON.parse(shield.formula)
-    return "Resistence:"+shieldFormula.shield_resistence
+  Resistence(armor:any){
+    let armorFormula = JSON.parse(armor.formula)
+    return "Resistence:"+armorFormula.resistence
   }
 
   updateOneHands() {
@@ -191,11 +193,194 @@ export class ModalBuyItems {
           shield.cost = data[i].Cost
           shield.weight = data[i].Weight
           shield.quantity = 1
+          shield.resistence=JSON.parse(data[i].Formula).resistence
           shield.max_life_points = JSON.parse(data[i].Formula).life_points
           shield.current_life_points = shield.max_life_points
           shield.formula = data[i].Formula
           shield.type = data[i].Type
           this.shields.push(shield)
+        }
+      })
+        .catch(error => { console.log(error) });
+    }
+  }
+
+  updateHeads() {
+    if (this.heads == null || this.heads.length == 0) {
+      this.dataProvider.getHeads().then(res => {
+        let data = res as any[]
+        for (let i = 0; i < data.length; i++) {
+          var head = new Armor
+          head.id = data[i].Id
+          head.name = data[i].Name
+          head.nt = data[i].NT
+          head.description = data[i].Description
+          head.cost = data[i].Cost
+          head.weight = data[i].Weight
+          head.quantity = 1
+          head.resistence=JSON.parse(data[i].Formula).resistence
+          head.formula = data[i].Formula
+          head.type = data[i].Type
+          this.heads.push(head)
+        }
+      })
+        .catch(error => { console.log(error) });
+    }
+  }
+
+  updateTorax() {
+    if (this.torax == null || this.torax.length == 0) {
+      this.dataProvider.getTorax().then(res => {
+        let data = res as any[]
+        for (let i = 0; i < data.length; i++) {
+          var torax = new Armor
+          torax.id = data[i].Id
+          torax.name = data[i].Name
+          torax.nt = data[i].NT
+          torax.description = data[i].Description
+          torax.cost = data[i].Cost
+          torax.weight = data[i].Weight
+          torax.quantity = 1
+          torax.resistence=JSON.parse(data[i].Formula).resistence
+          torax.formula = data[i].Formula
+          torax.type = data[i].Type
+          this.torax.push(torax)
+        }
+      })
+        .catch(error => { console.log(error) });
+    }
+  }
+
+  updateArms() {
+    if (this.arms == null || this.arms.length == 0) {
+      this.dataProvider.getArms().then(res => {
+        let data = res as any[]
+        for (let i = 0; i < data.length; i++) {
+          var arm = new Armor
+          arm.id = data[i].Id
+          arm.name = data[i].Name
+          arm.nt = data[i].NT
+          arm.description = data[i].Description
+          arm.cost = data[i].Cost
+          arm.weight = data[i].Weight
+          arm.quantity = 1
+          arm.resistence=JSON.parse(data[i].Formula).resistence
+          arm.formula = data[i].Formula
+          arm.type = data[i].Type
+          this.arms.push(arm)
+        }
+      })
+        .catch(error => { console.log(error) });
+    }
+  }
+
+  updateHands() {
+    if (this.hands == null || this.hands.length == 0) {
+      this.dataProvider.getHands().then(res => {
+        let data = res as any[]
+        for (let i = 0; i < data.length; i++) {
+          var hand = new Armor
+          hand.id = data[i].Id
+          hand.name = data[i].Name
+          hand.nt = data[i].NT
+          hand.description = data[i].Description
+          hand.cost = data[i].Cost
+          hand.weight = data[i].Weight
+          hand.quantity = 1
+          hand.resistence=JSON.parse(data[i].Formula).resistence
+          hand.formula = data[i].Formula
+          hand.type = data[i].Type
+          this.hands.push(hand)
+        }
+      })
+        .catch(error => { console.log(error) });
+    }
+  }
+
+  updateLegs() {
+    if (this.legs == null || this.legs.length == 0) {
+      this.dataProvider.getLegs().then(res => {
+        let data = res as any[]
+        for (let i = 0; i < data.length; i++) {
+          var leg = new Armor
+          leg.id = data[i].Id
+          leg.name = data[i].Name
+          leg.nt = data[i].NT
+          leg.description = data[i].Description
+          leg.cost = data[i].Cost
+          leg.weight = data[i].Weight
+          leg.quantity = 1
+          leg.resistence=JSON.parse(data[i].Formula).resistence
+          leg.formula = data[i].Formula
+          leg.type = data[i].Type
+          this.legs.push(leg)
+        }
+      })
+        .catch(error => { console.log(error) });
+    }
+  }
+
+  updateFeets() {
+    if (this.feets == null || this.feets.length == 0) {
+      this.dataProvider.getFeets().then(res => {
+        let data = res as any[]
+        for (let i = 0; i < data.length; i++) {
+          var feet = new Armor
+          feet.id = data[i].Id
+          feet.name = data[i].Name
+          feet.nt = data[i].NT
+          feet.description = data[i].Description
+          feet.cost = data[i].Cost
+          feet.weight = data[i].Weight
+          feet.quantity = 1
+          feet.resistence=JSON.parse(data[i].Formula).resistence
+          feet.formula = data[i].Formula
+          feet.type = data[i].Type
+          this.feets.push(feet)
+        }
+      })
+        .catch(error => { console.log(error) });
+    }
+  }
+
+  updateConsumables() {
+    if (this.consumables == null || this.consumables.length == 0) {
+      this.dataProvider.getConsumables().then(res => {
+        let data = res as any[]
+        for (let i = 0; i < data.length; i++) {
+          var consumable = new Consumable
+          consumable.id = data[i].Id
+          consumable.name = data[i].Name
+          consumable.nt = data[i].NT
+          consumable.description = data[i].Description
+          consumable.cost = data[i].Cost
+          consumable.weight = data[i].Weight
+          consumable.quantity = 1
+          consumable.formula = data[i].Formula
+          consumable.type = data[i].Type
+          this.consumables.push(consumable)
+        }
+      })
+        .catch(error => { console.log(error) });
+    }
+  }
+
+  updateOthers() {
+    if (this.others == null || this.others.length == 0) {
+      this.dataProvider.getOthers().then(res => {
+        let data = res as any[]
+        for (let i = 0; i < data.length; i++) {
+          var other = new Other
+          other.id = data[i].Id
+          other.name = data[i].Name
+          other.nt = data[i].NT
+          other.description = data[i].Description
+          other.cost = data[i].Cost
+          other.weight = data[i].Weight
+          other.quantity = 1
+          other.formula = data[i].Formula
+          other.type = data[i].Type
+          this.others.push(other)
         }
       })
         .catch(error => { console.log(error) });
