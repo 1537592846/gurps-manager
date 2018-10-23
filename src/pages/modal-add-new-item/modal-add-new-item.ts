@@ -17,13 +17,15 @@ export class ModalAddNewItems {
     this.form = this.formBuilder.group({
       name: ['', Validators.compose([Validators.min(3), Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
       type: ['', Validators.compose([Validators.required])],
-      nt: ['', Validators.compose([Validators.min(1), Validators.pattern('[0-9]{1}')])],
+      nt: ['', Validators.compose([ Validators.pattern('[0-9]{1}')])],
       description: ['', Validators.compose([Validators.minLength(3), Validators.pattern('[a-zA-Z .,]*'), Validators.required])],
-      weight: ['', Validators.compose([Validators.min(1), Validators.pattern('[0-9.]'), Validators.required])],
-      cost: ['', Validators.compose([Validators.min(1), Validators.pattern('[0-9]'), Validators.required])],
-      quantity: ['', Validators.compose([Validators.min(1), Validators.pattern('[0-9]'), Validators.required])],
+      weight: ['', Validators.compose([Validators.pattern('[0-9.]'), Validators.required])],
+      cost: ['', Validators.compose([Validators.pattern('[0-9]'), Validators.required])],
+      quantity: ['', Validators.compose([Validators.pattern('[0-9]'), Validators.required])],
       max_life_points: ['', Validators.compose([Validators.min(1), Validators.pattern('[0-9]')])],
-      resistence: ['', Validators.compose([Validators.min(1), Validators.pattern('[0-9]')])]
+      resistence: ['', Validators.compose([Validators.min(1), Validators.pattern('[0-9D]')])],
+      balance_attack: ['', Validators.compose([Validators.minLength(3), Validators.pattern('[a-zA-Z0-9\+\-.,]*')])],
+      piercing_attack: ['', Validators.compose([Validators.minLength(3), Validators.pattern('[a-zA-Z0-9\+\-.,]*')])]
     })
   }
 
@@ -72,18 +74,21 @@ export class ModalAddNewItems {
       }
       item.name = data.name
       item.type = data.type
-      item.nt = data.nt
+      if(data.nt==""){
+        item.nt=10
+      }else{
+        item.nt=Number.parseInt(data.nt)
+      }
       item.description = data.description
-      item.weight = data.weight
-      item.cost = data.cost
-      item.quantity = data.quantity
-      item.max_life_points = data.max_life_points
+      item.weight = Number.parseFloat(data.weight)
+      item.cost = Number.parseInt(data.cost)
+      item.quantity = Number.parseInt(data.quantity)
+      item.max_life_points = Number.parseInt(data.max_life_points)
       item.resistence = data.resistence
-      console.log(item)
+      console.log(this.dataProvider.saveItem(item))
       this.viewCtrl.dismiss()
     } else {
       this.form.markAsPending()
     }
-
   }
 }

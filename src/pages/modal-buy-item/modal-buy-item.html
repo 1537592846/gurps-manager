@@ -382,62 +382,66 @@
             </ion-segment>
         </div>
         <div [ngSwitch]="itemsModel">
-            <ion-item-sliding *ngFor="let consumable of consumables">
-                <ion-item>
-                    <ion-thumbnail item-start>
-                        <h1>{{consumable.name}}</h1>
-                    </ion-thumbnail>
-                    <ion-grid item-content>
-                        <ion-row>
-                            <ion-col col-1>
-                                <h2 class="modalTitle">NT</h2>
-                                <h3>{{consumable.nt}}</h3>
-                            </ion-col>
-                            <ion-col col-7>
-                                <h2 class="modalTitle">Description</h2>
-                                <h3>{{consumable.description}}</h3>
-                            </ion-col>
-                            <ion-col col-2>
-                                <h2 class="modalTitle">Cost</h2>
-                                <h3>{{consumable.cost}}</h3>
-                            </ion-col>
-                            <ion-col col-2>
-                                <h2 class="modalTitle">Weight</h2>
-                                <h3>{{consumable.weight}}</h3>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                    <button ion-button clear item-end on-click="returnData(consumable)">Add</button>
-                </ion-item>
-            </ion-item-sliding>            
-            <ion-item-sliding *ngFor="let other of others">
-                <ion-item>
-                    <ion-thumbnail item-start>
-                        <h1>{{other.name}}</h1>
-                    </ion-thumbnail>
-                    <ion-grid item-content>
-                        <ion-row>
-                            <ion-col col-1>
-                                <h2 class="modalTitle">NT</h2>
-                                <h3>{{other.nt}}</h3>
-                            </ion-col>
-                            <ion-col col-7>
-                                <h2 class="modalTitle">Description</h2>
-                                <h3>{{other.description}}</h3>
-                            </ion-col>
-                            <ion-col col-2>
-                                <h2 class="modalTitle">Cost</h2>
-                                <h3>{{other.cost}}</h3>
-                            </ion-col>
-                            <ion-col col-2>
-                                <h2 class="modalTitle">Weight</h2>
-                                <h3>{{other.weight}}</h3>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                    <button ion-button clear item-end on-click="returnData(other)">Add</button>
-                </ion-item>
-            </ion-item-sliding>
+            <ion-list *ngSwitchCase="'consumable'">
+                <ion-item-sliding *ngFor="let consumable of consumables">
+                    <ion-item>
+                        <ion-thumbnail item-start>
+                            <h1>{{consumable.name}}</h1>
+                        </ion-thumbnail>
+                        <ion-grid item-content>
+                            <ion-row>
+                                <ion-col col-1>
+                                    <h2 class="modalTitle">NT</h2>
+                                    <h3>{{consumable.nt}}</h3>
+                                </ion-col>
+                                <ion-col col-7>
+                                    <h2 class="modalTitle">Description</h2>
+                                    <h3>{{consumable.description}}</h3>
+                                </ion-col>
+                                <ion-col col-2>
+                                    <h2 class="modalTitle">Cost</h2>
+                                    <h3>{{consumable.cost}}</h3>
+                                </ion-col>
+                                <ion-col col-2>
+                                    <h2 class="modalTitle">Weight</h2>
+                                    <h3>{{consumable.weight}}</h3>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                        <button ion-button clear item-end on-click="returnData(consumable)">Add</button>
+                    </ion-item>
+                </ion-item-sliding>
+            </ion-list>
+            <ion-list *ngSwitchCase="'other'">
+                <ion-item-sliding *ngFor="let other of others">
+                    <ion-item>
+                        <ion-thumbnail item-start>
+                            <h1>{{other.name}}</h1>
+                        </ion-thumbnail>
+                        <ion-grid item-content>
+                            <ion-row>
+                                <ion-col col-1>
+                                    <h2 class="modalTitle">NT</h2>
+                                    <h3>{{other.nt}}</h3>
+                                </ion-col>
+                                <ion-col col-7>
+                                    <h2 class="modalTitle">Description</h2>
+                                    <h3>{{other.description}}</h3>
+                                </ion-col>
+                                <ion-col col-2>
+                                    <h2 class="modalTitle">Cost</h2>
+                                    <h3>{{other.cost}}</h3>
+                                </ion-col>
+                                <ion-col col-2>
+                                    <h2 class="modalTitle">Weight</h2>
+                                    <h3>{{other.weight}}</h3>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                        <button ion-button clear item-end on-click="returnData(other)">Add</button>
+                    </ion-item>
+                </ion-item-sliding>
+            </ion-list>
         </div>
     </ion-list>
 </div>

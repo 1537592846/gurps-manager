@@ -18,11 +18,15 @@ export class InventoryPage {
   consumables: any[];
   others: any[];
   profileModal: any
+  current_weight: number = 0
+  current_price: number = 0
+  current_category: string = "None"
 
   constructor(public navParams: NavParams, public modalCtrl: ModalController) {
     //Getting data
     this.char = navParams.data
-    this.getInventory();
+    this.getInventory()
+    this.updateInfo()
   }
   ionViewWillEnter() {
     this.getInventory();
@@ -40,6 +44,12 @@ export class InventoryPage {
     this.char.inventory.consumables = this.consumables
     this.char.inventory.others = this.others
   }
+  updateInfo() {
+    this.current_weight = this.char.inventory.getWeight()
+    this.char.current_carry_weight=this.current_weight
+    this.current_price = this.char.inventory.getValue()
+    this.current_category = this.char.getCarryCategory()
+  }
   openBuyItemModal() {
     this.profileModal = this.modalCtrl.create(ModalBuyItems, { strenght: this.char.strenght })
     this.profileModal.present()
@@ -47,8 +57,8 @@ export class InventoryPage {
       if (item == null) return
       item.bought = true
       switch (item.type) {
-        case "one-hand":
-        case "two-hand": this.weapons.push(item); break
+        case "one-hand":this.char.inventory.one_hand_weapons.push(item);this.weapons.push(item); break
+        case "two-hand": this.char.inventory.two_hand_weapons.push(item);this.weapons.push(item); break
         case "shield": this.char.inventory.shields.push(item); break
         case "head":
         case "torax":
@@ -60,6 +70,7 @@ export class InventoryPage {
         case "other": this.char.inventory.others.push(item); break
       }
       this.char.resources -= item.cost
+      this.updateInfo()
     })
   }
   openAddItemModal() {
@@ -69,8 +80,8 @@ export class InventoryPage {
       if (item == null) return
       item.bought = false
       switch (item.type) {
-        case "one-hand":
-        case "two-hand": this.weapons.push(item); break
+        case "one-hand":this.char.inventory.one_hand_weapons.push(item);this.weapons.push(item); break
+        case "two-hand": this.char.inventory.two_hand_weapons.push(item);this.weapons.push(item); break
         case "shield": this.char.inventory.shields.push(item); break
         case "head":
         case "torax":
@@ -81,14 +92,15 @@ export class InventoryPage {
         case "consumable": this.char.inventory.consumables.push(item); break
         case "other": this.char.inventory.others.push(item); break
       }
+      this.updateInfo()
     })
   }
   openAddNewItemModal() {
-  this.profileModal = this.modalCtrl.create(ModalAddNewItems, { resouces: this.char.resources })
+    this.profileModal = this.modalCtrl.create(ModalAddNewItems, { resouces: this.char.resources })
     this.profileModal.present()
     this.profileModal.onDidDismiss(item => {
-      console.log(item)
-    })    
+      this.updateInfo()
+    })
   }
   getInventory() {
     this.getWeapons();

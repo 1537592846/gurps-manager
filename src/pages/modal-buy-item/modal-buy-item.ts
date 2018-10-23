@@ -360,6 +360,7 @@ export class ModalBuyItems {
           consumable.type = data[i].Type
           this.consumables.push(consumable)
         }
+        console.log(this.consumables)
       })
         .catch(error => { console.log(error) });
     }
@@ -382,6 +383,7 @@ export class ModalBuyItems {
           other.type = data[i].Type
           this.others.push(other)
         }
+        console.log(this.others)
       })
         .catch(error => { console.log(error) });
     }

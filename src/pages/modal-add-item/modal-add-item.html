@@ -1,443 +1,447 @@
 <style>
-    h1 {
-        text-align: center;
-        word-wrap: normal;
-    }
-
-    h2 {
-        text-align: center;
-        word-wrap: normal;
-    }
-
-    .modalTitle {
-        font-weight: bold
-    }
-
-    ion-thumbnail {
-        text-align: center;
-        width: 20%
-    }
-
-    ion-col {
-        text-align: center;
-    }
-
-    .headerImage {
-        height: 6ex;
-        width: 6ex;
-    }
-</style>
-
-<html style="background:white">
-
-<div padding>
-    <ion-segment [(ngModel)]="mainModel">
-        <ion-segment-button value="weapons">
-            <h2>Weapons</h2>
-        </ion-segment-button>
-        <ion-segment-button value="armors">
-            <h2>Armors</h2>
-        </ion-segment-button>
-        <ion-segment-button value="items">
-            <h2>Items</h2>
-        </ion-segment-button>
-    </ion-segment>
-</div>
-
-<div [ngSwitch]="mainModel">
-    <ion-list *ngSwitchCase="'weapons'">
-        <div padding>
-            <ion-segment [(ngModel)]="weaponModel">
-                <ion-segment-button value="one-hand" on-click="updateOneHands()">
-                    <img class="headerImage" src="../../assets/item-icon/one-hand.png">
-                </ion-segment-button>
-                <ion-segment-button value="two-hand" on-click="updateTwoHands()">
-                    <img class="headerImage" src="../../assets/item-icon/two-hand.png">
-                </ion-segment-button>
-                <ion-segment-button value="shield" on-click="updateShields()">
-                    <img class="headerImage" src="../../assets/item-icon/shield.png">
-                </ion-segment-button>
-            </ion-segment>
-        </div>
-        <div [ngSwitch]="weaponModel">
-            <ion-list *ngSwitchCase="'one-hand'">
-                <ion-item-sliding *ngFor="let oneHand of oneHands">
-                    <ion-item>
-                        <ion-thumbnail item-start>
-                            <h1>{{oneHand.name}}</h1>
-                            <h3>{{Balance(oneHand)}}</h3>
-                            <h3>{{Piercing(oneHand)}}</h3>
-                        </ion-thumbnail>
-                        <ion-grid item-content>
-                            <ion-row>
-                                <ion-col col-1>
-                                    <h2 class="modalTitle">NT</h2>
-                                    <h3>{{oneHand.nt}}</h3>
-                                </ion-col>
-                                <ion-col col-7>
-                                    <h2 class="modalTitle">Description</h2>
-                                    <h3>{{oneHand.description}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Cost</h2>
-                                    <h3>{{oneHand.cost}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Weight</h2>
-                                    <h3>{{oneHand.weight}}</h3>
-                                </ion-col>
-                            </ion-row>
-                        </ion-grid>
-                        <button ion-button clear item-end on-click="returnData(oneHand)">Add</button>
-                    </ion-item>
-                </ion-item-sliding>
-            </ion-list>
-            <ion-list *ngSwitchCase="'two-hand'">
-                <ion-item-sliding *ngFor="let twoHand of twoHands">
-                    <ion-item>
-                        <ion-thumbnail item-start>
-                            <h1>{{twoHand.name}}</h1>
-                            <h3>{{Balance(twoHand)}}</h3>
-                            <h3>{{Piercing(twoHand)}}</h3>
-                        </ion-thumbnail>
-                        <ion-grid item-content>
-                            <ion-row>
-                                <ion-col col-1>
-                                    <h2 class="modalTitle">NT</h2>
-                                    <h3>{{twoHand.nt}}</h3>
-                                </ion-col>
-                                <ion-col col-7>
-                                    <h2 class="modalTitle">Description</h2>
-                                    <h3>{{twoHand.description}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Cost</h2>
-                                    <h3>{{twoHand.cost}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Weight</h2>
-                                    <h3>{{twoHand.weight}}</h3>
-                                </ion-col>
-                            </ion-row>
-                        </ion-grid>
-                        <button ion-button clear item-end on-click="returnData(twoHand)">Add</button>
-                    </ion-item>
-                </ion-item-sliding>
-            </ion-list>
-            <ion-list *ngSwitchCase="'shield'">
-                <ion-item-sliding *ngFor="let shield of shields">
-                    <ion-item>
-                        <ion-thumbnail item-start>
-                            <h1>{{shield.name}}</h1>
-                            <h3>Total Life:{{shield.max_life_points}}</h3>
-                            <h3>{{Resistence(shield)}}</h3>
-                        </ion-thumbnail>
-                        <ion-grid item-content>
-                            <ion-row>
-                                <ion-col col-1>
-                                    <h2 class="modalTitle">NT</h2>
-                                    <h3>{{shield.nt}}</h3>
-                                </ion-col>
-                                <ion-col col-7>
-                                    <h2 class="modalTitle">Description</h2>
-                                    <h3>{{shield.description}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Cost</h2>
-                                    <h3>{{shield.cost}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Weight</h2>
-                                    <h3>{{shield.weight}}</h3>
-                                </ion-col>
-                            </ion-row>
-                        </ion-grid>
-                        <button ion-button clear item-end on-click="returnData(shield)">Add</button>
-                    </ion-item>
-                </ion-item-sliding>
-            </ion-list>
-        </div>
-    </ion-list>
-    <ion-list *ngSwitchCase="'armors'">
-        <div padding>
-            <ion-segment [(ngModel)]="armorModel">
-                <ion-segment-button value="head" on-click="updateHeads()">
-                    <img class="headerImage" src="../../assets/item-icon/head.png">
-                </ion-segment-button>
-                <ion-segment-button value="torax" on-click="updateTorax()">
-                    <img class="headerImage" src="../../assets/item-icon/torax.png">
-                </ion-segment-button>
-                <ion-segment-button value="arms" on-click="updateArms()">
-                    <img class="headerImage" src="../../assets/item-icon/arms.png">
-                </ion-segment-button>
-                <ion-segment-button value="hands" on-click="updateHands()">
-                    <img class="headerImage" src="../../assets/item-icon/hands.png">
-                </ion-segment-button>
-                <ion-segment-button value="legs" on-click="updateLegs()">
-                    <img class="headerImage" src="../../assets/item-icon/legs.png">
-                </ion-segment-button>
-                <ion-segment-button value="feet" on-click="updateFeets()">
-                    <img class="headerImage" src="../../assets/item-icon/feet.png">
-                </ion-segment-button>
-            </ion-segment>
-        </div>
-        <div [ngSwitch]="armorModel">
-            <ion-list *ngSwitchCase="'head'">
-                <ion-item-sliding *ngFor="let head of heads">
-                    <ion-item>
-                        <ion-thumbnail item-start>
-                            <h1>{{head.name}}</h1>
-                            <h3>{{Resistence(head)}}</h3>
-                        </ion-thumbnail>
-                        <ion-grid item-content>
-                            <ion-row>
-                                <ion-col col-1>
-                                    <h2 class="modalTitle">NT</h2>
-                                    <h3>{{head.nt}}</h3>
-                                </ion-col>
-                                <ion-col col-7>
-                                    <h2 class="modalTitle">Description</h2>
-                                    <h3>{{head.description}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Cost</h2>
-                                    <h3>{{head.cost}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Weight</h2>
-                                    <h3>{{head.weight}}</h3>
-                                </ion-col>
-                            </ion-row>
-                        </ion-grid>
-                        <button ion-button clear item-end on-click="returnData(head)">Add</button>
-                    </ion-item>
-                </ion-item-sliding>
-            </ion-list>
-            <ion-list *ngSwitchCase="'torax'">
-                <ion-item-sliding *ngFor="let torax of torax">
-                    <ion-item>
-                        <ion-thumbnail item-start>
-                            <h1>{{torax.name}}</h1>
-                            <h3>{{Resistence(torax)}}</h3>
-                        </ion-thumbnail>
-                        <ion-grid item-content>
-                            <ion-row>
-                                <ion-col col-1>
-                                    <h2 class="modalTitle">NT</h2>
-                                    <h3>{{torax.nt}}</h3>
-                                </ion-col>
-                                <ion-col col-7>
-                                    <h2 class="modalTitle">Description</h2>
-                                    <h3>{{torax.description}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Cost</h2>
-                                    <h3>{{torax.cost}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Weight</h2>
-                                    <h3>{{torax.weight}}</h3>
-                                </ion-col>
-                            </ion-row>
-                        </ion-grid>
-                        <button ion-button clear item-end on-click="returnData(torax)">Add</button>
-                    </ion-item>
-                </ion-item-sliding>
-            </ion-list>
-            <ion-list *ngSwitchCase="'arms'">
-                <ion-item-sliding *ngFor="let arm of arms">
-                    <ion-item>
-                        <ion-thumbnail item-start>
-                            <h1>{{arm.name}}</h1>
-                            <h3>{{Resistence(arm)}}</h3>
-                        </ion-thumbnail>
-                        <ion-grid item-content>
-                            <ion-row>
-                                <ion-col col-1>
-                                    <h2 class="modalTitle">NT</h2>
-                                    <h3>{{arm.nt}}</h3>
-                                </ion-col>
-                                <ion-col col-7>
-                                    <h2 class="modalTitle">Description</h2>
-                                    <h3>{{arm.description}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Cost</h2>
-                                    <h3>{{arm.cost}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Weight</h2>
-                                    <h3>{{arm.weight}}</h3>
-                                </ion-col>
-                            </ion-row>
-                        </ion-grid>
-                        <button ion-button clear item-end on-click="returnData(arm)">Add</button>
-                    </ion-item>
-                </ion-item-sliding>
-            </ion-list>
-            <ion-list *ngSwitchCase="'hands'">
-                <ion-item-sliding *ngFor="let hand of hands">
-                    <ion-item>
-                        <ion-thumbnail item-start>
-                            <h1>{{hand.name}}</h1>
-                            <h3>{{Resistence(hand)}}</h3>
-                        </ion-thumbnail>
-                        <ion-grid item-content>
-                            <ion-row>
-                                <ion-col col-1>
-                                    <h2 class="modalTitle">NT</h2>
-                                    <h3>{{hand.nt}}</h3>
-                                </ion-col>
-                                <ion-col col-7>
-                                    <h2 class="modalTitle">Description</h2>
-                                    <h3>{{hand.description}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Cost</h2>
-                                    <h3>{{hand.cost}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Weight</h2>
-                                    <h3>{{hand.weight}}</h3>
-                                </ion-col>
-                            </ion-row>
-                        </ion-grid>
-                        <button ion-button clear item-end on-click="returnData(hand)">Add</button>
-                    </ion-item>
-                </ion-item-sliding>
-            </ion-list>
-            <ion-list *ngSwitchCase="'legs'">
-                <ion-item-sliding *ngFor="let leg of legs">
-                    <ion-item>
-                        <ion-thumbnail item-start>
-                            <h1>{{leg.name}}</h1>
-                            <h3>{{Resistence(leg)}}</h3>
-                        </ion-thumbnail>
-                        <ion-grid item-content>
-                            <ion-row>
-                                <ion-col col-1>
-                                    <h2 class="modalTitle">NT</h2>
-                                    <h3>{{leg.nt}}</h3>
-                                </ion-col>
-                                <ion-col col-7>
-                                    <h2 class="modalTitle">Description</h2>
-                                    <h3>{{leg.description}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Cost</h2>
-                                    <h3>{{leg.cost}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Weight</h2>
-                                    <h3>{{leg.weight}}</h3>
-                                </ion-col>
-                            </ion-row>
-                        </ion-grid>
-                        <button ion-button clear item-end on-click="returnData(leg)">Add</button>
-                    </ion-item>
-                </ion-item-sliding>
-            </ion-list>
-            <ion-list *ngSwitchCase="'feet'">
-                <ion-item-sliding *ngFor="let feet of feets">
-                    <ion-item>
-                        <ion-thumbnail item-start>
-                            <h1>{{feet.name}}</h1>
-                            <h3>{{Resistence(feet)}}</h3>
-                        </ion-thumbnail>
-                        <ion-grid item-content>
-                            <ion-row>
-                                <ion-col col-1>
-                                    <h2 class="modalTitle">NT</h2>
-                                    <h3>{{feet.nt}}</h3>
-                                </ion-col>
-                                <ion-col col-7>
-                                    <h2 class="modalTitle">Description</h2>
-                                    <h3>{{feet.description}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Cost</h2>
-                                    <h3>{{feet.cost}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Weight</h2>
-                                    <h3>{{feet.weight}}</h3>
-                                </ion-col>
-                            </ion-row>
-                        </ion-grid>
-                        <button ion-button clear item-end on-click="returnData(feet)">Add</button>
-                    </ion-item>
-                </ion-item-sliding>
-            </ion-list>
-        </div>
-    </ion-list>
-    <ion-list *ngSwitchCase="'items'">
-        <div padding>
-            <ion-segment [(ngModel)]="itemsModel">
-                <ion-segment-button value="consumable" on-click="updateConsumables()">
-                    <img class="headerImage" src="../../assets/item-icon/consumable.png">
-                </ion-segment-button>
-                <ion-segment-button value="other" on-click="updateOthers()">
-                    <img class="headerImage" src="../../assets/item-icon/other.png">
-                </ion-segment-button>
-            </ion-segment>
-        </div>
-        <div [ngSwitch]="itemsModel">
-            <ion-item-sliding *ngFor="let consumable of consumables">
-                <ion-item>
-                    <ion-thumbnail item-start>
-                        <h1>{{consumable.name}}</h1>
-                    </ion-thumbnail>
-                    <ion-grid item-content>
-                        <ion-row>
-                            <ion-col col-1>
-                                <h2 class="modalTitle">NT</h2>
-                                <h3>{{consumable.nt}}</h3>
-                            </ion-col>
-                            <ion-col col-7>
-                                <h2 class="modalTitle">Description</h2>
-                                <h3>{{consumable.description}}</h3>
-                            </ion-col>
-                            <ion-col col-2>
-                                <h2 class="modalTitle">Cost</h2>
-                                <h3>{{consumable.cost}}</h3>
-                            </ion-col>
-                            <ion-col col-2>
-                                <h2 class="modalTitle">Weight</h2>
-                                <h3>{{consumable.weight}}</h3>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                    <button ion-button clear item-end on-click="returnData(consumable)">Add</button>
-                </ion-item>
-            </ion-item-sliding>            
-            <ion-item-sliding *ngFor="let other of others">
-                <ion-item>
-                    <ion-thumbnail item-start>
-                        <h1>{{other.name}}</h1>
-                    </ion-thumbnail>
-                    <ion-grid item-content>
-                        <ion-row>
-                            <ion-col col-1>
-                                <h2 class="modalTitle">NT</h2>
-                                <h3>{{other.nt}}</h3>
-                            </ion-col>
-                            <ion-col col-7>
-                                <h2 class="modalTitle">Description</h2>
-                                <h3>{{other.description}}</h3>
-                            </ion-col>
-                            <ion-col col-2>
-                                <h2 class="modalTitle">Cost</h2>
-                                <h3>{{other.cost}}</h3>
-                            </ion-col>
-                            <ion-col col-2>
-                                <h2 class="modalTitle">Weight</h2>
-                                <h3>{{other.weight}}</h3>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                    <button ion-button clear item-end on-click="returnData(other)">Add</button>
-                </ion-item>
-            </ion-item-sliding>
-        </div>
-    </ion-list>
-</div>
+        h1 {
+            text-align: center;
+            word-wrap: normal;
+        }
+    
+        h2 {
+            text-align: center;
+            word-wrap: normal;
+        }
+    
+        .modalTitle {
+            font-weight: bold
+        }
+    
+        ion-thumbnail {
+            text-align: center;
+            width: 20%
+        }
+    
+        ion-col {
+            text-align: center;
+        }
+    
+        .headerImage {
+            height: 6ex;
+            width: 6ex;
+        }
+    </style>
+    
+    <html style="background:white">
+    
+    <div padding>
+        <ion-segment [(ngModel)]="mainModel">
+            <ion-segment-button value="weapons">
+                <h2>Weapons</h2>
+            </ion-segment-button>
+            <ion-segment-button value="armors">
+                <h2>Armors</h2>
+            </ion-segment-button>
+            <ion-segment-button value="items">
+                <h2>Items</h2>
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+    
+    <div [ngSwitch]="mainModel">
+        <ion-list *ngSwitchCase="'weapons'">
+            <div padding>
+                <ion-segment [(ngModel)]="weaponModel">
+                    <ion-segment-button value="one-hand" on-click="updateOneHands()">
+                        <img class="headerImage" src="../../assets/item-icon/one-hand.png">
+                    </ion-segment-button>
+                    <ion-segment-button value="two-hand" on-click="updateTwoHands()">
+                        <img class="headerImage" src="../../assets/item-icon/two-hand.png">
+                    </ion-segment-button>
+                    <ion-segment-button value="shield" on-click="updateShields()">
+                        <img class="headerImage" src="../../assets/item-icon/shield.png">
+                    </ion-segment-button>
+                </ion-segment>
+            </div>
+            <div [ngSwitch]="weaponModel">
+                <ion-list *ngSwitchCase="'one-hand'">
+                    <ion-item-sliding *ngFor="let oneHand of oneHands">
+                        <ion-item>
+                            <ion-thumbnail item-start>
+                                <h1>{{oneHand.name}}</h1>
+                                <h3>{{Balance(oneHand)}}</h3>
+                                <h3>{{Piercing(oneHand)}}</h3>
+                            </ion-thumbnail>
+                            <ion-grid item-content>
+                                <ion-row>
+                                    <ion-col col-1>
+                                        <h2 class="modalTitle">NT</h2>
+                                        <h3>{{oneHand.nt}}</h3>
+                                    </ion-col>
+                                    <ion-col col-7>
+                                        <h2 class="modalTitle">Description</h2>
+                                        <h3>{{oneHand.description}}</h3>
+                                    </ion-col>
+                                    <ion-col col-2>
+                                        <h2 class="modalTitle">Cost</h2>
+                                        <h3>{{oneHand.cost}}</h3>
+                                    </ion-col>
+                                    <ion-col col-2>
+                                        <h2 class="modalTitle">Weight</h2>
+                                        <h3>{{oneHand.weight}}</h3>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-grid>
+                            <button ion-button clear item-end on-click="returnData(oneHand)">Add</button>
+                        </ion-item>
+                    </ion-item-sliding>
+                </ion-list>
+                <ion-list *ngSwitchCase="'two-hand'">
+                    <ion-item-sliding *ngFor="let twoHand of twoHands">
+                        <ion-item>
+                            <ion-thumbnail item-start>
+                                <h1>{{twoHand.name}}</h1>
+                                <h3>{{Balance(twoHand)}}</h3>
+                                <h3>{{Piercing(twoHand)}}</h3>
+                            </ion-thumbnail>
+                            <ion-grid item-content>
+                                <ion-row>
+                                    <ion-col col-1>
+                                        <h2 class="modalTitle">NT</h2>
+                                        <h3>{{twoHand.nt}}</h3>
+                                    </ion-col>
+                                    <ion-col col-7>
+                                        <h2 class="modalTitle">Description</h2>
+                                        <h3>{{twoHand.description}}</h3>
+                                    </ion-col>
+                                    <ion-col col-2>
+                                        <h2 class="modalTitle">Cost</h2>
+                                        <h3>{{twoHand.cost}}</h3>
+                                    </ion-col>
+                                    <ion-col col-2>
+                                        <h2 class="modalTitle">Weight</h2>
+                                        <h3>{{twoHand.weight}}</h3>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-grid>
+                            <button ion-button clear item-end on-click="returnData(twoHand)">Add</button>
+                        </ion-item>
+                    </ion-item-sliding>
+                </ion-list>
+                <ion-list *ngSwitchCase="'shield'">
+                    <ion-item-sliding *ngFor="let shield of shields">
+                        <ion-item>
+                            <ion-thumbnail item-start>
+                                <h1>{{shield.name}}</h1>
+                                <h3>Total Life:{{shield.max_life_points}}</h3>
+                                <h3>{{Resistence(shield)}}</h3>
+                            </ion-thumbnail>
+                            <ion-grid item-content>
+                                <ion-row>
+                                    <ion-col col-1>
+                                        <h2 class="modalTitle">NT</h2>
+                                        <h3>{{shield.nt}}</h3>
+                                    </ion-col>
+                                    <ion-col col-7>
+                                        <h2 class="modalTitle">Description</h2>
+                                        <h3>{{shield.description}}</h3>
+                                    </ion-col>
+                                    <ion-col col-2>
+                                        <h2 class="modalTitle">Cost</h2>
+                                        <h3>{{shield.cost}}</h3>
+                                    </ion-col>
+                                    <ion-col col-2>
+                                        <h2 class="modalTitle">Weight</h2>
+                                        <h3>{{shield.weight}}</h3>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-grid>
+                            <button ion-button clear item-end on-click="returnData(shield)">Add</button>
+                        </ion-item>
+                    </ion-item-sliding>
+                </ion-list>
+            </div>
+        </ion-list>
+        <ion-list *ngSwitchCase="'armors'">
+            <div padding>
+                <ion-segment [(ngModel)]="armorModel">
+                    <ion-segment-button value="head" on-click="updateHeads()">
+                        <img class="headerImage" src="../../assets/item-icon/head.png">
+                    </ion-segment-button>
+                    <ion-segment-button value="torax" on-click="updateTorax()">
+                        <img class="headerImage" src="../../assets/item-icon/torax.png">
+                    </ion-segment-button>
+                    <ion-segment-button value="arms" on-click="updateArms()">
+                        <img class="headerImage" src="../../assets/item-icon/arms.png">
+                    </ion-segment-button>
+                    <ion-segment-button value="hands" on-click="updateHands()">
+                        <img class="headerImage" src="../../assets/item-icon/hands.png">
+                    </ion-segment-button>
+                    <ion-segment-button value="legs" on-click="updateLegs()">
+                        <img class="headerImage" src="../../assets/item-icon/legs.png">
+                    </ion-segment-button>
+                    <ion-segment-button value="feet" on-click="updateFeets()">
+                        <img class="headerImage" src="../../assets/item-icon/feet.png">
+                    </ion-segment-button>
+                </ion-segment>
+            </div>
+            <div [ngSwitch]="armorModel">
+                <ion-list *ngSwitchCase="'head'">
+                    <ion-item-sliding *ngFor="let head of heads">
+                        <ion-item>
+                            <ion-thumbnail item-start>
+                                <h1>{{head.name}}</h1>
+                                <h3>{{Resistence(head)}}</h3>
+                            </ion-thumbnail>
+                            <ion-grid item-content>
+                                <ion-row>
+                                    <ion-col col-1>
+                                        <h2 class="modalTitle">NT</h2>
+                                        <h3>{{head.nt}}</h3>
+                                    </ion-col>
+                                    <ion-col col-7>
+                                        <h2 class="modalTitle">Description</h2>
+                                        <h3>{{head.description}}</h3>
+                                    </ion-col>
+                                    <ion-col col-2>
+                                        <h2 class="modalTitle">Cost</h2>
+                                        <h3>{{head.cost}}</h3>
+                                    </ion-col>
+                                    <ion-col col-2>
+                                        <h2 class="modalTitle">Weight</h2>
+                                        <h3>{{head.weight}}</h3>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-grid>
+                            <button ion-button clear item-end on-click="returnData(head)">Add</button>
+                        </ion-item>
+                    </ion-item-sliding>
+                </ion-list>
+                <ion-list *ngSwitchCase="'torax'">
+                    <ion-item-sliding *ngFor="let torax of torax">
+                        <ion-item>
+                            <ion-thumbnail item-start>
+                                <h1>{{torax.name}}</h1>
+                                <h3>{{Resistence(torax)}}</h3>
+                            </ion-thumbnail>
+                            <ion-grid item-content>
+                                <ion-row>
+                                    <ion-col col-1>
+                                        <h2 class="modalTitle">NT</h2>
+                                        <h3>{{torax.nt}}</h3>
+                                    </ion-col>
+                                    <ion-col col-7>
+                                        <h2 class="modalTitle">Description</h2>
+                                        <h3>{{torax.description}}</h3>
+                                    </ion-col>
+                                    <ion-col col-2>
+                                        <h2 class="modalTitle">Cost</h2>
+                                        <h3>{{torax.cost}}</h3>
+                                    </ion-col>
+                                    <ion-col col-2>
+                                        <h2 class="modalTitle">Weight</h2>
+                                        <h3>{{torax.weight}}</h3>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-grid>
+                            <button ion-button clear item-end on-click="returnData(torax)">Add</button>
+                        </ion-item>
+                    </ion-item-sliding>
+                </ion-list>
+                <ion-list *ngSwitchCase="'arms'">
+                    <ion-item-sliding *ngFor="let arm of arms">
+                        <ion-item>
+                            <ion-thumbnail item-start>
+                                <h1>{{arm.name}}</h1>
+                                <h3>{{Resistence(arm)}}</h3>
+                            </ion-thumbnail>
+                            <ion-grid item-content>
+                                <ion-row>
+                                    <ion-col col-1>
+                                        <h2 class="modalTitle">NT</h2>
+                                        <h3>{{arm.nt}}</h3>
+                                    </ion-col>
+                                    <ion-col col-7>
+                                        <h2 class="modalTitle">Description</h2>
+                                        <h3>{{arm.description}}</h3>
+                                    </ion-col>
+                                    <ion-col col-2>
+                                        <h2 class="modalTitle">Cost</h2>
+                                        <h3>{{arm.cost}}</h3>
+                                    </ion-col>
+                                    <ion-col col-2>
+                                        <h2 class="modalTitle">Weight</h2>
+                                        <h3>{{arm.weight}}</h3>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-grid>
+                            <button ion-button clear item-end on-click="returnData(arm)">Add</button>
+                        </ion-item>
+                    </ion-item-sliding>
+                </ion-list>
+                <ion-list *ngSwitchCase="'hands'">
+                    <ion-item-sliding *ngFor="let hand of hands">
+                        <ion-item>
+                            <ion-thumbnail item-start>
+                                <h1>{{hand.name}}</h1>
+                                <h3>{{Resistence(hand)}}</h3>
+                            </ion-thumbnail>
+                            <ion-grid item-content>
+                                <ion-row>
+                                    <ion-col col-1>
+                                        <h2 class="modalTitle">NT</h2>
+                                        <h3>{{hand.nt}}</h3>
+                                    </ion-col>
+                                    <ion-col col-7>
+                                        <h2 class="modalTitle">Description</h2>
+                                        <h3>{{hand.description}}</h3>
+                                    </ion-col>
+                                    <ion-col col-2>
+                                        <h2 class="modalTitle">Cost</h2>
+                                        <h3>{{hand.cost}}</h3>
+                                    </ion-col>
+                                    <ion-col col-2>
+                                        <h2 class="modalTitle">Weight</h2>
+                                        <h3>{{hand.weight}}</h3>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-grid>
+                            <button ion-button clear item-end on-click="returnData(hand)">Add</button>
+                        </ion-item>
+                    </ion-item-sliding>
+                </ion-list>
+                <ion-list *ngSwitchCase="'legs'">
+                    <ion-item-sliding *ngFor="let leg of legs">
+                        <ion-item>
+                            <ion-thumbnail item-start>
+                                <h1>{{leg.name}}</h1>
+                                <h3>{{Resistence(leg)}}</h3>
+                            </ion-thumbnail>
+                            <ion-grid item-content>
+                                <ion-row>
+                                    <ion-col col-1>
+                                        <h2 class="modalTitle">NT</h2>
+                                        <h3>{{leg.nt}}</h3>
+                                    </ion-col>
+                                    <ion-col col-7>
+                                        <h2 class="modalTitle">Description</h2>
+                                        <h3>{{leg.description}}</h3>
+                                    </ion-col>
+                                    <ion-col col-2>
+                                        <h2 class="modalTitle">Cost</h2>
+                                        <h3>{{leg.cost}}</h3>
+                                    </ion-col>
+                                    <ion-col col-2>
+                                        <h2 class="modalTitle">Weight</h2>
+                                        <h3>{{leg.weight}}</h3>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-grid>
+                            <button ion-button clear item-end on-click="returnData(leg)">Add</button>
+                        </ion-item>
+                    </ion-item-sliding>
+                </ion-list>
+                <ion-list *ngSwitchCase="'feet'">
+                    <ion-item-sliding *ngFor="let feet of feets">
+                        <ion-item>
+                            <ion-thumbnail item-start>
+                                <h1>{{feet.name}}</h1>
+                                <h3>{{Resistence(feet)}}</h3>
+                            </ion-thumbnail>
+                            <ion-grid item-content>
+                                <ion-row>
+                                    <ion-col col-1>
+                                        <h2 class="modalTitle">NT</h2>
+                                        <h3>{{feet.nt}}</h3>
+                                    </ion-col>
+                                    <ion-col col-7>
+                                        <h2 class="modalTitle">Description</h2>
+                                        <h3>{{feet.description}}</h3>
+                                    </ion-col>
+                                    <ion-col col-2>
+                                        <h2 class="modalTitle">Cost</h2>
+                                        <h3>{{feet.cost}}</h3>
+                                    </ion-col>
+                                    <ion-col col-2>
+                                        <h2 class="modalTitle">Weight</h2>
+                                        <h3>{{feet.weight}}</h3>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-grid>
+                            <button ion-button clear item-end on-click="returnData(feet)">Add</button>
+                        </ion-item>
+                    </ion-item-sliding>
+                </ion-list>
+            </div>
+        </ion-list>
+        <ion-list *ngSwitchCase="'items'">
+            <div padding>
+                <ion-segment [(ngModel)]="itemsModel">
+                    <ion-segment-button value="consumable" on-click="updateConsumables()">
+                        <img class="headerImage" src="../../assets/item-icon/consumable.png">
+                    </ion-segment-button>
+                    <ion-segment-button value="other" on-click="updateOthers()">
+                        <img class="headerImage" src="../../assets/item-icon/other.png">
+                    </ion-segment-button>
+                </ion-segment>
+            </div>
+            <div [ngSwitch]="itemsModel">
+                <ion-list *ngSwitchCase="'consumable'">
+                    <ion-item-sliding *ngFor="let consumable of consumables">
+                        <ion-item>
+                            <ion-thumbnail item-start>
+                                <h1>{{consumable.name}}</h1>
+                            </ion-thumbnail>
+                            <ion-grid item-content>
+                                <ion-row>
+                                    <ion-col col-1>
+                                        <h2 class="modalTitle">NT</h2>
+                                        <h3>{{consumable.nt}}</h3>
+                                    </ion-col>
+                                    <ion-col col-7>
+                                        <h2 class="modalTitle">Description</h2>
+                                        <h3>{{consumable.description}}</h3>
+                                    </ion-col>
+                                    <ion-col col-2>
+                                        <h2 class="modalTitle">Cost</h2>
+                                        <h3>{{consumable.cost}}</h3>
+                                    </ion-col>
+                                    <ion-col col-2>
+                                        <h2 class="modalTitle">Weight</h2>
+                                        <h3>{{consumable.weight}}</h3>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-grid>
+                            <button ion-button clear item-end on-click="returnData(consumable)">Add</button>
+                        </ion-item>
+                    </ion-item-sliding>
+                </ion-list>
+                <ion-list *ngSwitchCase="'other'">
+                    <ion-item-sliding *ngFor="let other of others">
+                        <ion-item>
+                            <ion-thumbnail item-start>
+                                <h1>{{other.name}}</h1>
+                            </ion-thumbnail>
+                            <ion-grid item-content>
+                                <ion-row>
+                                    <ion-col col-1>
+                                        <h2 class="modalTitle">NT</h2>
+                                        <h3>{{other.nt}}</h3>
+                                    </ion-col>
+                                    <ion-col col-7>
+                                        <h2 class="modalTitle">Description</h2>
+                                        <h3>{{other.description}}</h3>
+                                    </ion-col>
+                                    <ion-col col-2>
+                                        <h2 class="modalTitle">Cost</h2>
+                                        <h3>{{other.cost}}</h3>
+                                    </ion-col>
+                                    <ion-col col-2>
+                                        <h2 class="modalTitle">Weight</h2>
+                                        <h3>{{other.weight}}</h3>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-grid>
+                            <button ion-button clear item-end on-click="returnData(other)">Add</button>
+                        </ion-item>
+                    </ion-item-sliding>
+                </ion-list>
+            </div>
+        </ion-list>
+    </div>

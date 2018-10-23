@@ -107,6 +107,7 @@ export class GurpsManagerPage {
             character.disadvantages.push(disadvantage)
           }
           if (data.Inventory != null) {
+            character.inventory.armors=[]
             for (let i = 0; data.Inventory.Armors != null && i < data.Inventory.Armors.length; i++) {
               let armor = new Armor()
               armor.id = data.Inventory.Armors[i].Id
@@ -119,6 +120,7 @@ export class GurpsManagerPage {
               armor.formula = data.Inventory.Armors[i].Formula
               character.inventory.armors.push(armor)
             }
+            character.inventory.consumables=[]
             for (let i = 0; data.Inventory.Consumables != null && i < data.Inventory.Consumables.length; i++) {
               let consumable = new Consumable()
               consumable.id = data.Inventory.Consumables[i].Id
@@ -131,6 +133,7 @@ export class GurpsManagerPage {
               consumable.formula = data.Inventory.Consumables[i].Formula
               character.inventory.consumables.push(consumable)
             }
+            character.inventory.one_hand_weapons=[]
             for (let i = 0; data.Inventory.OneHandWeapons != null && i < data.Inventory.OneHandWeapons.length; i++) {
               let oneHandWeapon = new OneHandWeapon()
               oneHandWeapon.id = data.Inventory.OneHandWeapons[i].Id
@@ -143,6 +146,7 @@ export class GurpsManagerPage {
               oneHandWeapon.formula = data.Inventory.OneHandWeapons[i].Formula
               character.inventory.one_hand_weapons.push(oneHandWeapon)
             }
+            character.inventory.two_hand_weapons=[]
             for (let i = 0; data.Inventory.TwoHandWeapons != null && i < data.Inventory.TwoHandWeapons.length; i++) {
               let twoHandWeapon = new TwoHandWeapon()
               twoHandWeapon.id = data.Inventory.TwoHandWeapons[i].Id
@@ -155,6 +159,7 @@ export class GurpsManagerPage {
               twoHandWeapon.formula = data.Inventory.TwoHandWeapons[i].Formula
               character.inventory.two_hand_weapons.push(twoHandWeapon)
             }
+            character.inventory.others=[]
             for (let i = 0; data.Inventory.Others != null && i < data.Inventory.Others.length; i++) {
               let other = new Other()
               other.id = data.Inventory.Others[i].Id
@@ -167,6 +172,7 @@ export class GurpsManagerPage {
               other.formula = data.Inventory.Others[i].Formula
               character.inventory.others.push(other)
             }
+            character.inventory.shields=[]
             for (let i = 0; data.Inventory.Shields != null && i < data.Inventory.Shields.length; i++) {
               let shield = new Shield()
               shield.id = data.Inventory.Shields[i].Id

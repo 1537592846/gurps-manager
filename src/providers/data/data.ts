@@ -216,4 +216,24 @@ export class DataProvider {
       });
     });
   }
+
+  public saveItem(item:any){
+    var data=JSON.stringify(item)
+    return new Promise(resolve => {
+      let httpOptions = {
+        headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+      };
+      this.http.post(this.apiAddress+"items/add",data,httpOptions)
+      .subscribe(res => {
+        resolve(res)
+        return res
+      },
+      (err) => {
+        resolve(err)
+        console.log(err)
+        return false
+      }
+    );
+    });
+  }
 }
