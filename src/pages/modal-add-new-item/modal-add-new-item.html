@@ -1,0 +1,91 @@
+²
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Add a new Item to the database
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding id="modal-add-new-item">
+    <form novalidate [formGroup]="form" id="item-form" (ngSubmit)="returnData()">
+        <ion-list id="modal-add-new-item-list">
+            <ion-item id="modal-add-new-item-type">
+                <ion-label>
+                    Type
+                </ion-label>
+                <ion-select formControlName="type">
+                    <ion-option value="one-hand">One Hand</ion-option>
+                    <ion-option value="two-hand">Two Hands</ion-option>
+                    <ion-option value="shield">Shield</ion-option>
+                    <ion-option value="head">Head</ion-option>
+                    <ion-option value="torax">Torax</ion-option>
+                    <ion-option value="arms">Arms</ion-option>
+                    <ion-option value="hands">Hands</ion-option>
+                    <ion-option value="legs">Legs</ion-option>
+                    <ion-option value="feet">Feet</ion-option>
+                    <ion-option value="consumable">Consumable</ion-option>
+                    <ion-option value="other">Other</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item id="modal-add-new-item-name">
+                <ion-label>
+                    Name
+                </ion-label>
+                <ion-input formControlName="name" type="text"></ion-input>
+            </ion-item>
+            <ion-item id="modal-add-new-item-nt">
+                <ion-label>
+                    NT (Empty to not applicable)
+                </ion-label>
+                <ion-input formControlName="nt" type="number"></ion-input>
+            </ion-item>
+            <ion-item id="modal-add-new-item-description">
+                <ion-label>
+                    Description
+                </ion-label>
+                <ion-input formControlName="description" type="text"></ion-input>
+            </ion-item>
+            <ion-item id="modal-add-new-item-weight">
+                <ion-label>
+                    Weight
+                </ion-label>
+                <ion-input formControlName="weight" type="number"></ion-input>
+            </ion-item>
+            <ion-item id="modal-add-new-item-cost">
+                <ion-label>
+                    Cost
+                </ion-label>
+                <ion-input formControlName="cost" type="number"></ion-input>
+            </ion-item>
+            <ion-item id="modal-add-new-item-quantity">
+                <ion-label>
+                    Quantity
+                </ion-label>
+                <ion-input formControlName="quantity" type="number"></ion-input>
+            </ion-item>
+            <ion-item id="modal-add-new-item-max_life_points" *ngIf="form.getRawValue().type=='shield'">
+                <ion-label>
+                    Life Points
+                </ion-label>
+                <ion-input formControlName="max_life_points" type="number"></ion-input>
+            </ion-item>
+            <ion-item id="modal-add-new-item-resistence" *ngIf="form.getRawValue().type=='shield'||form.getRawValue().type=='head'||form.getRawValue().type=='torax'||form.getRawValue().type=='arms'||form.getRawValue().type=='hands'||form.getRawValue().type=='legs'||form.getRawValue().type=='feet'">
+                <ion-label>
+                    Resistance
+                </ion-label>
+                <ion-input formControlName="resistence" type="string"></ion-input>
+            </ion-item>
+            <ion-item id="modal-add-new-item-balance_attack" *ngIf="form.getRawValue().type=='one-hand'||form.getRawValue().type=='two-hand'">
+                Balance Attack (Empty if not applicable)
+            </ion-item>
+            <ion-input formControlName="piercing_attack" type="text"></ion-input>
+            <ion-item id="modal-add-new-item-piercing_attack" *ngIf="form.getRawValue().type=='one-hand'||form.getRawValue().type=='two-hand'">
+                Piercing Attack (Empty if not applicable)
+            </ion-item>
+            <ion-input formControlName="piercing_attack" type="text"></ion-input>
+        </ion-list>
+        <button id="characterFeatures-button" ion-button color="stable" block type="submit">
+            Proceed
+        </button>
+    </form>
+</ion-content>

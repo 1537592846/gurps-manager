@@ -1,3 +1,4 @@
+import { ModalAddItems } from './../pages/modal-add-item/modal-add-item';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -29,6 +30,7 @@ import { ModalLanguages } from '../pages/modal-languages/modal-languages';
 import { ModalCharacters } from '../pages/modal-character/modal-character';
 import { ModalEquipments } from '../pages/modal-equipments/modal-equipments';
 import { ModalBuyItems } from '../pages/modal-buy-item/modal-buy-item';
+import { ModalAddNewItems } from '../pages/modal-add-new-item/modal-add-new-item';
 //Lista de Providers (DAOs) criados
 
 @NgModule({
@@ -51,6 +53,8 @@ import { ModalBuyItems } from '../pages/modal-buy-item/modal-buy-item';
     CharacterResumePage,
     ModalAdvantages,
     ModalBuyItems,
+    ModalAddItems,
+    ModalAddNewItems,
     ModalCharacters,
     ModalDisadvantages,
     // ModalEquipments,
@@ -84,6 +88,8 @@ import { ModalBuyItems } from '../pages/modal-buy-item/modal-buy-item';
     ModalDisadvantages,
     ModalAdvantages,
     ModalBuyItems,
+    ModalAddItems,
+    ModalAddNewItems,
     ModalCharacters,
     // ModalEquipments,
     ModalLanguages,
