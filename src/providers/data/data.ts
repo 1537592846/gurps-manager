@@ -6,7 +6,6 @@ import { Skill } from '../../../models/Skill';
 import { Language } from '../../../models/Language';
 import { Character, CharacterApi } from '../../../models/Character';
 import { OneHandWeapon, TwoHandWeapon, Shield, Armor, Consumable, Other } from '../../../models/Item';
-import { Item } from 'ionic-angular';
 
 @Injectable()
 export class DataProvider {
@@ -57,13 +56,33 @@ export class DataProvider {
     });
   }
 
-  public saveCharacter(character:Character){
+  public saveNewCharacter(character:Character){
     var char=JSON.stringify(character)
     return new Promise(resolve => {
       let httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
       };
       this.http.post(this.apiAddress+"Characters/save",char,httpOptions)
+      .subscribe(res => {
+        resolve(res)
+        return res
+      },
+      (err) => {
+        resolve(err)
+        console.log(err)
+        return false
+      }
+    );
+    });
+  }
+
+  public saveCharacter(character:Character){
+    var char=JSON.stringify(character)
+    return new Promise(resolve => {
+      let httpOptions = {
+        headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+      };
+      this.http.post(this.apiAddress+"Characters/update",char,httpOptions)
       .subscribe(res => {
         resolve(res)
         return res

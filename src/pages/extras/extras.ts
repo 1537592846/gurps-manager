@@ -14,8 +14,6 @@ export class ExtrasPage {
     //Getting data
     this.char = navParams.data
   }
-  ionViewWillEnter() {
-  }
   getCharCarryCategory() {
     return this.char.getCarryCategory();
   }

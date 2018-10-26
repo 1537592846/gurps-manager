@@ -1,55 +1,33 @@
 <html style="background:white">
-<div id="weapons">
-    <!-- Options configuration -->
-    <div padding>
-        <ion-segment [(ngModel)]="weaponsModel" *ngIf="{{equipmentType=='left_hand'||equipmentType=='right_hand'}}">
-            <ion-segment-button value="oneHand" on-click="updateEquipments()">
-                <h1>One Hand</h1>
-            </ion-segment-button>
-            <ion-segment-button value="twoHands" on-click="updateTwoHandWeapons()">
-                <h1>Two Hands</h1>
-            </ion-segment-button>
-            <ion-segment-button value="shield" on-click="updateShields()">
-                <h1>Shields</h1>
-            </ion-segment-button>
-        </ion-segment>
-    </div>
-    <!-- One hand weapons -->
-    <div [ngSwitch]="weaponsModel" *ngIf="{{equipmentType=='left_hand'||equipmentType=='right_hand'}}">
-        <ion-list *ngSwitchCase="'oneHand'">
-            <ion-item-sliding *ngFor="let oneHand of one_hand_weapons">
-                <ion-item *ngIf="notInCharList(oneHand)">
-                    <ion-thumbnail item-start>
-                        <h1>{{oneHand.name}}</h1>
-                    </ion-thumbnail>
-                    <p>{{oneHand.description}}</p>
-                    <button ion-button clear item-end on-click="returnData(oneHand)">Equip</button>
-                </ion-item>
-            </ion-item-sliding>
-        </ion-list>
-        <ion-list *ngSwitchCase="'twoHand'">
-            <ion-item-sliding *ngFor="let twoHand of twoHands">
-                <ion-item *ngIf="notInCharList(twoHand)">
-                    <ion-thumbnail item-start>
-                        <h1>{{twoHand.name}}</h1>
-                    </ion-thumbnail>
-                    <p>{{twoHand.description}}</p>
-                    <button ion-button clear item-end on-click="returnData(twoHand)">Equip</button>
-                </ion-item>
-            </ion-item-sliding>
-        </ion-list>
-        <ion-list *ngSwitchCase="'shield'">
-            <ion-item-sliding *ngFor="let shield of shields">
-                <ion-item *ngIf="notInCharList(shield)">
-                    <ion-thumbnail item-start>
-                        <h1>{{shield.name}}</h1>
-                    </ion-thumbnail>
-                    <p>{{shield.description}}</p>
-                    <button ion-button clear item-end on-click="returnData(shield)">Equip</button>
-                </ion-item>
-            </ion-item-sliding>
-        </ion-list>
-    </div>
+<div>
+    <ion-list>
+        <ion-item-sliding *ngFor="let equipment of listEquipments">
+            <ion-item>
+                <ion-thumbnail item-start>
+                    <h1>{{equipment.name}}</h1>
+                    <div *ngIf='equipment.type=="shield"'>
+                        <h3>Total Life:{{equipment.max_life_points}}</h3>
+                        <h3>{{Resistence(equipment)}}</h3>
+                    </div>
+                    <div *ngIf='equipment.type!="one-hand"||equipment.type!="two-hand"||equipment.type!="shield"||equipment.type!="consumable"||equipment.type!="others"'>
+                        <h3>{{Resistence(equipment)}}</h3>
+                    </div>
+                    <div *ngIf='equipment.type=="one-hand"||equipment.type=="two-hand"'>
+                        <h3>{{Balance(equipment)}}</h3>
+                        <h3>{{Piercing(equipment)}}</h3>
+                    </div>
+                </ion-thumbnail>
+                <ion-grid item-content>
+                    <ion-row>
+                        <ion-col>
+                            <h2 class="modalTitle">Description</h2>
+                            <h3>{{equipment.description}}</h3>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+                <button ion-button clear item-end on-click="returnData(equipment)">Add</button>
+            </ion-item>
+        </ion-item-sliding>
+    </ion-list>
 </div>
-
 </html>

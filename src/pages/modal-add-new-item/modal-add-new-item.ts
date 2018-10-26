@@ -16,14 +16,14 @@ export class ModalAddNewItems {
     this.resouces = this.params.get("resouces")
     this.form = this.formBuilder.group({
       name: ['', Validators.compose([Validators.min(3), Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-      type: ['', Validators.compose([Validators.required])],
+      type: ['', Validators.compose([Validators.required])],  
       nt: ['', Validators.compose([ Validators.pattern('[0-9]{1}')])],
       description: ['', Validators.compose([Validators.minLength(3), Validators.pattern('[a-zA-Z .,]*'), Validators.required])],
-      weight: ['', Validators.compose([Validators.pattern('[0-9.]'), Validators.required])],
-      cost: ['', Validators.compose([Validators.pattern('[0-9]'), Validators.required])],
-      quantity: ['', Validators.compose([Validators.pattern('[0-9]'), Validators.required])],
-      max_life_points: ['', Validators.compose([Validators.min(1), Validators.pattern('[0-9]')])],
-      resistence: ['', Validators.compose([Validators.min(1), Validators.pattern('[0-9D]')])],
+      weight: ['', Validators.compose([Validators.pattern('[0-9.]*'), Validators.required])],
+      cost: ['', Validators.compose([Validators.pattern('[0-9]*'), Validators.required])],
+      quantity: ['', Validators.compose([Validators.pattern('[0-9]*'), Validators.required])],
+      max_life_points: ['', Validators.compose([Validators.min(1), Validators.pattern('[0-9]*')])],
+      resistence: ['', Validators.compose([Validators.min(1), Validators.pattern('[0-9D]*')])],
       balance_attack: ['', Validators.compose([Validators.minLength(3), Validators.pattern('[a-zA-Z0-9\+\-.,]*')])],
       piercing_attack: ['', Validators.compose([Validators.minLength(3), Validators.pattern('[a-zA-Z0-9\+\-.,]*')])]
     })
@@ -37,10 +37,10 @@ export class ModalAddNewItems {
         case "one-hand": {
           item = new OneHandWeapon;
           item.formula = '{'
-          if (data.balance_attack != undefined) {
+          if (data.balance_attack != undefined && data.balance_attack!="") {
             item.formula += '"balance_attack":"' + data.balance_attack + '"'
           }
-          if (data.piercing_attack != undefined) {
+          if (data.piercing_attack != undefined && data.piercing_attack!="") {
             item.formula += ',"piercing_attack":"' + data.piercing_attack + '"'
           }
           item.formula += '}'

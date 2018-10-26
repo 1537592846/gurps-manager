@@ -57,7 +57,7 @@ import { ModalAddNewItems } from '../pages/modal-add-new-item/modal-add-new-item
     ModalAddNewItems,
     ModalCharacters,
     ModalDisadvantages,
-    // ModalEquipments,
+    ModalEquipments,
     ModalLanguages,
     ModalSkills
   ],
@@ -91,7 +91,7 @@ import { ModalAddNewItems } from '../pages/modal-add-new-item/modal-add-new-item
     ModalAddItems,
     ModalAddNewItems,
     ModalCharacters,
-    // ModalEquipments,
+    ModalEquipments,
     ModalLanguages,
     ModalSkills
   ],

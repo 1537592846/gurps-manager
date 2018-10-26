@@ -23,7 +23,7 @@ export class CharacterResumePage {
   goToTabsController() {
     this.new_char.current_fatigue_points=this.new_char.max_fatigue_points
     this.new_char.current_life_points=this.new_char.max_life_points
-    this.dataProvider.saveCharacter(this.new_char).then(res => {
+    this.dataProvider.saveNewCharacter(this.new_char).then(res => {
       if (res) {
         console.log("Sucesso")
         this.navCtrl.setRoot(TabsControllerPage, { char: this.new_char });

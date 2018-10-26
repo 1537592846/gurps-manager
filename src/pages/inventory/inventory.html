@@ -26,47 +26,44 @@
         {{weapon.name}}
         <br>
         <ion-note>{{weapon.description}}</ion-note>
-        <ion-note item-right>Quantity: {{weapon.quantity}}
-          <br> Cost: {{weapon.cost}}</ion-note>
+        <ion-note item-right>Cost: {{weapon.cost}}</ion-note>
       </ion-item>
     </ion-item-sliding>
   </ion-item-group>
   <!-- Shields -->
-  <ion-item-group id="inventory-list" *ngIf="char.inventory.shields.length>0">
+  <ion-item-group id="inventory-list" *ngIf="shields.length>0">
     <h3 id="extras-tag-5" style="color:#000000;">
       Shields
     </h3>
-    <ion-item-sliding *ngFor="let shield of char.inventory.shields">
+    <ion-item-sliding *ngFor="let shield of shields">
       <ion-item color="none">
         {{shield.name}}
         <br>
         <ion-note>{{shield.description}}</ion-note>
-        <ion-note item-right>Quantity: {{shield.quantity}}
-          <br> Cost: {{shield.cost}}</ion-note>
+        <ion-note item-right>Cost: {{shield.cost}}</ion-note>
       </ion-item>
     </ion-item-sliding>
   </ion-item-group>
   <!-- Armors -->
-  <ion-item-group id="inventory-list" *ngIf="char.inventory.armors.length>0">
+  <ion-item-group id="inventory-list" *ngIf="armors.length>0">
     <h3 id="extras-tag-5" style="color:#000000;">
       Armors
     </h3>
-    <ion-item-sliding *ngFor="let armor of char.inventory.armors">
+    <ion-item-sliding *ngFor="let armor of armors">
       <ion-item color="none">
         {{armor.name}}
         <br>
         <ion-note>{{armor.description}}</ion-note>
-        <ion-note item-right>Quantity: {{armor.quantity}}
-          <br> Cost: {{armor.cost}}</ion-note>
+        <ion-note item-right>Cost: {{armor.cost}}</ion-note>
       </ion-item>
     </ion-item-sliding>
   </ion-item-group>
   <!-- Consumables -->
-  <ion-item-group id="inventory-list" *ngIf="char.inventory.consumables.length>0">
+  <ion-item-group id="inventory-list" *ngIf="consumables.length>0">
     <h3 id="extras-tag-5" style="color:#000000;">
       Consumables
     </h3>
-    <ion-item-sliding *ngFor="let consumable of char.inventory.consumables">
+    <ion-item-sliding *ngFor="let consumable of consumables">
       <ion-item color="none">
         {{consumable.name}}
         <br>
@@ -77,11 +74,11 @@
     </ion-item-sliding>
   </ion-item-group>
   <!-- Others -->
-  <ion-item-group id="inventory-list" *ngIf="char.inventory.others.length>0">
+  <ion-item-group id="inventory-list" *ngIf="others.length>0">
     <h3 id="extras-tag-5" style="color:#000000;">
       Others
     </h3>
-    <ion-item-sliding *ngFor="let other of char.inventory.others">
+    <ion-item-sliding *ngFor="let other of others">
       <ion-item color="none">
         {{other.name}}
         <br>

@@ -3,211 +3,197 @@ import { OneHandWeapon, TwoHandWeapon, Shield, Armor } from "../../../models/Ite
 import { Equipment } from "../../../models/Equipment";
 import { ViewController, NavParams } from "ionic-angular";
 import { DataProvider } from "../../providers/data/data";
+import { Constants } from "../../../models/Constants";
+import { Character } from "../../../models/Character";
 
 @Component({
   selector: 'modal-equipments.html',
   templateUrl: 'modal-equipments.html'
 })
 export class ModalEquipments {
-  one_hand_weapons: OneHandWeapon[] = []
-  two_hand_weapons: TwoHandWeapon[] = []
-  shields: Shield[] = []
-  heads: Armor[] = []
-  torax: Armor[] = []
-  legs: Armor[] = []
-  foot: Armor[] = []
-  arms: Armor[] = []
-  hands: Armor[] = []
-  char_equipment: Equipment = new Equipment()
-  equipmentType: string
+  listEquipments: any[] = []
+  char: Character
+  equipmentType: string = ""
 
   constructor(public viewCtrl: ViewController, public params: NavParams, public dataProvider: DataProvider) {
-    this.equipmentType = params.data
+    this.equipmentType = params.data.type
+    this.char = params.data.char
     this.updateEquipments()
+  }
+
+  Balance(weapon: any) {
+    let weaponFormula = JSON.parse(weapon.formula)
+    var bap: string = "Balance:"
+    if (weaponFormula.balance_attack != undefined) {
+      var base = Constants.WeaponBalanceAttack[this.char.strenght - 1]
+      let weaponSignal = ""
+      let weaponBonus = ""
+      let weaponType = ""
+      let baseDiceNumber = ""
+      let baseSignal = ""
+      let baseBonus = ""
+      baseDiceNumber = base[0]
+      baseSignal = base[2]
+      baseBonus = base[3]
+      if (weaponFormula.balance_attack[0] == "+" || weaponFormula.balance_attack[0] == "-") {
+        weaponSignal = weaponFormula.balance_attack[0]
+        weaponBonus = weaponFormula.balance_attack[1]
+        weaponType = weaponFormula.balance_attack.split(weaponBonus)[1]
+      } else {
+        weaponType = weaponFormula.balance_attack
+      }
+      bap += baseDiceNumber + "d"
+      let finalBonus = 0
+      if (baseSignal != "") {
+        if (baseSignal == "-") {
+          finalBonus -= Number.parseInt(baseBonus)
+        } else {
+          finalBonus += Number.parseInt(baseBonus)
+        }
+      }
+      if (weaponSignal != "") {
+        if (weaponSignal == "-") {
+          finalBonus -= Number.parseInt(weaponBonus)
+        } else {
+          finalBonus += Number.parseInt(weaponBonus)
+        }
+      }
+      if (finalBonus != 0) {
+        if (finalBonus < 0) {
+          bap += "-" + finalBonus
+        } else {
+          bap += "+" + finalBonus
+        }
+      }
+      bap += " " + weaponType
+    } else {
+      bap += "-"
+    }
+    return bap
+  }
+
+  Piercing(weapon: any) {
+    let weaponFormula = JSON.parse(weapon.formula)
+    var bap: string = "Piercing:"
+    if (weaponFormula.piercing_attack != undefined) {
+      var base = Constants.WeaponBalanceAttack[this.char.strenght - 1]
+      let weaponSignal = ""
+      let weaponBonus = ""
+      let weaponType = ""
+      let baseDiceNumber = ""
+      let baseSignal = ""
+      let baseBonus = ""
+      baseDiceNumber = base[0]
+      baseSignal = base[2]
+      baseBonus = base[3]
+      if (weaponFormula.piercing_attack[0] == "+" || weaponFormula.piercing_attack[0] == "-") {
+        weaponSignal = weaponFormula.piercing_attack[0]
+        weaponBonus = weaponFormula.piercing_attack[1]
+        weaponType = weaponFormula.piercing_attack.split(weaponBonus)[1]
+      } else {
+        weaponType = weaponFormula.piercing_attack
+      }
+      bap += baseDiceNumber + "d"
+      let finalBonus = 0
+      if (baseSignal != "") {
+        if (baseSignal == "-") {
+          finalBonus -= Number.parseInt(baseBonus)
+        } else {
+          finalBonus += Number.parseInt(baseBonus)
+        }
+      }
+      if (weaponSignal != "") {
+        if (weaponSignal == "-") {
+          finalBonus -= Number.parseInt(weaponBonus)
+        } else {
+          finalBonus += Number.parseInt(weaponBonus)
+        }
+      }
+      if (finalBonus != 0) {
+        if (finalBonus < 0) {
+          bap += "-" + finalBonus
+        } else {
+          bap += "+" + finalBonus
+        }
+      }
+      bap += " " + weaponType
+    } else {
+      bap += "-"
+    }
+    return bap
+  }
+
+  Resistence(armor: any) {
+    let armorFormula = JSON.parse(armor.formula)
+    return "Resistence:" + armorFormula.resistence
   }
 
   updateEquipments() {
     switch (this.equipmentType) {
-      case"left_hand":
-      case"right_hand":{
-        if (this.one_hand_weapons == null || this.one_hand_weapons.length == 0) {
-          this.dataProvider.getOneHandWeapons().then(res => {
-            let data = res as OneHandWeapon[]
-            for (let i = 0; i < data.length; i++) {
-              var oneHandWeapon = new OneHandWeapon
-              oneHandWeapon.id = data[i].id
-              oneHandWeapon.name = data[i].name
-              oneHandWeapon.nt = data[i].nt
-              oneHandWeapon.description = data[i].description
-              oneHandWeapon.cost = data[i].cost
-              oneHandWeapon.weight = data[i].weight
-              oneHandWeapon.quantity = data[i].quantity
-              oneHandWeapon.formula = data[i].formula
-              this.one_hand_weapons.push(oneHandWeapon)
-            }
-          })
-            .catch(error => { console.log(error) });
+      case "right_hand": {
+        for (let i = 0; i < this.char.inventory.shields.length; i++) {
+          this.listEquipments.push(this.char.inventory.shields[i])
         }
-        if (this.two_hand_weapons == null || this.two_hand_weapons.length == 0) {
-          this.dataProvider.getTwoHandWeapons().then(res => {
-            let data = res as TwoHandWeapon[]
-            for (let i = 0; i < data.length; i++) {
-              var twoHandWeapon = new TwoHandWeapon
-              twoHandWeapon.id = data[i].id
-              twoHandWeapon.name = data[i].name
-              twoHandWeapon.nt = data[i].nt
-              twoHandWeapon.description = data[i].description
-              twoHandWeapon.cost = data[i].cost
-              twoHandWeapon.weight = data[i].weight
-              twoHandWeapon.quantity = data[i].quantity
-              twoHandWeapon.formula = data[i].formula
-              this.two_hand_weapons.push(twoHandWeapon)
-            }
-          })
-            .catch(error => { console.log(error) });
+      }
+      case "left_hand": {
+        for (let i = 0; i < this.char.inventory.one_hand_weapons.length; i++) {
+          this.listEquipments.push(this.char.inventory.one_hand_weapons[i])
         }
-        if (this.shields == null || this.shields.length == 0) {
-          this.dataProvider.getShields().then(res => {
-            let data = res as Shield[]
-            for (let i = 0; i < data.length; i++) {
-              var shield = new Shield
-              shield.id = data[i].id
-              shield.name = data[i].name
-              shield.nt = data[i].nt
-              shield.description = data[i].description
-              shield.cost = data[i].cost
-              shield.weight = data[i].weight
-              shield.quantity = data[i].quantity
-              shield.formula = data[i].formula
-              shield.max_life_points = data[i].max_life_points
-              shield.current_life_points = data[i].current_life_points
-              this.shields.push(shield)
-            }
-          })
-            .catch(error => { console.log(error) });
+        for (let i = 0; i < this.char.inventory.two_hand_weapons.length; i++) {
+          this.listEquipments.push(this.char.inventory.two_hand_weapons[i])
         }
+        break
       }
       case "head": {
-        if (this.heads == null || this.heads.length == 0) {
-          this.dataProvider.getHeads().then(res => {
-            let data = res as Armor[]
-            for (let i = 0; i < data.length; i++) {
-              var head = new Armor
-              head.id = data[i].id
-              head.name = data[i].name
-              head.nt = data[i].nt
-              head.description = data[i].description
-              head.cost = data[i].cost
-              head.weight = data[i].weight
-              head.quantity = data[i].quantity
-              head.formula = data[i].formula
-              this.heads.push(head)
-            }
-          })
-            .catch(error => { console.log(error) });
+        for (let i = 0; i < this.char.inventory.armors.length; i++) {
+          if (this.char.inventory.armors[i].type == "head") {
+            this.listEquipments.push(this.char.inventory.armors[i])
+          }
         }
+        break
       }
       case "torax": {
-        if (this.heads == null || this.heads.length == 0) {
-          this.dataProvider.getTorax().then(res => {
-            let data = res as Armor[]
-            for (let i = 0; i < data.length; i++) {
-              var head = new Armor
-              head.id = data[i].id
-              head.name = data[i].name
-              head.nt = data[i].nt
-              head.description = data[i].description
-              head.cost = data[i].cost
-              head.weight = data[i].weight
-              head.quantity = data[i].quantity
-              head.formula = data[i].formula
-              this.heads.push(head)
-            }
-          })
-            .catch(error => { console.log(error) });
+        for (let i = 0; i < this.char.inventory.armors.length; i++) {
+          if (this.char.inventory.armors[i].type == "torax") {
+            this.listEquipments.push(this.char.inventory.armors[i])
+          }
         }
+        break
       }
       case "legs": {
-        if (this.legs == null || this.legs.length == 0) {
-          this.dataProvider.getLegs().then(res => {
-            let data = res as Armor[]
-            for (let i = 0; i < data.length; i++) {
-              var leg = new Armor
-              leg.id = data[i].id
-              leg.name = data[i].name
-              leg.nt = data[i].nt
-              leg.description = data[i].description
-              leg.cost = data[i].cost
-              leg.weight = data[i].weight
-              leg.quantity = data[i].quantity
-              leg.formula = data[i].formula
-              this.legs.push(leg)
-            }
-          })
-            .catch(error => { console.log(error) });
+        for (let i = 0; i < this.char.inventory.armors.length; i++) {
+          if (this.char.inventory.armors[i].type == "legs") {
+            this.listEquipments.push(this.char.inventory.armors[i])
+          }
         }
+        break
       }
       case "feet": {
-        if (this.foot == null || this.foot.length == 0) {
-          this.dataProvider.getFeets().then(res => {
-            let data = res as Armor[]
-            for (let i = 0; i < data.length; i++) {
-              var feet = new Armor
-              feet.id = data[i].id
-              feet.name = data[i].name
-              feet.nt = data[i].nt
-              feet.description = data[i].description
-              feet.cost = data[i].cost
-              feet.weight = data[i].weight
-              feet.quantity = data[i].quantity
-              feet.formula = data[i].formula
-              this.foot.push(feet)
-            }
-          })
-            .catch(error => { console.log(error) });
+        for (let i = 0; i < this.char.inventory.armors.length; i++) {
+          if (this.char.inventory.armors[i].type == "feet") {
+            this.listEquipments.push(this.char.inventory.armors[i])
+          }
         }
+        break
       }
       case "arms": {
-        if (this.arms == null || this.arms.length == 0) {
-          this.dataProvider.getArms().then(res => {
-            let data = res as Armor[]
-            for (let i = 0; i < data.length; i++) {
-              var arm = new Armor
-              arm.id = data[i].id
-              arm.name = data[i].name
-              arm.nt = data[i].nt
-              arm.description = data[i].description
-              arm.cost = data[i].cost
-              arm.weight = data[i].weight
-              arm.quantity = data[i].quantity
-              arm.formula = data[i].formula
-              this.arms.push(arm)
-            }
-          })
-            .catch(error => { console.log(error) });
+        for (let i = 0; i < this.char.inventory.armors.length; i++) {
+          if (this.char.inventory.armors[i].type == "arms") {
+            this.listEquipments.push(this.char.inventory.armors[i])
+          }
         }
+        break
       }
       case "hands": {
-        if (this.hands == null || this.hands.length == 0) {
-          this.dataProvider.getHands().then(res => {
-            let data = res as Armor[]
-            for (let i = 0; i < data.length; i++) {
-              var hand = new Armor
-              hand.id = data[i].id
-              hand.name = data[i].name
-              hand.nt = data[i].nt
-              hand.description = data[i].description
-              hand.cost = data[i].cost
-              hand.weight = data[i].weight
-              hand.quantity = data[i].quantity
-              hand.formula = data[i].formula
-              this.hands.push(hand)
-            }
-          })
-            .catch(error => { console.log(error) });
+        for (let i = 0; i < this.char.inventory.armors.length; i++) {
+          if (this.char.inventory.armors[i].type == "hands") {
+            this.listEquipments.push(this.char.inventory.armors[i])
+          }
         }
+        break
       }
     }
+    console.log(this.char)
   }
 
   returnData(equipment: any) {
