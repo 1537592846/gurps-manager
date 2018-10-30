@@ -5,7 +5,6 @@ import { Disadvantage } from './Disadvantage'
 import { Inventory } from './Inventory'
 import { Equipment } from './Equipment'
 import { Constants } from './Constants';
-import { IfObservable } from 'rxjs/observable/IfObservable';
 import { isNumber } from 'ionic-angular/umd/util/util';
 
 export class Character {
@@ -145,16 +144,10 @@ export class Character {
     }
     public getBlock(){
         if(this.equipments.hasShield()){
-            
+            return 1
+        }else{
+            return 0
         }
-        let blockValue = 0
-        if (block == undefined) return 0
-        if (isNumber(block)) {
-            blockValue = Number.parseInt(block.toString())
-        } else {
-            blockValue = Number.parseInt(block.toString()[0]);
-        }
-        return blockValue + this.equipments.getShieldBonus()
     }
     public destroyShield() {
         this.equipments.shield = null;

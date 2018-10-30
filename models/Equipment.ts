@@ -1,5 +1,3 @@
-import { FormBuilder } from '@angular/forms';
-import { shimContentAttribute } from '@angular/platform-browser/src/dom/dom_renderer';
 import { OneHandWeapon, TwoHandWeapon, Shield, Armor } from './Item'
 
 export class Equipment {

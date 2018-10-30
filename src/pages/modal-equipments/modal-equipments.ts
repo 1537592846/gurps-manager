@@ -1,6 +1,4 @@
 import { Component } from "@angular/core";
-import { OneHandWeapon, TwoHandWeapon, Shield, Armor } from "../../../models/Item";
-import { Equipment } from "../../../models/Equipment";
 import { ViewController, NavParams } from "ionic-angular";
 import { DataProvider } from "../../providers/data/data";
 import { Constants } from "../../../models/Constants";
