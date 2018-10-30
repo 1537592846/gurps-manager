@@ -3,6 +3,7 @@ import { NavParams, ModalController } from 'ionic-angular';
 import { Character } from '../../../models/Character';
 import { ModalEquipments } from '../modal-equipments/modal-equipments';
 import { OneHandWeapon, Armor, TwoHandWeapon, Shield } from '../../../models/Item';
+import { shimContentAttribute } from '@angular/platform-browser/src/dom/dom_renderer';
 
 @Component({
   selector: 'page-equipments',

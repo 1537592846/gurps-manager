@@ -12,7 +12,6 @@ class Item {
 }
 
 export class OneHandWeapon extends Item {
-    public skillUsed:string
     constructor(){
         super()
         this.type="one_hand"
@@ -20,7 +19,6 @@ export class OneHandWeapon extends Item {
 }
 
 export class TwoHandWeapon extends Item {
-    public skillUsed:string
     constructor(){
         super()
         this.type="two_hand"
@@ -28,7 +26,6 @@ export class TwoHandWeapon extends Item {
 }
 
 export class Shield extends Item {
-    public skillUsed:string
     public max_life_points: number;
     public current_life_points: number;
     public resistence:number;
