@@ -56,41 +56,59 @@
   </ion-list>
   <!-- Status tests -->
   <ion-list text-center>
-    <button id="tests-strenght" ion-button color="primary" on-click="strenghtTest()">
+    <button id="tests-strenght" ion-button color="primary" on-click="getTestValue('strenght')">
       ST
     </button>
-    <button id="tests-dexterity" ion-button color="primary" on-click="dexterityTest()">
+    <button id="tests-dexterity" ion-button color="primary" on-click="getTestValue('dexterity')">
       DX
     </button>
-    <button id="tests-intelligence" ion-button color="primary" on-click="intelligenceTest()">
+    <button id="tests-intelligence" ion-button color="primary" on-click="getTestValue('intelligence')">
       IQ
     </button>
-    <button id="tests-health" ion-button color="primary" on-click="healthTest()">
+    <button id="tests-health" ion-button color="primary" on-click="getTestValue('health')">
       HT
     </button>
   </ion-list>
-  <!-- Offensive moves tests -->
+  <!-- Secondary status tests -->
   <ion-list text-center>
-    <button id="tests-perception" ion-button color="primary" on-click="perceptionTest()">
+    <button id="tests-perception" ion-button color="primary" on-click="getTestValue('perception')">
       Perception
     </button>
-    <button id="tests-will" ion-button color="primary" on-click="willTest()">
+    <button id="tests-will" ion-button color="primary" on-click="getTestValue('will')">
       Will
     </button>
-    <button id="tests-attack" ion-button color="primary" on-click="attackTest()">
-      Attack
+  </ion-list>
+  <!-- Attack tests -->
+  <ion-list text-center>    
+    <button id="tests-balance-attack" ion-button color="primary" on-click="getTestValue('balance_attack')">
+      Balance Attack
+    </button>
+    <button id="tests-piercing-attack" ion-button color="primary" on-click="getTestValue('piercing_attack')">
+      Piercing Attack
     </button>
   </ion-list>
   <!-- Evasive moves tests -->
   <ion-list text-center>
-    <button id="tests-dodge" ion-button color="primary" on-click="dodgeTest()">
+    <button id="tests-dodge" ion-button color="primary" on-click="getTestValue('dodge')">
       Dodge
     </button>
-    <button id="tests-parry" ion-button color="primary" on-click="parryTest()">
+    <button id="tests-parry" ion-button color="primary" on-click="getTestValue('parry')">
       Parry
     </button>
-    <button id="tests-block" ion-button color="primary" on-click="blockTest()">
+    <button id="tests-block" ion-button color="primary" on-click="getTestValue('block')">
       Block
+    </button>
+  </ion-list>
+  <!-- Resistence tests -->
+  <ion-list text-center>
+    <button id="tests-knockout" ion-button color="primary" on-click="getTestValue('knockout')">
+      Knockout
+    </button>
+    <button id="tests-self-control" ion-button color="primary" on-click="getTestValue('self_control')">
+      Self-control
+    </button>
+    <button id="tests-stun" ion-button color="primary" on-click="getTestValue('stun')">
+      Stun
     </button>
   </ion-list>
 </ion-content>

@@ -1,3 +1,5 @@
+import { FormBuilder } from '@angular/forms';
+import { shimContentAttribute } from '@angular/platform-browser/src/dom/dom_renderer';
 import { OneHandWeapon, TwoHandWeapon, Shield, Armor } from './Item'
 
 export class Equipment {
@@ -24,5 +26,60 @@ export class Equipment {
         this.feet = new Armor()
         this.arms = new Armor()
         this.hands = new Armor()
+    }
+    getBalanceAttackType() {
+        if (this.left_hand != undefined) {
+            return this.left_hand.skillUsed
+        }
+        if (this.right_hand != undefined) {
+            return this.right_hand.skillUsed
+        }
+        if (this.both_hands != undefined) {
+            return this.both_hands.skillUsed
+        }
+        return "unhanded"
+    }
+    getPiercingAttackType() {
+        if (this.left_hand != undefined) {
+            return this.left_hand.skillUsed
+        }
+        if (this.right_hand != undefined) {
+            return this.right_hand.skillUsed
+        }
+        if (this.both_hands != undefined) {
+            return this.both_hands.skillUsed
+        }
+        if (this.shield != undefined) {
+            return this.shield.skillUsed
+        }
+        return "unhanded"
+    }
+    getParry() {
+        if (this.left_hand != undefined) {
+            let data = JSON.parse(this.left_hand.formula)
+            return data.parry
+        }
+        if (this.right_hand != undefined) {
+            let data = JSON.parse(this.right_hand.formula)
+            return data.parry
+        }
+        if (this.both_hands != undefined) {
+            let data = JSON.parse(this.both_hands.formula)
+            return data.parry
+        }
+        return undefined
+    }
+    hasShield(){
+        if (this.shield != undefined) {
+            return true
+        }
+        return false
+    }
+    getShieldBonus() {
+        if (this.shield != undefined) {
+            let data = JSON.parse(this.shield.formula)
+            return Number.parseInt(data.bd)
+        }
+        return 0
     }
 }

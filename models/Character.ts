@@ -4,6 +4,9 @@ import { Advantage } from './Advantage'
 import { Disadvantage } from './Disadvantage'
 import { Inventory } from './Inventory'
 import { Equipment } from './Equipment'
+import { Constants } from './Constants';
+import { IfObservable } from 'rxjs/observable/IfObservable';
+import { isNumber } from 'ionic-angular/umd/util/util';
 
 export class Character {
 
@@ -13,7 +16,7 @@ export class Character {
     //Character Features
     name: string;
     age: number;
-    nt:number;
+    nt: number;
     height: number;
     weight: number;
     min_status: number;
@@ -127,15 +130,87 @@ export class Character {
         }
     }
     public getDodge() {
-        return this.getMovement() + 3;
+        return this.getMovement() + 3 + this.equipments.getShieldBonus();
+    }
+    public getParry() {
+        let parry = this.equipments.getParry()
+        let parryValue = 0
+        if (parry == undefined) return 0
+        if (isNumber(parry)) {
+            parryValue = Number.parseInt(parry.toString())
+        } else {
+            parryValue = Number.parseInt(parry.toString()[0]);
+        }
+        return parryValue + this.equipments.getShieldBonus()
+    }
+    public getBlock(){
+        if(this.equipments.hasShield()){
+            
+        }
+        let blockValue = 0
+        if (block == undefined) return 0
+        if (isNumber(block)) {
+            blockValue = Number.parseInt(block.toString())
+        } else {
+            blockValue = Number.parseInt(block.toString()[0]);
+        }
+        return blockValue + this.equipments.getShieldBonus()
     }
     public destroyShield() {
         this.equipments.shield = null;
     }
+    public getBalanceAttack() {
+        let attackSkill = this.equipments.getBalanceAttackType()
+        if (attackSkill == "unhanded") return Constants.UnhandedTest
+        let skillUsed = this.hasSkill(attackSkill)
+        if (skillUsed != undefined) {
+            if (skillUsed.isStrenght()) {
+                return skillUsed.level + this.strenght
+            }
+            if (skillUsed.isDexterity()) {
+                return skillUsed.level + this.dexterity
+            }
+            if (skillUsed.isIntelligence()) {
+                return skillUsed.level + this.intelligence
+            }
+            if (skillUsed.isHealth()) {
+                return skillUsed.level + this.health
+            }
+        }
+        return 0
+    }
+    public getPiercingAttack() {
+        let attackSkill = this.equipments.getPiercingAttackType()
+        if (attackSkill == "unhanded") return Constants.UnhandedTest
+        let skillUsed = this.hasSkill(attackSkill)
+        if (skillUsed != undefined) {
+            if (skillUsed.isStrenght()) {
+                return skillUsed.level + this.strenght
+            }
+            if (skillUsed.isDexterity()) {
+                return skillUsed.level + this.dexterity
+            }
+            if (skillUsed.isIntelligence()) {
+                return skillUsed.level + this.intelligence
+            }
+            if (skillUsed.isHealth()) {
+                return skillUsed.level + this.health
+            }
+        }
+        return 0
+    }
+    hasSkill(skill: string) {
+        for (let i = 0; i < this.skills.length; i++) {
+            if (this.skills[i].name == skill) {
+                return this.skills[i];
+            }
+        }
+        return undefined;
+    }
 }
 
-export class CharacterApi{
+export class CharacterApi {
     id: number
     name: string
-    description:string
+    description: string
 }
