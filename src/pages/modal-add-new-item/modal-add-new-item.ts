@@ -34,7 +34,7 @@ export class ModalAddNewItems {
       let data = this.form.getRawValue()
       let item: any
       switch (data.type) {
-        case "one-hand": {
+        case "one_hand": {
           item = new OneHandWeapon;
           item.formula = '{'
           if (data.balance_attack != undefined && data.balance_attack!="") {
@@ -46,7 +46,7 @@ export class ModalAddNewItems {
           item.formula += '}'
           break
         }
-        case "two-hand": {
+        case "two_hand": {
           item = new TwoHandWeapon;
           item.formula = '{'
           if (data.balance_attack != undefined) {

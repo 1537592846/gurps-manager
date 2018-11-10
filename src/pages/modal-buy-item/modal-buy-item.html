@@ -48,10 +48,10 @@
     <ion-list *ngSwitchCase="'weapons'">
         <div padding>
             <ion-segment [(ngModel)]="weaponModel">
-                <ion-segment-button value="one-hand" on-click="updateOneHands()">
+                <ion-segment-button value="one_hand" on-click="updateOneHands()">
                     <img class="headerImage" src="../../assets/item-icon/one-hand.png">
                 </ion-segment-button>
-                <ion-segment-button value="two-hand" on-click="updateTwoHands()">
+                <ion-segment-button value="two_hand" on-click="updateTwoHands()">
                     <img class="headerImage" src="../../assets/item-icon/two-hand.png">
                 </ion-segment-button>
                 <ion-segment-button value="shield" on-click="updateShields()">
@@ -60,7 +60,7 @@
             </ion-segment>
         </div>
         <div [ngSwitch]="weaponModel">
-            <ion-list *ngSwitchCase="'one-hand'">
+            <ion-list *ngSwitchCase="'one_hand'">
                 <ion-item-sliding *ngFor="let oneHand of oneHands">
                     <ion-item>
                         <ion-thumbnail item-start>
@@ -92,7 +92,7 @@
                     </ion-item>
                 </ion-item-sliding>
             </ion-list>
-            <ion-list *ngSwitchCase="'two-hand'">
+            <ion-list *ngSwitchCase="'two_hand'">
                 <ion-item-sliding *ngFor="let twoHand of twoHands">
                     <ion-item>
                         <ion-thumbnail item-start>

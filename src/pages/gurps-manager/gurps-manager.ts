@@ -62,6 +62,146 @@ export class GurpsManagerPage {
           character.basic_movement = data.Status.BasicMovement
           character.max_carry_weight = data.Status.MaxCarryWeight
           character.current_carry_weight = data.Status.CurrentCarryWeight
+          if (data.Equipments.LeftHand.Id != 0) {
+            character.equipments.left_hand = new OneHandWeapon
+            character.equipments.left_hand.id = data.Equipments.LeftHand.Id
+            character.equipments.left_hand.name = data.Equipments.LeftHand.Name
+            character.equipments.left_hand.nt = data.Equipments.LeftHand.NT
+            character.equipments.left_hand.description = data.Equipments.LeftHand.Description
+            character.equipments.left_hand.cost = data.Equipments.LeftHand.Cost
+            character.equipments.left_hand.weight = data.Equipments.LeftHand.Weight
+            character.equipments.left_hand.formula = data.Equipments.LeftHand.Formula
+            character.equipments.left_hand.bought = data.Equipments.LeftHand.Bought
+            character.equipments.left_hand.quantity = 1
+          }
+          if (data.Equipments.RightHand.Id != 0) {
+            character.equipments.right_hand = new OneHandWeapon
+            character.equipments.right_hand.id = data.Equipments.RightHand.Id
+            character.equipments.right_hand.name = data.Equipments.RightHand.Name
+            character.equipments.right_hand.nt = data.Equipments.RightHand.NT
+            character.equipments.right_hand.description = data.RightHand.LeftHand.Description
+            character.equipments.right_hand.cost = data.Equipments.RightHand.Cost
+            character.equipments.right_hand.weight = data.Equipments.RightHand.Weight
+            character.equipments.right_hand.formula = data.Equipments.RightHand.Formula
+            character.equipments.right_hand.bought = data.Equipments.RightHand.Bought
+            character.equipments.right_hand.quantity = 1
+          }
+          if (data.Equipments.BothHands.Id != 0) {
+            character.equipments.both_hands = new TwoHandWeapon
+            character.equipments.both_hands.id = data.Equipments.BothHands.Id
+            character.equipments.both_hands.name = data.Equipments.BothHands.Name
+            character.equipments.both_hands.nt = data.Equipments.BothHands.NT
+            character.equipments.both_hands.description = data.RightHand.BothHands.Description
+            character.equipments.both_hands.cost = data.Equipments.BothHands.Cost
+            character.equipments.both_hands.weight = data.Equipments.BothHands.Weight
+            character.equipments.both_hands.formula = data.Equipments.BothHands.Formula
+            character.equipments.both_hands.bought = data.Equipments.BothHands.Bought
+            character.equipments.both_hands.quantity = 1
+          }
+          if (data.Equipments.Shield.Id != 0) {
+            character.equipments.shield = new Shield
+            let json = JSON.parse(data.Equipments.Shield.Formula)
+            character.equipments.shield.max_life_points = Number.parseInt(json.life_points)
+            if (json.current_life_points == undefined) {
+              character.equipments.shield.current_life_points = character.equipments.shield.max_life_points
+            } else {
+              character.equipments.shield.current_life_points = Number.parseInt(json.current_life_points)
+            }
+            character.equipments.shield.resistence = json.resistence
+            character.equipments.shield.id = data.Equipments.Shield.Id
+            character.equipments.shield.name = data.Equipments.Shield.Name
+            character.equipments.shield.nt = data.Equipments.Shield.NT
+            character.equipments.shield.description = data.RightHand.Shield.Description
+            character.equipments.shield.cost = data.Equipments.Shield.Cost
+            character.equipments.shield.weight = data.Equipments.Shield.Weight
+            character.equipments.shield.formula = data.Equipments.Shield.Formula
+            character.equipments.shield.bought = data.Equipments.Shield.Bought
+            character.equipments.shield.quantity = 1
+          }
+          if (data.Equipments.Head.Id != 0) {
+            character.equipments.head = new Armor
+            let json = JSON.parse(data.Equipments.Head.Formula)
+            character.equipments.head.resistence = json.resistence
+            character.equipments.head.id = data.Equipments.Head.Id
+            character.equipments.head.name = data.Equipments.Head.Name
+            character.equipments.head.nt = data.Equipments.Head.NT
+            character.equipments.head.description = data.RightHand.Head.Description
+            character.equipments.head.cost = data.Equipments.Head.Cost
+            character.equipments.head.weight = data.Equipments.Head.Weight
+            character.equipments.head.formula = data.Equipments.Head.Formula
+            character.equipments.head.bought = data.Equipments.Head.Bought
+            character.equipments.head.quantity = 1
+          }
+          if (data.Equipments.Torax.Id != 0) {
+            character.equipments.torax = new Armor
+            let json = JSON.parse(data.Equipments.Torax.Formula)
+            character.equipments.torax.resistence = json.resistence
+            character.equipments.torax.id = data.Equipments.Torax.Id
+            character.equipments.torax.name = data.Equipments.Torax.Name
+            character.equipments.torax.nt = data.Equipments.Torax.NT
+            character.equipments.torax.description = data.RightHand.Torax.Description
+            character.equipments.torax.cost = data.Equipments.Torax.Cost
+            character.equipments.torax.weight = data.Equipments.Torax.Weight
+            character.equipments.torax.formula = data.Equipments.Torax.Formula
+            character.equipments.torax.bought = data.Equipments.Torax.Bought
+            character.equipments.torax.quantity = 1
+          }
+          if (data.Equipments.Arms.Id != 0) {
+            character.equipments.arms = new Armor
+            let json = JSON.parse(data.Equipments.Arms.Formula)
+            character.equipments.arms.resistence = json.resistence
+            character.equipments.arms.id = data.Equipments.Arms.Id
+            character.equipments.arms.name = data.Equipments.Arms.Name
+            character.equipments.arms.nt = data.Equipments.Arms.NT
+            character.equipments.arms.description = data.RightHand.Arms.Description
+            character.equipments.arms.cost = data.Equipments.Arms.Cost
+            character.equipments.arms.weight = data.Equipments.Arms.Weight
+            character.equipments.arms.formula = data.Equipments.Arms.Formula
+            character.equipments.arms.bought = data.Equipments.Arms.Bought
+            character.equipments.arms.quantity = 1
+          }
+          if (data.Equipments.Hands.Id != 0) {
+            character.equipments.hands = new Armor
+            let json = JSON.parse(data.Equipments.Hands.Formula)
+            character.equipments.hands.resistence = json.resistence
+            character.equipments.hands.id = data.Equipments.Hands.Id
+            character.equipments.hands.name = data.Equipments.Hands.Name
+            character.equipments.hands.nt = data.Equipments.Hands.NT
+            character.equipments.hands.description = data.RightHand.Hands.Description
+            character.equipments.hands.cost = data.Equipments.Hands.Cost
+            character.equipments.hands.weight = data.Equipments.Hands.Weight
+            character.equipments.hands.formula = data.Equipments.Hands.Formula
+            character.equipments.hands.bought = data.Equipments.Hands.Bought
+            character.equipments.hands.quantity = 1
+          }
+          if (data.Equipments.Legs.Id != 0) {
+            character.equipments.legs = new Armor
+            let json = JSON.parse(data.Equipments.Legs.Formula)
+            character.equipments.legs.resistence = json.resistence
+            character.equipments.legs.id = data.Equipments.Legs.Id
+            character.equipments.legs.name = data.Equipments.Legs.Name
+            character.equipments.legs.nt = data.Equipments.Legs.NT
+            character.equipments.legs.description = data.RightHand.Legs.Description
+            character.equipments.legs.cost = data.Equipments.Legs.Cost
+            character.equipments.legs.weight = data.Equipments.Legs.Weight
+            character.equipments.legs.formula = data.Equipments.Legs.Formula
+            character.equipments.legs.bought = data.Equipments.Legs.Bought
+            character.equipments.legs.quantity = 1
+          }
+          if (data.Equipments.Feet.Id != 0) {
+            character.equipments.feet = new Armor
+            let json = JSON.parse(data.Equipments.Feet.Formula)
+            character.equipments.feet.resistence = json.resistence
+            character.equipments.feet.id = data.Equipments.Feet.Id
+            character.equipments.feet.name = data.Equipments.Feet.Name
+            character.equipments.feet.nt = data.Equipments.Feet.NT
+            character.equipments.feet.description = data.RightHand.Feet.Description
+            character.equipments.feet.cost = data.Equipments.Feet.Cost
+            character.equipments.feet.weight = data.Equipments.Feet.Weight
+            character.equipments.feet.formula = data.Equipments.Feet.Formula
+            character.equipments.feet.bought = data.Equipments.Feet.Bought
+            character.equipments.feet.quantity = 1
+          }
           for (let i = 0; data.Languages != null && i < data.Languages.length; i++) {
             let language = new Language()
             language.name = data.Languages[i].Name
@@ -107,7 +247,7 @@ export class GurpsManagerPage {
             character.disadvantages.push(disadvantage)
           }
           if (data.Inventory != null) {
-            character.inventory.armors=[]
+            character.inventory.armors = []
             for (let i = 0; data.Inventory.Armors != null && i < data.Inventory.Armors.length; i++) {
               let armor = new Armor()
               armor.id = data.Inventory.Armors[i].Id
@@ -120,7 +260,7 @@ export class GurpsManagerPage {
               armor.formula = data.Inventory.Armors[i].Formula
               character.inventory.armors.push(armor)
             }
-            character.inventory.consumables=[]
+            character.inventory.consumables = []
             for (let i = 0; data.Inventory.Consumables != null && i < data.Inventory.Consumables.length; i++) {
               let consumable = new Consumable()
               consumable.id = data.Inventory.Consumables[i].Id
@@ -133,7 +273,7 @@ export class GurpsManagerPage {
               consumable.formula = data.Inventory.Consumables[i].Formula
               character.inventory.consumables.push(consumable)
             }
-            character.inventory.one_hand_weapons=[]
+            character.inventory.one_hand_weapons = []
             for (let i = 0; data.Inventory.OneHandWeapons != null && i < data.Inventory.OneHandWeapons.length; i++) {
               let oneHandWeapon = new OneHandWeapon()
               oneHandWeapon.id = data.Inventory.OneHandWeapons[i].Id
@@ -146,7 +286,7 @@ export class GurpsManagerPage {
               oneHandWeapon.formula = data.Inventory.OneHandWeapons[i].Formula
               character.inventory.one_hand_weapons.push(oneHandWeapon)
             }
-            character.inventory.two_hand_weapons=[]
+            character.inventory.two_hand_weapons = []
             for (let i = 0; data.Inventory.TwoHandWeapons != null && i < data.Inventory.TwoHandWeapons.length; i++) {
               let twoHandWeapon = new TwoHandWeapon()
               twoHandWeapon.id = data.Inventory.TwoHandWeapons[i].Id
@@ -159,7 +299,7 @@ export class GurpsManagerPage {
               twoHandWeapon.formula = data.Inventory.TwoHandWeapons[i].Formula
               character.inventory.two_hand_weapons.push(twoHandWeapon)
             }
-            character.inventory.others=[]
+            character.inventory.others = []
             for (let i = 0; data.Inventory.Others != null && i < data.Inventory.Others.length; i++) {
               let other = new Other()
               other.id = data.Inventory.Others[i].Id
@@ -172,7 +312,7 @@ export class GurpsManagerPage {
               other.formula = data.Inventory.Others[i].Formula
               character.inventory.others.push(other)
             }
-            character.inventory.shields=[]
+            character.inventory.shields = []
             for (let i = 0; data.Inventory.Shields != null && i < data.Inventory.Shields.length; i++) {
               let shield = new Shield()
               shield.id = data.Inventory.Shields[i].Id

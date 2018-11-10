@@ -9,10 +9,10 @@
                         <h3>Total Life:{{equipment.max_life_points}}</h3>
                         <h3>{{Resistence(equipment)}}</h3>
                     </div>
-                    <div *ngIf='equipment.type!="one-hand"||equipment.type!="two-hand"||equipment.type!="shield"||equipment.type!="consumable"||equipment.type!="others"'>
+                    <div *ngIf='equipment.type!="one_hand"&&equipment.type!="two_hand"&&equipment.type!="shield"&&equipment.type!="consumable"&&equipment.type!="others"'>
                         <h3>{{Resistence(equipment)}}</h3>
                     </div>
-                    <div *ngIf='equipment.type=="one-hand"||equipment.type=="two-hand"'>
+                    <div *ngIf='equipment.type=="one_hand"||equipment.type=="two_hand"'>
                         <h3>{{Balance(equipment)}}</h3>
                         <h3>{{Piercing(equipment)}}</h3>
                     </div>

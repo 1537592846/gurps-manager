@@ -134,6 +134,13 @@ export class ModalEquipments {
         for (let i = 0; i < this.char.inventory.shields.length; i++) {
           this.listEquipments.push(this.char.inventory.shields[i])
         }
+        for (let i = 0; i < this.char.inventory.one_hand_weapons.length; i++) {
+          this.listEquipments.push(this.char.inventory.one_hand_weapons[i])
+        }
+        for (let i = 0; i < this.char.inventory.two_hand_weapons.length; i++) {
+          this.listEquipments.push(this.char.inventory.two_hand_weapons[i])
+        }
+        break
       }
       case "left_hand": {
         for (let i = 0; i < this.char.inventory.one_hand_weapons.length; i++) {

@@ -14,8 +14,8 @@
                     Type
                 </ion-label>
                 <ion-select formControlName="type">
-                    <ion-option value="one-hand">One Hand</ion-option>
-                    <ion-option value="two-hand">Two Hands</ion-option>
+                    <ion-option value="one_hand">One Hand</ion-option>
+                    <ion-option value="two_hand">Two Hands</ion-option>
                     <ion-option value="shield">Shield</ion-option>
                     <ion-option value="head">Head</ion-option>
                     <ion-option value="torax">Torax</ion-option>
@@ -75,13 +75,13 @@
                 </ion-label>
                 <ion-input formControlName="resistence" type="string"></ion-input>
             </ion-item>
-            <ion-item id="modal-add-new-item-balance_attack" *ngIf="form.getRawValue().type=='one-hand'||form.getRawValue().type=='two-hand'">
+            <ion-item id="modal-add-new-item-balance_attack" *ngIf="form.getRawValue().type=='one_hand'||form.getRawValue().type=='two_hand'">
                 <ion-label floating>
                     Balance Attack (Empty if not applicable)
                 </ion-label>
                 <ion-input formControlName="piercing_attack" type="text"></ion-input>
             </ion-item>
-            <ion-item id="modal-add-new-item-piercing_attack" *ngIf="form.getRawValue().type=='one-hand'||form.getRawValue().type=='two-hand'">
+            <ion-item id="modal-add-new-item-piercing_attack" *ngIf="form.getRawValue().type=='one_hand'||form.getRawValue().type=='two_hand'">
                 <ion-label floating>
                     Piercing Attack (Empty if not applicable)
                 </ion-label>

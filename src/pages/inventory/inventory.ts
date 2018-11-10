@@ -41,8 +41,8 @@ export class InventoryPage {
     this.char.inventory.others = []
     for (let i = 0; i < this.weapons.length; i++) {
       switch (this.weapons[i].type) {
-        case "one-hand": this.char.inventory.one_hand_weapons.push(this.weapons[i]); break
-        case "two-hand": this.char.inventory.two_hand_weapons.push(this.weapons[i]); break
+        case "one_hand": this.char.inventory.one_hand_weapons.push(this.weapons[i]); break
+        case "two_hand": this.char.inventory.two_hand_weapons.push(this.weapons[i]); break
       }
     }
     for (let i = 0; i < this.shields.length; i++) {
@@ -57,17 +57,9 @@ export class InventoryPage {
     for (let i = 0; i < this.others.length; i++) {
       this.char.inventory.others.push(this.others[i])
     }
-    this.char.inventory.shields = this.shields
-    this.char.inventory.armors = this.armors
-    this.char.inventory.consumables = this.consumables
-    this.char.inventory.others = this.others
-    this.char.current_carry_weight=this.char.inventory.getWeight()
+    this.char.current_carry_weight = this.char.inventory.getWeight()
     this.dataProvider.saveCharacter(this.char).then(res => {
-      if (res) {
-        console.log("Sucesso")
-      } else {
-        //Pagina de erro
-
+      if (!res) {
         console.log("Erro")
       }
     })
@@ -86,8 +78,8 @@ export class InventoryPage {
       if (item == null) return
       item.bought = true
       switch (item.type) {
-        case "one-hand": 
-        case "two-hand": this.weapons.push(item); break
+        case "one_hand":
+        case "two_hand": this.weapons.push(item); break
         case "shield": this.shields.push(item); break
         case "head":
         case "torax":
@@ -109,8 +101,8 @@ export class InventoryPage {
       if (item == null) return
       item.bought = false
       switch (item.type) {
-        case "one-hand": this.weapons.push(item); break
-        case "two-hand": this.weapons.push(item); break
+        case "one_hand":
+        case "two_hand": this.weapons.push(item); break
         case "shield": this.shields.push(item); break
         case "head":
         case "torax":

@@ -42,7 +42,6 @@ export class Armor extends Item {
     public resistence:number;
     constructor(){
         super()
-        this.type="armor"
     }
 }
 
