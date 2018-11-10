@@ -130,7 +130,7 @@ export class Character {
         return this.getMovement() + 3;
     }
     public destroyShield() {
-        this.equipments.shield = null;
+        this.equipments.shield = undefined;
     }
 }
 

@@ -1,6 +1,4 @@
 import { Component } from "@angular/core";
-import { OneHandWeapon, TwoHandWeapon, Shield, Armor } from "../../../models/Item";
-import { Equipment } from "../../../models/Equipment";
 import { ViewController, NavParams } from "ionic-angular";
 import { DataProvider } from "../../providers/data/data";
 import { Constants } from "../../../models/Constants";
@@ -129,6 +127,7 @@ export class ModalEquipments {
   }
 
   updateEquipments() {
+    this.listEquipments=[]
     switch (this.equipmentType) {
       case "right_hand": {
         for (let i = 0; i < this.char.inventory.shields.length; i++) {

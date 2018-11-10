@@ -71,7 +71,7 @@ export class EquipmentsPage {
     this.profileModal = this.modalCtrl.create(ModalEquipments, { type: type, char: this.char })
     this.profileModal.present();
     this.profileModal.onDidDismiss(equipment => {
-      if (equipment != null) {
+      if (equipment != undefined) {
         switch (type) {
           case 'left_hand': {
             if (equipment.type == "one_hand") {
@@ -194,7 +194,7 @@ export class EquipmentsPage {
     this.profileModal = this.modalCtrl.create(ModalEquipments, { type: type, char: this.char })
     this.profileModal.present();
     this.profileModal.onDidDismiss(equipment => {
-      if (equipment != null) {
+      if (equipment != undefined) {
         switch (type) {
           case 'left_hand': {
             if (equipment.type == "one_hand") {

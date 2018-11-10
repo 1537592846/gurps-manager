@@ -21,7 +21,7 @@ export class ModalLanguages {
   }
 
   updateLanguages() {
-    if (this.languages == null || this.languages.length == 0) {
+    if (this.languages == undefined || this.languages.length == 0) {
       this.dataProvider.getLanguages().then(res => {
         let data = res as any[]
         for (let i = 0; i < data.length; i++) {

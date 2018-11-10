@@ -75,7 +75,7 @@ export class ModalSkills {
   }
 
   updateSkills() {
-    if (this.skills == null || this.skills.length == 0) {
+    if (this.skills == undefined || this.skills.length == 0) {
       this.dataProvider.getSkills().then(res => {
         let data = res as any[]
         for (let i = 0; i < data.length; i++) {

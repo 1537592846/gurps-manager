@@ -137,7 +137,7 @@ export class ModalBuyItems {
   }
 
   updateOneHands() {
-    if (this.oneHands == null || this.oneHands.length == 0) {
+    if (this.oneHands == undefined || this.oneHands.length == 0) {
       this.dataProvider.getOneHandWeapons().then(res => {
         let data = res as any[]
         for (let i = 0; i < data.length; i++) {
@@ -159,7 +159,7 @@ export class ModalBuyItems {
   }
 
   updateTwoHands() {
-    if (this.twoHands == null || this.twoHands.length == 0) {
+    if (this.twoHands == undefined || this.twoHands.length == 0) {
       this.dataProvider.getTwoHandWeapons().then(res => {
         let data = res as any[]
         for (let i = 0; i < data.length; i++) {
@@ -181,7 +181,7 @@ export class ModalBuyItems {
   }
 
   updateShields() {
-    if (this.shields == null || this.shields.length == 0) {
+    if (this.shields == undefined || this.shields.length == 0) {
       this.dataProvider.getShields().then(res => {
         let data = res as any[]
         for (let i = 0; i < data.length; i++) {
@@ -206,7 +206,7 @@ export class ModalBuyItems {
   }
 
   updateHeads() {
-    if (this.heads == null || this.heads.length == 0) {
+    if (this.heads == undefined || this.heads.length == 0) {
       this.dataProvider.getHeads().then(res => {
         let data = res as any[]
         for (let i = 0; i < data.length; i++) {
@@ -229,7 +229,7 @@ export class ModalBuyItems {
   }
 
   updateTorax() {
-    if (this.torax == null || this.torax.length == 0) {
+    if (this.torax == undefined || this.torax.length == 0) {
       this.dataProvider.getTorax().then(res => {
         let data = res as any[]
         for (let i = 0; i < data.length; i++) {
@@ -252,7 +252,7 @@ export class ModalBuyItems {
   }
 
   updateArms() {
-    if (this.arms == null || this.arms.length == 0) {
+    if (this.arms == undefined || this.arms.length == 0) {
       this.dataProvider.getArms().then(res => {
         let data = res as any[]
         for (let i = 0; i < data.length; i++) {
@@ -275,7 +275,7 @@ export class ModalBuyItems {
   }
 
   updateHands() {
-    if (this.hands == null || this.hands.length == 0) {
+    if (this.hands == undefined || this.hands.length == 0) {
       this.dataProvider.getHands().then(res => {
         let data = res as any[]
         for (let i = 0; i < data.length; i++) {
@@ -298,7 +298,7 @@ export class ModalBuyItems {
   }
 
   updateLegs() {
-    if (this.legs == null || this.legs.length == 0) {
+    if (this.legs == undefined || this.legs.length == 0) {
       this.dataProvider.getLegs().then(res => {
         let data = res as any[]
         for (let i = 0; i < data.length; i++) {
@@ -321,7 +321,7 @@ export class ModalBuyItems {
   }
 
   updateFeets() {
-    if (this.feets == null || this.feets.length == 0) {
+    if (this.feets == undefined || this.feets.length == 0) {
       this.dataProvider.getFeets().then(res => {
         let data = res as any[]
         for (let i = 0; i < data.length; i++) {
@@ -344,7 +344,7 @@ export class ModalBuyItems {
   }
 
   updateConsumables() {
-    if (this.consumables == null || this.consumables.length == 0) {
+    if (this.consumables == undefined || this.consumables.length == 0) {
       this.dataProvider.getConsumables().then(res => {
         let data = res as any[]
         for (let i = 0; i < data.length; i++) {
@@ -367,7 +367,7 @@ export class ModalBuyItems {
   }
 
   updateOthers() {
-    if (this.others == null || this.others.length == 0) {
+    if (this.others == undefined || this.others.length == 0) {
       this.dataProvider.getOthers().then(res => {
         let data = res as any[]
         for (let i = 0; i < data.length; i++) {

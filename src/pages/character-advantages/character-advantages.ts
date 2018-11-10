@@ -33,7 +33,7 @@ export class CharacterAdvantagesPage {
     this.profileModal = this.modalCtrl.create(ModalAdvantages, { advantages: this.new_char.advantages })
     this.profileModal.present();
     this.profileModal.onDidDismiss(advantage => {
-      if (advantage != null) {
+      if (advantage != undefined) {
         advantage.level = 1
         this.new_char.advantages.push(advantage)
         this.new_char.current_points += advantage.cost

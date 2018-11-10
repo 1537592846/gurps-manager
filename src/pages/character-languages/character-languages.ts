@@ -36,7 +36,7 @@ export class CharacterLanguagesPage {
     this.profileModal = this.modalCtrl.create(ModalLanguages, { languages: this.new_char.languages })
     this.profileModal.present();
     this.profileModal.onDidDismiss(language => {
-      if (language != null) {
+      if (language != undefined) {
         if (this.new_char.languages.length == 0) {
           language.level = 4
         } else {

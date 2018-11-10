@@ -75,7 +75,7 @@ export class InventoryPage {
     this.profileModal = this.modalCtrl.create(ModalBuyItems, { strenght: this.char.strenght })
     this.profileModal.present()
     this.profileModal.onDidDismiss(item => {
-      if (item == null) return
+      if (item == undefined) return
       item.bought = true
       switch (item.type) {
         case "one_hand":
@@ -98,7 +98,7 @@ export class InventoryPage {
     this.profileModal = this.modalCtrl.create(ModalAddItems, { strenght: this.char.strenght })
     this.profileModal.present()
     this.profileModal.onDidDismiss(item => {
-      if (item == null) return
+      if (item == undefined) return
       item.bought = false
       switch (item.type) {
         case "one_hand":

@@ -33,7 +33,7 @@ export class CharacterSkillsPage {
     this.profileModal = this.modalCtrl.create(ModalSkills, { skills: this.new_char.skills })
     this.profileModal.present();
     this.profileModal.onDidDismiss(skill => {
-      if (skill != null) {
+      if (skill != undefined) {
         skill.level = 1
         this.new_char.skills.push(skill)
         this.new_char.current_points += this.getSkillCost(skill)

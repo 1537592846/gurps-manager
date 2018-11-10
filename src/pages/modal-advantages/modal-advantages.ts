@@ -107,7 +107,7 @@ export class ModalAdvantages {
   }
 
   updateAdvantages() {
-    if (this.advantages == null || this.advantages.length == 0) {
+    if (this.advantages == undefined || this.advantages.length == 0) {
       this.dataProvider.getAdvantages().then(res => {
         let data = res as any[]
         for (let i = 0; i < data.length; i++) {

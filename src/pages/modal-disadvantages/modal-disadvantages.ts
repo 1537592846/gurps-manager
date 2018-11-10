@@ -107,7 +107,7 @@ export class ModalDisadvantages {
   }
 
   updateDisadvantages() {
-    if (this.disadvantages == null || this.disadvantages.length == 0) {
+    if (this.disadvantages == undefined || this.disadvantages.length == 0) {
       this.dataProvider.getDisadvantages().then(res => {
         let data = res as any[]
         for (let i = 0; i < data.length; i++) {

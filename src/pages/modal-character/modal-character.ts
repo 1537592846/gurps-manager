@@ -15,7 +15,7 @@ export class ModalCharacters {
   }
 
   updateCharacters() {
-    if (this.characters == null || this.characters.length == 0) {
+    if (this.characters == undefined || this.characters.length == 0) {
       this.dataProvider.getCharacters().then(res => {
         let data = res as any[]
         for (let i = 0; i < data.length; i++) {
