@@ -9,6 +9,7 @@ class Item {
     public formula: string
     public type:string
     public bought:boolean
+    public equipped:boolean
 }
 
 export class OneHandWeapon extends Item {

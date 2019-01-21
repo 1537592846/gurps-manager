@@ -319,6 +319,7 @@ export class GurpsManagerPage {
             for (let i = 0; data.Inventory.Shields != undefined && i < data.Inventory.Shields.length; i++) {
               let shield = new Shield
               let json = JSON.parse(data.Inventory.Shield.Formula)
+              console.log(data.Inventory.Shield)
               shield.max_life_points = Number.parseInt(json.life_points)
               if (json.current_life_points == undefined) {
                 shield.current_life_points = shield.max_life_points
