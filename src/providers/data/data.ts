@@ -128,7 +128,7 @@ export class DataProvider {
 
   public getOneHandWeapons(){
     return new Promise(resolve => {
-      this.http.get<OneHandWeapon[]>(this.apiAddress + 'Equipments/getType/one-hand').subscribe(data => {
+      this.http.get<OneHandWeapon[]>(this.apiAddress + 'Equipments/getType/one_hand').subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
@@ -138,7 +138,7 @@ export class DataProvider {
 
   public getTwoHandWeapons(){
     return new Promise(resolve => {
-      this.http.get<TwoHandWeapon[]>(this.apiAddress + 'Equipments/getType/two-hand').subscribe(data => {
+      this.http.get<TwoHandWeapon[]>(this.apiAddress + 'Equipments/getType/two_hand').subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);

@@ -199,7 +199,6 @@ export class ModalEquipments {
         break
       }
     }
-    console.log(this.char)
   }
 
   returnData(equipment: any) {

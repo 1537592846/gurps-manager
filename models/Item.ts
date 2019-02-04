@@ -1,4 +1,9 @@
 class Item {
+    constructor(){
+        this.bought=false
+        this.equipped=""
+    }
+
     public id: number
     public name: string
     public nt:number
@@ -9,7 +14,7 @@ class Item {
     public formula: string
     public type:string
     public bought:boolean
-    public equipped:boolean
+    public equipped:string
 }
 
 export class OneHandWeapon extends Item {
