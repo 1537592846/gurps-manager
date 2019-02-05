@@ -127,32 +127,42 @@ export class ModalEquipments {
   }
 
   updateEquipments() {
-    this.listEquipments=[]
+    this.listEquipments = []
     switch (this.equipmentType) {
       case "right_hand": {
         for (let i = 0; i < this.char.inventory.shields.length; i++) {
-          this.listEquipments.push(this.char.inventory.shields[i])
+          if (this.char.inventory.shields[i].equipped == "") {
+            this.listEquipments.push(this.char.inventory.shields[i])
+          }
         }
         for (let i = 0; i < this.char.inventory.one_hand_weapons.length; i++) {
-          this.listEquipments.push(this.char.inventory.one_hand_weapons[i])
+          if (this.char.inventory.one_hand_weapons[i].equipped == "") {
+            this.listEquipments.push(this.char.inventory.one_hand_weapons[i])
+          }
         }
         for (let i = 0; i < this.char.inventory.two_hand_weapons.length; i++) {
-          this.listEquipments.push(this.char.inventory.two_hand_weapons[i])
+          if (this.char.inventory.two_hand_weapons[i].equipped == "") {
+            this.listEquipments.push(this.char.inventory.two_hand_weapons[i])
+          }
         }
         break
       }
       case "left_hand": {
         for (let i = 0; i < this.char.inventory.one_hand_weapons.length; i++) {
-          this.listEquipments.push(this.char.inventory.one_hand_weapons[i])
+          if (this.char.inventory.one_hand_weapons[i].equipped == "") {
+            this.listEquipments.push(this.char.inventory.one_hand_weapons[i])
+          }
         }
         for (let i = 0; i < this.char.inventory.two_hand_weapons.length; i++) {
-          this.listEquipments.push(this.char.inventory.two_hand_weapons[i])
+          if (this.char.inventory.two_hand_weapons[i].equipped == "") {
+            this.listEquipments.push(this.char.inventory.two_hand_weapons[i])
+          }
         }
         break
       }
       case "head": {
         for (let i = 0; i < this.char.inventory.armors.length; i++) {
-          if (this.char.inventory.armors[i].type == "head") {
+          if (this.char.inventory.armors[i].type == "head" && this.char.inventory.armors[i].equipped == "") {
             this.listEquipments.push(this.char.inventory.armors[i])
           }
         }
@@ -160,7 +170,7 @@ export class ModalEquipments {
       }
       case "torax": {
         for (let i = 0; i < this.char.inventory.armors.length; i++) {
-          if (this.char.inventory.armors[i].type == "torax") {
+          if (this.char.inventory.armors[i].type == "torax" && this.char.inventory.armors[i].equipped == "") {
             this.listEquipments.push(this.char.inventory.armors[i])
           }
         }
@@ -168,7 +178,7 @@ export class ModalEquipments {
       }
       case "legs": {
         for (let i = 0; i < this.char.inventory.armors.length; i++) {
-          if (this.char.inventory.armors[i].type == "legs") {
+          if (this.char.inventory.armors[i].type == "legs" && this.char.inventory.armors[i].equipped == "") {
             this.listEquipments.push(this.char.inventory.armors[i])
           }
         }
@@ -176,7 +186,7 @@ export class ModalEquipments {
       }
       case "feet": {
         for (let i = 0; i < this.char.inventory.armors.length; i++) {
-          if (this.char.inventory.armors[i].type == "feet") {
+          if (this.char.inventory.armors[i].type == "feet" && this.char.inventory.armors[i].equipped == "") {
             this.listEquipments.push(this.char.inventory.armors[i])
           }
         }
@@ -184,7 +194,7 @@ export class ModalEquipments {
       }
       case "arms": {
         for (let i = 0; i < this.char.inventory.armors.length; i++) {
-          if (this.char.inventory.armors[i].type == "arms") {
+          if (this.char.inventory.armors[i].type == "arms" && this.char.inventory.armors[i].equipped == "") {
             this.listEquipments.push(this.char.inventory.armors[i])
           }
         }
@@ -192,7 +202,7 @@ export class ModalEquipments {
       }
       case "hands": {
         for (let i = 0; i < this.char.inventory.armors.length; i++) {
-          if (this.char.inventory.armors[i].type == "hands") {
+          if (this.char.inventory.armors[i].type == "hands" && this.char.inventory.armors[i].equipped == "") {
             this.listEquipments.push(this.char.inventory.armors[i])
           }
         }
