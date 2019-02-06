@@ -27,7 +27,43 @@
 
 <html style="background:white">
 <div padding>
-
+    <title>
+    </title>
+    <ion-list>
+        <ion-item>
+            <ion-title style="text-align:center">
+                {{testBasicValueName}} Test
+            </ion-title>
+        </ion-item>
+        <ion-item color="none" id="basic_status" style="font-size:250% !important">
+            {{testBasicValueName}}
+            <ion-note item-right>{{testBasicValue}}</ion-note>
+        </ion-item>
+        <ion-item color="none" id="equipment_status" style="font-size:250% !important">
+            Equipment Bonus
+            <ion-note item-right>{{testEquipmentValue}}</ion-note>
+        </ion-item>
+        <ion-item style="font-size:250% !important">
+            Test Modifier
+            <ion-note item-right>
+                <button ion-button color="danger" on-click="removeModValue()">
+                    <ion-icon name="remove"></ion-icon>
+                </button>
+                <button ion-button disabled color="light">
+                    <label style="width:10ex;font-size:200% !important">
+                        {{testModValue}}
+                    </label>
+                </button>
+                <button ion-button color="secondary" on-click="addModValue()">
+                    <ion-icon name="add"></ion-icon>
+                </button>
+            </ion-note>
+        </ion-item>
+        <ion-item id="end_value" style="font-size:250% !important">
+            Test Final Value
+            <ion-note item-right style="color:black">{{testBasicValue+testEquipmentValue+testModValue}}</ion-note>
+        </ion-item>
+    </ion-list>
 </div>
 
 </html>

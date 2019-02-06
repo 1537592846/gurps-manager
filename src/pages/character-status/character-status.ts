@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Character } from '../../../models/Character';
 import { CharacterSkillsPage } from '../character-skills/character-skills';
-import { Constants } from '../../../models/Constants';
+import { Constants } from '../../../models/Functions';
 
 @Component({
   selector: 'page-character-status',

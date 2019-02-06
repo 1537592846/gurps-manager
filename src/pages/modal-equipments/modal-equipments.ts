@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { ViewController, NavParams } from "ionic-angular";
 import { DataProvider } from "../../providers/data/data";
-import { Constants } from "../../../models/Constants";
+import { Constants } from "../../../models/Functions";
 import { Character } from "../../../models/Character";
 
 @Component({

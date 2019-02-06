@@ -5,7 +5,7 @@ import { CharacterFeaturesPage } from '../character-features/character-features'
 import { GurpsManagerPage } from '../gurps-manager/gurps-manager';
 import { Character } from '../../../models/Character';
 import { Language } from '../../../models/Language';
-import { Constants } from '../../../models/Constants';
+import { Constants } from '../../../models/Functions';
 import { DataProvider } from '../../providers/data/data';
 
 @Component({

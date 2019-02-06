@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavParams } from 'ionic-angular';
+import { NavParams, NavController, ModalController } from 'ionic-angular';
 import { Character } from '../../../models/Character';
+import { ModalTest } from '../modal-test/modal-test';
 
 @Component({
   selector: 'page-tests',
@@ -9,7 +10,8 @@ import { Character } from '../../../models/Character';
 export class TestsPage {
 
   char: Character;
-  constructor(navParams: NavParams) {
+  profileModal: any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
     //Getting data
     this.char = navParams.data
   }
@@ -46,5 +48,10 @@ export class TestsPage {
     if (this.char.equipments.shield.current_life_points < this.char.equipments.shield.max_life_points) {
       this.char.equipments.shield.current_life_points += 1;
     }
+  }
+  //Tests
+  openTestModel(test:string){
+    this.profileModal = this.modalCtrl.create(ModalTest, {char:this.char,test:test })
+    this.profileModal.present();
   }
 }

@@ -31,6 +31,7 @@ import { ModalCharacters } from '../pages/modal-character/modal-character';
 import { ModalEquipments } from '../pages/modal-equipments/modal-equipments';
 import { ModalBuyItems } from '../pages/modal-buy-item/modal-buy-item';
 import { ModalAddNewItems } from '../pages/modal-add-new-item/modal-add-new-item';
+import { ModalTest } from '../pages/modal-test/modal-test';
 //Lista de Providers (DAOs) criados
 
 @NgModule({
@@ -59,7 +60,8 @@ import { ModalAddNewItems } from '../pages/modal-add-new-item/modal-add-new-item
     ModalDisadvantages,
     ModalEquipments,
     ModalLanguages,
-    ModalSkills
+    ModalSkills,
+    ModalTest
   ],
   imports: [
     BrowserModule,
@@ -93,7 +95,8 @@ import { ModalAddNewItems } from '../pages/modal-add-new-item/modal-add-new-item
     ModalCharacters,
     ModalEquipments,
     ModalLanguages,
-    ModalSkills
+    ModalSkills,
+    ModalTest
   ],
   providers: [
     StatusBar,

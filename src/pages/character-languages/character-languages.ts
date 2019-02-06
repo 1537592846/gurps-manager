@@ -3,7 +3,7 @@ import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { Character } from '../../../models/Character';
 import { Language } from '../../../models/Language';
 import { CharacterResumePage } from '../character-resume/character-resume';
-import { Constants } from '../../../models/Constants';
+import { Constants } from '../../../models/Functions';
 import { ModalLanguages } from '../modal-languages/modal-languages';
 
 @Component({
