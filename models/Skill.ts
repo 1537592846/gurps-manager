@@ -11,8 +11,8 @@ export class Skill {
     constructor() {
     }
 
-    isStrenght(): boolean {
-        return this.attribute == "Strenght"
+    isStrength(): boolean {
+        return this.attribute == "Strength"
     }
 
     isDexterity(): boolean {

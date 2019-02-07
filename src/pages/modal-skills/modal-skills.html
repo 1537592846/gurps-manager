@@ -17,7 +17,7 @@
 <html style="background:white">
 <div padding>
     <ion-segment [(ngModel)]="skillsModel">
-        <ion-segment-button value="strenght" on-click="updateStrenght()">
+        <ion-segment-button value="strength" on-click="updateStrength()">
             <h1>ST</h1>
         </ion-segment-button>
         <ion-segment-button value="dexterity" on-click="updateDexterity()">
@@ -33,16 +33,16 @@
 </div>
 
 <div [ngSwitch]="skillsModel">
-    <ion-list *ngSwitchCase="'strenght'">
-        <ion-item-sliding *ngFor="let strenght of strenghts">
-            <ion-item *ngIf="notInCharList(strenght)">
+    <ion-list *ngSwitchCase="'strength'">
+        <ion-item-sliding *ngFor="let strength of strengths">
+            <ion-item *ngIf="notInCharList(strength)">
                 <ion-thumbnail item-start>
-                    <h1>{{strenght.name}}</h1>
-                    <h2 *ngIf='strenght.difficulty!="VeryHard"'>{{strenght.difficulty}}</h2>
-                    <h2 *ngIf='strenght.difficulty=="VeryHard"'>Very Hard</h2>
+                    <h1>{{strength.name}}</h1>
+                    <h2 *ngIf='strength.difficulty!="VeryHard"'>{{strength.difficulty}}</h2>
+                    <h2 *ngIf='strength.difficulty=="VeryHard"'>Very Hard</h2>
                 </ion-thumbnail>
-                <p item-content>{{strenght.description}}</p>
-                <button ion-button clear item-end on-click="returnData(strenght)">Add</button>
+                <p item-content>{{strength.description}}</p>
+                <button ion-button clear item-end on-click="returnData(strength)">Add</button>
             </ion-item>
         </ion-item-sliding>
     </ion-list>

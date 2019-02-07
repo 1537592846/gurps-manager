@@ -1,7 +1,7 @@
 import { Equipment } from "./Equipment";
 
 export class Constants {
-    static readonly Strenght: number = 10
+    static readonly Strength: number = 10
     static readonly Dexterity: number = 20
     static readonly Intelligence: number = 20
     static readonly Health: number = 10
@@ -21,38 +21,57 @@ export class Functions {
     static getEquipmentStatus(equipments: Equipment, status: string): number {
         var returnValue = 0
         try {
-            returnValue += JSON.parse(equipments.left_hand.formula)[status]
+            var value: number = this.getJsonProperty(equipments.left_hand.formula, status)
+            returnValue += value
         } catch (e) { }
         try {
-            returnValue += JSON.parse(equipments.right_hand.formula)[status]
+            var value: number = this.getJsonProperty(equipments.right_hand.formula, status)
+            returnValue += value
         } catch (e) { }
         try {
-            returnValue += JSON.parse(equipments.both_hands.formula)[status]
+            var value: number = this.getJsonProperty(equipments.both_hands.formula, status)
+            returnValue += value
         } catch (e) { }
         try {
-            returnValue += JSON.parse(equipments.head.formula)[status]
+            var value: number = this.getJsonProperty(equipments.head.formula, status)
+            returnValue += value
         } catch (e) { }
         try {
-            returnValue += JSON.parse(equipments.torax.formula)[status]
+            var value: number = this.getJsonProperty(equipments.torax.formula, status)
+            returnValue += value
         } catch (e) { }
         try {
-            returnValue += JSON.parse(equipments.hands.formula)[status]
+            var value: number = this.getJsonProperty(equipments.legs.formula, status)
+            returnValue += value
         } catch (e) { }
         try {
-            returnValue += JSON.parse(equipments.arms.formula)[status]
+            var value: number = this.getJsonProperty(equipments.feet.formula, status)
+            returnValue += value
         } catch (e) { }
         try {
-            returnValue += JSON.parse(equipments.feet.formula)[status]
+            var value: number = this.getJsonProperty(equipments.arms.formula, status)
+            returnValue += value
         } catch (e) { }
         try {
-            returnValue += JSON.parse(equipments.legs.formula)[status]
+            var value: number = this.getJsonProperty(equipments.hands.formula, status)
+            returnValue += value
         } catch (e) { }
         return returnValue
+    }
+
+    static getJsonProperty(formula: string, property: string): number {
+        var regExpression = ('"' + property + '":"([\\d|\\w]+)"')
+        console.log(regExpression)
+        var regex = new RegExp(regExpression)
+        console.log(regex)
+        var valor: number = Number.parseInt(regex.exec(formula)[1])
+        console.log(valor)
+        return valor
     }
 }
 
 export enum EquipmentStatus {
-    Strenght = "strenght",
+    Strength = "strength",
     Dexterity = "dexterity",
     Intelligence = "intelligence",
     Health = "health",
@@ -64,7 +83,7 @@ export enum EquipmentStatus {
     BasicMovement = "basic_movement",
     BalanceAttack = "balance_attack",
     PiercingAttack = "piercing_attack",
-    MinimunStrenght = "min_strenght",
+    MinimunStrength = "min_strength",
     Reach = "reach",
     Parry = "parry",
     ArmorLocal = "local",

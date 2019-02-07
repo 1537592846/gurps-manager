@@ -11,13 +11,13 @@
 </ion-header>
 <ion-content padding id="characterStatus">
   <form id="characterStatus-form">
-    <ion-item id="characterStatus-range_strenght">
-      <ion-range [(ngModel)]="new_char.strenght" [ngModelOptions]="{standalone: true}" min="0" max="{{max_strenght}}"
-        step="1" (ionChange)="updateStrenght()">
+    <ion-item id="characterStatus-range_strength">
+      <ion-range [(ngModel)]="new_char.strength" [ngModelOptions]="{standalone: true}" min="0" max="{{max_strength}}"
+        step="1" (ionChange)="updateStrength()">
         <ion-label range-left>
           Strength (ST)
         </ion-label>
-        <ion-note range-right>{{new_char.strenght}}</ion-note>
+        <ion-note range-right>{{new_char.strength}}</ion-note>
       </ion-range>
     </ion-item>
     <ion-item id="characterStatus-range_dexterity">
@@ -49,7 +49,7 @@
     </ion-item>
     <div class="spacer" style="height:40px;" id="characterStatus-spacer"></div>
     <ion-item id="characterStatus-range_char_max_life_points">
-      <ion-range [(ngModel)]="new_char.max_life_points" [ngModelOptions]="{standalone: true}" min="{{new_char.strenght}}" max="{{max_life_points}}"
+      <ion-range [(ngModel)]="new_char.max_life_points" [ngModelOptions]="{standalone: true}" min="{{new_char.strength}}" max="{{max_life_points}}"
         step="1" (ionChange)="updateLifePoints()">
         <ion-label range-left>
           Life Points

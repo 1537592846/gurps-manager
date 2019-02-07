@@ -23,17 +23,17 @@ export class ModalBuyItems {
   feets: Armor[] = []
   consumables:Consumable[]=[]
   others:Other[]=[]
-  strenght: number
+  strength: number
 
   constructor(public viewCtrl: ViewController, public params: NavParams, public dataProvider: DataProvider) {
-    this.strenght = this.params.get("strenght")
+    this.strength = this.params.get("strength")
   }
 
   Balance(weapon: any) {
     let weaponFormula = JSON.parse(weapon.formula)
     var bap: string = "Balance:"
     if (weaponFormula.balance_attack != undefined) {
-      var base = Constants.WeaponBalanceAttack[this.strenght - 1]
+      var base = Constants.WeaponBalanceAttack[this.strength - 1]
       let weaponSignal = ""
       let weaponBonus = ""
       let weaponType = ""
@@ -84,7 +84,7 @@ export class ModalBuyItems {
     let weaponFormula = JSON.parse(weapon.formula)
     var bap: string = "Piercing:"
     if (weaponFormula.piercing_attack != undefined) {
-      var base = Constants.WeaponBalanceAttack[this.strenght - 1]
+      var base = Constants.WeaponBalanceAttack[this.strength - 1]
       let weaponSignal = ""
       let weaponBonus = ""
       let weaponType = ""
@@ -360,7 +360,6 @@ export class ModalBuyItems {
           consumable.type = data[i].Type
           this.consumables.push(consumable)
         }
-        console.log(this.consumables)
       })
         .catch(error => { console.log(error) });
     }
@@ -383,7 +382,6 @@ export class ModalBuyItems {
           other.type = data[i].Type
           this.others.push(other)
         }
-        console.log(this.others)
       })
         .catch(error => { console.log(error) });
     }

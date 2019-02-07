@@ -17,7 +17,7 @@ export class SkillsPage {
   }
   getSkillLevel(skill: Skill) {
     switch (skill.attribute) {
-      case "ST": return this.char.strenght + skill.level;
+      case "ST": return this.char.strength + skill.level;
       case "DX": return this.char.dexterity + skill.level;
       case "IQ": return this.char.intelligence + skill.level;
       case "HT": return this.char.health + skill.level;

@@ -32,10 +32,23 @@ export class EquipmentsPage {
   }
   getEquipments() {
     this.names = { "left_hand": "Empty", "right_hand": "Empty", "head": "Empty", "torax": "Empty", "arms": "Empty", "hands": "Empty", "legs": "Empty", "feet": "Empty" }
-    var equipped: any[] = this.char.inventory.one_hand_weapons.filter(equip => equip.equipped != "")
-    equipped.concat(this.char.inventory.two_hand_weapons.filter(equip => equip.equipped != ""))
-    equipped.concat(this.char.inventory.shields.filter(equip => equip.equipped != ""))
-    equipped.concat(this.char.inventory.armors.filter(equip => equip.equipped != ""))
+    var oneHands = this.char.inventory.one_hand_weapons.filter(equip => equip.equipped != "")
+    var twoHands = this.char.inventory.two_hand_weapons.filter(equip => equip.equipped != "")
+    var shields = this.char.inventory.shields.filter(equip => equip.equipped != "")
+    var armors = this.char.inventory.armors.filter(equip => equip.equipped != "")
+    var equipped: any[]=[]
+    for (var i = 0; i < oneHands.length; i++) {
+      equipped.push(oneHands[i])
+    }
+    for (var i = 0; i < twoHands.length; i++) {
+      equipped.push(twoHands[i])
+    }
+    for (var i = 0; i < shields.length; i++) {
+      equipped.push(shields[i])
+    }
+    for (var i = 0; i < armors.length; i++) {
+      equipped.push(armors[i])
+    }
     for (var i = 0; i < equipped.length; i++) {
       switch (equipped[i].equipped) {
         case "left_hand": {
@@ -85,7 +98,6 @@ export class EquipmentsPage {
         }
       }
     }
-    console.log(this.char)
   }
 
   equipEquipment(type: string) {

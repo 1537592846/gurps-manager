@@ -8,7 +8,7 @@ import { DataProvider } from '../../providers/data/data';
   templateUrl: 'modal-skills.html'
 })
 export class ModalSkills {
-  strenghts: Skill[] = []
+  strengths: Skill[] = []
   dexterities: Skill[] = []
   intelligences: Skill[] = []
   healths: Skill[] = []
@@ -19,13 +19,13 @@ export class ModalSkills {
     this.updateSkills()
   }
 
-  updateStrenght() {
+  updateStrength() {
     this.updateSkills()
     this.updateCharSkills()
-    if (this.strenghts.length == 0) {
+    if (this.strengths.length == 0) {
       for (let i = 0; i < this.skills.length; i++) {
-        if (this.skills[i].isStrenght()) {
-          this.strenghts.push(this.skills[i])
+        if (this.skills[i].isStrength()) {
+          this.strengths.push(this.skills[i])
         }
       }
     }

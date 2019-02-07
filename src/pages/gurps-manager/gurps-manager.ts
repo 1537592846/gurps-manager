@@ -49,7 +49,7 @@ export class GurpsManagerPage {
           character.current_points = data.CurrentPoints
           character.resources = data.Resources
           character.description = data.Description
-          character.strenght = data.Status.Strenght
+          character.strength = data.Status.Strength
           character.dexterity = data.Status.Dexterity
           character.intelligence = data.Status.Intelligence
           character.health = data.Status.Health

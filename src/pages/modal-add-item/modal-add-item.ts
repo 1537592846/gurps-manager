@@ -23,17 +23,17 @@ export class ModalAddItems {
   feets: Armor[] = []
   consumables: Consumable[] = []
   others: Other[] = []
-  strenght: number
+  strength: number
 
   constructor(public viewCtrl: ViewController, public params: NavParams, public dataProvider: DataProvider) {
-    this.strenght = this.params.get("strenght")
+    this.strength = this.params.get("strength")
   }
 
   Balance(weapon: any) {
     let weaponFormula = JSON.parse(weapon.formula)
     var bap: string = "Balance:"
     if (weaponFormula.balance_attack != undefined) {
-      var base = Constants.WeaponBalanceAttack[this.strenght - 1]
+      var base = Constants.WeaponBalanceAttack[this.strength - 1]
       let weaponSignal = ""
       let weaponBonus = ""
       let weaponType = ""
@@ -84,7 +84,7 @@ export class ModalAddItems {
     let weaponFormula = JSON.parse(weapon.formula)
     var bap: string = "Piercing:"
     if (weaponFormula.piercing_attack != undefined) {
-      var base = Constants.WeaponBalanceAttack[this.strenght - 1]
+      var base = Constants.WeaponBalanceAttack[this.strength - 1]
       let weaponSignal = ""
       let weaponBonus = ""
       let weaponType = ""

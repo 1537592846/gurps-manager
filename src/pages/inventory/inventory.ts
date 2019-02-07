@@ -72,7 +72,7 @@ export class InventoryPage {
     this.current_category = this.char.getCarryCategory()
   }
   openBuyItemModal() {
-    this.profileModal = this.modalCtrl.create(ModalBuyItems, { strenght: this.char.strenght })
+    this.profileModal = this.modalCtrl.create(ModalBuyItems, { strength: this.char.strength })
     this.profileModal.present()
     this.profileModal.onDidDismiss(item => {
       if (item == undefined) return
@@ -95,7 +95,7 @@ export class InventoryPage {
     })
   }
   openAddItemModal() {
-    this.profileModal = this.modalCtrl.create(ModalAddItems, { strenght: this.char.strenght })
+    this.profileModal = this.modalCtrl.create(ModalAddItems, { strength: this.char.strength })
     this.profileModal.present()
     this.profileModal.onDidDismiss(item => {
       if (item == undefined) return

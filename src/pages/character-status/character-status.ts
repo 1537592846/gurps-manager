@@ -13,7 +13,7 @@ export class CharacterStatusPage {
   //Character object
   new_char: Character;
   //Maximun and minimun limits
-  max_strenght: number;
+  max_strength: number;
   max_dexterity: number;
   max_intelligence: number;
   max_health: number;
@@ -32,13 +32,13 @@ export class CharacterStatusPage {
     //Getting data
     this.new_char = this.navParams.get('new_char');
     //Setting values
-    this.new_char.strenght = this.new_char.min_status * 1;
+    this.new_char.strength = this.new_char.min_status * 1;
     this.new_char.dexterity = this.new_char.min_status * 1;
     this.new_char.intelligence = this.new_char.min_status * 1;
     this.new_char.health = this.new_char.min_status * 1;
     this.new_char.max_points = this.new_char.max_points * 1;
     this.new_char.min_status = this.new_char.min_status * 1;
-    this.new_char.max_life_points = this.new_char.strenght * 1;
+    this.new_char.max_life_points = this.new_char.strength * 1;
     this.new_char.will = this.new_char.intelligence * 1;
     this.new_char.perception = this.new_char.intelligence * 1;
     this.new_char.max_fatigue_points = this.new_char.health * 1;
@@ -53,7 +53,7 @@ export class CharacterStatusPage {
   goToNextPage() {
     this.updateAll();
     this.new_char.current_points=this.current_points
-    this.new_char.max_carry_weight=this.new_char.strenght*this.new_char.strenght/10
+    this.new_char.max_carry_weight=this.new_char.strength*this.new_char.strength/10
     this.new_char.current_fatigue_points=this.new_char.max_fatigue_points
     this.new_char.current_life_points=this.new_char.max_life_points
     this.navCtrl.push(CharacterSkillsPage, { new_char: this.new_char });
@@ -63,31 +63,31 @@ export class CharacterStatusPage {
   }
   getCurrentPoints() {
     this.current_points=this.new_char.current_points
-    this.current_points += (this.new_char.strenght - this.new_char.min_status) * Constants.Strenght;
+    this.current_points += (this.new_char.strength - this.new_char.min_status) * Constants.Strength;
     this.current_points += (this.new_char.dexterity - this.new_char.min_status) * Constants.Dexterity;
     this.current_points += (this.new_char.intelligence - this.new_char.min_status) * Constants.Intelligence;
     this.current_points += (this.new_char.health - this.new_char.min_status) * Constants.Health;
 
-    this.current_points += (this.new_char.max_life_points - this.new_char.strenght) * Constants.LifePoints;
+    this.current_points += (this.new_char.max_life_points - this.new_char.strength) * Constants.LifePoints;
     this.current_points += (this.new_char.will - this.new_char.intelligence) * Constants.Will;
     this.current_points += (this.new_char.perception - this.new_char.intelligence) * Constants.Perception;
     this.current_points += (this.new_char.max_fatigue_points - this.new_char.health) * Constants.FatiguePoints;
     this.current_points += (this.speed_aux - this.new_char.getMinSpeed() * 4) * Constants.Speed;
     this.current_points += (this.new_char.basic_movement - this.new_char.getMinBasicMovement()) * Constants.BasicMovement;
   }
-  updateStrenght() {
+  updateStrength() {
     //Calculating current points
     this.getCurrentPoints();
     //Calculating max range
-    this.max_strenght = this.getMax(this.new_char.strenght, this.new_char.min_status, Constants.Strenght);
+    this.max_strength = this.getMax(this.new_char.strength, this.new_char.min_status, Constants.Strength);
     //Changing if over max limit
-    if (this.new_char.strenght > this.max_strenght) {
-      this.new_char.strenght = this.max_strenght;
-      this.updateStrenght();
+    if (this.new_char.strength > this.max_strength) {
+      this.new_char.strength = this.max_strength;
+      this.updateStrength();
     }
     //Setting values that grow with it
-    if (this.new_char.strenght > this.new_char.max_life_points) {
-      this.new_char.max_life_points = this.new_char.strenght;
+    if (this.new_char.strength > this.new_char.max_life_points) {
+      this.new_char.max_life_points = this.new_char.strength;
       this.updateLifePoints();
     }
   }
@@ -153,12 +153,12 @@ export class CharacterStatusPage {
     //Calculating current points
     this.getCurrentPoints();
     //Calculating max range
-    this.max_life_points = this.getMax(this.new_char.max_life_points, this.new_char.strenght, Constants.LifePoints);
+    this.max_life_points = this.getMax(this.new_char.max_life_points, this.new_char.strength, Constants.LifePoints);
     //Changing if over max limit
     if (this.new_char.max_life_points > this.max_life_points) {
       this.new_char.max_life_points = this.max_life_points;
       this.updateLifePoints();
-      this.updateStrenght();
+      this.updateStrength();
     }
   }
   updateWill() {
@@ -228,7 +228,7 @@ export class CharacterStatusPage {
     }
   }
   updateAll() {
-    this.updateStrenght();
+    this.updateStrength();
     this.updateDexterity();
     this.updateIntelligence();
     this.updateHealth();

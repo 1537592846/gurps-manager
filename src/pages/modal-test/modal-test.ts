@@ -2,7 +2,7 @@ import { ViewController, NavParams } from "ionic-angular";
 import { DataProvider } from "../../providers/data/data";
 import { Component } from "@angular/core";
 import { Character } from "../../../models/Character";
-import { Functions, EquipmentStatus } from "../../../models/Functions";
+import { Functions } from "../../../models/Functions";
 
 @Component({
   selector: 'modal-test.html',
@@ -24,17 +24,20 @@ export class ModalTest {
   }
 
   defineTestValues() {
-    this.testBasicValue = this.char[this.testName]
-    this.testBasicValueName = this.testName.toUpperCase()[0]+this.testName.substr(1)
+    switch (this.testName) {
+      default:
+        this.testBasicValue = this.char[this.testName]
+    }
+    this.testBasicValueName = this.testName.toUpperCase()[0] + this.testName.substr(1)
     this.testModValue = 0
-    this.testEquipmentValue = Functions.getEquipmentStatus(this.char.equipments, EquipmentStatus.Strenght)
+    this.testEquipmentValue = Functions.getEquipmentStatus(this.char.equipments, this.testName)
   }
-  
-  addModValue(){
+
+  addModValue() {
     this.testModValue++
   }
 
-  removeModValue(){
+  removeModValue() {
     this.testModValue--
   }
 }

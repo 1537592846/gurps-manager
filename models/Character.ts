@@ -23,7 +23,7 @@ export class Character {
     description: string;
 
     //Character Status
-    strenght: number;
+    strength: number;
     dexterity: number;
     intelligence: number;
     health: number;
@@ -69,7 +69,7 @@ export class Character {
         this.current_points = 0
         this.resources = 0
         this.description = ""
-        this.strenght = 0
+        this.strength = 0
         this.dexterity = 0
         this.intelligence = 0
         this.health = 0
