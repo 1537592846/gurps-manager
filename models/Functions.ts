@@ -61,11 +61,8 @@ export class Functions {
 
     static getJsonProperty(formula: string, property: string): number {
         var regExpression = ('"' + property + '":"([\\d|\\w]+)"')
-        console.log(regExpression)
         var regex = new RegExp(regExpression)
-        console.log(regex)
         var valor: number = Number.parseInt(regex.exec(formula)[1])
-        console.log(valor)
         return valor
     }
 }

@@ -11,6 +11,7 @@ import { Advantage } from '../../../models/Advantage';
 import { Disadvantage } from '../../../models/Disadvantage';
 import { Armor, Consumable, OneHandWeapon, TwoHandWeapon, Other, Shield } from '../../../models/Item';
 import { isUndefined } from 'ionic-angular/umd/util/util';
+import { Equipment } from '../../../models/Equipment';
 
 @Component({
   selector: 'page-gurps-manager',
@@ -107,6 +108,7 @@ export class GurpsManagerPage {
             disadvantage.types = data.Disadvantages[i].Types
             character.disadvantages.push(disadvantage)
           }
+          character.equipments=new Equipment()
           if (data.Inventory != undefined) {
             character.inventory.armors = []
             for (let i = 0; data.Inventory.Armors != undefined && i < data.Inventory.Armors.length; i++) {
@@ -146,7 +148,7 @@ export class GurpsManagerPage {
               consumable.quantity = 1
               consumable.weight = data.Inventory.Consumables[i].Weight
               consumable.formula = data.Inventory.Consumables[i].Formula
-              consumable.bought=data.Inventory.Armors[i].Bought
+              consumable.bought=data.Inventory.Consumables[i].Bought
               character.inventory.consumables.push(consumable)
             }
             character.inventory.one_hand_weapons = []
@@ -160,8 +162,8 @@ export class GurpsManagerPage {
               oneHandWeapon.quantity = 1
               oneHandWeapon.weight = data.Inventory.OneHandWeapons[i].Weight
               oneHandWeapon.formula = data.Inventory.OneHandWeapons[i].Formula
-              oneHandWeapon.bought=data.Inventory.Armors[i].Bought
-              oneHandWeapon.equipped = data.Inventory.Armors[i].Equipped
+              oneHandWeapon.bought=data.Inventory.OneHandWeapons[i].Bought
+              oneHandWeapon.equipped = data.Inventory.OneHandWeapons[i].Equipped
               if (oneHandWeapon.equipped != "") {
                 switch (oneHandWeapon.equipped) {
                   case "left_hand": character.equipments.left_hand = oneHandWeapon; break
@@ -181,8 +183,8 @@ export class GurpsManagerPage {
               twoHandWeapon.quantity = data.Inventory.TwoHandWeapons[i].Quantity
               twoHandWeapon.weight = data.Inventory.TwoHandWeapons[i].Weight
               twoHandWeapon.formula = data.Inventory.TwoHandWeapons[i].Formula
-              twoHandWeapon.bought=data.Inventory.Armors[i].Bought
-              twoHandWeapon.equipped = data.Inventory.Armors[i].Equipped
+              twoHandWeapon.bought=data.Inventory.TwoHandWeapons[i].Bought
+              twoHandWeapon.equipped = data.Inventory.TwoHandWeapons[i].Equipped
               if (twoHandWeapon.equipped != "") {
                   character.equipments.both_hands = twoHandWeapon
               }
@@ -199,7 +201,7 @@ export class GurpsManagerPage {
               other.quantity = data.Inventory.Others[i].Quantity
               other.weight = data.Inventory.Others[i].Weight
               other.formula = data.Inventory.Others[i].Formula
-              other.bought=data.Inventory.Armors[i].Bought
+              other.bought=data.Inventory.Others[i].Bought
               character.inventory.others.push(other)
             }
             character.inventory.shields = []
@@ -220,8 +222,8 @@ export class GurpsManagerPage {
               shield.cost = data.Inventory.Shields[i].Cost
               shield.weight = data.Inventory.Shields[i].Weight
               shield.formula = data.Inventory.Shields[i].Formula
-              shield.bought=data.Inventory.Armors[i].Bought
-              shield.equipped = data.Inventory.Armors[i].Equipped
+              shield.bought=data.Inventory.Shields[i].Bought
+              shield.equipped = data.Inventory.Shields[i].Equipped
               shield.quantity = 1
               if(shield.equipped!=""){
                 character.equipments.shield=shield
