@@ -132,6 +132,16 @@ export class Character {
     public destroyShield() {
         this.equipments.shield = undefined;
     }
+    public returnWeaponSkillLevel(weapon:any):number{
+        var type=""
+        switch(weapon.skillType){
+            case "one_hand":{
+                type="One Hand"
+            }
+        }
+        this.skills.find(skill=>)
+        return 0;
+    }
 }
 
 export class CharacterApi{

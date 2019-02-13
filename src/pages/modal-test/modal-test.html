@@ -29,55 +29,118 @@
 <div padding>
     <title>
     </title>
-    <ion-list>
-        <ion-item>
-            <ion-title style="text-align:center">
-                {{testBasicValueName}} Test
-            </ion-title>
-        </ion-item>
-        <ion-item color="none" id="basic_status" style="font-size:250% !important">
-            {{testBasicValueName}}
-            <ion-note item-right>{{testBasicValue}}</ion-note>
-        </ion-item>
-        <ion-item color="none" id="equipment_status" style="font-size:250% !important">
-            Equipment Bonus
-            <ion-note item-right>{{testEquipmentValue}}</ion-note>
-        </ion-item>
-        <ion-item style="font-size:250% !important">
-            Test Modifier
-            <ion-note item-right>
-                <button ion-button color="danger" on-click="removeModValue()">
-                    <ion-icon name="remove"></ion-icon>
-                </button>
-                <button ion-button disabled color="light">
-                    <label style="width:10ex;font-size:200% !important">
-                        {{testModValue}}
-                    </label>
-                </button>
-                <button ion-button color="secondary" on-click="addModValue()">
-                    <ion-icon name="add"></ion-icon>
-                </button>
-            </ion-note>
-        </ion-item>
-        <ion-list *ngIf='testName=="attack"||testName=="dodge"||testName=="parry"||testName=="block";else testNameElse'>
-            <ion-item id="left_hand_end_value" style="font-size:250% !important">
-                Left Hand Final Value
-                <ion-note item-right style="color:black">{{testBasicValue+testEquipmentValue+testModValue}}</ion-note>
+    <ion-list *ngIf='testName=="attack"||testName=="dodge"||testName=="parry"||testName=="block";else testNameElse'>
+        <ion-grid>
+            <ion-row>
+                <ion-col col-33>
+                    <ion-title style="text-align:center">{{testBasicValueName}} Test</ion-title>
+                </ion-col>
+                <ion-col col-33>
+                    <ion-title style='text-align: center'>Left Hand</ion-title>
+                </ion-col>
+                <ion-col col-33>
+                    <ion-title style='text-align: center'>Right Hand</ion-title>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col col-33>
+                    <ion-title style="text-align:center">{{testBasicValueName}}</ion-title>
+                </ion-col>
+                <ion-col col-33>
+                    <ion-title *ngIf='testLeftHandBasicValue!=-1' style='text-align: center'>{{testLeftHandBasicValue}}</ion-title>
+                    <ion-title *ngIf='testLeftHandBasicValue==-1' style='text-align: center'>Can't</ion-title>
+                </ion-col>
+                <ion-col col-33>
+                    <ion-title *ngIf='testRightHandBasicValue!=-1' style='text-align: center'>{{testRightHandBasicValue}}</ion-title>
+                    <ion-title *ngIf='testRightHandBasicValue==-1' style='text-align: center'>Can't</ion-title>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col col-33>
+                    <ion-title style="text-align:center">Equipment Bonus</ion-title>
+                </ion-col>
+                <ion-col col-33>
+                        <ion-title *ngIf='testLeftHandBasicValue!=-1' style='text-align: center'>{{testLeftHandEquipmentValue}}</ion-title>
+                        <ion-title *ngIf='testLeftHandBasicValue==-1' style='text-align: center'>Can't</ion-title>
+                </ion-col>
+                <ion-col col-33>
+                        <ion-title *ngIf='testRightHandBasicValue!=-1' style='text-align: center'>{{testRightHandEquipmentValue}}</ion-title>
+                        <ion-title *ngIf='testRightHandBasicValue==-1' style='text-align: center'>Can't</ion-title>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col col-33 style='text-align: center;margin-left: -11%'>
+                    <ion-title style='text-align: center'>Test Modifier</ion-title>
+                </ion-col>
+                <ion-col col-67 style='text-align: center;'>
+                    <div style='margin-left:-20%'>
+                        <button ion-button small color="danger" on-click="removeModValue()">
+                            <ion-icon name="remove"></ion-icon>
+                        </button>
+                        <button ion-button small style='width: 50%' disabled color="light">
+                            <label>
+                                {{testModValue}}
+                            </label>
+                        </button>
+                        <button ion-button small color="secondary" on-click="addModValue()">
+                            <ion-icon name="add"></ion-icon>
+                        </button>
+                    </div>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col col-33>
+                    <ion-title style="text-align:center">Test Final Value</ion-title>
+                </ion-col>
+                <ion-col>
+                        <ion-title *ngIf='testLeftHandBasicValue!=-1' style='text-align: center'>{{testLeftHandBasicValue+testLeftHandEquipmentValue+testModValue}}</ion-title>
+                        <ion-title *ngIf='testLeftHandBasicValue==-1' style='text-align: center'>Can't</ion-title>
+                    <ion-title style='text-align: center'></ion-title>
+                </ion-col>
+                <ion-col>
+                        <ion-title *ngIf='testRightHandBasicValue!=-1' style='text-align: center'>{{testRightHandBasicValue+testRightHandEquipmentValue+testModValue}}</ion-title>
+                        <ion-title *ngIf='testRightHandBasicValue==-1' style='text-align: center'>Can't</ion-title>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-list>
+    <ng-template #testNameElse>
+        <ion-list>
+            <ion-item>
+                <ion-title style="text-align:center">
+                    {{testBasicValueName}} Test
+                </ion-title>
             </ion-item>
-            <ion-item id="right_hand_end_value" style="font-size:250% !important">
-                Right Hand Final Value
+            <ion-item color="none" id="basic_status" style="font-size:250% !important">
+                {{testBasicValueName}}
+                <ion-note item-right>{{testBasicValue}}</ion-note>
+            </ion-item>
+            <ion-item color="none" id="equipment_status" style="font-size:250% !important">
+                Equipment Bonus
+                <ion-note item-right>{{testEquipmentValue}}</ion-note>
+            </ion-item>
+            <ion-item style="font-size:250% !important">
+                Test Modifier
+                <ion-note item-right>
+                    <button ion-button color="danger" on-click="removeModValue()">
+                        <ion-icon name="remove"></ion-icon>
+                    </button>
+                    <button ion-button disabled color="light">
+                        <label style="width:10ex;font-size:200% !important">
+                            {{testModValue}}
+                        </label>
+                    </button>
+                    <button ion-button color="secondary" on-click="addModValue()">
+                        <ion-icon name="add"></ion-icon>
+                    </button>
+                </ion-note>
+            </ion-item>
+            <ion-item id="end_value" style="font-size:250% !important">
+                Test Final Value
                 <ion-note item-right style="color:black">{{testBasicValue+testEquipmentValue+testModValue}}</ion-note>
             </ion-item>
         </ion-list>
-        <ng-template #testNameElse>
-            <ion-list>
-                <ion-item id="end_value" style="font-size:250% !important">
-                    Test Final Value
-                    <ion-note item-right style="color:black">{{testBasicValue+testEquipmentValue+testModValue}}</ion-note>
-                </ion-item>
-            </ion-list>
-        </ng-template>
-    </ion-list>
+    </ng-template>
 </div>
 
 </html>
