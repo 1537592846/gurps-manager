@@ -378,27 +378,27 @@ export class EquipmentsPage {
         break
       }
       case 'head': {
-        this.char.inventory.one_hand_weapons.filter(equip => equip == this.char.equipments.head)[0].equipped = ""
+        this.char.inventory.armors.filter(equip => equip == this.char.equipments.head)[0].equipped = ""
         break
       }
       case 'torax': {
-        this.char.inventory.one_hand_weapons.filter(equip => equip == this.char.equipments.torax)[0].equipped = ""
+        this.char.inventory.armors.filter(equip => equip == this.char.equipments.torax)[0].equipped = ""
         break
       }
       case 'legs': {
-        this.char.inventory.one_hand_weapons.filter(equip => equip == this.char.equipments.legs)[0].equipped = ""
+        this.char.inventory.armors.filter(equip => equip == this.char.equipments.legs)[0].equipped = ""
         break
       }
       case 'feet': {
-        this.char.inventory.one_hand_weapons.filter(equip => equip == this.char.equipments.feet)[0].equipped = ""
+        this.char.inventory.armors.filter(equip => equip == this.char.equipments.feet)[0].equipped = ""
         break
       }
       case 'arms': {
-        this.char.inventory.one_hand_weapons.filter(equip => equip == this.char.equipments.arms)[0].equipped = ""
+        this.char.inventory.armors.filter(equip => equip == this.char.equipments.arms)[0].equipped = ""
         break
       }
       case 'hands': {
-        this.char.inventory.one_hand_weapons.filter(equip => equip == this.char.equipments.hands)[0].equipped = ""
+        this.char.inventory.armors.filter(equip => equip == this.char.equipments.hands)[0].equipped = ""
         break
       }
     }

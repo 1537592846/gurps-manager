@@ -13,7 +13,7 @@ export class Character {
     //Character Features
     name: string;
     age: number;
-    nt:number;
+    nt: number;
     height: number;
     weight: number;
     min_status: number;
@@ -132,20 +132,24 @@ export class Character {
     public destroyShield() {
         this.equipments.shield = undefined;
     }
-    public returnWeaponSkillLevel(weapon:any):number{
-        var type=""
-        switch(weapon.skillType){
-            case "one_hand":{
-                type="One Hand"
-            }
+    public returnWeaponSkillLevel(weapon: any): number {
+        try {
+            var nameSkill = JSON.parse(weapon.formula)["skill_used"]
+            var reg = new RegExp(nameSkill);
+            console.log(this.skills)
+            var skill = this.skills.find(skill => skill.name.search(reg) != -1)
+            console.log(this[skill.attribute.toLowerCase()])
+            console.log(this[skill.attribute]+skill.level)
+            return (this[skill.attribute]+skill.level)
         }
-        this.skills.find(skill=>)
-        return 0;
+        catch (e) {
+            return 0
+        }
     }
 }
 
-export class CharacterApi{
+export class CharacterApi {
     id: number
     name: string
-    description:string
+    description: string
 }
