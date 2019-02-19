@@ -17,77 +17,115 @@
 </ion-header>
 <ion-content padding id="inventory">
   <!-- Weapons -->
-  <ion-item-group id="inventory-list" *ngIf="weapons.length>0">
-    <h3 id="extras-tag-5" style="color:#000000;">
+  <ion-list id="inventory-list-weapons" *ngIf="weapons.length>0">
+    <ion-title>
       Weapons
-    </h3>
+    </ion-title>
     <ion-item-sliding *ngFor="let weapon of weapons">
-      <ion-item color="none">
+      <ion-item item-left color="none">
         {{weapon.name}}
         <br>
         <ion-note>{{weapon.description}}</ion-note>
         <ion-note item-right>Cost: {{weapon.cost}}</ion-note>
       </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" on-click="sellItem(weapon)">
+          Sell 1
+        </button>
+        <button ion-button color="danger" on-click="destroyItem(weapon)">
+          Destroy 1
+        </button>
+      </ion-item-options>
     </ion-item-sliding>
-  </ion-item-group>
+  </ion-list>
   <!-- Shields -->
-  <ion-item-group id="inventory-list" *ngIf="shields.length>0">
-    <h3 id="extras-tag-5" style="color:#000000;">
+  <ion-list id="inventory-list-shields" *ngIf="shields.length>0">
+    <ion-title>
       Shields
-    </h3>
+    </ion-title>
     <ion-item-sliding *ngFor="let shield of shields">
-      <ion-item color="none">
+      <ion-item item-left color="none">
         {{shield.name}}
         <br>
         <ion-note>{{shield.description}}</ion-note>
         <ion-note item-right>Cost: {{shield.cost}}</ion-note>
       </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" on-click="sellItem(shield)">
+          Sell 1
+        </button>
+        <button ion-button color="danger" on-click="destroyItem(shield)">
+          Destroy 1
+        </button>
+      </ion-item-options>
     </ion-item-sliding>
-  </ion-item-group>
+  </ion-list>
   <!-- Armors -->
-  <ion-item-group id="inventory-list" *ngIf="armors.length>0">
-    <h3 id="extras-tag-5" style="color:#000000;">
+  <ion-list id="inventory-list-armors" *ngIf="armors.length>0">
+    <ion-title>
       Armors
-    </h3>
+    </ion-title>
     <ion-item-sliding *ngFor="let armor of armors">
-      <ion-item color="none">
+      <ion-item item-left color="none">
         {{armor.name}}
         <br>
         <ion-note>{{armor.description}}</ion-note>
         <ion-note item-right>Cost: {{armor.cost}}</ion-note>
       </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" on-click="sellItem(armor)">
+          Sell 1
+        </button>
+        <button ion-button color="danger" on-click="destroyItem(armor)">
+          Destroy 1
+        </button>
+      </ion-item-options>
     </ion-item-sliding>
-  </ion-item-group>
+  </ion-list>
   <!-- Consumables -->
-  <ion-item-group id="inventory-list" *ngIf="consumables.length>0">
-    <h3 id="extras-tag-5" style="color:#000000;">
+  <ion-list id="inventory-list-consumables" *ngIf="consumables.length>0">
+    <ion-title>
       Consumables
-    </h3>
+    </ion-title>
     <ion-item-sliding *ngFor="let consumable of consumables">
-      <ion-item color="none">
+      <ion-item item-left color="none">
         {{consumable.name}}
         <br>
         <ion-note>{{consumable.description}}</ion-note>
-        <ion-note item-right>Quantity: {{consumable.quantity}}
-          <br> Cost: {{consumable.cost}}</ion-note>
+        <ion-note item-right>Cost: {{consumable.cost}}</ion-note>
       </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" on-click="sellItem(consumable)">
+          Sell 1
+        </button>
+        <button ion-button color="danger" on-click="destroyItem(consumable)">
+          Destroy 1
+        </button>
+      </ion-item-options>
     </ion-item-sliding>
-  </ion-item-group>
+  </ion-list>
   <!-- Others -->
-  <ion-item-group id="inventory-list" *ngIf="others.length>0">
-    <h3 id="extras-tag-5" style="color:#000000;">
+  <ion-list id="inventory-list-others" *ngIf="others.length>0">
+    <ion-title>
       Others
-    </h3>
+    </ion-title>
     <ion-item-sliding *ngFor="let other of others">
-      <ion-item color="none">
+      <ion-item item-left color="none">
         {{other.name}}
         <br>
         <ion-note>{{other.description}}</ion-note>
-        <ion-note item-right>Quantity: {{other.quantity}}
-          <br> Cost: {{other.cost}}</ion-note>
+        <ion-note item-right>Cost: {{other.cost}}</ion-note>
       </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" on-click="sellItem(other)">
+          Sell 1
+        </button>
+        <button ion-button color="danger" on-click="destroyItem(other)">
+          Destroy 1
+        </button>
+      </ion-item-options>
     </ion-item-sliding>
-  </ion-item-group>
+  </ion-list>
   <!-- Info -->
   <ion-item-group>
     <h3 id="extras-tag-5" style="color:#000000;">

@@ -10,12 +10,12 @@ export class Inventory {
     public others: Other[];
 
     constructor() {
-        this.one_hand_weapons = {} as OneHandWeapon[];
-        this.two_hand_weapons = {} as TwoHandWeapon[];
-        this.shields = {} as Shield[];
-        this.armors = {} as Armor[];
-        this.consumables = {} as Consumable[];
-        this.others = {} as Other[];
+        this.one_hand_weapons = [];
+        this.two_hand_weapons = [];
+        this.shields = [];
+        this.armors = [];
+        this.consumables = [];
+        this.others = [];
     }
 
     public getValue() {

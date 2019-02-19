@@ -67,35 +67,36 @@ export class InventoryPage {
   }
   updateInfo() {
     this.current_weight = this.char.inventory.getWeight()
+    console.log(this.current_weight)
     this.char.current_carry_weight = this.current_weight
     this.current_price = this.char.inventory.getValue()
     this.current_category = this.char.getCarryCategory()
   }
   openBuyItemModal() {
-    this.profileModal = this.modalCtrl.create(ModalBuyItems, { strength: this.char.strength })
+    this.profileModal = this.modalCtrl.create(ModalBuyItems, { strength: this.char.strength, resources: this.char.resources })
     this.profileModal.present()
     this.profileModal.onDidDismiss(item => {
       if (item == undefined) return
       item.bought = true
       switch (item.type) {
-        case "one_hand":
-        case "two_hand": this.weapons.push(item); break
-        case "shield": this.shields.push(item); break
+        case "one_hand": this.char.inventory.one_hand_weapons.push(item); this.weapons.push(item); break
+        case "two_hand": this.char.inventory.two_hand_weapons.push(item); this.weapons.push(item); break
+        case "shield": this.char.inventory.shields.push(item); this.shields.push(item); break
         case "head":
         case "torax":
         case "arms":
         case "hands":
         case "legs":
-        case "feet": this.armors.push(item); break
-        case "consumable": this.consumables.push(item); break
-        case "other": this.others.push(item); break
+        case "feet": this.char.inventory.armors.push(item); this.armors.push(item); break
+        case "consumable": this.char.inventory.consumables.push(item); this.consumables.push(item); break
+        case "other": this.char.inventory.others.push(item); this.others.push(item); break
       }
       this.char.resources -= item.cost
-      this.updateInfo()
     })
+    this.updateInfo()
   }
   openAddItemModal() {
-    this.profileModal = this.modalCtrl.create(ModalAddItems, { strength: this.char.strength })
+    this.profileModal = this.modalCtrl.create(ModalAddItems, { strength: this.char.strength, resources: this.char.resources })
     this.profileModal.present()
     this.profileModal.onDidDismiss(item => {
       if (item == undefined) return
@@ -113,8 +114,8 @@ export class InventoryPage {
         case "consumable": this.consumables.push(item); break
         case "other": this.others.push(item); break
       }
-      this.updateInfo()
     })
+    this.updateInfo()
   }
   openAddNewItemModal() {
     this.profileModal = this.modalCtrl.create(ModalAddNewItems, { resouces: this.char.resources })
@@ -147,5 +148,46 @@ export class InventoryPage {
     for (let i = 0; i < this.char.inventory.others.length; i++) {
       this.others.push(this.char.inventory.others[i])
     }
+  }
+  sellItem(item: any) {
+    this.char.resources += item.cost
+    this.destroyItem(item)
+  }
+  destroyItem(item: any) {
+    console.log(this.char.inventory.one_hand_weapons)
+    console.log(this.char.inventory.one_hand_weapons.indexOf(item))
+    switch (item.type) {
+      case "one_hand": {
+        this.char.inventory.one_hand_weapons.splice(this.char.inventory.one_hand_weapons.indexOf(item), 1)
+        break;
+      }
+      case "two_hand": {
+        this.char.inventory.two_hand_weapons.splice(this.char.inventory.two_hand_weapons.indexOf(item), 1)
+        break;
+      }
+      case "shield": {
+        this.char.inventory.shields.splice(this.char.inventory.shields.indexOf(item), 1)
+        break;
+      }
+      case "head":
+      case "torax":
+      case "arms":
+      case "hands":
+      case "legs":
+      case "feet": {
+        this.char.inventory.armors.splice(this.char.inventory.armors.indexOf(item), 1)
+        break;
+      }
+      case "consumable": {
+        this.char.inventory.consumables.splice(this.char.inventory.consumables.indexOf(item), 1)
+        break;
+      }
+      case "other": {
+        this.char.inventory.others.splice(this.char.inventory.others.indexOf(item), 1)
+        break;
+      }
+    }
+    this.updateInfo()
+    this.getInventory()
   }
 }

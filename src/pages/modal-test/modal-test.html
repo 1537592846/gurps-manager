@@ -47,11 +47,13 @@
                     <ion-title style="text-align:center">{{testBasicValueName}}</ion-title>
                 </ion-col>
                 <ion-col col-33>
-                    <ion-title *ngIf='testLeftHandBasicValue!=-1' style='text-align: center'>{{testLeftHandBasicValue}}</ion-title>
+                    <ion-title *ngIf='testLeftHandBasicValue!=-1&&testLeftHandEquipmentValue!=-1' style='text-align: center'>{{testLeftHandBasicValue}}</ion-title>
+                    <ion-title *ngIf='testLeftHandEquipmentValue==-1'></ion-title>
                     <ion-title *ngIf='testLeftHandBasicValue==-1' style='text-align: center'>Can't</ion-title>
                 </ion-col>
                 <ion-col col-33>
-                    <ion-title *ngIf='testRightHandBasicValue!=-1' style='text-align: center'>{{testRightHandBasicValue}}</ion-title>
+                    <ion-title *ngIf='testRightHandBasicValue!=-1&&testRightHandEquipmentValue!=-1' style='text-align: center'>{{testRightHandBasicValue}}</ion-title>
+                    <ion-title *ngIf='testRightHandEquipmentValue==-1'></ion-title>
                     <ion-title *ngIf='testRightHandBasicValue==-1' style='text-align: center'>Can't</ion-title>
                 </ion-col>
             </ion-row>
@@ -60,11 +62,13 @@
                     <ion-title style="text-align:center">Equipment Bonus</ion-title>
                 </ion-col>
                 <ion-col col-33>
-                        <ion-title *ngIf='testLeftHandBasicValue!=-1' style='text-align: center'>{{testLeftHandEquipmentValue}}</ion-title>
+                        <ion-title *ngIf='testLeftHandBasicValue!=-1&&testLeftHandEquipmentValue!=-1' style='text-align: center'>{{testLeftHandEquipmentValue}}</ion-title>
+                        <ion-title *ngIf='testLeftHandEquipmentValue==-1' style='text-align: center'></ion-title>
                         <ion-title *ngIf='testLeftHandBasicValue==-1' style='text-align: center'>Can't</ion-title>
                 </ion-col>
                 <ion-col col-33>
-                        <ion-title *ngIf='testRightHandBasicValue!=-1' style='text-align: center'>{{testRightHandEquipmentValue}}</ion-title>
+                        <ion-title *ngIf='testRightHandBasicValue!=-1&&testRightHandEquipmentValue!=-1' style='text-align: center'>{{testRightHandEquipmentValue}}</ion-title>
+                        <ion-title *ngIf='testRightHandEquipmentValue==-1' style='text-align: center'></ion-title>
                         <ion-title *ngIf='testRightHandBasicValue==-1' style='text-align: center'>Can't</ion-title>
                 </ion-col>
             </ion-row>
@@ -93,12 +97,14 @@
                     <ion-title style="text-align:center">Test Final Value</ion-title>
                 </ion-col>
                 <ion-col>
-                        <ion-title *ngIf='testLeftHandBasicValue!=-1' style='text-align: center'>{{testLeftHandBasicValue+testLeftHandEquipmentValue+testModValue}}</ion-title>
+                        <ion-title *ngIf='testLeftHandBasicValue!=-1&&testLeftHandEquipmentValue!=-1' style='text-align: center'>{{testLeftHandBasicValue+testLeftHandEquipmentValue+testModValue}}</ion-title>
+                        <ion-title *ngIf='testLeftHandEquipmentValue==-1' style='text-align: center'></ion-title>
                         <ion-title *ngIf='testLeftHandBasicValue==-1' style='text-align: center'>Can't</ion-title>
                     <ion-title style='text-align: center'></ion-title>
                 </ion-col>
                 <ion-col>
-                        <ion-title *ngIf='testRightHandBasicValue!=-1' style='text-align: center'>{{testRightHandBasicValue+testRightHandEquipmentValue+testModValue}}</ion-title>
+                        <ion-title *ngIf='testRightHandBasicValue!=-1&&testRightHandEquipmentValue!=-1' style='text-align: center'>{{testRightHandBasicValue+testRightHandEquipmentValue+testModValue}}</ion-title>
+                        <ion-title *ngIf='testRightHandEquipmentValue==-1' style='text-align: center'></ion-title>
                         <ion-title *ngIf='testRightHandBasicValue==-1' style='text-align: center'>Can't</ion-title>
                 </ion-col>
             </ion-row>

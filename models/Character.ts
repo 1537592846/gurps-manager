@@ -136,11 +136,8 @@ export class Character {
         try {
             var nameSkill = JSON.parse(weapon.formula)["skill_used"]
             var reg = new RegExp(nameSkill);
-            console.log(this.skills)
             var skill = this.skills.find(skill => skill.name.search(reg) != -1)
-            console.log(this[skill.attribute.toLowerCase()])
-            console.log(this[skill.attribute]+skill.level)
-            return (this[skill.attribute]+skill.level)
+            return (this[skill.attribute.toLowerCase()]+skill.level)
         }
         catch (e) {
             return 0

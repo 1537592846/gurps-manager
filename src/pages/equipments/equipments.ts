@@ -20,6 +20,7 @@ export class EquipmentsPage {
     this.char = navParams.data
   }
   ionViewWillEnter() {
+    console.log(this.char)
     this.getEquipments();
   }
   ionViewWillLeave() {
@@ -360,45 +361,56 @@ export class EquipmentsPage {
       case 'left_hand': {
         if (this.char.equipments.left_hand != undefined) {
           this.char.inventory.one_hand_weapons.filter(equip => equip.equipped === "left_hand")[0].equipped = ""
+          this.char.equipments.left_hand=undefined
         } else {
           this.char.inventory.two_hand_weapons.filter(equip => equip.equipped === "both_hand")[0].equipped = ""
+          this.char.equipments.both_hands=undefined
         }
         break
       }
       case 'right_hand': {
         if (this.char.equipments.right_hand != undefined) {
           this.char.inventory.one_hand_weapons.filter(equip => equip == this.char.equipments.right_hand)[0].equipped = ""
+          this.char.equipments.right_hand=undefined
         } else {
           if (this.char.equipments.shield != undefined) {
             this.char.inventory.shields.filter(equip => equip == this.char.equipments.shield)[0].equipped = ""
+            this.char.equipments.right_hand=undefined
           } else {
             this.char.inventory.two_hand_weapons.filter(equip => equip == this.char.equipments.both_hands)[0].equipped = ""
+            this.char.equipments.both_hands=undefined
           }
         }
         break
       }
       case 'head': {
         this.char.inventory.armors.filter(equip => equip == this.char.equipments.head)[0].equipped = ""
+        this.char.equipments.head=undefined
         break
       }
       case 'torax': {
         this.char.inventory.armors.filter(equip => equip == this.char.equipments.torax)[0].equipped = ""
+        this.char.equipments.torax=undefined
         break
       }
       case 'legs': {
         this.char.inventory.armors.filter(equip => equip == this.char.equipments.legs)[0].equipped = ""
+        this.char.equipments.legs=undefined
         break
       }
       case 'feet': {
         this.char.inventory.armors.filter(equip => equip == this.char.equipments.feet)[0].equipped = ""
+        this.char.equipments.feet=undefined
         break
       }
       case 'arms': {
         this.char.inventory.armors.filter(equip => equip == this.char.equipments.arms)[0].equipped = ""
+        this.char.equipments.arms=undefined
         break
       }
       case 'hands': {
         this.char.inventory.armors.filter(equip => equip == this.char.equipments.hands)[0].equipped = ""
+        this.char.equipments.hands=undefined
         break
       }
     }

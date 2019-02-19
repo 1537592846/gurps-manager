@@ -18,6 +18,13 @@ export class ModalCharacters {
     if (this.characters == undefined || this.characters.length == 0) {
       this.dataProvider.getCharacters().then(res => {
         let data = res as any[]
+        data.sort((n1, n2) => {
+          if (n1.Id > n2.Id)
+            return 1
+          if (n1.Id < n2.Id)
+            return -1
+          return 0
+        })
         for (let i = 0; i < data.length; i++) {
           var character = new CharacterApi()
           character.id = data[i].Id

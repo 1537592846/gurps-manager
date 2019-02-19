@@ -58,7 +58,15 @@ export class Armor extends Item {
 }
 
 export class Consumable extends Item {
+    constructor(){
+        super()
+        this.type="consumable"
+    }
 }
 
 export class Other extends Item {
+    constructor(){
+        super()
+        this.type="other"
+    }
 }

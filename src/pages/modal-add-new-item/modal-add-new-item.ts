@@ -85,6 +85,8 @@ export class ModalAddNewItems {
       item.quantity = Number.parseInt(data.quantity)
       item.max_life_points = Number.parseInt(data.max_life_points)
       item.resistence = data.resistence
+      item.bought=false
+      item.equipped=""
       this.viewCtrl.dismiss()
     } else {
       this.form.markAsPending()

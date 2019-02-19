@@ -88,7 +88,12 @@
                                     </ion-col>
                                 </ion-row>
                             </ion-grid>
-                            <button ion-button clear item-end on-click="returnData(oneHand)">Add</button>
+                            <button ion-button *ngIf='resources<oneHand.cost' disabled item-end on-click="returnData(oneHand)">
+                                Add
+                            </button>
+                            <button ion-button *ngIf='resources>=oneHand.cost' item-end on-click="returnData(oneHand)">
+                                Add
+                            </button>
                         </ion-item>
                     </ion-item-sliding>
                 </ion-list>
@@ -120,7 +125,12 @@
                                     </ion-col>
                                 </ion-row>
                             </ion-grid>
-                            <button ion-button clear item-end on-click="returnData(twoHand)">Add</button>
+                            <button ion-button *ngIf='resources<twoHand.cost' disabled item-end on-click="returnData(twoHand)">
+                                Add
+                            </button>
+                            <button ion-button *ngIf='resources>=twoHand.cost' item-end on-click="returnData(twoHand)">
+                                Add
+                            </button>
                         </ion-item>
                     </ion-item-sliding>
                 </ion-list>
@@ -152,7 +162,12 @@
                                     </ion-col>
                                 </ion-row>
                             </ion-grid>
-                            <button ion-button clear item-end on-click="returnData(shield)">Add</button>
+                            <button ion-button *ngIf='resources<shield.cost' disabled item-end on-click="returnData(shield)">
+                                Add
+                            </button>
+                            <button ion-button *ngIf='resources>=shield.cost' item-end on-click="returnData(shield)">
+                                Add
+                            </button>
                         </ion-item>
                     </ion-item-sliding>
                 </ion-list>
@@ -209,7 +224,12 @@
                                     </ion-col>
                                 </ion-row>
                             </ion-grid>
-                            <button ion-button clear item-end on-click="returnData(head)">Add</button>
+                            <button ion-button *ngIf='resources<head.cost' disabled item-end on-click="returnData(head)">
+                                Add
+                            </button>
+                            <button ion-button *ngIf='resources>=head.cost' item-end on-click="returnData(head)">
+                                Add
+                            </button>
                         </ion-item>
                     </ion-item-sliding>
                 </ion-list>
@@ -240,7 +260,12 @@
                                     </ion-col>
                                 </ion-row>
                             </ion-grid>
-                            <button ion-button clear item-end on-click="returnData(torax)">Add</button>
+                            <button ion-button *ngIf='resources<torax.cost' disabled item-end on-click="returnData(torax)">
+                                Add
+                            </button>
+                            <button ion-button *ngIf='resources>=torax.cost' item-end on-click="returnData(torax)">
+                                Add
+                            </button>
                         </ion-item>
                     </ion-item-sliding>
                 </ion-list>
@@ -271,7 +296,12 @@
                                     </ion-col>
                                 </ion-row>
                             </ion-grid>
-                            <button ion-button clear item-end on-click="returnData(arm)">Add</button>
+                            <button ion-button *ngIf='resources<arm.cost' disabled item-end on-click="returnData(arm)">
+                                Add
+                            </button>
+                            <button ion-button *ngIf='resources>=arm.cost' item-end on-click="returnData(arm)">
+                                Add
+                            </button>
                         </ion-item>
                     </ion-item-sliding>
                 </ion-list>
@@ -302,7 +332,12 @@
                                     </ion-col>
                                 </ion-row>
                             </ion-grid>
-                            <button ion-button clear item-end on-click="returnData(hand)">Add</button>
+                            <button ion-button *ngIf='resources<hand.cost' disabled item-end on-click="returnData(hand)">
+                                Add
+                            </button>
+                            <button ion-button *ngIf='resources>=hand.cost' item-end on-click="returnData(hand)">
+                                Add
+                            </button>
                         </ion-item>
                     </ion-item-sliding>
                 </ion-list>
@@ -333,7 +368,12 @@
                                     </ion-col>
                                 </ion-row>
                             </ion-grid>
-                            <button ion-button clear item-end on-click="returnData(leg)">Add</button>
+                            <button ion-button *ngIf='resources<leg.cost' disabled item-end on-click="returnData(leg)">
+                                Add
+                            </button>
+                            <button ion-button *ngIf='resources>=leg.cost' item-end on-click="returnData(leg)">
+                                Add
+                            </button>
                         </ion-item>
                     </ion-item-sliding>
                 </ion-list>
@@ -364,7 +404,12 @@
                                     </ion-col>
                                 </ion-row>
                             </ion-grid>
-                            <button ion-button clear item-end on-click="returnData(feet)">Add</button>
+                            <button ion-button *ngIf='resources<feet.cost' disabled item-end on-click="returnData(feet)">
+                                Add
+                            </button>
+                            <button ion-button *ngIf='resources>=feet.cost' item-end on-click="returnData(feet)">
+                                Add
+                            </button>
                         </ion-item>
                     </ion-item-sliding>
                 </ion-list>
@@ -408,7 +453,12 @@
                                     </ion-col>
                                 </ion-row>
                             </ion-grid>
-                            <button ion-button clear item-end on-click="returnData(consumable)">Add</button>
+                            <button ion-button *ngIf='resources<consumable.cost' disabled item-end on-click="returnData(consumable)">
+                                Add
+                            </button>
+                            <button ion-button *ngIf='resources>=consumable.cost' item-end on-click="returnData(consumable)">
+                                Add
+                            </button>
                         </ion-item>
                     </ion-item-sliding>
                 </ion-list>
@@ -438,7 +488,12 @@
                                     </ion-col>
                                 </ion-row>
                             </ion-grid>
-                            <button ion-button clear item-end on-click="returnData(other)">Add</button>
+                            <button ion-button *ngIf='resources<other.cost' disabled item-end on-click="returnData(other)">
+                                Add
+                            </button>
+                            <button ion-button *ngIf='resources>=other.cost' item-end on-click="returnData(other)">
+                                Add
+                            </button>
                         </ion-item>
                     </ion-item-sliding>
                 </ion-list>

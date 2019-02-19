@@ -1,5 +1,6 @@
 <style>
-  h1 ,h2{
+  h1,
+  h2 {
     text-align: center;
     word-wrap: normal;
   }
@@ -27,15 +28,19 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding id="skills">
-  <ion-list id="skill-list">
+  <ion-list>
     <ion-item-sliding *ngFor="let skill of char.skills">
-      <ion-item color="none">
-        <div item-start>
-          <h1>{{skill.name}}</h1>
-          <h2>{{skill.attribute}}+{{skill.level}}</h2>
-        </div>
-        <ion-note item-content>{{skill.description}}</ion-note>
-        <ion-note item-right>{{getSkillLevel(skill)}}</ion-note>
+      <ion-item>
+        <ion-row>
+          <div col-25>
+            <h1 style='word-break: break-all'>{{skill.name}}</h1>
+            <h2>{{skill.attribute}}+{{skill.level}}</h2>
+          </div>
+          <div>
+            <ion-note item-content>{{skill.description}}</ion-note>
+            <ion-note item-right>{{getSkillLevel(skill)}}</ion-note>
+          </div>
+        </ion-row>
       </ion-item>
     </ion-item-sliding>
   </ion-list>

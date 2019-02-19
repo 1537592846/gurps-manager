@@ -24,9 +24,11 @@ export class ModalAddItems {
   consumables: Consumable[] = []
   others: Other[] = []
   strength: number
+  resources:number
 
   constructor(public viewCtrl: ViewController, public params: NavParams, public dataProvider: DataProvider) {
     this.strength = this.params.get("strength")
+    this.resources = this.params.get("resources")
   }
 
   Balance(weapon: any) {

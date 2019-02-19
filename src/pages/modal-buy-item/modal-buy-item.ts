@@ -11,7 +11,6 @@ import { Consumable } from '../../../models/Item';
   templateUrl: 'modal-buy-item.html'
 })
 export class ModalBuyItems {
-  char: Character
   oneHands: OneHandWeapon[] = []
   twoHands: TwoHandWeapon[] = []
   shields: Shield[] = []
@@ -21,12 +20,14 @@ export class ModalBuyItems {
   hands: Armor[] = []
   legs: Armor[] = []
   feets: Armor[] = []
-  consumables:Consumable[]=[]
-  others:Other[]=[]
+  consumables: Consumable[] = []
+  others: Other[] = []
   strength: number
+  resources:number
 
   constructor(public viewCtrl: ViewController, public params: NavParams, public dataProvider: DataProvider) {
     this.strength = this.params.get("strength")
+    this.resources=this.params.get("resources")
   }
 
   Balance(weapon: any) {
@@ -73,7 +74,7 @@ export class ModalBuyItems {
           bap += "+" + finalBonus
         }
       }
-      bap+=" "+weaponType
+      bap += " " + weaponType
     } else {
       bap += "-"
     }
@@ -124,16 +125,16 @@ export class ModalBuyItems {
           bap += "+" + finalBonus
         }
       }
-      bap+=" "+weaponType
+      bap += " " + weaponType
     } else {
       bap += "-"
     }
     return bap
   }
 
-  Resistence(armor:any){
+  Resistence(armor: any) {
     let armorFormula = JSON.parse(armor.formula)
-    return "Resistence:"+armorFormula.resistence
+    return "Resistence:" + armorFormula.resistence
   }
 
   updateOneHands() {
@@ -193,7 +194,7 @@ export class ModalBuyItems {
           shield.cost = data[i].Cost
           shield.weight = data[i].Weight
           shield.quantity = 1
-          shield.resistence=JSON.parse(data[i].Formula).resistence
+          shield.resistence = JSON.parse(data[i].Formula).resistence
           shield.max_life_points = JSON.parse(data[i].Formula).life_points
           shield.current_life_points = shield.max_life_points
           shield.formula = data[i].Formula
@@ -218,7 +219,7 @@ export class ModalBuyItems {
           head.cost = data[i].Cost
           head.weight = data[i].Weight
           head.quantity = 1
-          head.resistence=JSON.parse(data[i].Formula).resistence
+          head.resistence = JSON.parse(data[i].Formula).resistence
           head.formula = data[i].Formula
           head.type = data[i].Type
           this.heads.push(head)
@@ -241,7 +242,7 @@ export class ModalBuyItems {
           torax.cost = data[i].Cost
           torax.weight = data[i].Weight
           torax.quantity = 1
-          torax.resistence=JSON.parse(data[i].Formula).resistence
+          torax.resistence = JSON.parse(data[i].Formula).resistence
           torax.formula = data[i].Formula
           torax.type = data[i].Type
           this.torax.push(torax)
@@ -264,7 +265,7 @@ export class ModalBuyItems {
           arm.cost = data[i].Cost
           arm.weight = data[i].Weight
           arm.quantity = 1
-          arm.resistence=JSON.parse(data[i].Formula).resistence
+          arm.resistence = JSON.parse(data[i].Formula).resistence
           arm.formula = data[i].Formula
           arm.type = data[i].Type
           this.arms.push(arm)
@@ -287,7 +288,7 @@ export class ModalBuyItems {
           hand.cost = data[i].Cost
           hand.weight = data[i].Weight
           hand.quantity = 1
-          hand.resistence=JSON.parse(data[i].Formula).resistence
+          hand.resistence = JSON.parse(data[i].Formula).resistence
           hand.formula = data[i].Formula
           hand.type = data[i].Type
           this.hands.push(hand)
@@ -310,7 +311,7 @@ export class ModalBuyItems {
           leg.cost = data[i].Cost
           leg.weight = data[i].Weight
           leg.quantity = 1
-          leg.resistence=JSON.parse(data[i].Formula).resistence
+          leg.resistence = JSON.parse(data[i].Formula).resistence
           leg.formula = data[i].Formula
           leg.type = data[i].Type
           this.legs.push(leg)
@@ -333,7 +334,7 @@ export class ModalBuyItems {
           feet.cost = data[i].Cost
           feet.weight = data[i].Weight
           feet.quantity = 1
-          feet.resistence=JSON.parse(data[i].Formula).resistence
+          feet.resistence = JSON.parse(data[i].Formula).resistence
           feet.formula = data[i].Formula
           feet.type = data[i].Type
           this.feets.push(feet)

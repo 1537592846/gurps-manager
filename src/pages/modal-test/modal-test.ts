@@ -53,32 +53,31 @@ export class ModalTest {
           if (this.char.equipments.both_hands.formula == undefined || this.char.equipments.both_hands.formula === "") {
             try {
               leftHand = JSON.parse(this.char.equipments.left_hand.formula)
-              this.testLeftHandBasicValue = this.char.returnWeaponSkillLevel(this.char.equipments.left_hand)
+              this.testLeftHandBasicValue = 3 + Number.parseInt("" + this.char.returnWeaponSkillLevel(this.char.equipments.left_hand) / 2)
             } catch (e) { }
             try {
               rightHand = JSON.parse(this.char.equipments.right_hand.formula)
-              this.testRightHandBasicValue = this.char.returnWeaponSkillLevel(this.char.equipments.right_hand)
+              this.testRightHandBasicValue = 3 + Number.parseInt("" + this.char.returnWeaponSkillLevel(this.char.equipments.right_hand) / 2)
             } catch (e) { }
           } else {
             try {
               leftHand = JSON.parse(this.char.equipments.both_hands.formula)
-              this.testRightHandBasicValue = this.char.returnWeaponSkillLevel(this.char.equipments.both_hands)
+              this.testLeftHandBasicValue = 3 + Number.parseInt("" + this.char.returnWeaponSkillLevel(this.char.equipments.both_hands) / 2)
             } catch (e) { }
             try {
               rightHand = JSON.parse(this.char.equipments.both_hands.formula)
-              this.testRightHandBasicValue = this.char.returnWeaponSkillLevel(this.char.equipments.both_hands)
+              this.testRightHandBasicValue = 3 + Number.parseInt("" + this.char.returnWeaponSkillLevel(this.char.equipments.both_hands) / 2)
             } catch (e) { }
           }
           if (leftHand == undefined)
-            this.testLeftHandEquipmentValue = 0
+            this.testLeftHandEquipmentValue = -1
           else
             if (leftHand.parry == "No")
               this.testLeftHandBasicValue = -1
             else
               this.testLeftHandEquipmentValue = Number.parseInt(leftHand.parry)
-
           if (rightHand == undefined)
-            this.testRightHandEquipmentValue = 0
+            this.testRightHandEquipmentValue = -1
           else
             if (rightHand.parry == "No")
               this.testRightHandBasicValue = -1
@@ -91,9 +90,11 @@ export class ModalTest {
           break
         }
       default:
-        this.testBasicValue = this.char[this.testName]
-        this.testEquipmentValue = Functions.getEquipmentStatus(this.char.equipments, this.testName)
-        break
+        {
+          this.testBasicValue = this.char[this.testName]
+          this.testEquipmentValue = Functions.getEquipmentStatus(this.char.equipments, this.testName)
+          break
+        }
     }
   }
 
