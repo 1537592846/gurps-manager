@@ -1,3 +1,4 @@
+import { ModalAddResource } from './../pages/modal-add-resource/modal-add-resource';
 import { ModalAddItems } from './../pages/modal-add-item/modal-add-item';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -61,7 +62,8 @@ import { ModalTest } from '../pages/modal-test/modal-test';
     ModalEquipments,
     ModalLanguages,
     ModalSkills,
-    ModalTest
+    ModalTest,
+    ModalAddResource
   ],
   imports: [
     BrowserModule,
@@ -96,7 +98,8 @@ import { ModalTest } from '../pages/modal-test/modal-test';
     ModalEquipments,
     ModalLanguages,
     ModalSkills,
-    ModalTest
+    ModalTest,
+    ModalAddResource
   ],
   providers: [
     StatusBar,

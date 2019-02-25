@@ -1,3 +1,4 @@
+import { ModalAddResource } from './../modal-add-resource/modal-add-resource';
 import { Component } from '@angular/core';
 import { NavParams, ModalController } from 'ionic-angular';
 import { Character } from '../../../models/Character';
@@ -33,44 +34,53 @@ export class InventoryPage {
     this.getInventory();
   }
   ionViewWillLeave() {
-    this.char.inventory.one_hand_weapons = []
-    this.char.inventory.two_hand_weapons = []
-    this.char.inventory.shields = []
-    this.char.inventory.armors = []
-    this.char.inventory.consumables = []
-    this.char.inventory.others = []
+    this.saveChar();
+  }
+  private saveChar() {
+    this.char.inventory.one_hand_weapons = [];
+    this.char.inventory.two_hand_weapons = [];
+    this.char.inventory.shields = [];
+    this.char.inventory.armors = [];
+    this.char.inventory.consumables = [];
+    this.char.inventory.others = [];
     for (let i = 0; i < this.weapons.length; i++) {
       switch (this.weapons[i].type) {
-        case "one_hand": this.char.inventory.one_hand_weapons.push(this.weapons[i]); break
-        case "two_hand": this.char.inventory.two_hand_weapons.push(this.weapons[i]); break
+        case "one_hand":
+          this.char.inventory.one_hand_weapons.push(this.weapons[i]);
+          break;
+        case "two_hand":
+          this.char.inventory.two_hand_weapons.push(this.weapons[i]);
+          break;
       }
     }
     for (let i = 0; i < this.shields.length; i++) {
-      this.char.inventory.shields.push(this.shields[i])
+      this.char.inventory.shields.push(this.shields[i]);
     }
     for (let i = 0; i < this.armors.length; i++) {
-      this.char.inventory.armors.push(this.armors[i])
+      this.char.inventory.armors.push(this.armors[i]);
     }
     for (let i = 0; i < this.consumables.length; i++) {
-      this.char.inventory.consumables.push(this.consumables[i])
+      this.char.inventory.consumables.push(this.consumables[i]);
     }
     for (let i = 0; i < this.others.length; i++) {
-      this.char.inventory.others.push(this.others[i])
+      this.char.inventory.others.push(this.others[i]);
     }
-    this.char.current_carry_weight = this.char.inventory.getWeight()
+    this.char.current_carry_weight = this.char.inventory.getWeight();
     this.dataProvider.saveCharacter(this.char).then(res => {
       if (!res) {
-        console.log("Erro")
+        console.log("Erro");
       }
     })
-      .catch(error => { console.log(error) })
+      .catch(error => { console.log(error); });
   }
+
   updateInfo() {
     this.current_weight = this.char.inventory.getWeight()
     console.log(this.current_weight)
     this.char.current_carry_weight = this.current_weight
     this.current_price = this.char.inventory.getValue()
     this.current_category = this.char.getCarryCategory()
+    this.saveChar()
   }
   openBuyItemModal() {
     this.profileModal = this.modalCtrl.create(ModalBuyItems, { strength: this.char.strength, resources: this.char.resources })
@@ -92,8 +102,8 @@ export class InventoryPage {
         case "other": this.char.inventory.others.push(item); this.others.push(item); break
       }
       this.char.resources -= item.cost
+      this.updateInfo()
     })
-    this.updateInfo()
   }
   openAddItemModal() {
     this.profileModal = this.modalCtrl.create(ModalAddItems, { strength: this.char.strength, resources: this.char.resources })
@@ -102,25 +112,34 @@ export class InventoryPage {
       if (item == undefined) return
       item.bought = false
       switch (item.type) {
-        case "one_hand":
-        case "two_hand": this.weapons.push(item); break
-        case "shield": this.shields.push(item); break
+        case "one_hand": this.char.inventory.one_hand_weapons.push(item); this.weapons.push(item); break
+        case "two_hand": this.char.inventory.two_hand_weapons.push(item); this.weapons.push(item); break
+        case "shield": this.char.inventory.shields.push(item); this.shields.push(item); break
         case "head":
         case "torax":
         case "arms":
         case "hands":
         case "legs":
-        case "feet": this.armors.push(item); break
-        case "consumable": this.consumables.push(item); break
-        case "other": this.others.push(item); break
+        case "feet": this.char.inventory.armors.push(item); this.armors.push(item); break
+        case "consumable": this.char.inventory.consumables.push(item); this.consumables.push(item); break
+        case "other": this.char.inventory.others.push(item); this.others.push(item); break
       }
+      this.updateInfo()
     })
-    this.updateInfo()
   }
   openAddNewItemModal() {
     this.profileModal = this.modalCtrl.create(ModalAddNewItems, { resouces: this.char.resources })
     this.profileModal.present()
     this.profileModal.onDidDismiss(item => {
+      this.updateInfo()
+    })
+  }
+  openAddResourceModal() {
+    this.profileModal = this.modalCtrl.create(ModalAddResource, { })
+    this.profileModal.present()
+    this.profileModal.onDidDismiss(res => {
+      if (res == undefined) return
+      this.char.resources+=res
       this.updateInfo()
     })
   }
