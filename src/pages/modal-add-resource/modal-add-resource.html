@@ -31,19 +31,31 @@
 <html style="background:white">
 <ion-content padding>
     <form novalidate [formGroup]="form" id="Resource-form" (ngSubmit)="returnData()">
+            <ion-title>
+                Current Resources: {{resources}}
+            </ion-title>
         <ion-list id="Resource-list">
+            <ion-list radio-group formControlName="operation">
+                <ion-item>
+                    <ion-label>Add resources</ion-label>
+                    <ion-radio checked="true" value="add"></ion-radio>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Remove resources</ion-label>
+                    <ion-radio checked="false" value="remove"></ion-radio>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Remove all resources</ion-label>
+                    <ion-radio checked="false" value="all"></ion-radio>
+                </ion-item>
+            </ion-list>
             <ion-item id="Resource-positive-value">
-                <ion-label floating>
-                    Name
-                </ion-label>
-                <ion-input formControlName="positive" type="text"></ion-input>
-            </ion-item>
-            <ion-item id="Resource-positive-value">
-                <ion-label floating>
+                <ion-label>
                     Value
                 </ion-label>
                 <ion-input formControlName="value" type="text"></ion-input>
             </ion-item>
+            <button ion-button item-end on-click="returnData()">Confirm</button>
         </ion-list>
     </form>
 </ion-content>

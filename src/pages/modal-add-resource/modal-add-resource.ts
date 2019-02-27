@@ -7,21 +7,42 @@ import { Component } from '@angular/core'
   templateUrl: 'modal-add-resource.html'
 })
 export class ModalAddResource {
-  positiveValue: boolean
-  value: number
+  resources: number
   form: FormGroup
 
-  constructor(public viewCtrl: ViewController, public formBuilder: FormBuilder) {
+  constructor(public viewCtrl: ViewController, public formBuilder: FormBuilder, public params: NavParams) {
+    this.resources = params.get("resources")
     this.form = this.formBuilder.group({
-      value: ['', Validators.compose([Validators.pattern('[0-9]*')])]
+      value: ['', Validators.compose([Validators.pattern('[0-9]*')])],
+      operation:[]
     })
   }
-
   returnData() {
-
-    if (this.positiveValue)
-      this.viewCtrl.dismiss(this.value)
-    else
-      this.viewCtrl.dismiss(-1 * this.value)
+    var form = this.form.getRawValue();
+    if (this.form.valid) {
+      var finalValue=0
+      switch (form.operation) {
+        case "add": {
+          finalValue=form.value
+          break
+        }
+        case "remove": {
+          finalValue=-1*form.value
+          break
+        }
+        case "all": {
+          finalValue=-1*this.resources
+          break
+        }
+        default:{
+          finalValue=form.value
+          break
+        }
+      }
+      this.viewCtrl.dismiss(finalValue)
+    }
+    else {
+      this.form.markAsPending()
+    }
   }
 }

@@ -73,7 +73,6 @@ export class InventoryPage {
     })
       .catch(error => { console.log(error); });
   }
-
   updateInfo() {
     this.current_weight = this.char.inventory.getWeight()
     console.log(this.current_weight)
@@ -135,11 +134,11 @@ export class InventoryPage {
     })
   }
   openAddResourceModal() {
-    this.profileModal = this.modalCtrl.create(ModalAddResource, { })
+    this.profileModal = this.modalCtrl.create(ModalAddResource, {resources:this.char.resources })
     this.profileModal.present()
     this.profileModal.onDidDismiss(res => {
       if (res == undefined) return
-      this.char.resources+=res
+      this.char.resources+=Number.parseInt(res)
       this.updateInfo()
     })
   }
