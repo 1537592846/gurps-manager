@@ -1,4 +1,3 @@
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { ViewController, NavParams } from "ionic-angular";
 import { DataProvider } from "../../providers/data/data";
 import { Component } from "@angular/core";
@@ -21,10 +20,14 @@ export class ModalTest {
 
   testLeftHandBasicValue: number
   testLeftHandEquipmentValue: number
+  testLeftHandBalanceEquipmentValue: number
+  testLeftHandPiercingEquipmentValue: number
   testLeftHandEndResult: number
 
   testRightHandBasicValue: number
   testRightHandEquipmentValue: number
+  testRightHandBalanceEquipmentValue: number
+  testRightHandPiercingEquipmentValue: number
   testRightHandEndResult: number
 
   constructor(public viewCtrl: ViewController, public params: NavParams, public dataProvider: DataProvider) {
@@ -39,7 +42,59 @@ export class ModalTest {
     switch (this.testName) {
       case "attack":
         {
-          break
+          this.testBasicValueName = this.testName.toUpperCase()[0] + this.testName.substr(1)
+          var leftHand: any
+          var rightHand: any
+          if (this.char.equipments.both_hands.formula == undefined || this.char.equipments.both_hands.formula === "") {
+            try {
+              leftHand = JSON.parse(this.char.equipments.left_hand.formula)
+              this.testLeftHandBasicValue = 3 + Number.parseInt("" + this.char.returnWeaponSkillLevel(this.char.equipments.left_hand) / 2)
+            } catch (e) { }
+            try {
+              rightHand = JSON.parse(this.char.equipments.right_hand.formula)
+              this.testRightHandBasicValue = 3 + Number.parseInt("" + this.char.returnWeaponSkillLevel(this.char.equipments.right_hand) / 2)
+            } catch (e) { 
+            }
+          } else {
+            try {
+              leftHand = JSON.parse(this.char.equipments.both_hands.formula)
+              this.testLeftHandBasicValue = 3 + Number.parseInt("" + this.char.returnWeaponSkillLevel(this.char.equipments.both_hands) / 2)
+            } catch (e) { }
+            try {
+              rightHand = JSON.parse(this.char.equipments.both_hands.formula)
+              this.testRightHandBasicValue = 3 + Number.parseInt("" + this.char.returnWeaponSkillLevel(this.char.equipments.both_hands) / 2)
+            } catch (e) { }
+          }
+
+          if (leftHand == undefined) {
+            this.testLeftHandBalanceEquipmentValue = -1
+            this.testLeftHandPiercingEquipmentValue = -1
+          }
+          else {
+            if (leftHand.balance_attack == "No")
+              this.testLeftHandBalanceEquipmentValue = -1
+            else
+              this.testLeftHandBalanceEquipmentValue = Number.parseInt(leftHand.balance_attack)
+            if (leftHand.piercing_attack == "No")
+              this.testLeftHandPiercingEquipmentValue = -1
+            else
+              this.testLeftHandPiercingEquipmentValue = Number.parseInt(leftHand.piercing_attack)
+          }
+
+          if (rightHand == undefined) {
+            this.testRightHandBalanceEquipmentValue = -1
+            this.testRightHandPiercingEquipmentValue = -1
+          }
+          else {
+            if (rightHand.balance_attack == "No")
+              this.testRightHandBalanceEquipmentValue = -1
+            else
+              this.testRightHandBalanceEquipmentValue = Number.parseInt(rightHand.balance_attack)
+            if (rightHand.piercing_attack == "No")
+              this.testRightHandPiercingEquipmentValue = -1
+            else
+              this.testRightHandPiercingEquipmentValue = Number.parseInt(rightHand.piercing_attack)
+          }
         }
       case "dodge":
         {

@@ -22,7 +22,7 @@ export class ModalEquipments {
   Balance(weapon: any) {
     let weaponFormula = JSON.parse(weapon.formula)
     var bap: string = "Balance:"
-    if (weaponFormula.balance_attack != undefined) {
+    if (weaponFormula.balance_attack != "No") {
       var base = Constants.WeaponBalanceAttack[this.char.strength - 1]
       let weaponSignal = ""
       let weaponBonus = ""
@@ -73,7 +73,7 @@ export class ModalEquipments {
   Piercing(weapon: any) {
     let weaponFormula = JSON.parse(weapon.formula)
     var bap: string = "Piercing:"
-    if (weaponFormula.piercing_attack != undefined) {
+    if (weaponFormula.piercing_attack != "No") {
       var base = Constants.WeaponBalanceAttack[this.char.strength - 1]
       let weaponSignal = ""
       let weaponBonus = ""
