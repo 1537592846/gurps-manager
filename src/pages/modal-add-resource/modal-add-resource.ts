@@ -23,7 +23,7 @@ export class ModalAddResource {
       var finalValue=0
       switch (form.operation) {
         case "add": {
-          finalValue=form.value
+          finalValue=1*form.value
           break
         }
         case "remove": {
@@ -35,7 +35,7 @@ export class ModalAddResource {
           break
         }
         default:{
-          finalValue=form.value
+          finalValue=1*form.value
           break
         }
       }

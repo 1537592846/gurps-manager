@@ -49,7 +49,7 @@
                     <ion-radio checked="false" value="all"></ion-radio>
                 </ion-item>
             </ion-list>
-            <ion-item id="Resource-positive-value">
+            <ion-item id="Resource-positive-value" *ngIf='form.getRawValue().operation!="all"'>
                 <ion-label>
                     Value
                 </ion-label>

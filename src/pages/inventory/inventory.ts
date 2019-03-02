@@ -37,34 +37,6 @@ export class InventoryPage {
     this.saveChar();
   }
   private saveChar() {
-    this.char.inventory.one_hand_weapons = [];
-    this.char.inventory.two_hand_weapons = [];
-    this.char.inventory.shields = [];
-    this.char.inventory.armors = [];
-    this.char.inventory.consumables = [];
-    this.char.inventory.others = [];
-    for (let i = 0; i < this.weapons.length; i++) {
-      switch (this.weapons[i].type) {
-        case "one_hand":
-          this.char.inventory.one_hand_weapons.push(this.weapons[i]);
-          break;
-        case "two_hand":
-          this.char.inventory.two_hand_weapons.push(this.weapons[i]);
-          break;
-      }
-    }
-    for (let i = 0; i < this.shields.length; i++) {
-      this.char.inventory.shields.push(this.shields[i]);
-    }
-    for (let i = 0; i < this.armors.length; i++) {
-      this.char.inventory.armors.push(this.armors[i]);
-    }
-    for (let i = 0; i < this.consumables.length; i++) {
-      this.char.inventory.consumables.push(this.consumables[i]);
-    }
-    for (let i = 0; i < this.others.length; i++) {
-      this.char.inventory.others.push(this.others[i]);
-    }
     this.char.current_carry_weight = this.char.inventory.getWeight();
     this.dataProvider.saveCharacter(this.char).then(res => {
       if (!res) {
@@ -75,7 +47,6 @@ export class InventoryPage {
   }
   updateInfo() {
     this.current_weight = this.char.inventory.getWeight()
-    console.log(this.current_weight)
     this.char.current_carry_weight = this.current_weight
     this.current_price = this.char.inventory.getValue()
     this.current_category = this.char.getCarryCategory()
@@ -134,7 +105,7 @@ export class InventoryPage {
     })
   }
   openAddResourceModal() {
-    this.profileModal = this.modalCtrl.create(ModalAddResource, {resources:this.char.resources })
+    this.profileModal = this.modalCtrl.create(ModalAddResource, { resources: this.char.resources })
     this.profileModal.present()
     this.profileModal.onDidDismiss(res => {
       if (res == undefined) return
@@ -149,16 +120,20 @@ export class InventoryPage {
     this.consumables = [];
     this.others = [];
     for (let i = 0; i < this.char.inventory.one_hand_weapons.length; i++) {
-      this.weapons.push(this.char.inventory.one_hand_weapons[i])
+      if (this.char.inventory.one_hand_weapons[i].equipped = "")
+        this.weapons.push(this.char.inventory.one_hand_weapons[i])
     }
     for (let i = 0; i < this.char.inventory.two_hand_weapons.length; i++) {
-      this.weapons.push(this.char.inventory.two_hand_weapons[i])
+      if (this.char.inventory.two_hand_weapons[i].equipped = "")
+        this.weapons.push(this.char.inventory.two_hand_weapons[i])
     }
     for (let i = 0; i < this.char.inventory.shields.length; i++) {
-      this.shields.push(this.char.inventory.shields[i])
+      if (this.char.inventory.shields[i].equipped = "")
+        this.shields.push(this.char.inventory.shields[i])
     }
     for (let i = 0; i < this.char.inventory.armors.length; i++) {
-      this.armors.push(this.char.inventory.armors[i])
+      if (this.char.inventory.armors[i].equipped = "")
+        this.armors.push(this.char.inventory.armors[i])
     }
     for (let i = 0; i < this.char.inventory.consumables.length; i++) {
       this.consumables.push(this.char.inventory.consumables[i])
@@ -172,8 +147,6 @@ export class InventoryPage {
     this.destroyItem(item)
   }
   destroyItem(item: any) {
-    console.log(this.char.inventory.one_hand_weapons)
-    console.log(this.char.inventory.one_hand_weapons.indexOf(item))
     switch (item.type) {
       case "one_hand": {
         this.char.inventory.one_hand_weapons.splice(this.char.inventory.one_hand_weapons.indexOf(item), 1)

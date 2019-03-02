@@ -20,7 +20,6 @@ export class EquipmentsPage {
     this.char = navParams.data
   }
   ionViewWillEnter() {
-    console.log(this.char)
     this.getEquipments();
   }
   ionViewWillLeave() {
@@ -135,7 +134,7 @@ export class EquipmentsPage {
                   this.char.inventory.one_hand_weapons[i].equipped = "right_hand";
                 }
               }
-              this.char.equipments.left_hand = equipment
+              this.char.equipments.right_hand = equipment
             }
             if (equipment.type == "two_hand") {
               for (let i = 0; i < this.char.inventory.two_hand_weapons.length; i++) {
@@ -144,7 +143,7 @@ export class EquipmentsPage {
                 }
               }
               this.char.equipments.both_hands = equipment
-              this.names.left_hand = equipment.name
+              this.names.right_hand = equipment.name
             }
             if (equipment.type == "shield") {
               for (let i = 0; i < this.char.inventory.shields.length; i++) {
@@ -260,7 +259,7 @@ export class EquipmentsPage {
                   this.char.inventory.one_hand_weapons[i].equipped = "right_hand";
                 }
               }
-              this.char.equipments.left_hand = equipment
+              this.char.equipments.right_hand = equipment
             }
             if (equipment.type == "two_hand") {
               this.char.inventory.two_hand_weapons.filter(equip => equip == this.char.equipments.both_hands)[0].equipped = ""
