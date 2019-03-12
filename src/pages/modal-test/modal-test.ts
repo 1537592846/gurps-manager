@@ -53,7 +53,7 @@ export class ModalTest {
             try {
               rightHand = JSON.parse(this.char.equipments.right_hand.formula)
               this.testRightHandBasicValue = 3 + Number.parseInt("" + this.char.returnWeaponSkillLevel(this.char.equipments.right_hand) / 2)
-            } catch (e) { 
+            } catch (e) {
             }
           } else {
             try {
@@ -98,6 +98,8 @@ export class ModalTest {
         }
       case "dodge":
         {
+          this.testBasicValue = this.char.getDodge()
+          this.testEquipmentValue = Functions.getEquipmentStatus(this.char.equipments, this.testName)
           break
         }
       case "parry":
@@ -142,6 +144,14 @@ export class ModalTest {
         }
       case "block":
         {
+          this.testBasicValueName = this.testName.toUpperCase()[0] + this.testName.substr(1)
+          if (this.char.equipments.shield.name == undefined) {
+            this.testBasicValue = -1
+            this.testEquipmentValue = -1
+          } else {
+            this.testBasicValue = this.char.returnWeaponSkillLevel(this.char.equipments.shield)+3
+            this.testEquipmentValue= Functions.getEquipmentStatus(this.char.equipments, this.testName)
+          }
           break
         }
       default:

@@ -29,7 +29,7 @@
 <div padding>
     <title>
     </title>
-    <ion-list *ngIf='testName=="dodge"||testName=="parry"||testName=="block"'>
+    <ion-list *ngIf='testName=="parry"'>
         <ion-grid>
             <ion-row>
                 <ion-col col-33>
@@ -113,67 +113,67 @@
     <ion-list *ngIf='testName=="attack"'>
         <ion-grid>
             <ion-row>
-                <ion-col col-33>
+                <ion-col>
                     <ion-title style="text-align:center">{{testBasicValueName}} Test</ion-title>
                 </ion-col>
-                <ion-col col-33>
+                <ion-col style="width: 25%">
                     <ion-title style='text-align: center'>Left Hand</ion-title>
                 </ion-col>
-                <ion-col col-33>
+                <ion-col style="width: 25%">
                     <ion-title style='text-align: center'>Right Hand</ion-title>
                 </ion-col>
             </ion-row>
             <ion-row>
-                <ion-col col-33>
+                <ion-col col-50>
                     <ion-title style="text-align:center">{{testBasicValueName}}</ion-title>
                 </ion-col>
-                <ion-col col-33>
+                <ion-col col-25>
                     <ion-title *ngIf='testLeftHandBasicValue!=-1&&testLeftHandEquipmentValue!=-1' style='text-align: center'>{{testLeftHandBasicValue}}</ion-title>
                     <ion-title *ngIf='testLeftHandBalanceEquipmentValue==-1&&testLeftHandPiercingEquipmentValue==-1'></ion-title>
                     <ion-title *ngIf='testLeftHandBasicValue==-1' style='text-align: center'>Can't</ion-title>
                 </ion-col>
-                <ion-col col-33>
+                <ion-col col-25>
                     <ion-title *ngIf='testRightHandBasicValue!=-1&&testRightHandEquipmentValue!=-1' style='text-align: center'>{{testRightHandBasicValue}}</ion-title>
                     <ion-title *ngIf='testLeftHandBalanceEquipmentValue==-1&&testLeftHandPiercingEquipmentValue==-1'></ion-title>
                     <ion-title *ngIf='testRightHandBasicValue==-1' style='text-align: center'>Can't</ion-title>
                 </ion-col>
             </ion-row>
             <ion-row>
-                <ion-col col-33>
-                    <ion-title style="text-align:center">Balance Attack Bonus</ion-title>
+                <ion-col col-50>
+                    <ion-title style="text-align:center">Balance Attack</ion-title>
                 </ion-col>
-                <ion-col col-33>
+                <ion-col col-25>
                     <ion-title *ngIf='testLeftHandBasicValue!=-1&&testLeftHandBalanceEquipmentValue!=-1' style='text-align: center'>{{testLeftHandBalanceEquipmentValue}}</ion-title>
                     <ion-title *ngIf='testLeftHandBalanceEquipmentValue==-1' style='text-align: center'></ion-title>
                     <ion-title *ngIf='testLeftHandBasicValue==-1' style='text-align: center'>Can't</ion-title>
                 </ion-col>
-                <ion-col col-33>
+                <ion-col col-25>
                     <ion-title *ngIf='testRightHandBasicValue!=-1&&testRightHandBalanceEquipmentValue!=-1' style='text-align: center'>{{testRightHandBalanceEquipmentValue}}</ion-title>
                     <ion-title *ngIf='testRightHandBalanceEquipmentValue==-1' style='text-align: center'></ion-title>
                     <ion-title *ngIf='testRightHandBasicValue==-1' style='text-align: center'>Can't</ion-title>
                 </ion-col>
             </ion-row>
             <ion-row>
-                <ion-col col-33>
-                    <ion-title style="text-align:center">Piercing Attack Bonus</ion-title>
+                <ion-col col-50>
+                    <ion-title style="text-align:center">Piercing Attack</ion-title>
                 </ion-col>
-                <ion-col col-33>
+                <ion-col col-25>
                     <ion-title *ngIf='testLeftHandBasicValue!=-1&&testLeftHandPiercingEquipmentValue!=-1' style='text-align: center'>{{testLeftHandPiercingEquipmentValue}}</ion-title>
                     <ion-title *ngIf='testLeftHandPiercingEquipmentValue==-1' style='text-align: center'></ion-title>
                     <ion-title *ngIf='testLeftHandBasicValue==-1' style='text-align: center'>Can't</ion-title>
                 </ion-col>
-                <ion-col col-33>
+                <ion-col col-25>
                     <ion-title *ngIf='testRightHandBasicValue!=-1&&testRightHandPiercingEquipmentValue!=-1' style='text-align: center'>{{testRightHandPiercingEquipmentValue}}</ion-title>
                     <ion-title *ngIf='testRightHandPiercingEquipmentValue==-1' style='text-align: center'></ion-title>
                     <ion-title *ngIf='testRightHandBasicValue==-1' style='text-align: center'>Can't</ion-title>
                 </ion-col>
             </ion-row>
             <ion-row>
-                <ion-col col-33 style='text-align: center;margin-left: -11%'>
+                <ion-col>
                     <ion-title style='text-align: center'>Test Modifier</ion-title>
                 </ion-col>
-                <ion-col col-67 style='text-align: center;'>
-                    <div style='margin-left:-20%'>
+                <ion-col style="max-width:66%">
+                    <div style='text-align: center'>
                         <button ion-button small color="danger" on-click="removeModValue()">
                             <ion-icon name="remove"></ion-icon>
                         </button>
@@ -189,32 +189,32 @@
                 </ion-col>
             </ion-row>
             <ion-row>
-                <ion-col col-33>
-                    <ion-title style="text-align:center">Test Final Balance Value</ion-title>
+                <ion-col col-50>
+                    <ion-title style="text-align:center">Final Balance</ion-title>
                 </ion-col>
-                <ion-col>
+                <ion-col col-25>
                     <ion-title *ngIf='testLeftHandBasicValue!=-1&&testLeftHandBalanceEquipmentValue!=-1' style='text-align: center'>{{testLeftHandBasicValue+testLeftHandBalanceEquipmentValue+testModValue}}</ion-title>
                     <ion-title *ngIf='testLeftHandBalanceEquipmentValue==-1' style='text-align: center'></ion-title>
                     <ion-title *ngIf='testLeftHandBasicValue==-1' style='text-align: center'>Can't</ion-title>
                     <ion-title style='text-align: center'></ion-title>
                 </ion-col>
-                <ion-col>
+                <ion-col col-25>
                     <ion-title *ngIf='testRightHandBasicValue!=-1&&testRightHandBalanceEquipmentValue!=-1' style='text-align: center'>{{testRightHandBasicValue+testRightHandBalanceEquipmentValue+testModValue}}</ion-title>
                     <ion-title *ngIf='testRightHandBalanceEquipmentValue==-1' style='text-align: center'></ion-title>
                     <ion-title *ngIf='testRightHandBasicValue==-1' style='text-align: center'>Can't</ion-title>
                 </ion-col>
             </ion-row>
             <ion-row>
-                <ion-col col-33>
-                    <ion-title style="text-align:center">Test Final Piercing Value</ion-title>
+                <ion-col col-50>
+                    <ion-title style="text-align:center">Final Piercing</ion-title>
                 </ion-col>
-                <ion-col>
+                <ion-col col-25>
                     <ion-title *ngIf='testLeftHandBasicValue!=-1&&testLeftHandPiercingEquipmentValue!=-1' style='text-align: center'>{{testLeftHandBasicValue+testLeftHandPiercingEquipmentValue+testModValue}}</ion-title>
                     <ion-title *ngIf='testLeftHandPiercingEquipmentValue==-1' style='text-align: center'></ion-title>
                     <ion-title *ngIf='testLeftHandBasicValue==-1' style='text-align: center'>Can't</ion-title>
                     <ion-title style='text-align: center'></ion-title>
                 </ion-col>
-                <ion-col>
+                <ion-col col-25>
                     <ion-title *ngIf='testRightHandBasicValue!=-1&&testRightHandPiercingEquipmentValue!=-1' style='text-align: center'>{{testRightHandBasicValue+testRightHandPiercingEquipmentValue+testModValue}}</ion-title>
                     <ion-title *ngIf='testRightHandPiercingEquipmentValue==-1' style='text-align: center'></ion-title>
                     <ion-title *ngIf='testRightHandBasicValue==-1' style='text-align: center'>Can't</ion-title>
@@ -222,7 +222,7 @@
             </ion-row>
         </ion-grid>
     </ion-list>
-    <ion-list *ngIf='testName!="dodge"&&testName!="parry"&&testName!="block"&&testName!="attack"'>
+    <ion-list *ngIf='testName!="parry"&&testName!="attack"'>
         <ion-item>
             <ion-title style="text-align:center">
                 {{testBasicValueName}} Test
@@ -230,11 +230,13 @@
         </ion-item>
         <ion-item color="none" id="basic_status" style="font-size:250% !important">
             {{testBasicValueName}}
-            <ion-note item-right>{{testBasicValue}}</ion-note>
+            <ion-note item-right *ngIf="testBasicValue!=-1">{{testBasicValue}}</ion-note>
+            <ion-note item-right *ngIf="testBasicValue==-1">Can't</ion-note>
         </ion-item>
         <ion-item color="none" id="equipment_status" style="font-size:250% !important">
             Equipment Bonus
-            <ion-note item-right>{{testEquipmentValue}}</ion-note>
+            <ion-note item-right *ngIf="testEquipmentValue!=-1">{{testEquipmentValue}}</ion-note>
+            <ion-note item-right *ngIf="testEquipmentValue==-1">Can't</ion-note>
         </ion-item>
         <ion-item style="font-size:250% !important">
             Test Modifier
@@ -254,9 +256,9 @@
         </ion-item>
         <ion-item id="end_value" style="font-size:250% !important">
             Test Final Value
-            <ion-note item-right style="color:black">{{testBasicValue+testEquipmentValue+testModValue}}</ion-note>
+            <ion-note item-right style="color:black" *ngIf="testBasicValue!=-1">{{testBasicValue+testEquipmentValue+testModValue}}</ion-note>
+            <ion-note item-right style="color:black"*ngIf="testBasicValue==-1">Can't</ion-note>
         </ion-item>
     </ion-list>
 </div>
-
 </html>
