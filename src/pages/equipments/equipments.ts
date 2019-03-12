@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { NavParams, ModalController } from 'ionic-angular';
 import { Character } from '../../../models/Character';
 import { ModalEquipments } from '../modal-equipments/modal-equipments';
-import { OneHandWeapon, Armor, TwoHandWeapon, Shield } from '../../../models/Item';
 
 @Component({
   selector: 'page-equipments',
@@ -24,8 +23,9 @@ export class EquipmentsPage {
   }
   ionViewWillLeave() {
     this.dataProvider.saveCharacter(this.char).then(res => {
+      console.log(this.char)
       if (!res) {
-        console.log("Erro")
+        console.log("Error saving equipment")
       }
     })
       .catch(error => { console.log(error) })
@@ -63,7 +63,8 @@ export class EquipmentsPage {
         }
         case "both_hands": {
           this.char.equipments.both_hands = equipped[i]
-          this.names.both_hands = equipped[i].name
+          this.names.left_hand = equipped[i].name
+          this.names.right_hand = equipped[i].name
           break
         }
         case "head": {
