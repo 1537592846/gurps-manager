@@ -1,6 +1,6 @@
 import { DataProvider } from './../../providers/data/data';
 import { Component } from '@angular/core';
-import { NavParams, ModalController } from 'ionic-angular';
+import { NavParams, ModalController, NavController } from 'ionic-angular';
 import { Character } from '../../../models/Character';
 import { ModalEquipments } from '../modal-equipments/modal-equipments';
 
@@ -14,21 +14,12 @@ export class EquipmentsPage {
   names: any = { "left_hand": "Empty", "right_hand": "Empty", "head": "Empty", "torax": "Empty", "arms": "Empty", "hands": "Empty", "legs": "Empty", "feet": "Empty" }
   profileModal: any
 
-  constructor(public navParams: NavParams, public modalCtrl: ModalController, public dataProvider: DataProvider) {
+  constructor(public navCtrl: NavController,public navParams: NavParams, public modalCtrl: ModalController, public dataProvider: DataProvider) {
     //Getting data
     this.char = navParams.data
   }
   ionViewWillEnter() {
     this.getEquipments();
-  }
-  ionViewWillLeave() {
-    this.dataProvider.saveCharacter(this.char).then(res => {
-      console.log(this.char)
-      if (!res) {
-        console.log("Error saving equipment")
-      }
-    })
-      .catch(error => { console.log(error) })
   }
   getEquipments() {
     this.names = { "left_hand": "Empty", "right_hand": "Empty", "head": "Empty", "torax": "Empty", "arms": "Empty", "hands": "Empty", "legs": "Empty", "feet": "Empty" }
@@ -36,7 +27,7 @@ export class EquipmentsPage {
     var twoHands = this.char.inventory.two_hand_weapons.filter(equip => equip.equipped != "")
     var shields = this.char.inventory.shields.filter(equip => equip.equipped != "")
     var armors = this.char.inventory.armors.filter(equip => equip.equipped != "")
-    var equipped: any[]=[]
+    var equipped: any[] = []
     for (var i = 0; i < oneHands.length; i++) {
       equipped.push(oneHands[i])
     }
@@ -64,6 +55,11 @@ export class EquipmentsPage {
         case "both_hands": {
           this.char.equipments.both_hands = equipped[i]
           this.names.left_hand = equipped[i].name
+          this.names.right_hand = equipped[i].name
+          break
+        }
+        case "shield": {
+          this.char.equipments.shield = equipped[i]
           this.names.right_hand = equipped[i].name
           break
         }
@@ -97,8 +93,17 @@ export class EquipmentsPage {
           this.names.feet = equipped[i].name
           break
         }
+        default: {
+          console.log("Equipment with wrong type")
+        }
       }
     }
+    this.dataProvider.saveCharacter(this.char).then(res => {
+      if (!res) {
+        console.log("Error saving equipment")
+      }
+    })
+      .catch(error => { console.log(error) })
   }
 
   equipEquipment(type: string) {
@@ -149,7 +154,7 @@ export class EquipmentsPage {
             if (equipment.type == "shield") {
               for (let i = 0; i < this.char.inventory.shields.length; i++) {
                 if (this.char.inventory.shields[i].name == equipment.name) {
-                  this.char.inventory.shields[i].equipped = "right_hand";
+                  this.char.inventory.shields[i].equipped = "shield";
                 }
               }
               this.char.equipments.shield = equipment
@@ -219,8 +224,8 @@ export class EquipmentsPage {
           }
         }
       }
+      this.getEquipments()
     })
-    this.getEquipments()
   }
 
   changeEquipment(type: string) {
@@ -361,56 +366,56 @@ export class EquipmentsPage {
       case 'left_hand': {
         if (this.char.equipments.left_hand != undefined) {
           this.char.inventory.one_hand_weapons.filter(equip => equip.equipped === "left_hand")[0].equipped = ""
-          this.char.equipments.left_hand=undefined
+          this.char.equipments.left_hand = undefined
         } else {
           this.char.inventory.two_hand_weapons.filter(equip => equip.equipped === "both_hand")[0].equipped = ""
-          this.char.equipments.both_hands=undefined
+          this.char.equipments.both_hands = undefined
         }
         break
       }
       case 'right_hand': {
         if (this.char.equipments.right_hand != undefined) {
           this.char.inventory.one_hand_weapons.filter(equip => equip == this.char.equipments.right_hand)[0].equipped = ""
-          this.char.equipments.right_hand=undefined
+          this.char.equipments.right_hand = undefined
         } else {
           if (this.char.equipments.shield != undefined) {
             this.char.inventory.shields.filter(equip => equip == this.char.equipments.shield)[0].equipped = ""
-            this.char.equipments.right_hand=undefined
+            this.char.equipments.right_hand = undefined
           } else {
             this.char.inventory.two_hand_weapons.filter(equip => equip == this.char.equipments.both_hands)[0].equipped = ""
-            this.char.equipments.both_hands=undefined
+            this.char.equipments.both_hands = undefined
           }
         }
         break
       }
       case 'head': {
         this.char.inventory.armors.filter(equip => equip == this.char.equipments.head)[0].equipped = ""
-        this.char.equipments.head=undefined
+        this.char.equipments.head = undefined
         break
       }
       case 'torax': {
         this.char.inventory.armors.filter(equip => equip == this.char.equipments.torax)[0].equipped = ""
-        this.char.equipments.torax=undefined
+        this.char.equipments.torax = undefined
         break
       }
       case 'legs': {
         this.char.inventory.armors.filter(equip => equip == this.char.equipments.legs)[0].equipped = ""
-        this.char.equipments.legs=undefined
+        this.char.equipments.legs = undefined
         break
       }
       case 'feet': {
         this.char.inventory.armors.filter(equip => equip == this.char.equipments.feet)[0].equipped = ""
-        this.char.equipments.feet=undefined
+        this.char.equipments.feet = undefined
         break
       }
       case 'arms': {
         this.char.inventory.armors.filter(equip => equip == this.char.equipments.arms)[0].equipped = ""
-        this.char.equipments.arms=undefined
+        this.char.equipments.arms = undefined
         break
       }
       case 'hands': {
         this.char.inventory.armors.filter(equip => equip == this.char.equipments.hands)[0].equipped = ""
-        this.char.equipments.hands=undefined
+        this.char.equipments.hands = undefined
         break
       }
     }

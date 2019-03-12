@@ -26,6 +26,7 @@ export class InventoryPage {
 
   constructor(public navParams: NavParams, public modalCtrl: ModalController, public dataProvider: DataProvider) {
     //Getting data
+    console.log(this.char)
     this.char = navParams.data
     this.getInventory()
     this.updateInfo()
@@ -33,14 +34,11 @@ export class InventoryPage {
   ionViewWillEnter() {
     this.getInventory();
   }
-  ionViewWillLeave() {
-    this.saveChar();
-  }
   private saveChar() {
     this.char.current_carry_weight = this.char.inventory.getWeight();
     this.dataProvider.saveCharacter(this.char).then(res => {
       if (!res) {
-        console.log("Erro");
+        console.log("Error saving character");
       }
     })
       .catch(error => { console.log(error); });
@@ -109,7 +107,7 @@ export class InventoryPage {
     this.profileModal.present()
     this.profileModal.onDidDismiss(res => {
       if (res == undefined) return
-      this.char.resources+=Number.parseInt(res)
+      this.char.resources += Number.parseInt(res)
       this.updateInfo()
     })
   }
@@ -120,8 +118,9 @@ export class InventoryPage {
     this.consumables = [];
     this.others = [];
     for (let i = 0; i < this.char.inventory.one_hand_weapons.length; i++) {
-      if (this.char.inventory.one_hand_weapons[i].equipped = "")
+      if (this.char.inventory.one_hand_weapons[i].equipped = "") {
         this.weapons.push(this.char.inventory.one_hand_weapons[i])
+      }
     }
     for (let i = 0; i < this.char.inventory.two_hand_weapons.length; i++) {
       if (this.char.inventory.two_hand_weapons[i].equipped = "")
