@@ -15,20 +15,17 @@ export class ModalTest {
 
   testBasicValue: number
   testBasicValueName: string
-  testEndResult: number
   testEquipmentValue: number
 
   testLeftHandBasicValue: number
   testLeftHandEquipmentValue: number
   testLeftHandBalanceEquipmentValue: number
   testLeftHandPiercingEquipmentValue: number
-  testLeftHandEndResult: number
 
   testRightHandBasicValue: number
   testRightHandEquipmentValue: number
   testRightHandBalanceEquipmentValue: number
   testRightHandPiercingEquipmentValue: number
-  testRightHandEndResult: number
 
   constructor(public viewCtrl: ViewController, public params: NavParams, public dataProvider: DataProvider) {
     this.testName = params.data.test
@@ -45,7 +42,7 @@ export class ModalTest {
           this.testBasicValueName = this.testName.toUpperCase()[0] + this.testName.substr(1)
           var leftHand: any
           var rightHand: any
-          if (this.char.equipments.both_hands.formula == undefined || this.char.equipments.both_hands.formula === "") {
+          if (this.char.equipments.both_hands.formula == undefined || this.char.equipments.both_hands.formula == "") {
             try {
               leftHand = JSON.parse(this.char.equipments.left_hand.formula)
               this.testLeftHandBasicValue = 3 + Number.parseInt("" + this.char.returnWeaponSkillLevel(this.char.equipments.left_hand) / 2)

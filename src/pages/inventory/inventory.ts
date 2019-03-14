@@ -26,13 +26,13 @@ export class InventoryPage {
 
   constructor(public navParams: NavParams, public modalCtrl: ModalController, public dataProvider: DataProvider) {
     //Getting data
-    console.log(this.char)
     this.char = navParams.data
     this.getInventory()
     this.updateInfo()
   }
   ionViewWillEnter() {
-    this.getInventory();
+    this.getInventory()
+    this.updateInfo()
   }
   private saveChar() {
     this.char.current_carry_weight = this.char.inventory.getWeight();
@@ -48,7 +48,6 @@ export class InventoryPage {
     this.char.current_carry_weight = this.current_weight
     this.current_price = this.char.inventory.getValue()
     this.current_category = this.char.getCarryCategory()
-    this.saveChar()
   }
   openBuyItemModal() {
     this.profileModal = this.modalCtrl.create(ModalBuyItems, { strength: this.char.strength, resources: this.char.resources })
@@ -70,6 +69,7 @@ export class InventoryPage {
         case "other": this.char.inventory.others.push(item); this.others.push(item); break
       }
       this.char.resources -= item.cost
+      this.saveChar()
       this.updateInfo()
     })
   }
@@ -92,6 +92,7 @@ export class InventoryPage {
         case "consumable": this.char.inventory.consumables.push(item); this.consumables.push(item); break
         case "other": this.char.inventory.others.push(item); this.others.push(item); break
       }
+      this.saveChar()
       this.updateInfo()
     })
   }
@@ -99,6 +100,7 @@ export class InventoryPage {
     this.profileModal = this.modalCtrl.create(ModalAddNewItems, { resouces: this.char.resources })
     this.profileModal.present()
     this.profileModal.onDidDismiss(item => {
+      this.saveChar()
       this.updateInfo()
     })
   }
@@ -108,30 +110,31 @@ export class InventoryPage {
     this.profileModal.onDidDismiss(res => {
       if (res == undefined) return
       this.char.resources += Number.parseInt(res)
+      this.saveChar()
       this.updateInfo()
     })
   }
   getInventory() {
-    this.weapons = [];
+    this.weapons=[]
     this.shields = [];
     this.armors = [];
     this.consumables = [];
     this.others = [];
     for (let i = 0; i < this.char.inventory.one_hand_weapons.length; i++) {
-      if (this.char.inventory.one_hand_weapons[i].equipped = "") {
+      if (this.char.inventory.one_hand_weapons[i].equipped == "") {
         this.weapons.push(this.char.inventory.one_hand_weapons[i])
       }
     }
     for (let i = 0; i < this.char.inventory.two_hand_weapons.length; i++) {
-      if (this.char.inventory.two_hand_weapons[i].equipped = "")
+      if (this.char.inventory.two_hand_weapons[i].equipped == "")
         this.weapons.push(this.char.inventory.two_hand_weapons[i])
     }
     for (let i = 0; i < this.char.inventory.shields.length; i++) {
-      if (this.char.inventory.shields[i].equipped = "")
+      if (this.char.inventory.shields[i].equipped == "")
         this.shields.push(this.char.inventory.shields[i])
     }
     for (let i = 0; i < this.char.inventory.armors.length; i++) {
-      if (this.char.inventory.armors[i].equipped = "")
+      if (this.char.inventory.armors[i].equipped == "")
         this.armors.push(this.char.inventory.armors[i])
     }
     for (let i = 0; i < this.char.inventory.consumables.length; i++) {
@@ -144,6 +147,7 @@ export class InventoryPage {
   sellItem(item: any) {
     this.char.resources += item.cost
     this.destroyItem(item)
+    this.saveChar()
   }
   destroyItem(item: any) {
     switch (item.type) {

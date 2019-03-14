@@ -14,7 +14,7 @@ export class EquipmentsPage {
   names: any = { "left_hand": "Empty", "right_hand": "Empty", "head": "Empty", "torax": "Empty", "arms": "Empty", "hands": "Empty", "legs": "Empty", "feet": "Empty" }
   profileModal: any
 
-  constructor(public navCtrl: NavController,public navParams: NavParams, public modalCtrl: ModalController, public dataProvider: DataProvider) {
+  constructor(public navParams: NavParams, public modalCtrl: ModalController, public dataProvider: DataProvider) {
     //Getting data
     this.char = navParams.data
   }
