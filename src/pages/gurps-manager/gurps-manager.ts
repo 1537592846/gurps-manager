@@ -10,7 +10,6 @@ import { Skill } from '../../../models/Skill';
 import { Advantage } from '../../../models/Advantage';
 import { Disadvantage } from '../../../models/Disadvantage';
 import { Armor, Consumable, OneHandWeapon, TwoHandWeapon, Other, Shield } from '../../../models/Item';
-import { isUndefined } from 'ionic-angular/umd/util/util';
 import { Equipment } from '../../../models/Equipment';
 
 @Component({

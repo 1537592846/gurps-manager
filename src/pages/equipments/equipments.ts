@@ -1,6 +1,6 @@
 import { DataProvider } from './../../providers/data/data';
 import { Component } from '@angular/core';
-import { NavParams, ModalController, NavController } from 'ionic-angular';
+import { NavParams, ModalController } from 'ionic-angular';
 import { Character } from '../../../models/Character';
 import { ModalEquipments } from '../modal-equipments/modal-equipments';
 

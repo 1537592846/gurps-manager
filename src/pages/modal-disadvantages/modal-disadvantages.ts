@@ -111,6 +111,7 @@ export class ModalDisadvantages {
       this.dataProvider.getDisadvantages().then(res => {
         let data = res as any[]
         for (let i = 0; i < data.length; i++) {
+          if(this.char_disadvantages.filter(x=>x.name==data[i].Name).length>0)continue
           var disadvantage = new Disadvantage
           disadvantage.id = data[i].Id
           disadvantage.name = data[i].Name
@@ -124,7 +125,7 @@ export class ModalDisadvantages {
         }
       })
         .catch(error => { console.log(error) });
-    }
+    }    
   }
 
   notInCharList(disadvantage: Disadvantage): boolean {

@@ -1,7 +1,6 @@
 import { ViewController, NavParams } from 'ionic-angular'
 import { Component } from '@angular/core'
 import { DataProvider } from '../../providers/data/data'
-import { Character } from '../../../models/Character';
 import { OneHandWeapon, TwoHandWeapon, Shield, Armor, Other } from '../../../models/Item';
 import { Constants } from '../../../models/Functions';
 import { Consumable } from '../../../models/Item';
