@@ -1,0 +1,14 @@
+{
+    "tasks": [
+        {
+            "label":"Serve",
+            "type": "npm",
+            "group":{
+                "kind": "build",
+                "isDefault": true
+            },
+            "script": "ionic:serve",
+            "problemMatcher": []
+        }
+    ]
+}
