@@ -1,4 +1,4 @@
-<ion-header>
+s<ion-header>
   <ion-navbar>
     <ion-title>
       Character Advantages
@@ -24,20 +24,23 @@
           <button *ngIf="advantage.level>1" ion-button color="danger" on-click="removeAdvantageLevel(advantage)">
             <ion-icon name="remove"></ion-icon>
           </button>
-          <button *ngIf="advantage.level==1" disabled ion-button color="danger" on-click="removeAdvantageLevel(advantage)">
-              <ion-icon name="remove"></ion-icon>
+          <button *ngIf="advantage.level==1" disabled ion-button color="danger"
+            on-click="removeAdvantageLevel(advantage)">
+            <ion-icon name="remove"></ion-icon>
           </button>
           <button ion-button disabled color="light">
             <label style="width:10ex">
               {{advantage.level}}
             </label>
           </button>
-          <button *ngIf="advantage.level<advantage.levelCap" ion-button color="secondary" on-click="addAdvantageLevel(advantage)">
-              <ion-icon name="add"></ion-icon>
-            </button>
-            <button *ngIf="advantage.level==advantage.levelCap" disabled ion-button color="secondary" on-click="addAdvantageLevel(advantage)">
-                <ion-icon name="add"></ion-icon>
-            </button>
+          <button *ngIf="advantage.level<advantage.levelCap" ion-button color="secondary"
+            on-click="addAdvantageLevel(advantage)">
+            <ion-icon name="add"></ion-icon>
+          </button>
+          <button *ngIf="advantage.level==advantage.levelCap" disabled ion-button color="secondary"
+            on-click="addAdvantageLevel(advantage)">
+            <ion-icon name="add"></ion-icon>
+          </button>
           <button ion-button color="danger" on-click="removeAdvantage(advantage)">
             Remove
           </button>

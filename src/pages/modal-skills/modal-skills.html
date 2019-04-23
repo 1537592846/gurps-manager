@@ -12,6 +12,10 @@
     ion-thumbnail {
         width: 20%
     }
+
+ion-list{
+    padding-bottom:20%
+}
 </style>
 
 <html style="background:white">
@@ -32,7 +36,7 @@
     </ion-segment>
 </div>
 
-<div [ngSwitch]="skillsModel">
+<ion-content [ngSwitch]="skillsModel">
     <ion-list *ngSwitchCase="'strength'">
         <ion-item-sliding *ngFor="let strength of strengths">
             <ion-item *ngIf="notInCharList(strength)">
@@ -85,6 +89,6 @@
             </ion-item>
         </ion-item-sliding>
     </ion-list>
-</div>
+</ion-content>
 
 </html>

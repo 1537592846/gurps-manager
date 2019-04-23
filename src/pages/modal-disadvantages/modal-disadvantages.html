@@ -23,6 +23,10 @@
     ion-thumbnail {
         width: 20%
     }
+
+    ion-list{
+        padding-bottom:20%
+    }
 </style>
 
 <html style="background:white">
@@ -50,7 +54,7 @@
 </div>
 
 <ion-content [ngSwitch]="disadvantagesModel">
-    <ion-list *ngSwitchCase="'mental'" style="padding-bottom:20%">
+    <ion-list *ngSwitchCase="'mental'">
         <ion-item-sliding *ngFor="let mental of mentals">
             <ion-item *ngIf="notInCharList(mental)">
                 <ion-thumbnail item-start>
@@ -100,7 +104,7 @@
             </ion-item>
         </ion-item-sliding>
     </ion-list>
-    <ion-list *ngSwitchCase="'physical'" style="padding-bottom:20%">
+    <ion-list *ngSwitchCase="'physical'">
         <ion-item-sliding *ngFor="let physical of physicals">
             <ion-item *ngIf="notInCharList(physical)">
                 <ion-thumbnail item-start>
@@ -150,7 +154,7 @@
             </ion-item>
         </ion-item-sliding>
     </ion-list>
-    <ion-list *ngSwitchCase="'social'" style="padding-bottom:20%">
+    <ion-list *ngSwitchCase="'social'">
         <ion-item-sliding *ngFor="let social of socials">
             <ion-item *ngIf="notInCharList(social)">
                 <ion-thumbnail item-start>
@@ -200,7 +204,7 @@
             </ion-item>
         </ion-item-sliding>
     </ion-list>
-    <ion-list *ngSwitchCase="'exotic'" style="padding-bottom:20%">
+    <ion-list *ngSwitchCase="'exotic'">
         <ion-item-sliding *ngFor="let exotic of exotics">
             <ion-item *ngIf="notInCharList(exotic)">
                 <ion-thumbnail item-start>
@@ -250,7 +254,7 @@
             </ion-item>
         </ion-item-sliding>
     </ion-list>
-    <ion-list *ngSwitchCase="'supernatural'" style="padding-bottom:20%">
+    <ion-list *ngSwitchCase="'supernatural'">
         <ion-item-sliding *ngFor="let supernatural of supernaturals">
             <ion-item *ngIf="notInCharList(supernatural)">
                 <ion-thumbnail item-start>
@@ -300,7 +304,7 @@
             </ion-item>
         </ion-item-sliding>
     </ion-list>
-    <ion-list *ngSwitchCase="'mundane'" style="padding-bottom:20%">
+    <ion-list *ngSwitchCase="'mundane'">
         <ion-item-sliding *ngFor="let mundane of mundanes">
             <ion-item *ngIf="notInCharList(mundane)">
                 <ion-thumbnail item-start>

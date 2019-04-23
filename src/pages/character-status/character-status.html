@@ -1,3 +1,8 @@
+<style>
+  ion-label {
+    width: 20%
+  }
+</style>
 <ion-header>
   <ion-navbar>
     <ion-title>
@@ -30,8 +35,8 @@
       </ion-range>
     </ion-item>
     <ion-item id="characterStatus-range_char_intelligence">
-      <ion-range [(ngModel)]="new_char.intelligence" [ngModelOptions]="{standalone: true}" min="0" max="{{max_intelligence}}"
-        step="1" (ionChange)="updateIntelligence()">
+      <ion-range [(ngModel)]="new_char.intelligence" [ngModelOptions]="{standalone: true}" min="0"
+        max="{{max_intelligence}}" step="1" (ionChange)="updateIntelligence()">
         <ion-label range-left>
           Intelligence (IQ)
         </ion-label>
@@ -49,8 +54,8 @@
     </ion-item>
     <div class="spacer" style="height:40px;" id="characterStatus-spacer"></div>
     <ion-item id="characterStatus-range_char_max_life_points">
-      <ion-range [(ngModel)]="new_char.max_life_points" [ngModelOptions]="{standalone: true}" min="{{new_char.strength}}" max="{{max_life_points}}"
-        step="1" (ionChange)="updateLifePoints()">
+      <ion-range [(ngModel)]="new_char.max_life_points" [ngModelOptions]="{standalone: true}"
+        min="{{new_char.strength}}" max="{{max_life_points}}" step="1" (ionChange)="updateLifePoints()">
         <ion-label range-left>
           Life Points
         </ion-label>
@@ -58,8 +63,8 @@
       </ion-range>
     </ion-item>
     <ion-item id="characterStatus-range_char_will">
-      <ion-range [(ngModel)]="new_char.will" [ngModelOptions]="{standalone: true}" min="{{new_char.intelligence}}" max="{{max_will}}"
-        step="1" (ionChange)="updateWill()">
+      <ion-range [(ngModel)]="new_char.will" [ngModelOptions]="{standalone: true}" min="{{new_char.intelligence}}"
+        max="{{max_will}}" step="1" (ionChange)="updateWill()">
         <ion-label range-left>
           Will
         </ion-label>
@@ -67,8 +72,8 @@
       </ion-range>
     </ion-item>
     <ion-item id="characterStatus-range_char_perception">
-      <ion-range [(ngModel)]="new_char.perception" [ngModelOptions]="{standalone: true}" min="{{new_char.intelligence}}" max="{{max_perception}}"
-        step="1" (ionChange)="updatePerception()">
+      <ion-range [(ngModel)]="new_char.perception" [ngModelOptions]="{standalone: true}" min="{{new_char.intelligence}}"
+        max="{{max_perception}}" step="1" (ionChange)="updatePerception()">
         <ion-label range-left>
           Perception
         </ion-label>
@@ -76,8 +81,8 @@
       </ion-range>
     </ion-item>
     <ion-item id="characterStatus-range_char_max_fatigue_points">
-      <ion-range [(ngModel)]="new_char.max_fatigue_points" [ngModelOptions]="{standalone: true}" min="{{new_char.health}}" max="{{max_fatigue_points}}"
-        step="1" (ionChange)="updateFatiguePoints()">
+      <ion-range [(ngModel)]="new_char.max_fatigue_points" [ngModelOptions]="{standalone: true}"
+        min="{{new_char.health}}" max="{{max_fatigue_points}}" step="1" (ionChange)="updateFatiguePoints()">
         <ion-label range-left>
           Fatigue Points
         </ion-label>
@@ -85,8 +90,8 @@
       </ion-range>
     </ion-item>
     <ion-item id="characterStatus-range_char_basic_speed">
-      <ion-range [(ngModel)]="speed_aux" [ngModelOptions]="{standalone: true}" min="{{min_speed_aux}}" max="{{max_speed_aux}}"
-        step="1" (ionChange)="updateSpeed()">
+      <ion-range [(ngModel)]="speed_aux" [ngModelOptions]="{standalone: true}" min="{{min_speed_aux}}"
+        max="{{max_speed_aux}}" step="1" (ionChange)="updateSpeed()">
         <ion-label range-left>
           Speed
         </ion-label>
@@ -94,8 +99,8 @@
       </ion-range>
     </ion-item>
     <ion-item id="characterStatus-range_char_basic_movement">
-      <ion-range [(ngModel)]="new_char.basic_movement" [ngModelOptions]="{standalone: true}" min="{{min_basic_movement}}" max="{{max_basic_movement}}"
-        step="1" (ionChange)="updateBasicMovement()">
+      <ion-range [(ngModel)]="new_char.basic_movement" [ngModelOptions]="{standalone: true}"
+        min="{{min_basic_movement}}" max="{{max_basic_movement}}" step="1" (ionChange)="updateBasicMovement()">
         <ion-label range-left>
           Basic Movement
         </ion-label>

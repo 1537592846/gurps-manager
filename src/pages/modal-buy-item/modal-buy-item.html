@@ -22,6 +22,10 @@
         text-align: center;
     }
 
+    ion-list {
+        padding-bottom: 10%
+    }
+
     .headerImage {
         height: 6ex;
         width: 6ex;
@@ -59,7 +63,7 @@
                 </ion-segment-button>
             </ion-segment>
         </div>
-        <div [ngSwitch]="weaponModel">
+        <ion-content [ngSwitch]="weaponModel">
             <ion-list *ngSwitchCase="'one_hand'">
                 <ion-item-sliding *ngFor="let oneHand of oneHands">
                     <ion-item>
@@ -88,7 +92,8 @@
                                 </ion-col>
                             </ion-row>
                         </ion-grid>
-                        <button ion-button *ngIf='resources<oneHand.cost' disabled item-end on-click="returnData(oneHand)">
+                        <button ion-button *ngIf='resources<oneHand.cost' disabled item-end
+                            on-click="returnData(oneHand)">
                             Add
                         </button>
                         <button ion-button *ngIf='resources>=oneHand.cost' item-end on-click="returnData(oneHand)">
@@ -125,7 +130,8 @@
                                 </ion-col>
                             </ion-row>
                         </ion-grid>
-                        <button ion-button *ngIf='resources<twoHand.cost' disabled item-end on-click="returnData(twoHand)">
+                        <button ion-button *ngIf='resources<twoHand.cost' disabled item-end
+                            on-click="returnData(twoHand)">
                             Add
                         </button>
                         <button ion-button *ngIf='resources>=twoHand.cost' item-end on-click="returnData(twoHand)">
@@ -162,7 +168,8 @@
                                 </ion-col>
                             </ion-row>
                         </ion-grid>
-                        <button ion-button *ngIf='resources<shield.cost' disabled item-end on-click="returnData(shield)">
+                        <button ion-button *ngIf='resources<shield.cost' disabled item-end
+                            on-click="returnData(shield)">
                             Add
                         </button>
                         <button ion-button *ngIf='resources>=shield.cost' item-end on-click="returnData(shield)">
@@ -171,7 +178,7 @@
                     </ion-item>
                 </ion-item-sliding>
             </ion-list>
-        </div>
+        </ion-content>
     </ion-list>
     <ion-list *ngSwitchCase="'armors'">
         <div padding>
@@ -453,10 +460,12 @@
                                 </ion-col>
                             </ion-row>
                         </ion-grid>
-                        <button ion-button *ngIf='resources<consumable.cost' disabled item-end on-click="returnData(consumable)">
+                        <button ion-button *ngIf='resources<consumable.cost' disabled item-end
+                            on-click="returnData(consumable)">
                             Add
                         </button>
-                        <button ion-button *ngIf='resources>=consumable.cost' item-end on-click="returnData(consumable)">
+                        <button ion-button *ngIf='resources>=consumable.cost' item-end
+                            on-click="returnData(consumable)">
                             Add
                         </button>
                     </ion-item>
