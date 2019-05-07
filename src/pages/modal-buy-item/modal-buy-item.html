@@ -22,10 +22,6 @@
         text-align: center;
     }
 
-    ion-list {
-        padding-bottom: 10%
-    }
-
     .headerImage {
         height: 6ex;
         width: 6ex;
@@ -33,24 +29,23 @@
 </style>
 
 <html style="background:white">
-
-<div padding>
-    <ion-segment [(ngModel)]="mainModel">
-        <ion-segment-button value="weapons" style="font-size:2rem">
-            Weapons
-        </ion-segment-button>
-        <ion-segment-button value="armors" style="font-size:2rem">
-            Armors
-        </ion-segment-button>
-        <ion-segment-button value="items" style="font-size:2rem">
-            Items
-        </ion-segment-button>
-    </ion-segment>
-</div>
-
-<ion-content [ngSwitch]="mainModel">
-    <ion-list *ngSwitchCase="'weapons'">
-        <div padding>
+<ion-navbar>
+    <div>
+        <ion-segment [(ngModel)]="mainModel">
+            <ion-segment-button value="weapons" style="font-size:1.5rem">
+                Weapons
+            </ion-segment-button>
+            <ion-segment-button value="armors" style="font-size:1.5rem">
+                Armors
+            </ion-segment-button>
+            <ion-segment-button value="items" style="font-size:1.5rem">
+                Items
+            </ion-segment-button>
+        </ion-segment>
+        <br>
+    </div>
+    <div [ngSwitch]="mainModel">
+        <div *ngSwitchCase="'weapons'">
             <ion-segment [(ngModel)]="weaponModel">
                 <ion-segment-button value="one_hand" on-click="updateOneHands()">
                     <img class="headerImage" src="../../assets/item-icon/one-hand.png">
@@ -63,127 +58,7 @@
                 </ion-segment-button>
             </ion-segment>
         </div>
-        <ion-content [ngSwitch]="weaponModel">
-            <ion-list *ngSwitchCase="'one_hand'">
-                <ion-item-sliding *ngFor="let oneHand of oneHands">
-                    <ion-item>
-                        <ion-thumbnail item-start>
-                            <h1>{{oneHand.name}}</h1>
-                            <h3>{{Balance(oneHand)}}</h3>
-                            <h3>{{Piercing(oneHand)}}</h3>
-                        </ion-thumbnail>
-                        <ion-grid item-content>
-                            <ion-row>
-                                <ion-col col-4>
-                                    <h2 class="modalTitle">NT</h2>
-                                    <h3>{{oneHand.nt}}</h3>
-                                </ion-col>
-                                <ion-col col-4>
-                                    <h2 class="modalTitle">Cost</h2>
-                                    <h3>{{oneHand.cost}}</h3>
-                                </ion-col>
-                                <ion-col col-4>
-                                    <h2 class="modalTitle">Weight</h2>
-                                    <h3>{{oneHand.weight}}</h3>
-                                </ion-col>
-                            </ion-row>
-                            <ion-row>
-                                <ion-col>
-                                    <h2 class="modalTitle">Description</h2>
-                                    <h3>{{oneHand.description}}</h3>
-                                </ion-col>
-                            </ion-row>
-                        </ion-grid>
-                        <button ion-button *ngIf='resources<oneHand.cost' disabled item-end
-                            on-click="returnData(oneHand)">
-                            Add
-                        </button>
-                        <button ion-button *ngIf='resources>=oneHand.cost' item-end on-click="returnData(oneHand)">
-                            Add
-                        </button>
-                    </ion-item>
-                </ion-item-sliding>
-            </ion-list>
-            <ion-list *ngSwitchCase="'two_hand'">
-                <ion-item-sliding *ngFor="let twoHand of twoHands">
-                    <ion-item>
-                        <ion-thumbnail item-start>
-                            <h1>{{twoHand.name}}</h1>
-                            <h3>{{Balance(twoHand)}}</h3>
-                            <h3>{{Piercing(twoHand)}}</h3>
-                        </ion-thumbnail>
-                        <ion-grid item-content>
-                            <ion-row>
-                                <ion-col col-1>
-                                    <h2 class="modalTitle">NT</h2>
-                                    <h3>{{twoHand.nt}}</h3>
-                                </ion-col>
-                                <ion-col col-7>
-                                    <h2 class="modalTitle">Description</h2>
-                                    <h3>{{twoHand.description}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Cost</h2>
-                                    <h3>{{twoHand.cost}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Weight</h2>
-                                    <h3>{{twoHand.weight}}</h3>
-                                </ion-col>
-                            </ion-row>
-                        </ion-grid>
-                        <button ion-button *ngIf='resources<twoHand.cost' disabled item-end
-                            on-click="returnData(twoHand)">
-                            Add
-                        </button>
-                        <button ion-button *ngIf='resources>=twoHand.cost' item-end on-click="returnData(twoHand)">
-                            Add
-                        </button>
-                    </ion-item>
-                </ion-item-sliding>
-            </ion-list>
-            <ion-list *ngSwitchCase="'shield'">
-                <ion-item-sliding *ngFor="let shield of shields">
-                    <ion-item>
-                        <ion-thumbnail item-start>
-                            <h1>{{shield.name}}</h1>
-                            <h3>Total Life:{{shield.max_life_points}}</h3>
-                            <h3>{{Resistence(shield)}}</h3>
-                        </ion-thumbnail>
-                        <ion-grid item-content>
-                            <ion-row>
-                                <ion-col col-1>
-                                    <h2 class="modalTitle">NT</h2>
-                                    <h3>{{shield.nt}}</h3>
-                                </ion-col>
-                                <ion-col col-7>
-                                    <h2 class="modalTitle">Description</h2>
-                                    <h3>{{shield.description}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Cost</h2>
-                                    <h3>{{shield.cost}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Weight</h2>
-                                    <h3>{{shield.weight}}</h3>
-                                </ion-col>
-                            </ion-row>
-                        </ion-grid>
-                        <button ion-button *ngIf='resources<shield.cost' disabled item-end
-                            on-click="returnData(shield)">
-                            Add
-                        </button>
-                        <button ion-button *ngIf='resources>=shield.cost' item-end on-click="returnData(shield)">
-                            Add
-                        </button>
-                    </ion-item>
-                </ion-item-sliding>
-            </ion-list>
-        </ion-content>
-    </ion-list>
-    <ion-list *ngSwitchCase="'armors'">
-        <div padding>
+        <div *ngSwitchCase="'armors'">
             <ion-segment [(ngModel)]="armorModel">
                 <ion-segment-button value="head" on-click="updateHeads()">
                     <img class="headerImage" src="../../assets/item-icon/head.png">
@@ -205,227 +80,7 @@
                 </ion-segment-button>
             </ion-segment>
         </div>
-        <div [ngSwitch]="armorModel">
-            <ion-list *ngSwitchCase="'head'">
-                <ion-item-sliding *ngFor="let head of heads">
-                    <ion-item>
-                        <ion-thumbnail item-start>
-                            <h1>{{head.name}}</h1>
-                            <h3>{{Resistence(head)}}</h3>
-                        </ion-thumbnail>
-                        <ion-grid item-content>
-                            <ion-row>
-                                <ion-col col-1>
-                                    <h2 class="modalTitle">NT</h2>
-                                    <h3>{{head.nt}}</h3>
-                                </ion-col>
-                                <ion-col col-7>
-                                    <h2 class="modalTitle">Description</h2>
-                                    <h3>{{head.description}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Cost</h2>
-                                    <h3>{{head.cost}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Weight</h2>
-                                    <h3>{{head.weight}}</h3>
-                                </ion-col>
-                            </ion-row>
-                        </ion-grid>
-                        <button ion-button *ngIf='resources<head.cost' disabled item-end on-click="returnData(head)">
-                            Add
-                        </button>
-                        <button ion-button *ngIf='resources>=head.cost' item-end on-click="returnData(head)">
-                            Add
-                        </button>
-                    </ion-item>
-                </ion-item-sliding>
-            </ion-list>
-            <ion-list *ngSwitchCase="'torax'">
-                <ion-item-sliding *ngFor="let torax of torax">
-                    <ion-item>
-                        <ion-thumbnail item-start>
-                            <h1>{{torax.name}}</h1>
-                            <h3>{{Resistence(torax)}}</h3>
-                        </ion-thumbnail>
-                        <ion-grid item-content>
-                            <ion-row>
-                                <ion-col col-1>
-                                    <h2 class="modalTitle">NT</h2>
-                                    <h3>{{torax.nt}}</h3>
-                                </ion-col>
-                                <ion-col col-7>
-                                    <h2 class="modalTitle">Description</h2>
-                                    <h3>{{torax.description}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Cost</h2>
-                                    <h3>{{torax.cost}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Weight</h2>
-                                    <h3>{{torax.weight}}</h3>
-                                </ion-col>
-                            </ion-row>
-                        </ion-grid>
-                        <button ion-button *ngIf='resources<torax.cost' disabled item-end on-click="returnData(torax)">
-                            Add
-                        </button>
-                        <button ion-button *ngIf='resources>=torax.cost' item-end on-click="returnData(torax)">
-                            Add
-                        </button>
-                    </ion-item>
-                </ion-item-sliding>
-            </ion-list>
-            <ion-list *ngSwitchCase="'arms'">
-                <ion-item-sliding *ngFor="let arm of arms">
-                    <ion-item>
-                        <ion-thumbnail item-start>
-                            <h1>{{arm.name}}</h1>
-                            <h3>{{Resistence(arm)}}</h3>
-                        </ion-thumbnail>
-                        <ion-grid item-content>
-                            <ion-row>
-                                <ion-col col-1>
-                                    <h2 class="modalTitle">NT</h2>
-                                    <h3>{{arm.nt}}</h3>
-                                </ion-col>
-                                <ion-col col-7>
-                                    <h2 class="modalTitle">Description</h2>
-                                    <h3>{{arm.description}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Cost</h2>
-                                    <h3>{{arm.cost}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Weight</h2>
-                                    <h3>{{arm.weight}}</h3>
-                                </ion-col>
-                            </ion-row>
-                        </ion-grid>
-                        <button ion-button *ngIf='resources<arm.cost' disabled item-end on-click="returnData(arm)">
-                            Add
-                        </button>
-                        <button ion-button *ngIf='resources>=arm.cost' item-end on-click="returnData(arm)">
-                            Add
-                        </button>
-                    </ion-item>
-                </ion-item-sliding>
-            </ion-list>
-            <ion-list *ngSwitchCase="'hands'">
-                <ion-item-sliding *ngFor="let hand of hands">
-                    <ion-item>
-                        <ion-thumbnail item-start>
-                            <h1>{{hand.name}}</h1>
-                            <h3>{{Resistence(hand)}}</h3>
-                        </ion-thumbnail>
-                        <ion-grid item-content>
-                            <ion-row>
-                                <ion-col col-1>
-                                    <h2 class="modalTitle">NT</h2>
-                                    <h3>{{hand.nt}}</h3>
-                                </ion-col>
-                                <ion-col col-7>
-                                    <h2 class="modalTitle">Description</h2>
-                                    <h3>{{hand.description}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Cost</h2>
-                                    <h3>{{hand.cost}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Weight</h2>
-                                    <h3>{{hand.weight}}</h3>
-                                </ion-col>
-                            </ion-row>
-                        </ion-grid>
-                        <button ion-button *ngIf='resources<hand.cost' disabled item-end on-click="returnData(hand)">
-                            Add
-                        </button>
-                        <button ion-button *ngIf='resources>=hand.cost' item-end on-click="returnData(hand)">
-                            Add
-                        </button>
-                    </ion-item>
-                </ion-item-sliding>
-            </ion-list>
-            <ion-list *ngSwitchCase="'legs'">
-                <ion-item-sliding *ngFor="let leg of legs">
-                    <ion-item>
-                        <ion-thumbnail item-start>
-                            <h1>{{leg.name}}</h1>
-                            <h3>{{Resistence(leg)}}</h3>
-                        </ion-thumbnail>
-                        <ion-grid item-content>
-                            <ion-row>
-                                <ion-col col-1>
-                                    <h2 class="modalTitle">NT</h2>
-                                    <h3>{{leg.nt}}</h3>
-                                </ion-col>
-                                <ion-col col-7>
-                                    <h2 class="modalTitle">Description</h2>
-                                    <h3>{{leg.description}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Cost</h2>
-                                    <h3>{{leg.cost}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Weight</h2>
-                                    <h3>{{leg.weight}}</h3>
-                                </ion-col>
-                            </ion-row>
-                        </ion-grid>
-                        <button ion-button *ngIf='resources<leg.cost' disabled item-end on-click="returnData(leg)">
-                            Add
-                        </button>
-                        <button ion-button *ngIf='resources>=leg.cost' item-end on-click="returnData(leg)">
-                            Add
-                        </button>
-                    </ion-item>
-                </ion-item-sliding>
-            </ion-list>
-            <ion-list *ngSwitchCase="'feet'">
-                <ion-item-sliding *ngFor="let feet of feets">
-                    <ion-item>
-                        <ion-thumbnail item-start>
-                            <h1>{{feet.name}}</h1>
-                            <h3>{{Resistence(feet)}}</h3>
-                        </ion-thumbnail>
-                        <ion-grid item-content>
-                            <ion-row>
-                                <ion-col col-1>
-                                    <h2 class="modalTitle">NT</h2>
-                                    <h3>{{feet.nt}}</h3>
-                                </ion-col>
-                                <ion-col col-7>
-                                    <h2 class="modalTitle">Description</h2>
-                                    <h3>{{feet.description}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Cost</h2>
-                                    <h3>{{feet.cost}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Weight</h2>
-                                    <h3>{{feet.weight}}</h3>
-                                </ion-col>
-                            </ion-row>
-                        </ion-grid>
-                        <button ion-button *ngIf='resources<feet.cost' disabled item-end on-click="returnData(feet)">
-                            Add
-                        </button>
-                        <button ion-button *ngIf='resources>=feet.cost' item-end on-click="returnData(feet)">
-                            Add
-                        </button>
-                    </ion-item>
-                </ion-item-sliding>
-            </ion-list>
-        </div>
-    </ion-list>
-    <ion-list *ngSwitchCase="'items'">
-        <div padding>
+        <div *ngSwitchCase="'items'">
             <ion-segment [(ngModel)]="itemsModel">
                 <ion-segment-button value="consumable" on-click="updateConsumables()">
                     <img class="headerImage" src="../../assets/item-icon/consumable.png">
@@ -435,79 +90,413 @@
                 </ion-segment-button>
             </ion-segment>
         </div>
-        <div [ngSwitch]="itemsModel">
-            <ion-list *ngSwitchCase="'consumable'">
-                <ion-item-sliding *ngFor="let consumable of consumables">
-                    <ion-item>
-                        <ion-thumbnail item-start>
-                            <h1>{{consumable.name}}</h1>
-                        </ion-thumbnail>
-                        <ion-grid item-content>
-                            <ion-row>
-                                <ion-col col-1>
-                                    <h2 class="modalTitle">NT</h2>
-                                    <h3>{{consumable.nt}}</h3>
-                                </ion-col>
-                                <ion-col col-7>
-                                    <h2 class="modalTitle">Description</h2>
-                                    <h3>{{consumable.description}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Cost</h2>
-                                    <h3>{{consumable.cost}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Weight</h2>
-                                    <h3>{{consumable.weight}}</h3>
-                                </ion-col>
-                            </ion-row>
-                        </ion-grid>
-                        <button ion-button *ngIf='resources<consumable.cost' disabled item-end
-                            on-click="returnData(consumable)">
-                            Add
-                        </button>
-                        <button ion-button *ngIf='resources>=consumable.cost' item-end
-                            on-click="returnData(consumable)">
-                            Add
-                        </button>
-                    </ion-item>
-                </ion-item-sliding>
-            </ion-list>
-            <ion-list *ngSwitchCase="'other'">
-                <ion-item-sliding *ngFor="let other of others">
-                    <ion-item>
-                        <ion-thumbnail item-start>
-                            <h1>{{other.name}}</h1>
-                        </ion-thumbnail>
-                        <ion-grid item-content>
-                            <ion-row>
-                                <ion-col col-1>
-                                    <h2 class="modalTitle">NT</h2>
-                                    <h3>{{other.nt}}</h3>
-                                </ion-col>
-                                <ion-col col-7>
-                                    <h2 class="modalTitle">Description</h2>
-                                    <h3>{{other.description}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Cost</h2>
-                                    <h3>{{other.cost}}</h3>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <h2 class="modalTitle">Weight</h2>
-                                    <h3>{{other.weight}}</h3>
-                                </ion-col>
-                            </ion-row>
-                        </ion-grid>
-                        <button ion-button *ngIf='resources<other.cost' disabled item-end on-click="returnData(other)">
-                            Add
-                        </button>
-                        <button ion-button *ngIf='resources>=other.cost' item-end on-click="returnData(other)">
-                            Add
-                        </button>
-                    </ion-item>
-                </ion-item-sliding>
-            </ion-list>
-        </div>
-    </ion-list>
+    </div>
+</ion-navbar>
+<ion-content>
+    <div [ngSwitch]="weaponModel">
+        <ion-list *ngSwitchCase="'one_hand'">
+            <ion-item *ngFor="let oneHand of oneHands">
+                <ion-thumbnail item-start>
+                    <h1>{{oneHand.name}}</h1>
+                    <h3>{{Balance(oneHand)}}</h3>
+                    <h3>{{Piercing(oneHand)}}</h3>
+                </ion-thumbnail>
+                <ion-grid item-content>
+                    <ion-row>
+                        <ion-col col-4>
+                            <h2 class="modalTitle">NT</h2>
+                            <h3>{{oneHand.nt}}</h3>
+                        </ion-col>
+                        <ion-col col-4>
+                            <h2 class="modalTitle">Cost</h2>
+                            <h3>{{oneHand.cost}}</h3>
+                        </ion-col>
+                        <ion-col col-4>
+                            <h2 class="modalTitle">Weight</h2>
+                            <h3>{{oneHand.weight}}</h3>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <h2 class="modalTitle">Description</h2>
+                            <h3>{{oneHand.description}}</h3>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+                <button ion-button *ngIf='resources<oneHand.cost' disabled item-end on-click="returnData(oneHand)">
+                    Add
+                </button>
+                <button ion-button *ngIf='resources>=oneHand.cost' item-end on-click="returnData(oneHand)">
+                    Add
+                </button>
+            </ion-item>
+        </ion-list>
+        <ion-list *ngSwitchCase="'two_hand'">
+            <ion-item *ngFor="let twoHand of twoHands">
+                <ion-thumbnail item-start>
+                    <h1>{{twoHand.name}}</h1>
+                    <h3>{{Balance(twoHand)}}</h3>
+                    <h3>{{Piercing(twoHand)}}</h3>
+                </ion-thumbnail>
+                <ion-grid item-content>
+                    <ion-row>
+                        <ion-col col-4>
+                            <h2 class="modalTitle">NT</h2>
+                            <h3>{{twoHand.nt}}</h3>
+                        </ion-col>
+                        <ion-col col-4>
+                            <h2 class="modalTitle">Cost</h2>
+                            <h3>{{twoHand.cost}}</h3>
+                        </ion-col>
+                        <ion-col col-4>
+                            <h2 class="modalTitle">Weight</h2>
+                            <h3>{{twoHand.weight}}</h3>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <h2 class="modalTitle">Description</h2>
+                            <h3>{{twoHand.description}}</h3>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+                <button ion-button *ngIf='resources<twoHand.cost' disabled item-end on-click="returnData(twoHand)">
+                    Add
+                </button>
+                <button ion-button *ngIf='resources>=twoHand.cost' item-end on-click="returnData(twoHand)">
+                    Add
+                </button>
+            </ion-item>
+        </ion-list>
+        <ion-list *ngSwitchCase="'shield'">
+            <ion-item *ngFor="let shield of shields">
+                <ion-thumbnail item-start>
+                    <h1>{{shield.name}}</h1>
+                    <h3>Total Life:{{shield.max_life_points}}</h3>
+                    <h3>{{Resistence(shield)}}</h3>
+                </ion-thumbnail>
+                <ion-grid item-content>
+                    <ion-row>
+                        <ion-col col-4>
+                            <h2 class="modalTitle">NT</h2>
+                            <h3>{{shield.nt}}</h3>
+                        </ion-col>
+                        <ion-col col-4>
+                            <h2 class="modalTitle">Cost</h2>
+                            <h3>{{shield.cost}}</h3>
+                        </ion-col>
+                        <ion-col col-4>
+                            <h2 class="modalTitle">Weight</h2>
+                            <h3>{{shield.weight}}</h3>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <h2 class="modalTitle">Description</h2>
+                            <h3>{{shield.description}}</h3>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+                <button ion-button *ngIf='resources<shield.cost' disabled item-end on-click="returnData(shield)">
+                    Add
+                </button>
+                <button ion-button *ngIf='resources>=shield.cost' item-end on-click="returnData(shield)">
+                    Add
+                </button>
+            </ion-item>
+        </ion-list>
+    </div>
+    <div [ngSwitch]="armorModel">
+        <ion-list *ngSwitchCase="'head'">
+            <ion-item-sliding *ngFor="let head of heads">
+                <ion-item>
+                    <ion-thumbnail item-start>
+                        <h1>{{head.name}}</h1>
+                        <h3>{{Resistence(head)}}</h3>
+                    </ion-thumbnail>
+                    <ion-grid item-content>
+                        <ion-row>
+                            <ion-col col-1>
+                                <h2 class="modalTitle">NT</h2>
+                                <h3>{{head.nt}}</h3>
+                            </ion-col>
+                            <ion-col col-7>
+                                <h2 class="modalTitle">Description</h2>
+                                <h3>{{head.description}}</h3>
+                            </ion-col>
+                            <ion-col col-2>
+                                <h2 class="modalTitle">Cost</h2>
+                                <h3>{{head.cost}}</h3>
+                            </ion-col>
+                            <ion-col col-2>
+                                <h2 class="modalTitle">Weight</h2>
+                                <h3>{{head.weight}}</h3>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                    <button ion-button *ngIf='resources<head.cost' disabled item-end on-click="returnData(head)">
+                        Add
+                    </button>
+                    <button ion-button *ngIf='resources>=head.cost' item-end on-click="returnData(head)">
+                        Add
+                    </button>
+                </ion-item>
+            </ion-item-sliding>
+        </ion-list>
+        <ion-list *ngSwitchCase="'torax'">
+            <ion-item-sliding *ngFor="let torax of torax">
+                <ion-item>
+                    <ion-thumbnail item-start>
+                        <h1>{{torax.name}}</h1>
+                        <h3>{{Resistence(torax)}}</h3>
+                    </ion-thumbnail>
+                    <ion-grid item-content>
+                        <ion-row>
+                            <ion-col col-1>
+                                <h2 class="modalTitle">NT</h2>
+                                <h3>{{torax.nt}}</h3>
+                            </ion-col>
+                            <ion-col col-7>
+                                <h2 class="modalTitle">Description</h2>
+                                <h3>{{torax.description}}</h3>
+                            </ion-col>
+                            <ion-col col-2>
+                                <h2 class="modalTitle">Cost</h2>
+                                <h3>{{torax.cost}}</h3>
+                            </ion-col>
+                            <ion-col col-2>
+                                <h2 class="modalTitle">Weight</h2>
+                                <h3>{{torax.weight}}</h3>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                    <button ion-button *ngIf='resources<torax.cost' disabled item-end on-click="returnData(torax)">
+                        Add
+                    </button>
+                    <button ion-button *ngIf='resources>=torax.cost' item-end on-click="returnData(torax)">
+                        Add
+                    </button>
+                </ion-item>
+            </ion-item-sliding>
+        </ion-list>
+        <ion-list *ngSwitchCase="'arms'">
+            <ion-item-sliding *ngFor="let arm of arms">
+                <ion-item>
+                    <ion-thumbnail item-start>
+                        <h1>{{arm.name}}</h1>
+                        <h3>{{Resistence(arm)}}</h3>
+                    </ion-thumbnail>
+                    <ion-grid item-content>
+                        <ion-row>
+                            <ion-col col-1>
+                                <h2 class="modalTitle">NT</h2>
+                                <h3>{{arm.nt}}</h3>
+                            </ion-col>
+                            <ion-col col-7>
+                                <h2 class="modalTitle">Description</h2>
+                                <h3>{{arm.description}}</h3>
+                            </ion-col>
+                            <ion-col col-2>
+                                <h2 class="modalTitle">Cost</h2>
+                                <h3>{{arm.cost}}</h3>
+                            </ion-col>
+                            <ion-col col-2>
+                                <h2 class="modalTitle">Weight</h2>
+                                <h3>{{arm.weight}}</h3>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                    <button ion-button *ngIf='resources<arm.cost' disabled item-end on-click="returnData(arm)">
+                        Add
+                    </button>
+                    <button ion-button *ngIf='resources>=arm.cost' item-end on-click="returnData(arm)">
+                        Add
+                    </button>
+                </ion-item>
+            </ion-item-sliding>
+        </ion-list>
+        <ion-list *ngSwitchCase="'hands'">
+            <ion-item-sliding *ngFor="let hand of hands">
+                <ion-item>
+                    <ion-thumbnail item-start>
+                        <h1>{{hand.name}}</h1>
+                        <h3>{{Resistence(hand)}}</h3>
+                    </ion-thumbnail>
+                    <ion-grid item-content>
+                        <ion-row>
+                            <ion-col col-1>
+                                <h2 class="modalTitle">NT</h2>
+                                <h3>{{hand.nt}}</h3>
+                            </ion-col>
+                            <ion-col col-7>
+                                <h2 class="modalTitle">Description</h2>
+                                <h3>{{hand.description}}</h3>
+                            </ion-col>
+                            <ion-col col-2>
+                                <h2 class="modalTitle">Cost</h2>
+                                <h3>{{hand.cost}}</h3>
+                            </ion-col>
+                            <ion-col col-2>
+                                <h2 class="modalTitle">Weight</h2>
+                                <h3>{{hand.weight}}</h3>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                    <button ion-button *ngIf='resources<hand.cost' disabled item-end on-click="returnData(hand)">
+                        Add
+                    </button>
+                    <button ion-button *ngIf='resources>=hand.cost' item-end on-click="returnData(hand)">
+                        Add
+                    </button>
+                </ion-item>
+            </ion-item-sliding>
+        </ion-list>
+        <ion-list *ngSwitchCase="'legs'">
+            <ion-item-sliding *ngFor="let leg of legs">
+                <ion-item>
+                    <ion-thumbnail item-start>
+                        <h1>{{leg.name}}</h1>
+                        <h3>{{Resistence(leg)}}</h3>
+                    </ion-thumbnail>
+                    <ion-grid item-content>
+                        <ion-row>
+                            <ion-col col-1>
+                                <h2 class="modalTitle">NT</h2>
+                                <h3>{{leg.nt}}</h3>
+                            </ion-col>
+                            <ion-col col-7>
+                                <h2 class="modalTitle">Description</h2>
+                                <h3>{{leg.description}}</h3>
+                            </ion-col>
+                            <ion-col col-2>
+                                <h2 class="modalTitle">Cost</h2>
+                                <h3>{{leg.cost}}</h3>
+                            </ion-col>
+                            <ion-col col-2>
+                                <h2 class="modalTitle">Weight</h2>
+                                <h3>{{leg.weight}}</h3>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                    <button ion-button *ngIf='resources<leg.cost' disabled item-end on-click="returnData(leg)">
+                        Add
+                    </button>
+                    <button ion-button *ngIf='resources>=leg.cost' item-end on-click="returnData(leg)">
+                        Add
+                    </button>
+                </ion-item>
+            </ion-item-sliding>
+        </ion-list>
+        <ion-list *ngSwitchCase="'feet'">
+            <ion-item-sliding *ngFor="let feet of feets">
+                <ion-item>
+                    <ion-thumbnail item-start>
+                        <h1>{{feet.name}}</h1>
+                        <h3>{{Resistence(feet)}}</h3>
+                    </ion-thumbnail>
+                    <ion-grid item-content>
+                        <ion-row>
+                            <ion-col col-1>
+                                <h2 class="modalTitle">NT</h2>
+                                <h3>{{feet.nt}}</h3>
+                            </ion-col>
+                            <ion-col col-7>
+                                <h2 class="modalTitle">Description</h2>
+                                <h3>{{feet.description}}</h3>
+                            </ion-col>
+                            <ion-col col-2>
+                                <h2 class="modalTitle">Cost</h2>
+                                <h3>{{feet.cost}}</h3>
+                            </ion-col>
+                            <ion-col col-2>
+                                <h2 class="modalTitle">Weight</h2>
+                                <h3>{{feet.weight}}</h3>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                    <button ion-button *ngIf='resources<feet.cost' disabled item-end on-click="returnData(feet)">
+                        Add
+                    </button>
+                    <button ion-button *ngIf='resources>=feet.cost' item-end on-click="returnData(feet)">
+                        Add
+                    </button>
+                </ion-item>
+            </ion-item-sliding>
+        </ion-list>
+    </div>
+    <div [ngSwitch]="itemsModel">
+        <ion-list *ngSwitchCase="'consumable'">
+            <ion-item-sliding *ngFor="let consumable of consumables">
+                <ion-item>
+                    <ion-thumbnail item-start>
+                        <h1>{{consumable.name}}</h1>
+                    </ion-thumbnail>
+                    <ion-grid item-content>
+                        <ion-row>
+                            <ion-col col-1>
+                                <h2 class="modalTitle">NT</h2>
+                                <h3>{{consumable.nt}}</h3>
+                            </ion-col>
+                            <ion-col col-7>
+                                <h2 class="modalTitle">Description</h2>
+                                <h3>{{consumable.description}}</h3>
+                            </ion-col>
+                            <ion-col col-2>
+                                <h2 class="modalTitle">Cost</h2>
+                                <h3>{{consumable.cost}}</h3>
+                            </ion-col>
+                            <ion-col col-2>
+                                <h2 class="modalTitle">Weight</h2>
+                                <h3>{{consumable.weight}}</h3>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                    <button ion-button *ngIf='resources<consumable.cost' disabled item-end
+                        on-click="returnData(consumable)">
+                        Add
+                    </button>
+                    <button ion-button *ngIf='resources>=consumable.cost' item-end on-click="returnData(consumable)">
+                        Add
+                    </button>
+                </ion-item>
+            </ion-item-sliding>
+        </ion-list>
+        <ion-list *ngSwitchCase="'other'">
+            <ion-item-sliding *ngFor="let other of others">
+                <ion-item>
+                    <ion-thumbnail item-start>
+                        <h1>{{other.name}}</h1>
+                    </ion-thumbnail>
+                    <ion-grid item-content>
+                        <ion-row>
+                            <ion-col col-1>
+                                <h2 class="modalTitle">NT</h2>
+                                <h3>{{other.nt}}</h3>
+                            </ion-col>
+                            <ion-col col-7>
+                                <h2 class="modalTitle">Description</h2>
+                                <h3>{{other.description}}</h3>
+                            </ion-col>
+                            <ion-col col-2>
+                                <h2 class="modalTitle">Cost</h2>
+                                <h3>{{other.cost}}</h3>
+                            </ion-col>
+                            <ion-col col-2>
+                                <h2 class="modalTitle">Weight</h2>
+                                <h3>{{other.weight}}</h3>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                    <button ion-button *ngIf='resources<other.cost' disabled item-end on-click="returnData(other)">
+                        Add
+                    </button>
+                    <button ion-button *ngIf='resources>=other.cost' item-end on-click="returnData(other)">
+                        Add
+                    </button>
+                </ion-item>
+            </ion-item-sliding>
+        </ion-list>
+    </div>
 </ion-content>
+
+</html>
