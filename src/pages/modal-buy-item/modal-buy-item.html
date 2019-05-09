@@ -2,9 +2,10 @@
     h1 {
         text-align: center;
         word-wrap: normal;
+        font-size: 2rem;
     }
 
-    h2 {
+    h2,h4 {
         text-align: center;
         word-wrap: normal;
     }
@@ -20,6 +21,10 @@
 
     ion-col {
         text-align: center;
+    }
+
+    ion-list {
+        padding-bottom: 25%
     }
 
     .headerImage {
@@ -92,14 +97,14 @@
         </div>
     </div>
 </ion-navbar>
-<ion-content>
-    <div [ngSwitch]="weaponModel">
+<ion-content [ngSwitch]="mainModel">
+    <div *ngSwitchCase="'weapons'" [ngSwitch]="weaponModel">
         <ion-list *ngSwitchCase="'one_hand'">
             <ion-item *ngFor="let oneHand of oneHands">
                 <ion-thumbnail item-start>
                     <h1>{{oneHand.name}}</h1>
-                    <h3>{{Balance(oneHand)}}</h3>
-                    <h3>{{Piercing(oneHand)}}</h3>
+                    <h4>{{Balance(oneHand)}}</h4>
+                    <h4>{{Piercing(oneHand)}}</h4>
                 </ion-thumbnail>
                 <ion-grid item-content>
                     <ion-row>
@@ -206,31 +211,33 @@
             </ion-item>
         </ion-list>
     </div>
-    <div [ngSwitch]="armorModel">
+    <div *ngSwitchCase="'armors'" [ngSwitch]="armorModel">
         <ion-list *ngSwitchCase="'head'">
             <ion-item-sliding *ngFor="let head of heads">
                 <ion-item>
                     <ion-thumbnail item-start>
                         <h1>{{head.name}}</h1>
-                        <h3>{{Resistence(head)}}</h3>
+                        <h4>{{Resistence(head)}}</h4>
                     </ion-thumbnail>
                     <ion-grid item-content>
                         <ion-row>
-                            <ion-col col-1>
+                            <ion-col col-4>
                                 <h2 class="modalTitle">NT</h2>
                                 <h3>{{head.nt}}</h3>
                             </ion-col>
-                            <ion-col col-7>
-                                <h2 class="modalTitle">Description</h2>
-                                <h3>{{head.description}}</h3>
-                            </ion-col>
-                            <ion-col col-2>
+                            <ion-col col-4>
                                 <h2 class="modalTitle">Cost</h2>
                                 <h3>{{head.cost}}</h3>
                             </ion-col>
-                            <ion-col col-2>
+                            <ion-col col-4>
                                 <h2 class="modalTitle">Weight</h2>
                                 <h3>{{head.weight}}</h3>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col>
+                                <h2 class="modalTitle">Description</h2>
+                                <h3>{{head.description}}</h3>
                             </ion-col>
                         </ion-row>
                     </ion-grid>
@@ -248,25 +255,27 @@
                 <ion-item>
                     <ion-thumbnail item-start>
                         <h1>{{torax.name}}</h1>
-                        <h3>{{Resistence(torax)}}</h3>
+                        <h4>{{Resistence(torax)}}</h4>
                     </ion-thumbnail>
                     <ion-grid item-content>
                         <ion-row>
-                            <ion-col col-1>
+                            <ion-col col-4>
                                 <h2 class="modalTitle">NT</h2>
                                 <h3>{{torax.nt}}</h3>
                             </ion-col>
-                            <ion-col col-7>
-                                <h2 class="modalTitle">Description</h2>
-                                <h3>{{torax.description}}</h3>
-                            </ion-col>
-                            <ion-col col-2>
+                            <ion-col col-4>
                                 <h2 class="modalTitle">Cost</h2>
                                 <h3>{{torax.cost}}</h3>
                             </ion-col>
-                            <ion-col col-2>
+                            <ion-col col-4>
                                 <h2 class="modalTitle">Weight</h2>
                                 <h3>{{torax.weight}}</h3>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col>
+                                <h2 class="modalTitle">Description</h2>
+                                <h3>{{torax.description}}</h3>
                             </ion-col>
                         </ion-row>
                     </ion-grid>
@@ -284,25 +293,27 @@
                 <ion-item>
                     <ion-thumbnail item-start>
                         <h1>{{arm.name}}</h1>
-                        <h3>{{Resistence(arm)}}</h3>
+                        <h4>{{Resistence(arm)}}</h4>
                     </ion-thumbnail>
                     <ion-grid item-content>
                         <ion-row>
-                            <ion-col col-1>
+                            <ion-col col-4>
                                 <h2 class="modalTitle">NT</h2>
                                 <h3>{{arm.nt}}</h3>
                             </ion-col>
-                            <ion-col col-7>
-                                <h2 class="modalTitle">Description</h2>
-                                <h3>{{arm.description}}</h3>
-                            </ion-col>
-                            <ion-col col-2>
+                            <ion-col col-4>
                                 <h2 class="modalTitle">Cost</h2>
                                 <h3>{{arm.cost}}</h3>
                             </ion-col>
-                            <ion-col col-2>
+                            <ion-col col-4>
                                 <h2 class="modalTitle">Weight</h2>
                                 <h3>{{arm.weight}}</h3>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col>
+                                <h2 class="modalTitle">Description</h2>
+                                <h3>{{arm.description}}</h3>
                             </ion-col>
                         </ion-row>
                     </ion-grid>
@@ -320,25 +331,27 @@
                 <ion-item>
                     <ion-thumbnail item-start>
                         <h1>{{hand.name}}</h1>
-                        <h3>{{Resistence(hand)}}</h3>
+                        <h4>{{Resistence(hand)}}</h4>
                     </ion-thumbnail>
                     <ion-grid item-content>
                         <ion-row>
-                            <ion-col col-1>
+                            <ion-col col-4>
                                 <h2 class="modalTitle">NT</h2>
                                 <h3>{{hand.nt}}</h3>
                             </ion-col>
-                            <ion-col col-7>
-                                <h2 class="modalTitle">Description</h2>
-                                <h3>{{hand.description}}</h3>
-                            </ion-col>
-                            <ion-col col-2>
+                            <ion-col col-4>
                                 <h2 class="modalTitle">Cost</h2>
                                 <h3>{{hand.cost}}</h3>
                             </ion-col>
-                            <ion-col col-2>
+                            <ion-col col-4>
                                 <h2 class="modalTitle">Weight</h2>
                                 <h3>{{hand.weight}}</h3>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col>
+                                <h2 class="modalTitle">Description</h2>
+                                <h3>{{hand.description}}</h3>
                             </ion-col>
                         </ion-row>
                     </ion-grid>
@@ -356,25 +369,27 @@
                 <ion-item>
                     <ion-thumbnail item-start>
                         <h1>{{leg.name}}</h1>
-                        <h3>{{Resistence(leg)}}</h3>
+                        <h4>{{Resistence(leg)}}</h4>
                     </ion-thumbnail>
                     <ion-grid item-content>
                         <ion-row>
-                            <ion-col col-1>
+                            <ion-col col-4>
                                 <h2 class="modalTitle">NT</h2>
                                 <h3>{{leg.nt}}</h3>
                             </ion-col>
-                            <ion-col col-7>
-                                <h2 class="modalTitle">Description</h2>
-                                <h3>{{leg.description}}</h3>
-                            </ion-col>
-                            <ion-col col-2>
+                            <ion-col col-4>
                                 <h2 class="modalTitle">Cost</h2>
                                 <h3>{{leg.cost}}</h3>
                             </ion-col>
-                            <ion-col col-2>
+                            <ion-col col-4>
                                 <h2 class="modalTitle">Weight</h2>
                                 <h3>{{leg.weight}}</h3>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col>
+                                <h2 class="modalTitle">Description</h2>
+                                <h3>{{leg.description}}</h3>
                             </ion-col>
                         </ion-row>
                     </ion-grid>
@@ -392,26 +407,28 @@
                 <ion-item>
                     <ion-thumbnail item-start>
                         <h1>{{feet.name}}</h1>
-                        <h3>{{Resistence(feet)}}</h3>
+                        <h4>{{Resistence(feet)}}</h4>
                     </ion-thumbnail>
                     <ion-grid item-content>
                         <ion-row>
-                            <ion-col col-1>
+                            <ion-col col-4>
                                 <h2 class="modalTitle">NT</h2>
                                 <h3>{{feet.nt}}</h3>
                             </ion-col>
-                            <ion-col col-7>
-                                <h2 class="modalTitle">Description</h2>
-                                <h3>{{feet.description}}</h3>
-                            </ion-col>
-                            <ion-col col-2>
+                            <ion-col col-4>
                                 <h2 class="modalTitle">Cost</h2>
                                 <h3>{{feet.cost}}</h3>
                             </ion-col>
-                            <ion-col col-2>
+                            <ion-col col-4>
                                 <h2 class="modalTitle">Weight</h2>
                                 <h3>{{feet.weight}}</h3>
                             </ion-col>
+                            <ion-row>
+                                <ion-col>
+                                    <h2 class="modalTitle">Description</h2>
+                                    <h3>{{feet.description}}</h3>
+                                </ion-col>
+                            </ion-row>
                         </ion-row>
                     </ion-grid>
                     <button ion-button *ngIf='resources<feet.cost' disabled item-end on-click="returnData(feet)">
@@ -424,7 +441,7 @@
             </ion-item-sliding>
         </ion-list>
     </div>
-    <div [ngSwitch]="itemsModel">
+    <div *ngSwitchCase="'items'" [ngSwitch]="itemsModel">
         <ion-list *ngSwitchCase="'consumable'">
             <ion-item-sliding *ngFor="let consumable of consumables">
                 <ion-item>
@@ -433,21 +450,23 @@
                     </ion-thumbnail>
                     <ion-grid item-content>
                         <ion-row>
-                            <ion-col col-1>
+                            <ion-col col-4>
                                 <h2 class="modalTitle">NT</h2>
                                 <h3>{{consumable.nt}}</h3>
                             </ion-col>
-                            <ion-col col-7>
-                                <h2 class="modalTitle">Description</h2>
-                                <h3>{{consumable.description}}</h3>
-                            </ion-col>
-                            <ion-col col-2>
+                            <ion-col col-4>
                                 <h2 class="modalTitle">Cost</h2>
                                 <h3>{{consumable.cost}}</h3>
                             </ion-col>
-                            <ion-col col-2>
+                            <ion-col col-4>
                                 <h2 class="modalTitle">Weight</h2>
                                 <h3>{{consumable.weight}}</h3>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col>
+                                <h2 class="modalTitle">Description</h2>
+                                <h3>{{consumable.description}}</h3>
                             </ion-col>
                         </ion-row>
                     </ion-grid>
@@ -469,21 +488,23 @@
                     </ion-thumbnail>
                     <ion-grid item-content>
                         <ion-row>
-                            <ion-col col-1>
+                            <ion-col col-4>
                                 <h2 class="modalTitle">NT</h2>
                                 <h3>{{other.nt}}</h3>
                             </ion-col>
-                            <ion-col col-7>
-                                <h2 class="modalTitle">Description</h2>
-                                <h3>{{other.description}}</h3>
-                            </ion-col>
-                            <ion-col col-2>
+                            <ion-col col-4>
                                 <h2 class="modalTitle">Cost</h2>
                                 <h3>{{other.cost}}</h3>
                             </ion-col>
-                            <ion-col col-2>
+                            <ion-col col-4>
                                 <h2 class="modalTitle">Weight</h2>
                                 <h3>{{other.weight}}</h3>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col>
+                                <h2 class="modalTitle">Description</h2>
+                                <h3>{{other.description}}</h3>
                             </ion-col>
                         </ion-row>
                     </ion-grid>
@@ -497,6 +518,7 @@
             </ion-item-sliding>
         </ion-list>
     </div>
+    <br>
 </ion-content>
 
 </html>

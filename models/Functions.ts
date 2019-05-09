@@ -84,6 +84,6 @@ export enum EquipmentStatus {
     Reach = "reach",
     Parry = "parry",
     ArmorLocal = "local",
-    Resistance = "resistance",
+    Resistence = "resistence",
     Defense = "defense"
 }
