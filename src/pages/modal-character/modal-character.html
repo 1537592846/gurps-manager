@@ -2,8 +2,8 @@
     <ion-list>
         <ion-item-sliding *ngFor="let character of characters">
             <ion-item on-click="returnData(character)">
-                <ion-thumbnail style="width:20%;text-align: center;vertical-align: center" item-start>
-                    <h1>{{character.name}}</h1>
+                <ion-thumbnail style="width:25%;vertical-align: center;font-size:2rem;align-items: center" item-start>
+                    <h1 style="text-align:center">{{character.name}}</h1>
                 </ion-thumbnail>
                 <p>{{character.description}}</p>
             </ion-item>

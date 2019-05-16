@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { NavParams, ModalController } from 'ionic-angular';
 import { Character } from '../../../models/Character';
 import { ModalEquipments } from '../modal-equipments/modal-equipments';
+import { OneHandWeapon, Shield, TwoHandWeapon, Armor } from '../../../models/Item';
+import { Equipment } from '../../../models/Equipment';
 
 @Component({
   selector: 'page-equipments',
@@ -21,6 +23,7 @@ export class EquipmentsPage {
   ionViewWillEnter() {
     this.getEquipments();
   }
+
   getEquipments() {
     this.names = { "left_hand": "Empty", "right_hand": "Empty", "head": "Empty", "torax": "Empty", "arms": "Empty", "hands": "Empty", "legs": "Empty", "feet": "Empty" }
     var oneHands = this.char.inventory.one_hand_weapons.filter(equip => equip.equipped != "")
@@ -111,120 +114,8 @@ export class EquipmentsPage {
     this.profileModal.present();
     this.profileModal.onDidDismiss(equipment => {
       if (equipment != undefined) {
-        switch (type) {
-          case 'left_hand': {
-            if (equipment.type == "one_hand") {
-              for (let i = 0; i < this.char.inventory.one_hand_weapons.length; i++) {
-                if (this.char.inventory.one_hand_weapons[i].name == equipment.name) {
-                  this.char.inventory.one_hand_weapons[i].equipped = "left_hand";
-                }
-              }
-              this.char.equipments.left_hand = equipment
-            }
-            if (equipment.type == "two_hand") {
-              for (let i = 0; i < this.char.inventory.two_hand_weapons.length; i++) {
-                if (this.char.inventory.two_hand_weapons[i].name == equipment.name) {
-                  this.char.inventory.two_hand_weapons[i].equipped = "both_hand";
-                }
-              }
-              this.char.equipments.both_hands = equipment
-              this.names.right_hand = equipment.name
-            }
-            this.names.left_hand = equipment.name
-            break;
-          }
-          case 'right_hand': {
-            if (equipment.type == "one_hand") {
-              for (let i = 0; i < this.char.inventory.one_hand_weapons.length; i++) {
-                if (this.char.inventory.one_hand_weapons[i].name == equipment.name) {
-                  this.char.inventory.one_hand_weapons[i].equipped = "right_hand";
-                }
-              }
-              this.char.equipments.right_hand = equipment
-            }
-            if (equipment.type == "two_hand") {
-              for (let i = 0; i < this.char.inventory.two_hand_weapons.length; i++) {
-                if (this.char.inventory.two_hand_weapons[i].name == equipment.name) {
-                  this.char.inventory.two_hand_weapons[i].equipped = "both_hand";
-                }
-              }
-              this.char.equipments.both_hands = equipment
-              this.names.right_hand = equipment.name
-            }
-            if (equipment.type == "shield") {
-              for (let i = 0; i < this.char.inventory.shields.length; i++) {
-                if (this.char.inventory.shields[i].name == equipment.name) {
-                  this.char.inventory.shields[i].equipped = "shield";
-                }
-              }
-              this.char.equipments.shield = equipment
-            }
-            this.names.right_hand = equipment.name
-            break;
-          }
-          case 'head': {
-            for (let i = 0; i < this.char.inventory.armors.length; i++) {
-              if (this.char.inventory.armors[i].name == equipment.name) {
-                this.char.inventory.armors[i].equipped = equipment.type;
-              }
-            }
-            this.char.equipments.head = equipment
-            this.names.head = equipment.name
-            break;
-          }
-          case 'torax': {
-            for (let i = 0; i < this.char.inventory.armors.length; i++) {
-              if (this.char.inventory.armors[i].name == equipment.name) {
-                this.char.inventory.armors[i].equipped = equipment.type;
-              }
-            }
-            this.char.equipments.torax = equipment
-            this.names.torax = equipment.name
-            break;
-          }
-          case 'legs': {
-            for (let i = 0; i < this.char.inventory.armors.length; i++) {
-              if (this.char.inventory.armors[i].name == equipment.name) {
-                this.char.inventory.armors[i].equipped = equipment.type;
-              }
-            }
-            this.char.equipments.legs = equipment
-            this.names.legs = equipment.name
-            break;
-          }
-          case 'feet': {
-            for (let i = 0; i < this.char.inventory.armors.length; i++) {
-              if (this.char.inventory.armors[i].name == equipment.name) {
-                this.char.inventory.armors[i].equipped = equipment.type;
-              }
-            }
-            this.char.equipments.feet = equipment
-            this.names.feet = equipment.name
-            break;
-          }
-          case 'arms': {
-            for (let i = 0; i < this.char.inventory.armors.length; i++) {
-              if (this.char.inventory.armors[i].name == equipment.name) {
-                this.char.inventory.armors[i].equipped = equipment.type;
-              }
-            }
-            this.char.equipments.arms = equipment
-            this.names.arms = equipment.name
-            break;
-          }
-          case 'hands': {
-            for (let i = 0; i < this.char.inventory.armors.length; i++) {
-              if (this.char.inventory.armors[i].name == equipment.name) {
-                this.char.inventory.armors[i].equipped = equipment.type;
-              }
-            }
-            this.char.equipments.hands = equipment
-            this.names.hands = equipment.name
-            break;
-          }
-        }
+        this.equippingEquipment(equipment, type)
       }
-      this.getEquipments()
     })
   }
 
@@ -233,192 +124,147 @@ export class EquipmentsPage {
     this.profileModal.present();
     this.profileModal.onDidDismiss(equipment => {
       if (equipment != undefined) {
-        switch (type) {
-          case 'left_hand': {
-            if (equipment.type == "one_hand") {
-              this.char.inventory.one_hand_weapons.filter(equip => equip == this.char.equipments.left_hand)[0].equipped = ""
-              for (let i = 0; i < this.char.inventory.one_hand_weapons.length; i++) {
-                if (this.char.inventory.one_hand_weapons[i].name == equipment.name) {
-                  this.char.inventory.one_hand_weapons[i].equipped = "left_hand";
-                }
-              }
-              this.char.equipments.left_hand = equipment
-            }
-            if (equipment.type == "two_hand") {
-              this.char.inventory.two_hand_weapons.filter(equip => equip == this.char.equipments.both_hands)[0].equipped = ""
-              for (let i = 0; i < this.char.inventory.two_hand_weapons.length; i++) {
-                if (this.char.inventory.two_hand_weapons[i].name == equipment.name) {
-                  this.char.inventory.two_hand_weapons[i].equipped = "both_hand";
-                }
-              }
-              this.char.equipments.both_hands = equipment
-              this.names.right_hand = equipment.name
-            }
-            this.names.left_hand = equipment.name
-            break;
-          }
-          case 'right_hand': {
-            if (equipment.type == "one_hand") {
-              this.char.inventory.one_hand_weapons.filter(equip => equip == this.char.equipments.right_hand)[0].equipped = ""
-              for (let i = 0; i < this.char.inventory.one_hand_weapons.length; i++) {
-                if (this.char.inventory.one_hand_weapons[i].name == equipment.name) {
-                  this.char.inventory.one_hand_weapons[i].equipped = "right_hand";
-                }
-              }
-              this.char.equipments.right_hand = equipment
-            }
-            if (equipment.type == "two_hand") {
-              this.char.inventory.two_hand_weapons.filter(equip => equip == this.char.equipments.both_hands)[0].equipped = ""
-              for (let i = 0; i < this.char.inventory.two_hand_weapons.length; i++) {
-                if (this.char.inventory.two_hand_weapons[i].name == equipment.name) {
-                  this.char.inventory.two_hand_weapons[i].equipped = "both_hand";
-                }
-              }
-              this.char.equipments.both_hands = equipment
-              this.names.left_hand = equipment.name
-            }
-            if (equipment.type == "shield") {
-              this.char.inventory.shields.filter(equip => equip == this.char.equipments.shield)[0].equipped = ""
-              for (let i = 0; i < this.char.inventory.shields.length; i++) {
-                if (this.char.inventory.shields[i].name == equipment.name) {
-                  this.char.inventory.shields[i].equipped = "right_hand";
-                }
-              }
-              this.char.equipments.shield = equipment
-            }
-            this.names.right_hand = equipment.name
-            break;
-          }
-          case 'head': {
-            this.char.inventory.armors.filter(equip => equip == this.char.equipments.head)[0].equipped = ""
-            for (let i = 0; i < this.char.inventory.armors.length; i++) {
-              if (this.char.inventory.armors[i].name == equipment.name) {
-                this.char.inventory.armors[i].equipped = equipment.type;
-              }
-            }
-            this.char.equipments.head = equipment
-            this.names.head = equipment.name
-            break;
-          }
-          case 'torax': {
-            this.char.inventory.armors.filter(equip => equip == this.char.equipments.torax)[0].equipped = ""
-            for (let i = 0; i < this.char.inventory.armors.length; i++) {
-              if (this.char.inventory.armors[i].name == equipment.name) {
-                this.char.inventory.armors[i].equipped = equipment.type;
-              }
-            }
-            this.char.equipments.torax = equipment
-            this.names.torax = equipment.name
-            break;
-          }
-          case 'legs': {
-            this.char.inventory.armors.filter(equip => equip == this.char.equipments.legs)[0].equipped = ""
-            for (let i = 0; i < this.char.inventory.armors.length; i++) {
-              if (this.char.inventory.armors[i].name == equipment.name) {
-                this.char.inventory.armors[i].equipped = equipment.type;
-              }
-            }
-            this.char.equipments.legs = equipment
-            this.names.legs = equipment.name
-            break;
-          }
-          case 'feet': {
-            this.char.inventory.armors.filter(equip => equip == this.char.equipments.feet)[0].equipped = ""
-            for (let i = 0; i < this.char.inventory.armors.length; i++) {
-              if (this.char.inventory.armors[i].name == equipment.name) {
-                this.char.inventory.armors[i].equipped = equipment.type;
-              }
-            }
-            this.char.equipments.feet = equipment
-            this.names.feet = equipment.name
-            break;
-          }
-          case 'arms': {
-            this.char.inventory.armors.filter(equip => equip == this.char.equipments.arms)[0].equipped = ""
-            for (let i = 0; i < this.char.inventory.armors.length; i++) {
-              if (this.char.inventory.armors[i].name == equipment.name) {
-                this.char.inventory.armors[i].equipped = equipment.type;
-              }
-            }
-            this.char.equipments.arms = equipment
-            this.names.arms = equipment.name
-            break;
-          }
-          case 'hands': {
-            this.char.inventory.armors.filter(equip => equip == this.char.equipments.hands)[0].equipped = ""
-            for (let i = 0; i < this.char.inventory.armors.length; i++) {
-              if (this.char.inventory.armors[i].name == equipment.name) {
-                this.char.inventory.armors[i].equipped = equipment.type;
-              }
-            }
-            this.char.equipments.hands = equipment
-            this.names.hands = equipment.name
-            break;
-          }
-        }
+        this.equippingEquipment(equipment, type)
       }
     })
-    this.getEquipments()
   }
 
   removeEquipment(type: string) {
     switch (type) {
       case 'left_hand': {
-        if (this.char.equipments.left_hand != undefined) {
+        if (this.char.equipments.left_hand != undefined && this.char.equipments.left_hand.name != undefined) {
           this.char.inventory.one_hand_weapons.filter(equip => equip.equipped === "left_hand")[0].equipped = ""
-          this.char.equipments.left_hand = undefined
-        } else {
-          this.char.inventory.two_hand_weapons.filter(equip => equip.equipped === "both_hand")[0].equipped = ""
-          this.char.equipments.both_hands = undefined
+          this.char.equipments.left_hand = new OneHandWeapon()
+        }
+        if (this.char.equipments.both_hands != undefined && this.char.equipments.both_hands.name != undefined) {
+          this.char.inventory.two_hand_weapons.filter(equip => equip.equipped === "both_hands")[0].equipped = ""
+          this.char.equipments.both_hands = new TwoHandWeapon()
         }
         break
       }
       case 'right_hand': {
-        if (this.char.equipments.right_hand != undefined) {
-          this.char.inventory.one_hand_weapons.filter(equip => equip == this.char.equipments.right_hand)[0].equipped = ""
-          this.char.equipments.right_hand = undefined
-        } else {
-          if (this.char.equipments.shield != undefined) {
-            this.char.inventory.shields.filter(equip => equip == this.char.equipments.shield)[0].equipped = ""
-            this.char.equipments.right_hand = undefined
-          } else {
-            this.char.inventory.two_hand_weapons.filter(equip => equip == this.char.equipments.both_hands)[0].equipped = ""
-            this.char.equipments.both_hands = undefined
-          }
+        console.log(this.char.equipments)
+        if (this.char.equipments.right_hand != undefined && this.char.equipments.right_hand.name != undefined) {
+          this.char.inventory.one_hand_weapons.filter(equip => equip.equipped === "right_hand")[0].equipped = ""
+          this.char.equipments.right_hand = new OneHandWeapon()
+        }
+        if (this.char.equipments.both_hands != undefined && this.char.equipments.both_hands.name != undefined) {
+          this.char.inventory.two_hand_weapons.filter(equip => equip.equipped === "both_hands")[0].equipped = ""
+          this.char.equipments.both_hands = new TwoHandWeapon()
+        }
+        if (this.char.equipments.shield != undefined && this.char.equipments.shield.name != undefined) {
+          this.char.inventory.shields.filter(equip => equip.equipped === "shield")[0].equipped = ""
+          this.char.equipments.shield = new Shield()
+        }
+        break
+      }
+      case 'both_hands': {
+        if (this.char.equipments.left_hand != undefined && this.char.equipments.left_hand.name != undefined) {
+          this.char.inventory.one_hand_weapons.filter(equip => equip.equipped === "left_hand")[0].equipped = ""
+          this.char.equipments.left_hand = new OneHandWeapon()
+        }
+        if (this.char.equipments.right_hand != undefined && this.char.equipments.right_hand.name != undefined) {
+          this.char.inventory.one_hand_weapons.filter(equip => equip.equipped === "right_hand")[0].equipped = ""
+          this.char.equipments.right_hand = new OneHandWeapon()
+        }
+        if (this.char.equipments.both_hands != undefined && this.char.equipments.both_hands.name != undefined) {
+          this.char.inventory.two_hand_weapons.filter(equip => equip.equipped === "both_hands")[0].equipped = ""
+          this.char.equipments.both_hands = new TwoHandWeapon()
+        }
+        if (this.char.equipments.shield != undefined && this.char.equipments.shield.name != undefined) {
+          this.char.inventory.shields.filter(equip => equip.equipped === "shield")[0].equipped = ""
+          this.char.equipments.shield = new Shield()
         }
         break
       }
       case 'head': {
-        this.char.inventory.armors.filter(equip => equip == this.char.equipments.head)[0].equipped = ""
-        this.char.equipments.head = undefined
+        if (this.char.equipments.head != undefined && this.char.equipments.head.name != undefined) {
+          this.char.inventory.armors.filter(equip => equip == this.char.equipments.head)[0].equipped = ""
+          this.char.equipments.head = new Armor()
+        }
         break
       }
       case 'torax': {
-        this.char.inventory.armors.filter(equip => equip == this.char.equipments.torax)[0].equipped = ""
-        this.char.equipments.torax = undefined
-        break
+        if (this.char.equipments.torax != undefined && this.char.equipments.torax.name != undefined) {
+          this.char.inventory.armors.filter(equip => equip == this.char.equipments.torax)[0].equipped = ""
+          this.char.equipments.torax = new Armor()
+        } break
       }
       case 'legs': {
-        this.char.inventory.armors.filter(equip => equip == this.char.equipments.legs)[0].equipped = ""
-        this.char.equipments.legs = undefined
+        if (this.char.equipments.legs != undefined && this.char.equipments.legs.name != undefined) {
+          this.char.inventory.armors.filter(equip => equip == this.char.equipments.legs)[0].equipped = ""
+          this.char.equipments.legs = new Armor()
+        }
         break
       }
       case 'feet': {
-        this.char.inventory.armors.filter(equip => equip == this.char.equipments.feet)[0].equipped = ""
-        this.char.equipments.feet = undefined
+        if (this.char.equipments.feet != undefined && this.char.equipments.feet.name != undefined) {
+          this.char.inventory.armors.filter(equip => equip == this.char.equipments.feet)[0].equipped = ""
+          this.char.equipments.feet = new Armor()
+        }
         break
       }
       case 'arms': {
-        this.char.inventory.armors.filter(equip => equip == this.char.equipments.arms)[0].equipped = ""
-        this.char.equipments.arms = undefined
+        if (this.char.equipments.arms != undefined && this.char.equipments.arms.name != undefined) {
+          this.char.inventory.armors.filter(equip => equip == this.char.equipments.arms)[0].equipped = ""
+          this.char.equipments.arms = new Armor()
+        }
         break
       }
       case 'hands': {
-        this.char.inventory.armors.filter(equip => equip == this.char.equipments.hands)[0].equipped = ""
-        this.char.equipments.hands = undefined
+        if (this.char.equipments.hands != undefined && this.char.equipments.hands.name != undefined) {
+          this.char.inventory.armors.filter(equip => equip == this.char.equipments.hands)[0].equipped = ""
+          this.char.equipments.hands = new Armor()
+        }
         break
       }
     }
     this.getEquipments()
+  }
+
+  equippingEquipment(equipment: any, type: string) {
+    switch (equipment.type) {
+      case 'one_hand': {
+        for (let i = 0; i < this.char.inventory.one_hand_weapons.length; i++) {
+          if (this.char.inventory.one_hand_weapons[i].name == equipment.name) {
+            this.char.inventory.one_hand_weapons[i].equipped = type;
+          }
+        }
+        this.removeEquipment(type)
+        break;
+      }
+      case "two_hand": {
+        for (let i = 0; i < this.char.inventory.two_hand_weapons.length; i++) {
+          if (this.char.inventory.two_hand_weapons[i].name == equipment.name) {
+            this.char.inventory.two_hand_weapons[i].equipped = "both_hands";
+          }
+        }
+        this.removeEquipment("both_hands")
+        break;
+      }
+      case 'shield': {
+        for (let i = 0; i < this.char.inventory.shields.length; i++) {
+          if (this.char.inventory.shields[i].name == equipment.name) {
+            this.char.inventory.shields[i].equipped = "shield";
+          }
+        }
+        this.removeEquipment("right_hand")
+        break;
+      }
+      case 'head':
+      case 'torax':
+      case 'legs':
+      case 'feet':
+      case 'arms':
+      case 'hands': {
+        for (let i = 0; i < this.char.inventory.armors.length; i++) {
+          if (this.char.inventory.armors[i].name == equipment.name) {
+            this.char.inventory.armors[i].equipped = equipment.type;
+          }
+        }
+        this.removeEquipment(type)
+        break;
+      }
+    }
   }
 }

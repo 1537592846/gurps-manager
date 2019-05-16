@@ -39,7 +39,7 @@ export class ModalAddResource {
           break
         }
       }
-      this.viewCtrl.dismiss(finalValue)
+      this.viewCtrl.dismiss(finalValue).catch(()=>console.log())
     }
     else {
       this.form.markAsPending()

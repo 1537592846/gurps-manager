@@ -41,7 +41,7 @@ export class InventoryPage {
         console.log("Error saving character");
       }
     })
-      .catch(error => { console.log(error); });
+      .catch(error => { console.log(error);});
   }
   updateInfo() {
     this.current_weight = this.char.inventory.getWeight()
@@ -100,6 +100,37 @@ export class InventoryPage {
     this.profileModal = this.modalCtrl.create(ModalAddNewItems, { resouces: this.char.resources })
     this.profileModal.present()
     this.profileModal.onDidDismiss(item => {
+      switch (item.type) {
+        case "one_hand": {
+          this.char.inventory.one_hand_weapons.push(item)
+          break
+        }
+        case "two_hand": {
+          this.char.inventory.two_hand_weapons.push(item)
+          break
+        }
+        case "shield": {
+          this.char.inventory.shields.push(item)
+          break
+        }
+        case "head":
+        case "torax":
+        case "hands":
+        case "arms":
+        case "legs":
+        case "feet": {
+          this.char.inventory.armors.push(item)
+          break
+        }
+        case "consumable": {
+          this.char.inventory.consumables.push(item)
+          break
+        }
+        case "other": {
+          this.char.inventory.others.push(item)
+          break
+        }
+      }
       this.saveChar()
       this.updateInfo()
     })
@@ -109,13 +140,13 @@ export class InventoryPage {
     this.profileModal.present()
     this.profileModal.onDidDismiss(res => {
       if (res == undefined) return
-      this.char.resources += Number.parseInt(res)
+      this.char.resources = this.char.resources+Number.parseInt(res)
       this.saveChar()
       this.updateInfo()
     })
   }
   getInventory() {
-    this.weapons=[]
+    this.weapons = []
     this.shields = [];
     this.armors = [];
     this.consumables = [];

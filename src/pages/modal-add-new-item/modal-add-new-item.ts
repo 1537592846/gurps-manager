@@ -21,9 +21,8 @@ export class ModalAddNewItems {
       description: ['', Validators.compose([Validators.minLength(3), Validators.pattern('[a-zA-Z .,]*'), Validators.required])],
       weight: ['', Validators.compose([Validators.pattern('[0-9.]*'), Validators.required])],
       cost: ['', Validators.compose([Validators.pattern('[0-9]*'), Validators.required])],
-      quantity: ['', Validators.compose([Validators.pattern('[0-9]*'), Validators.required])],
       max_life_points: ['', Validators.compose([Validators.min(1), Validators.pattern('[0-9]*')])],
-      resistence: ['', Validators.compose([Validators.min(1), Validators.pattern('[0-9D]*')])],
+      resistence: ['', Validators.compose([Validators.min(1), Validators.pattern('[Dd0-9]*')])],
       balance_attack: ['', Validators.compose([Validators.minLength(3), Validators.pattern('[a-zA-Z0-9\+\-.,]*')])],
       piercing_attack: ['', Validators.compose([Validators.minLength(3), Validators.pattern('[a-zA-Z0-9\+\-.,]*')])]
     })
@@ -82,12 +81,11 @@ export class ModalAddNewItems {
       item.description = data.description
       item.weight = Number.parseFloat(data.weight)
       item.cost = Number.parseInt(data.cost)
-      item.quantity = Number.parseInt(data.quantity)
       item.max_life_points = Number.parseInt(data.max_life_points)
       item.resistence = data.resistence
       item.bought=false
       item.equipped=""
-      this.viewCtrl.dismiss()
+      this.viewCtrl.dismiss(item)
     } else {
       this.form.markAsPending()
     }

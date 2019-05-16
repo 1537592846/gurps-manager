@@ -27,7 +27,7 @@ export class GurpsManagerPage {
   goToCharacterFeatures() {
     this.dataProvider.getNextCharacterId().then(res => {
       let new_char = new Character(res as number)
-      this.navCtrl.setRoot(CharacterFeaturesPage, { new_char: new_char });
+      this.navCtrl.push(CharacterFeaturesPage, { new_char: new_char });
     })
   }
 
