@@ -1,11 +1,12 @@
 import { ModalAddResource } from './../modal-add-resource/modal-add-resource';
 import { Component } from '@angular/core';
-import { NavParams, ModalController } from 'ionic-angular';
+import { NavParams, ModalController, NavController } from 'ionic-angular';
 import { Character } from '../../../models/Character';
 import { ModalBuyItems } from '../modal-buy-item/modal-buy-item';
 import { ModalAddItems } from '../modal-add-item/modal-add-item';
 import { ModalAddNewItems } from '../modal-add-new-item/modal-add-new-item';
 import { DataProvider } from '../../providers/data/data';
+import { GurpsManagerPage } from '../gurps-manager/gurps-manager';
 
 @Component({
   selector: 'page-inventory',
@@ -24,7 +25,7 @@ export class InventoryPage {
   current_price: number = 0
   current_category: string = "None"
 
-  constructor(public navParams: NavParams, public modalCtrl: ModalController, public dataProvider: DataProvider) {
+  constructor(public navParams: NavParams, public navControl:NavController,public modalCtrl: ModalController, public dataProvider: DataProvider) {
     //Getting data
     this.char = navParams.data
     this.getInventory()
@@ -214,5 +215,14 @@ export class InventoryPage {
     }
     this.updateInfo()
     this.getInventory()
+  }
+
+  goHome(){
+    this.dataProvider.saveCharacter(this.char).then(res => {
+      if (!res) {
+        console.log("Error saving character");
+      }
+    })
+    this.navControl.setRoot(GurpsManagerPage, {     });
   }
 }

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavParams, NavController, ModalController } from 'ionic-angular';
 import { Character } from '../../../models/Character';
 import { ModalTest } from '../modal-test/modal-test';
+import { GurpsManagerPage } from '../gurps-manager/gurps-manager';
+import { DataProvider } from '../../providers/data/data';
 
 @Component({
   selector: 'page-tests',
@@ -11,7 +13,7 @@ export class TestsPage {
 
   char: Character;
   profileModal: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
+  constructor(public navCtrl:NavController, public dataProvider: DataProvider, public navParams: NavParams, public modalCtrl: ModalController) {
     //Getting data
     this.char = navParams.data
   }
@@ -53,5 +55,14 @@ export class TestsPage {
   openTestModel(test:string){
     this.profileModal = this.modalCtrl.create(ModalTest, {char:this.char,test:test })
     this.profileModal.present();
+  }
+
+  goHome(){
+    this.dataProvider.saveCharacter(this.char).then(res => {
+      if (!res) {
+        console.log("Error saving character");
+      }
+    })
+    this.navCtrl.setRoot(GurpsManagerPage, {     });
   }
 }

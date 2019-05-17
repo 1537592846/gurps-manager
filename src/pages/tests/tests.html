@@ -1,18 +1,31 @@
 <ion-header>
   <ion-navbar>
-    <ion-buttons start>
-      <label ion-button start>
-        <ion-icon name="cube"></ion-icon>
-      </label>
-    </ion-buttons>
-    <ion-title>
-      Tests
-    </ion-title>
-    <ion-buttons end>
-      <label ion-button>
-        {{char.name}}
-      </label>
-    </ion-buttons>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-5>
+          <ion-title>
+            Tests
+          </ion-title>
+        </ion-col>
+        <ion-col col-2>
+          <ion-buttons style="text-align:center">
+            <button ion-button icon-only on-click="goHome()">
+              <ion-icon name="home"></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-col>
+        <ion-col col-5 style="text-align:right">
+          <ion-buttons ion-button icon-only>
+            <button ion-button icon-only>
+              <ion-icon name="cube"></ion-icon>
+            </button>
+            <button ion-button>
+              {{char.name}}
+            </button>
+          </ion-buttons>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-navbar>
 </ion-header>
 <ion-content padding id="tests">
@@ -31,17 +44,17 @@
     </button>
   </ion-list>
   <!-- Fatigue related buttons -->
-    <ion-list text-center>
-      <button id="tests-fatigue-minus" ion-button color="danger" on-click="removeFatigue()">
-        <ion-icon name="remove"></ion-icon>
-      </button>
-      <button id="tests-fatigue-value" ion-button color="light">
-        Fatigue Points: {{char.current_fatigue_points}}
-      </button>
-      <button id="tests-fatigue-plus" ion-button color="secondary" on-click="addFatigue()">
-        <ion-icon name="add"></ion-icon>
-      </button>
-    </ion-list>
+  <ion-list text-center>
+    <button id="tests-fatigue-minus" ion-button color="danger" on-click="removeFatigue()">
+      <ion-icon name="remove"></ion-icon>
+    </button>
+    <button id="tests-fatigue-value" ion-button color="light">
+      Fatigue Points: {{char.current_fatigue_points}}
+    </button>
+    <button id="tests-fatigue-plus" ion-button color="secondary" on-click="addFatigue()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-list>
   <!-- Shield related buttons -->
   <ion-list text-center *ngIf="char.equipments.shield.name!=undefined">
     <button id="tests-shield-minus" ion-button color="danger" on-click="removeShield()">

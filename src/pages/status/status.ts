@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { NavParams } from 'ionic-angular';
+import { NavParams, NavController } from 'ionic-angular';
 import { Character } from '../../../models/Character';
+import { DataProvider } from '../../providers/data/data';
+import { GurpsManagerPage } from '../gurps-manager/gurps-manager';
 
 @Component({
   selector: 'page-status',
@@ -10,9 +12,18 @@ export class StatusPage {
   // this tells the tabs component which Pages
   // should be each tab's root Page
   char: Character;
-  constructor(public navParams: NavParams) {
+  constructor(public navParams: NavParams,public navCtrl:NavController, public dataProvider: DataProvider) {
     //Getting data
     this.char = navParams.data
     
+  }
+
+  goHome(){
+    this.dataProvider.saveCharacter(this.char).then(res => {
+      if (!res) {
+        console.log("Error saving character");
+      }
+    })
+    this.navCtrl.setRoot(GurpsManagerPage, {     });
   }
 }

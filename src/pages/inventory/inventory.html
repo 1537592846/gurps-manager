@@ -1,18 +1,31 @@
 <ion-header>
   <ion-navbar>
-    <ion-buttons start>
-      <button ion-button icon-only>
-        <ion-icon name="briefcase"></ion-icon>
-      </button>
-    </ion-buttons>
-    <ion-title>
-      Inventory
-    </ion-title>
-    <ion-buttons end>
-      <button ion-button>
-        {{char.name}}
-      </button>
-    </ion-buttons>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-5>
+          <ion-title>
+            Tests
+          </ion-title>
+        </ion-col>
+        <ion-col col-2>
+          <ion-buttons style="text-align:center">
+            <button ion-button icon-only on-click="goHome()">
+              <ion-icon name="home"></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-col>
+        <ion-col col-5 style="text-align:right">
+          <ion-buttons ion-button icon-only>
+            <button ion-button icon-only>
+              <ion-icon name="briefcase"></ion-icon>
+            </button>
+            <button ion-button>
+              {{char.name}}
+            </button>
+          </ion-buttons>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-navbar>
 </ion-header>
 <ion-content padding id="inventory">
@@ -156,24 +169,28 @@
     <ion-grid>
       <ion-row>
         <ion-col col-6>
-          <button id="buy-item-button" style="font-size:1.2rem" full ion-button color="secondary" on-click="openBuyItemModal()">
+          <button id="buy-item-button" style="font-size:1.2rem" full ion-button color="secondary"
+            on-click="openBuyItemModal()">
             Buy Item/Equipment
           </button>
         </ion-col>
         <ion-col col-6>
-          <button id="add-item-button" style="font-size:1.2rem" full ion-button color="secondary" on-click="openAddItemModal()">
+          <button id="add-item-button" style="font-size:1.2rem" full ion-button color="secondary"
+            on-click="openAddItemModal()">
             Add Item/Equipment
           </button>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col col-6>
-          <button id="add-new-item-button" style="font-size:1.2rem" full ion-button color="secondary" on-click="openAddNewItemModal()">
+          <button id="add-new-item-button" style="font-size:1.2rem" full ion-button color="secondary"
+            on-click="openAddNewItemModal()">
             Add New Item
           </button>
         </ion-col>
         <ion-col col-6>
-          <button id="add-resource-button" style="font-size:1.2rem" full ion-button color="secondary" on-click="openAddResourceModal()">
+          <button id="add-resource-button" style="font-size:1.2rem" full ion-button color="secondary"
+            on-click="openAddResourceModal()">
             Add/Remove Resources
           </button>
         </ion-col>

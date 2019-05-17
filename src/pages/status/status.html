@@ -1,18 +1,31 @@
 <ion-header>
   <ion-navbar>
-    <ion-buttons start>
-      <button ion-button icon-only>
-        <ion-icon name="stats"></ion-icon>
-      </button>
-    </ion-buttons>
-    <ion-title>
-      Status
-    </ion-title>
-    <ion-buttons end>
-      <button ion-button>
-        {{char.name}}
-      </button>
-    </ion-buttons>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-5>
+          <ion-title>
+            Tests
+          </ion-title>
+        </ion-col>
+        <ion-col col-2>
+          <ion-buttons style="text-align:center">
+            <button ion-button icon-only on-click="goHome()">
+              <ion-icon name="home"></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-col>
+        <ion-col col-5 style="text-align:right">
+          <ion-buttons ion-button icon-only>
+            <button ion-button icon-only>
+              <ion-icon name="stats"></ion-icon>
+            </button>
+            <button ion-button>
+              {{char.name}}
+            </button>
+          </ion-buttons>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-navbar>
 </ion-header>
 <ion-content padding id="status-page">

@@ -1,10 +1,11 @@
 import { DataProvider } from './../../providers/data/data';
 import { Component } from '@angular/core';
-import { NavParams, ModalController } from 'ionic-angular';
+import { NavParams, ModalController, NavController } from 'ionic-angular';
 import { Character } from '../../../models/Character';
 import { ModalEquipments } from '../modal-equipments/modal-equipments';
 import { OneHandWeapon, Shield, TwoHandWeapon, Armor } from '../../../models/Item';
 import { Equipment } from '../../../models/Equipment';
+import { GurpsManagerPage } from '../gurps-manager/gurps-manager';
 
 @Component({
   selector: 'page-equipments',
@@ -16,7 +17,7 @@ export class EquipmentsPage {
   names: any = { "left_hand": "Empty", "right_hand": "Empty", "head": "Empty", "torax": "Empty", "arms": "Empty", "hands": "Empty", "legs": "Empty", "feet": "Empty" }
   profileModal: any
 
-  constructor(public navParams: NavParams, public modalCtrl: ModalController, public dataProvider: DataProvider) {
+  constructor(public navParams: NavParams, public navCtrl: NavController,public modalCtrl: ModalController, public dataProvider: DataProvider) {
     //Getting data
     this.char = navParams.data
   }
@@ -266,5 +267,14 @@ export class EquipmentsPage {
         break;
       }
     }
+  }
+
+  goHome(){
+    this.dataProvider.saveCharacter(this.char).then(res => {
+      if (!res) {
+        console.log("Error saving character");
+      }
+    })
+    this.navCtrl.setRoot(GurpsManagerPage, {     });
   }
 }
