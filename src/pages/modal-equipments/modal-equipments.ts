@@ -123,6 +123,9 @@ export class ModalEquipments {
 
   Resistence(armor: any) {
     let armorFormula = JSON.parse(armor.formula)
+    if (armorFormula.resistence == undefined) {
+      return "Resistence:0"
+    }
     return "Resistence:" + armorFormula.resistence
   }
 
