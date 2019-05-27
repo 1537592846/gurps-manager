@@ -9,7 +9,7 @@ import { OneHandWeapon, TwoHandWeapon, Shield, Armor, Consumable, Other } from '
 
 @Injectable()
 export class DataProvider {
-  public apiAddress: string = "http://localhost:42862/api/"
+  public apiAddress: string = "http://35.1989.14.36/api/"
   public timeoutRequest: number = 10000;
   public retryRequest: number = 3;
 
