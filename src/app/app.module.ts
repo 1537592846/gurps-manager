@@ -67,7 +67,6 @@ import { ModalTest } from '../pages/modal-test/modal-test';
   ],
   imports: [
     BrowserModule,
-    HttpModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],

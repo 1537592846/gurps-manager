@@ -90,7 +90,7 @@ export class ModalSkills {
           this.skills.push(skill)
         }
       })
-      .catch(error => { console.log(error) });
+      .catch(error => { alert(error) });
     }
   }
 

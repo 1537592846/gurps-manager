@@ -25,13 +25,13 @@ export class CharacterResumePage {
     this.new_char.current_life_points=this.new_char.max_life_points
     this.dataProvider.saveNewCharacter(this.new_char).then(res => {
       if (res) {
-        console.log("Sucesso")
+        alert("Sucesso")
         this.navCtrl.setRoot(TabsControllerPage, { char: this.new_char });
       } else {
-        console.log("Erro")
+        alert("Erro")
       }
     })
-      .catch(error => { console.log(error) })
+      .catch(error => { alert(error) })
   }
   goToCharacterFeatures() {
     this.navCtrl.setRoot(CharacterFeaturesPage, { new_char: this.new_char });

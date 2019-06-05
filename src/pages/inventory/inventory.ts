@@ -39,10 +39,10 @@ export class InventoryPage {
     this.char.current_carry_weight = this.char.inventory.getWeight();
     this.dataProvider.saveCharacter(this.char).then(res => {
       if (!res) {
-        console.log("Error saving character");
+        alert("Error saving character");
       }
     })
-      .catch(error => { console.log(error);});
+      .catch(error => { alert(error);});
   }
   updateInfo() {
     this.current_weight = this.char.inventory.getWeight()
@@ -220,7 +220,7 @@ export class InventoryPage {
   goHome(){
     this.dataProvider.saveCharacter(this.char).then(res => {
       if (!res) {
-        console.log("Error saving character");
+        alert("Error saving character");
       }
     })
     this.navControl.setRoot(GurpsManagerPage, {     });

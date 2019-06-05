@@ -156,7 +156,7 @@ export class ModalAddItems {
           this.oneHands.push(oneHand)
         }
       })
-        .catch(error => { console.log(error) });
+        .catch(error => { alert(error) });
     }
   }
 
@@ -178,7 +178,7 @@ export class ModalAddItems {
           this.twoHands.push(twoHand)
         }
       })
-        .catch(error => { console.log(error) });
+        .catch(error => { alert(error) });
     }
   }
 
@@ -203,7 +203,7 @@ export class ModalAddItems {
           this.shields.push(shield)
         }
       })
-        .catch(error => { console.log(error) });
+        .catch(error => { alert(error) });
     }
   }
 
@@ -226,7 +226,7 @@ export class ModalAddItems {
           this.heads.push(head)
         }
       })
-        .catch(error => { console.log(error) });
+        .catch(error => { alert(error) });
     }
   }
 
@@ -249,7 +249,7 @@ export class ModalAddItems {
           this.torax.push(torax)
         }
       })
-        .catch(error => { console.log(error) });
+        .catch(error => { alert(error) });
     }
   }
 
@@ -272,7 +272,7 @@ export class ModalAddItems {
           this.arms.push(arm)
         }
       })
-        .catch(error => { console.log(error) });
+        .catch(error => { alert(error) });
     }
   }
 
@@ -295,7 +295,7 @@ export class ModalAddItems {
           this.hands.push(hand)
         }
       })
-        .catch(error => { console.log(error) });
+        .catch(error => { alert(error) });
     }
   }
 
@@ -318,7 +318,7 @@ export class ModalAddItems {
           this.legs.push(leg)
         }
       })
-        .catch(error => { console.log(error) });
+        .catch(error => { alert(error) });
     }
   }
 
@@ -341,7 +341,7 @@ export class ModalAddItems {
           this.feets.push(feet)
         }
       })
-        .catch(error => { console.log(error) });
+        .catch(error => { alert(error) });
     }
   }
 
@@ -363,7 +363,7 @@ export class ModalAddItems {
           this.consumables.push(consumable)
         }
       })
-        .catch(error => { console.log(error) });
+        .catch(error => { alert(error) });
     }
   }
 
@@ -385,7 +385,7 @@ export class ModalAddItems {
           this.others.push(other)
         }
       })
-        .catch(error => { console.log(error) });
+        .catch(error => { alert(error) });
     }
   }
 

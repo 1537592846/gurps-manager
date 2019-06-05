@@ -98,16 +98,16 @@ export class EquipmentsPage {
           break
         }
         default: {
-          console.log("Equipment with wrong type")
+          alert("Equipment with wrong type")
         }
       }
     }
     this.dataProvider.saveCharacter(this.char).then(res => {
       if (!res) {
-        console.log("Error saving equipment")
+        alert("Error saving equipment")
       }
     })
-      .catch(error => { console.log(error) })
+      .catch(error => { alert(error) })
   }
 
   equipEquipment(type: string) {
@@ -144,7 +144,7 @@ export class EquipmentsPage {
         break
       }
       case 'right_hand': {
-        console.log(this.char.equipments)
+        alert(this.char.equipments)
         if (this.char.equipments.right_hand != undefined && this.char.equipments.right_hand.name != undefined) {
           this.char.inventory.one_hand_weapons.filter(equip => equip.equipped === "right_hand")[0].equipped = ""
           this.char.equipments.right_hand = new OneHandWeapon()
@@ -272,7 +272,7 @@ export class EquipmentsPage {
   goHome(){
     this.dataProvider.saveCharacter(this.char).then(res => {
       if (!res) {
-        console.log("Error saving character");
+        alert("Error saving character");
       }
     })
     this.navCtrl.setRoot(GurpsManagerPage, {     });

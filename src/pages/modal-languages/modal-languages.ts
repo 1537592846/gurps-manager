@@ -34,7 +34,7 @@ export class ModalLanguages {
           this.languages.push(language)
         }
       })
-        .catch(error => { console.log(error) });
+        .catch(error => { alert(error) });
     }
   }
 

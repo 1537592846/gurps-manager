@@ -29,7 +29,7 @@ export class ExtrasPage {
   goHome(){
     this.dataProvider.saveCharacter(this.char).then(res => {
       if (!res) {
-        console.log("Error saving character");
+        alert("Error saving character");
       }
     })
     this.navControl.setRoot(GurpsManagerPage, {     });

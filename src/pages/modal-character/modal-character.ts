@@ -17,6 +17,7 @@ export class ModalCharacters {
   updateCharacters() {
     if (this.characters == undefined || this.characters.length == 0) {
       this.dataProvider.getCharacters().then(res => {
+        console.log(res)
         let data = res as any[]
         data.sort((n1, n2) => {
           if (n1.Id > n2.Id)
@@ -33,7 +34,7 @@ export class ModalCharacters {
           this.characters.push(character)
         }
       })
-        .catch(error => { console.log(error) });
+        .catch(error => { alert(error) });
     }
   }
 

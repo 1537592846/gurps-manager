@@ -124,7 +124,7 @@ export class ModalDisadvantages {
           this.disadvantages.push(disadvantage)
         }
       })
-        .catch(error => { console.log(error) });
+        .catch(error => { alert(error) });
     }    
   }
 

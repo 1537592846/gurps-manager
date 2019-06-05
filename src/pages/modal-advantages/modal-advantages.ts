@@ -123,7 +123,7 @@ export class ModalAdvantages {
           this.advantages.push(advantage)
         }
       })
-        .catch(error => { console.log(error) });
+        .catch(error => { alert(error) });
     }
   }
 

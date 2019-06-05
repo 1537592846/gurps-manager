@@ -154,7 +154,7 @@ export class ModalBuyItems {
           this.oneHands.push(oneHand)
         }
       })
-        .catch(error => { console.log(error) });
+        .catch(error => { alert(error) });
     }
   }
 
@@ -176,7 +176,7 @@ export class ModalBuyItems {
           this.twoHands.push(twoHand)
         }
       })
-        .catch(error => { console.log(error) });
+        .catch(error => { alert(error) });
     }
   }
 
@@ -201,7 +201,7 @@ export class ModalBuyItems {
           this.shields.push(shield)
         }
       })
-        .catch(error => { console.log(error) });
+        .catch(error => { alert(error) });
     }
   }
 
@@ -224,7 +224,7 @@ export class ModalBuyItems {
           this.heads.push(head)
         }
       })
-        .catch(error => { console.log(error) });
+        .catch(error => { alert(error) });
     }
   }
 
@@ -247,7 +247,7 @@ export class ModalBuyItems {
           this.torax.push(torax)
         }
       })
-        .catch(error => { console.log(error) });
+        .catch(error => { alert(error) });
     }
   }
 
@@ -270,7 +270,7 @@ export class ModalBuyItems {
           this.arms.push(arm)
         }
       })
-        .catch(error => { console.log(error) });
+        .catch(error => { alert(error) });
     }
   }
 
@@ -293,7 +293,7 @@ export class ModalBuyItems {
           this.hands.push(hand)
         }
       })
-        .catch(error => { console.log(error) });
+        .catch(error => { alert(error) });
     }
   }
 
@@ -316,7 +316,7 @@ export class ModalBuyItems {
           this.legs.push(leg)
         }
       })
-        .catch(error => { console.log(error) });
+        .catch(error => { alert(error) });
     }
   }
 
@@ -339,7 +339,7 @@ export class ModalBuyItems {
           this.feets.push(feet)
         }
       })
-        .catch(error => { console.log(error) });
+        .catch(error => { alert(error) });
     }
   }
 
@@ -361,7 +361,7 @@ export class ModalBuyItems {
           this.consumables.push(consumable)
         }
       })
-        .catch(error => { console.log(error) });
+        .catch(error => { alert(error) });
     }
   }
 
@@ -383,7 +383,7 @@ export class ModalBuyItems {
           this.others.push(other)
         }
       })
-        .catch(error => { console.log(error) });
+        .catch(error => { alert(error) });
     }
   }
 
