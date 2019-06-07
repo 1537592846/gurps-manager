@@ -44,16 +44,14 @@
   <ion-list>
     <ion-item-sliding *ngFor="let skill of char.skills">
       <ion-item>
-        <ion-row>
-          <div col-25>
+          <ion-thumbnail item-start>
             <h1 style='word-break: break-all'>{{skill.name}}</h1>
             <h2>{{skill.attribute}}+{{skill.level}}</h2>
-          </div>
-          <div>
+          </ion-thumbnail>
+          <p item-content>
             <ion-note item-content>{{skill.description}}</ion-note>
             <ion-note item-right>{{getSkillLevel(skill)}}</ion-note>
-          </div>
-        </ion-row>
+          </p>
       </ion-item>
     </ion-item-sliding>
   </ion-list>
