@@ -22,17 +22,17 @@ export class ModalBuyItems {
   consumables: Consumable[] = []
   others: Other[] = []
   strength: number
-  resources:number
+  resources: number
 
   constructor(public viewCtrl: ViewController, public params: NavParams, public dataProvider: DataProvider) {
     this.strength = this.params.get("strength")
-    this.resources=this.params.get("resources")
+    this.resources = this.params.get("resources")
   }
 
   Balance(weapon: any) {
     let weaponFormula = JSON.parse(weapon.formula)
     var bap: string = "Balance:"
-    if (weaponFormula.balance_attack != undefined) {
+    if (weaponFormula.balance_attack != "No") {
       var base = Constants.WeaponBalanceAttack[this.strength - 1]
       let weaponSignal = ""
       let weaponBonus = ""
@@ -52,7 +52,10 @@ export class ModalBuyItems {
       }
       bap += baseDiceNumber + "d"
       let finalBonus = 0
-      if (baseSignal != "") {
+      console.log(weapon.name)
+      console.log(baseSignal)
+      console.log(weaponSignal)
+      if (baseSignal != undefined) {
         if (baseSignal == "-") {
           finalBonus -= Number.parseInt(baseBonus)
         } else {
@@ -83,7 +86,7 @@ export class ModalBuyItems {
   Piercing(weapon: any) {
     let weaponFormula = JSON.parse(weapon.formula)
     var bap: string = "Piercing:"
-    if (weaponFormula.piercing_attack != undefined) {
+    if (weaponFormula.piercing_attack != "No") {
       var base = Constants.WeaponBalanceAttack[this.strength - 1]
       let weaponSignal = ""
       let weaponBonus = ""
@@ -103,7 +106,7 @@ export class ModalBuyItems {
       }
       bap += baseDiceNumber + "d"
       let finalBonus = 0
-      if (baseSignal != "") {
+      if (baseSignal != undefined) {
         if (baseSignal == "-") {
           finalBonus -= Number.parseInt(baseBonus)
         } else {

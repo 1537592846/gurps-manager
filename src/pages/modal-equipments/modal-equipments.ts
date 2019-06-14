@@ -42,7 +42,10 @@ export class ModalEquipments {
       }
       bap += baseDiceNumber + "d"
       let finalBonus = 0
-      if (baseSignal != "") {
+      console.log(weapon.name)
+      console.log(baseSignal)
+      console.log(weaponSignal)
+      if (baseSignal != undefined) {
         if (baseSignal == "-") {
           finalBonus -= Number.parseInt(baseBonus)
         } else {
@@ -93,7 +96,7 @@ export class ModalEquipments {
       }
       bap += baseDiceNumber + "d"
       let finalBonus = 0
-      if (baseSignal != "") {
+      if (baseSignal != undefined) {
         if (baseSignal == "-") {
           finalBonus -= Number.parseInt(baseBonus)
         } else {

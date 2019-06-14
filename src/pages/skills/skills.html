@@ -44,14 +44,8 @@
   <ion-list>
     <ion-item-sliding *ngFor="let skill of char.skills">
       <ion-item>
-          <ion-thumbnail item-start>
-            <h1 style='word-break: break-all'>{{skill.name}}</h1>
-            <h2>{{skill.attribute}}+{{skill.level}}</h2>
-          </ion-thumbnail>
-          <p item-content>
-            <ion-note item-content>{{skill.description}}</ion-note>
-            <ion-note item-right>{{getSkillLevel(skill)}}</ion-note>
-          </p>
+        <h1 item-start style="width:25%;font-size: 2rem">{{skill.name}}<br>{{skill.attribute}}+{{skill.level}}</h1>
+        <ion-note item-content>{{skill.description}}</ion-note>
       </ion-item>
     </ion-item-sliding>
   </ion-list>

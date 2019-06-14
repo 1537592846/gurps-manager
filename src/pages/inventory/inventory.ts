@@ -25,7 +25,7 @@ export class InventoryPage {
   current_price: number = 0
   current_category: string = "None"
 
-  constructor(public navParams: NavParams, public navControl:NavController,public modalCtrl: ModalController, public dataProvider: DataProvider) {
+  constructor(public navParams: NavParams, public app: App, public modalCtrl: ModalController, public dataProvider: DataProvider) {
     //Getting data
     this.char = navParams.data
     this.getInventory()
@@ -42,7 +42,7 @@ export class InventoryPage {
         alert("Error saving character");
       }
     })
-      .catch(error => { alert(error);});
+      .catch(error => { alert(error); });
   }
   updateInfo() {
     this.current_weight = this.char.inventory.getWeight()
@@ -141,7 +141,11 @@ export class InventoryPage {
     this.profileModal.present()
     this.profileModal.onDidDismiss(res => {
       if (res == undefined) return
-      this.char.resources = this.char.resources+Number.parseInt(res)
+      if (this.char.resources + Number.parseInt(res) < 0) {
+        this.char.resources = 0;
+      } else {
+        this.char.resources = this.char.resources + Number.parseInt(res)
+      }
       this.saveChar()
       this.updateInfo()
     })
@@ -217,7 +221,7 @@ export class InventoryPage {
     this.getInventory()
   }
 
-  goHome(){
+  goHome() {
     this.dataProvider.saveCharacter(this.char).then(res => {
       if (!res) {
         alert("Error saving character");
